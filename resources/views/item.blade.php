@@ -1,0 +1,534 @@
+@extends('adminlte::page')
+
+@section('title', __('Articulo'))
+
+@section('right-sidebar')
+
+
+    <div class="container">
+        <center>
+            <br>
+            <h3>Contacto</h3>
+            <br><br>
+            <div class="card">
+
+                <a href="">
+                    <div class="card-body"><i class="fas fa-user"></i><br>
+                        <b>{{ $_SESSION['usuario']->AyudaNombre }}</b>
+                </a>
+                <hr><br>
+                <a href="tel:+52{{ $_SESSION['usuario']->Ayudatel }}" target="_blank">
+                    <i class="fas fa-phone"></i><br>
+                    <b>{{ $_SESSION['usuario']->Ayudatel }}</b>
+                </a>
+                <hr><br>
+
+                <a href="mailto:{{ $_SESSION['usuario']->AyudaMail }}" target="_blank">
+                    <i class="fas fa-envelope"></i><br>
+                    <small>{{ $_SESSION['usuario']->AyudaMail }}</small>
+                </a>
+            </div>
+    </div>
+    </div>
+    </center>
+
+
+@stop
+
+@section('content_header')
+
+<?php $ART = trim($desc->Articulo); ?>
+    <style>
+        .fcontainer {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
+        }
+
+        .responsive-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #img-zoomer-box {
+  width: 500px;
+  height: auto;
+  position: relative;
+  margin-top: 10px;
+}
+
+#img-1 {
+  height: auto;
+}
+
+#img-zoomer-box:hover, #img-zoomer-box:active {
+  cursor: zoom-in;
+  display: block;
+}
+
+#img-zoomer-box:hover #img-2, #img-zoomer-box:active #img-2 {
+  opacity: 1;
+}
+
+#img-2 {
+  width: 350px;
+  height: 350px;
+  background: url({{'/images/catalogo/' . $ART . '.jpg'}}) no-repeat #FFF;
+  margin-left:-70%;
+  margin-top:-50%;
+  box-shadow: 0 5px 10px -2px rgba(0,0,0,0.3);
+  pointer-events: none;
+  position: absolute;
+  opacity: 0;
+  border: 4px solid whitesmoke;
+  z-index: 99;
+  border-radius: 100%;
+  transition: opacity .2s;
+}
+    </style>
+@stop
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-success mb-3">
+                        <center>
+                            <b> {{ __($desc->Descripcion1) }} </b>
+                        </center>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-12">
+                                <center>
+
+                                    <?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
+                                        echo '<div id="img-zoomer-box" style="max-width:350px"><div id="img-2" ></div><img class="border rounded" id="img-1" src="/images/catalogo/' . $ART . '.jpg" alt="$ART"style="max-width:350px"></div>';
+                                    } else {
+                                        echo '<img class="border rounded" src="/img/productos/default_product.png" alt="no img" style="max-width:350px">';
+                                    }
+                                    ?><br><br>
+                                    <?php if (file_exists(public_path() . '/specs/specs/' . $ART . '.pdf')) {
+                                        echo '<button class="btn btn-primary" data-toggle="modal" data-target="#specs"><i class="fas fa-file-alt fa-lg"></i> &nbsp; &nbsp;<b>'.__('Ficha Técnica').'</b> </button>
+                                                                        <!-- Modal -->
+                                    <div class="modal fade" id="specs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title" id="exampleModalLabel">'.__('Ficha Técnica').' &nbsp; &nbsp;| &nbsp; &nbsp; <b>'.$ART.'</b></h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body fcontainer">
+                                                <iframe class="responsive-iframe" src="/specs/specs/'.$ART.'.pdf" frameborder="0" ></iframe>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <a href="/specs/specs/'.$ART.'.pdf" download="'.$ART.'.pdf" class="btn btn-success"><i class="fas fa-download"> &nbsp;</i>'.__('Descargar').'</a>
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">'.__('Cerrar').'</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>';
+                                    } else {
+                                        echo '';
+                                    } ?>
+
+                                </center>
+
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <table class="table table-striped rounded">
+
+                                    <tr>
+                                        <td class="border"><b>{{__('Articulo:')}}</b></td>
+                                        <td class="border" style="text-align:right">{{ $desc->Articulo }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border"><b>{{__('Codigo:')}}</b></td>
+                                        <td class="border" style="text-align:right">{{ $codigo->Codigo }}</td>
+                                    </tr>
+                                    @if (isset($articulo[0]->Existencia))
+                                        <tr>
+                                            <td class="border"><b>{{__('Disponible:')}}</b></td>
+                                            <td class="border" style="text-align:right">
+                                                @if ($articulo[0]->Unidad == 'pza' || $articulo[0]->Unidad == 'par')
+                                                    {{ intval($articulo[0]->Existencia) }} {{ __($articulo[0]->Unidad) }}
+                                                @else
+                                                    {{ $articulo[0]->Existencia }} {{ __($articulo[0]->Unidad) }}
+                                                @endif
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border"><b>{{__('Precio:')}}</b></td>
+                                            <td class="border" style="text-align:right">
+                                                ${{ number_format($articulo[0]->Precio, 2, '.', '') }}
+                                                {{ __($articulo[0]->Moneda) }}</td>
+                                        </tr><br>
+                                    @else
+                                    @endif
+                                    <br>
+
+                                </table>
+                                <hr>
+                                @if (
+                                    $articulo[0]->Mensaje2 == 'Este artículo No esta en su presupuesto' ||
+                                        $articulo[0]->Presupuesto == 0 ||
+                                        $articulo[0]->Presupuesto == null)
+                                    <div class=" rounded"
+                                        style="color:#640d14;padding:20px;border: 1px solid #ee6b6e;background-color:#ffcbd1"
+                                        role="alert">
+                                        <div class="row">
+                                            <div class="col-1"><i class="fas fa-times-circle fa-lg"></i></div>
+                                            <div class="col-11">
+                                                <center><b>{{__('Este artículo no esta en su presupuesto')}}</b></center>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                @else
+                                    <div class="rounded" style="background-color:red">
+
+                                        <center>
+                                            <h3 style="color:white">{{__('Presupuesto')}}</h3>
+                                        </center>
+                                    </div>
+
+
+                                    <table class="table table-striped rounded">
+                                        <tr>
+                                            <td class="border"> <b>{{__('Lapso de entrega:')}}</b> </td>
+                                            @if (isset($articulo[0]->Periodo))
+                                                <td class="border" style="text-align:right">{{ __($articulo[0]->Periodo) }}
+                                                </td>
+                                            @else
+                                                <td class="border" style="text-align:right">{{ $articulo[0]->Perido }}</td>
+                                            @endif
+                                        </tr>
+                                        <?php
+
+                                        $year = date('Y');
+                                        $month = date('m');
+                                        $day = date('d');
+
+                                        # Obtenemos el numero de la semana
+                                        $semana = date('W', mktime(0, 0, 0, $month, $day, $year));
+
+                                        # Obtenemos el día de la semana de la fecha dada
+                                        $diaSemana = date('w', mktime(0, 0, 0, $month, $day, $year));
+
+                                        # el 0 equivale al domingo...
+                                        if ($diaSemana == 0) {
+                                            $diaSemana = 7;
+                                        }
+
+                                        # A la fecha recibida, le restamos el dia de la semana y obtendremos el lunes
+                                        $primerDia = date('l, d M Y', mktime(0, 0, 0, $month, $day - $diaSemana + 1, $year));
+
+                                        # A la fecha recibida, le sumamos el dia de la semana menos siete y obtendremos el domingo
+                                        $ultimoDia = date('l, d M Y', mktime(0, 0, 0, $month, $day + (7 - $diaSemana), $year));
+
+                                        ?>
+                                        <tr>
+                                            <td class="border"> <b>{{__('De:')}}</b> </td>
+                                            <td class="border" style="text-align:right">{{ $primerDia }}</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="border"> <b>{{__('A:')}}</b> </td>
+                                            <td class="border" style="text-align:right">{{ $ultimoDia }}</td>
+                                        </tr>
+                                    </table>
+                                    <div class="row">
+                                        <div class="col-4 border rounded"
+                                            style="text-align:center; background-color:#0F1934; color:white"> <b>
+                                                {{__('Autorizado')}}</b></div>
+                                        <div class="col-4 border rounded"
+                                            style="text-align:center; background-color:#0F1934; color:white"> <b>
+                                                {{__('Requerido')}}</b></div>
+                                        <div class="col-4 border rounded"
+                                            style="text-align:center; background-color:#0F1934; color:white"> <b>
+                                                {{__('Restante')}}</b></div>
+                                    </div>
+                                    @if(count($articulo)>=2)
+
+
+                                            @isset($_SESSION["carritodll"])
+                                            <?php $cantidad=0; ?>
+                                                @foreach ($_SESSION["carritodll"] as $indice=>$arreglo)
+                                                @if($arreglo["item"] == $ART)
+                                                 <?php $cantidad = $cantidad+ $arreglo["cantidad"] ;?>
+                                                @endif
+                                                @endforeach
+                                                <?php $arreglo["cantidad"]=$cantidad ;?>
+                                            @endisset
+                                            @isset($_SESSION["carritopes"])
+                                            <?php $cantidadpes=0; ?>
+                                                @foreach ($_SESSION["carritopes"] as $indice=>$arreglo)
+                                                @if($arreglo["item"] == $ART)
+                                                 <?php $cantidadpes = $cantidadpes+ $arreglo["cantidad"] ;?>
+                                                @endif
+                                                @endforeach
+                                                <?php $arreglo["cantidad"]=$cantidadpes ;?>
+                                            @endisset
+
+                                                <div class="row">
+                                                    <div class="col-4 border rounded"
+                                                        style="text-align:center; font-size:1.5em; color:blue"><b>
+                                                            {{number_format( $articulo[0]->Limite) }}
+
+                                                        </b></div>
+                                                    <div class="col-4 border rounded"
+                                                        style="text-align:center; font-size:1.5em; color:green"><b>
+                                                            @if(isset($cantidad))
+                                                            {{ $cantidad }}
+                                                            @else
+                                                            {{ number_format($articulo[0]->Consumo) }}
+                                                            @endif
+                                                        </b></div>
+                                                    <div class="col-4 border rounded" style="text-align:center; font-size:1.5em"><b>
+
+                                                            @if($articulo[0]->Moneda == "Dolares")
+
+
+                                                            @if(isset($cantidad))
+                                                            {{$articulo[0]->Limite - $cantidad}}
+                                                            @else
+                                                            {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
+                                                            @endif
+                                                            @else
+                                                            @if(isset($cantidad))
+                                                            {{$articulo[0]->Limite - $cantidad}}
+                                                            @else
+                                                            {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
+                                                            @endif
+                                                            @endif
+
+                                                            @if($articulo[0]->Moneda=="Pesos")
+
+                                                            @if(isset($cantidadpes))
+                                                            {{$articulo[0]->Limite - $cantidadpes}}
+                                                            @else
+                                                            {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
+                                                            @endif
+                                                            @else
+                                                            @if(isset($cantidadpes))
+                                                            {{$articulo[0]->Limite - $cantidadpes}}
+                                                            @endif
+                                                            @endif
+
+                                                        </b> </div>
+                                                </div>
+                                    @else
+                                    <div class="row">
+                                        <div class="col-4 border rounded"
+                                            style="text-align:center; font-size:1.5em; color:blue"><b>
+                                                {{number_format( $articulo[0]->Limite) }}
+
+                                            </b></div>
+                                        <div class="col-4 border rounded"
+                                            style="text-align:center; font-size:1.5em; color:green"><b>
+                                                @if(isset($_SESSION['carritodll'][$ART]))
+                                                {{ $_SESSION['carritodll'][$ART]["cantidad"]}}
+                                                @else
+                                                {{ number_format($articulo[0]->Consumo) }}
+                                                @endif
+                                            </b></div>
+                                        <div class="col-4 border rounded" style="text-align:center; font-size:1.5em"><b>
+
+                                                @if($articulo[0]->Moneda == "Dolares")
+
+
+                                                @if(isset($_SESSION['carritodll'][$ART]))
+                                                {{$articulo[0]->Limite - $_SESSION['carritodll'][$ART]["cantidad"]}}
+                                                @else
+                                                {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
+                                                @endif
+                                                @else
+                                                @if(isset($_SESSION['carritodll'][$ART]))
+                                                {{$articulo[0]->Limite - $_SESSION['carritodll'][$ART]["cantidad"]}}
+                                                @else
+                                                {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
+                                                @endif
+                                                @endif
+
+                                                @if($articulo[0]->Moneda=="Pesos")
+
+                                                @if(isset($_SESSION['carritopes'][$ART]))
+
+
+                                                {{$articulo[0]->Limite - $_SESSION['carritopes'][$ART]["cantidad"]}}
+                                                @else
+                                                {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
+                                                @endif
+                                                @else
+                                                @if(isset($_SESSION['carritopes'][$ART]))
+                                                {{$articulo[0]->Limite - $_SESSION['carritopes'][$ART]["cantidad"]}}
+                                                @endif
+                                                @endif
+
+                                            </b> </div>
+                                    </div>
+                                    @endif
+
+                                    <hr>
+                                    <br><?php $fecha = new DateTime() ?>
+                                    <form action="{{route('additem', app()->getLocale())}}" method="get">
+                                        <input type="hidden" name="codigo" value="{{ $codigo->Codigo }}">
+                                        <input type="hidden" name="desc" value="{{ __($desc->Descripcion1) }}">
+                                        <input type="hidden" name="articulo" value="{{$ART}}">
+                                        <input type="hidden" name="precio" value="{{number_format($articulo[0]->Precio, 2, '.', '')}}">
+                                        <input type="hidden" name="unidad" value="{{$articulo[0]->Unidad}}">
+                                        <input type="hidden" name="moneda" value="{{$articulo[0]->Moneda}}">
+                                        <input type="hidden" name="autorizado" value="{{intval($articulo[0]->Limite)}}">
+                                        <input type="hidden" name="requerido" value="{{intval($articulo[0]->Consumo)}}">
+                                        <input type="hidden" name="restante" value="{{intval($articulo[0]->Limite-$articulo[0]->Consumo)}}">
+                                        <input type="hidden" name="fecha" value="{{$fecha->format('d-m-Y h:i:s a')}}">
+                                    @csrf
+                                    @if(count($articulo)>=2)
+                                    <div class="input-group input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text" id="inputGroup-sizing-sm">{{__('Talla')}}</span>
+                                        </div>
+                                        <select name="talla" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+                                            <option value=""> {{__('Seleccione una talla')}} </option>
+                                            @foreach ($articulo as $key)
+                                            <option value="{{$key->Descripcion}}"> {{$key->Descripcion}} </option>
+                                            @endforeach
+
+                                        </select>
+                                      </div>
+                                    @endif
+                                    <b>{{__('Cantidad:')}}</b>
+                                    <div  class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <input id="itemnumber" class="input-group-text" id="inputGroup-sizing-default" type="number"
+                                               name="cantidad" min="1" max="{{ intval($articulo[0]->Limite-$articulo[0]->Consumo) }}" value="1"  pattern="[1-9].{1,{{strlen(intval($articulo[0]->Limite))-1}}}" style="background-color:white">
+                                        </div>
+                                        <span style="background-color:#e9ecef" class="form-control"
+                                            aria-describedby="inputGroup-sizing-default">{{ __($articulo[0]->Unidad) }}</span>
+                                    </div><br>
+
+                                    @if ($articulo[0]->Venta = 1)
+                                        <center>
+                                            <button type="submit" class="btn btn-success btn-lg"><i
+                                                    class="fas fa-shopping-cart"></i> |
+                                                {{__('Comprar')}}</button>
+                                        </center>
+                                    </form>
+                                    @else
+                                    <center>
+                                        <button  class="btn btn-success btn-lg disabled"><i
+                                                class="fas fa-shopping-cart"></i> |
+                                            {{__('Comprar')}} </button>
+                                        </form>
+                                        </center>
+                                    @endif
+                                @endif
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+
+<script>
+    //SCRIPT DE LUPA EN IMG
+    let zoomer = function (){
+  document.querySelector('#img-zoomer-box')
+    .addEventListener('mousemove', function(e) {
+
+    let original = document.querySelector('#img-1'),
+        magnified = document.querySelector('#img-2'),
+        style = magnified.style,
+        x = e.pageX - this.offsetLeft,
+        y = e.pageY - this.offsetTop,
+        imgWidth = original.offsetWidth,
+        imgHeight = original.offsetHeight,
+        xperc = ((x/imgWidth) * 100),
+        yperc = ((y/imgHeight) * 100);
+
+    //lets user scroll past right edge of image
+    if(x > (.01 * imgWidth)) {
+      xperc += (.15 * xperc);
+    };
+
+    //lets user scroll past bottom edge of image
+    if(y >= (.01 * imgHeight)) {
+      yperc += (.15 * yperc);
+    };
+
+    style.backgroundPositionX = (xperc - 9) + '%';
+    style.backgroundPositionY = (yperc - 9) + '%';
+
+    style.left = (x - 180) + 'px';
+    style.top = (y - 180) + 'px';
+
+  }, false);
+}();
+</script>
+<script>
+    // SCRIPT DE INACTIVIDAD
+    var timeoutID;
+    var cierraSesionIrLogeo = "{{route('salir', app()->getLocale())}}";
+
+    function setup() {
+      this.addEventListener("mousemove", resetTimer, false);
+      this.addEventListener("mousedown", resetTimer, false);
+      this.addEventListener("keypress", resetTimer, false);
+      this.addEventListener("DOMMouseScroll", resetTimer, false);
+      this.addEventListener("mousewheel", resetTimer, false);
+      this.addEventListener("touchmove", resetTimer, false);
+      this.addEventListener("MSPointerMove", resetTimer, false);
+
+      startTimer();
+    }
+    setup();
+
+    function startTimer() {
+      // wait 2 seconds before calling goInactive
+      timeoutID = window.setTimeout(goInactive, 300000);
+    }
+
+    function resetTimer(e) {
+      window.clearTimeout(timeoutID);
+
+      goActive();
+    }
+
+    function goInactive() {
+      // do something
+      // alert("inactivo");
+      window.location=window.location=cierraSesionIrLogeo;
+    }
+
+    function goActive() {
+      // do something
+
+      startTimer();
+    }
+    </script>
+@stop
