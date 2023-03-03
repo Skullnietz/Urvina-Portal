@@ -10,6 +10,26 @@
 
   animation-direction: alternate;
 }
+.grow {
+            transition: 1s ease;
+        }
+
+        .grow:hover {
+
+            -webkit-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            transform: scale(1.1);
+            transition: 1s ease;
+            z-index: 4;
+        }
+
+        a {
+            color: inherit;
+            /* blue colors for links too */
+            text-decoration: inherit;
+            /* no underline */
+        }
+
 @keyframes slidein {
   from {
     margin-left: 100%;
@@ -20,11 +40,31 @@
     width: 100%;
   }
 }
+@media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */
+    .flag{
+        width:20px;
+    }
+    .ftable {
+       display: block;
+       overflow-x: auto;
+     }
+ }
+ @media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .flag{
+        width:30px;
+    }
+    .ftable {
+       display: block;
+       overflow-x: auto;
+     }
+
+}
+
 </style>
 
 <div class="container">
     <div class="row">
-        <div class="col-6"><h1>{{__('Inicio')}}</h1></div>
+        <div class="col-6"><h1>{{__('Artículos Autorizados')}}</h1></div>
         <div class="col-4"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
@@ -33,10 +73,10 @@
           </div></div>
           <div class="col-2">
             <a href="{{route(Route::currentRouteName(), 'en')}}">
-                <img src="/icons/en.svg" style="width:50px" alt="EN">
+                <img src="/icons/en.svg" class="flags" style="max-width:50px" alt="EN">
               </a>
               <a href="{{route(Route::currentRouteName(), 'es')}}">
-                <img src="/icons/es.svg" style="width:50px" alt="ES">
+                <img src="/icons/es.svg" class="flags" style="max-width:50px" alt="ES">
               </a>
 
           </div>
@@ -51,7 +91,7 @@
 
 
 
-<div class="jumbotron jumpin">
+<div id="hi" class="jumbotron jumpin">
     <h1 class="display-4">{{__("¡Bienvenido de vuelta")}} <small><b>{{$_SESSION['usuario']->Nombre}}</b></small>!</h1>
     <p class="lead">{{__("Te damos la bienvenida a la actualización del Portal Urvina. Sientase libre de utilizar el portal y realizar sus compras...")}}</p>
     <hr class="my-4">
@@ -60,6 +100,43 @@
       <a class="btn btn-primary btn-lg" href="{{route('catalogo', app()->getLocale())}}" role="button">{{__("Ir al Catalogo")}}</a>
     </p>
   </div>
+  <div class="">
+
+
+
+            </div>
+            <div class="row">
+                @foreach ($articulos as $articulo)
+                <div class="col-md-6 col-xs-12" >
+                    <?php $ART = trim($articulo->Articulo); ?>
+                    <a href="{{route('item', [app()->getLocale(), $ART])}}">
+                        <div class="card grow" >
+                            <div class="card-body">
+                                <div class="row ">
+                                    <div class="col-3"><?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
+                                        echo '<img src="/images/catalogo/' . $ART . '.jpg" alt="$ART"style="width:100px">';
+                                    } else {
+                                        echo '<img src="/img/productos/default_product.png" alt="no img" style="width:100px">';
+                                    }
+                                    ?>
+                                    </div>
+                                    <div class="col-7"><small><b>{{ __(trim($articulo->Descripcion)) }}
+                                            </b></small><br>
+                                        <small>{{ $ART }}</small><br>
+                                        <small style="color:blue;"><b><a
+                                                    href="">{{ trim($articulo->Codigo) }}</a></b></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+
+
+
+
 @stop
 
 @section('right-sidebar')
@@ -98,6 +175,9 @@
 
 @section('js')
 <script>
+
+    setTimeout(function() { $('#hi').fadeOut('fast'); }, 10000); // <-- time in milliseconds
+
     var timeoutID;
     var cierraSesionIrLogeo = "{{route('salir', app()->getLocale())}}";
 

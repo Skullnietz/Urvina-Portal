@@ -65,14 +65,14 @@ return[
             'submenu' => [
                         [
                             'text'  => 'epo',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SEA',
                         ],
                         [
                             'text'  => 'ept',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SEF',
                         ],
                 ],
-            
+
         ],
         [
             'text'        => 'gloves',
@@ -82,15 +82,15 @@ return[
             'submenu' => [
                         [
                             'text'  => 'mixgloves',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SGF',
                         ],
                         [
                             'text'  => 'ggloves',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SGH',
                         ],
                         [
                             'text'  => 'rgloves',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SGG',
                         ],
                 ],
 
@@ -103,43 +103,43 @@ return[
             'submenu' => [
                         [
                             'text'  => 'auditive',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SEB',
                         ],
                         [
                             'text'  => 'facial',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SAF',
                         ],
                         [
                             'text'  => 'respiratory',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SEC',
                         ],
                         [
                             'text'  => 'washed',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/PLV',
                         ],
                         [
                             'text'  => 'tohead',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SEG',
                         ],
                         [
                             'text'  => 'tolowext',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SED',
                         ],
                         [
                             'text'  => 'tohandarm',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SEE',
                         ],
                         [
                             'text'  => 'totrunk',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SAI',
                         ],
                         [
                             'text'  => 'otherpc',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SPZ',
                         ],
                         [
                             'text'  => 'technical',
-                            'url'  => 'menu/child1',
+                            'url'  => 'en/categoria/SAT',
                         ],
                 ],
 

@@ -3,7 +3,27 @@
 @section('title', __('Carrito'))
 
 @section('content_header')
+<style>
+    @media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */
+    .flag{
+        width:20px;
+    }
+    .ftable {
+       display: block;
+       overflow-x: auto;
+     }
+ }
+ @media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .flag{
+        width:30px;
+    }
+    .ftable {
+       display: block;
+       overflow-x: auto;
+     }
 
+}
+</style>
 
 <div class="container">
     <div class="row">
@@ -118,23 +138,24 @@
         @if(isset($_SESSION["carritodll"]))
         <div class="row">
             <div class="col">
+                <div class="">
                 <div class="card">
                     <div class="card-header" style="background-color:#0F1934; text-align:center; color:white;">
                         <b>{{__('Artículos en Dolares')}}</b>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-2 rounded border-right border-left"
+                            <div class="col-md-2 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Imagen')}}</b> </div>
-                            <div class="col-2 rounded border-right border-left"
+                            <div class="col-md-2 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Artículo')}}</b> </div>
-                            <div class="col-2 rounded border-right border-left"
+                            <div class="col-md-2 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Código')}}</b> </div>
-                            <div class="col-4 rounded border-right border-left"
+                            <div class="col-md-4 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Descripción')}}</b> </div>
-                            <div class="col-1 rounded border-right border-left"
+                            <div class="col-md-1 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Cant.')}}</b> </div>
-                            <div class="col-1 rounded border-right border-left"></div>
+                            <div class="col-md-1 rounded border-right border-left"></div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -143,22 +164,22 @@
                         @foreach ($_SESSION["carritodll"] as $indice=>$arreglo)
                         <?php $numart++;?>
                         <div class="row">
-                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglo["articulo"] . '.jpg')) {
+                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglo["articulo"] . '.jpg')) {
                                 echo '<img class="border rounded" id="img-'.$numart.'" src="/images/catalogo/' . $arreglo["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
                             } else {
                                 echo '<img class="border rounded" src="/img/productos/default_product.png" alt="no img" style="max-height:80px">';
                             }
                             ?> </div>
-                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px;">{{$arreglo["articulo"]}}</div>
-                            <div class="col-2 border" style="text-align:center; padding:10px;">{{$arreglo["codigo"]}}</div>
-                            <div class="col-4 border" style="text-align:center; padding:10px;"><small><b>{{$arreglo["desc"]}}</b></small>
+                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px;">{{$arreglo["articulo"]}}</div>
+                            <div class="col-md-2 border" style="text-align:center; padding:10px;">{{$arreglo["codigo"]}}</div>
+                            <div class="col-md-4 border" style="text-align:center; padding:10px;"><small><b>{{$arreglo["desc"]}}</b></small>
                             </div>
-                            <div class="col-1 border" style="text-align:center; padding:10px;">
+                            <div class="col-md-1 border" style="text-align:center; padding:10px;">
                                 <input @if(isset($arreglo["talla"])) class="form-control disabled" disabled title="Debe eliminar este item para cambiar cantidad" @else class="form-control" @endif id="cantdol{{$numart}}" style="text-align:center" class="form-control" type="number"
                                     min="1" max="{{$arreglo["autorizado"]}}" value="{{$arreglo["cantidad"]}}" onchange="cambiocantd{{$numart}}()" onkeyup="cambiocantd{{$numart}}()">
                                 <input id="artdol{{$numart}}" type="hidden" value="{{$arreglo["precio"]}}">
                             </div>
-                            <div class="col-1 border rounded-right" style="text-align:center; padding:10px;">
+                            <div class="col-md-1 border rounded-right" style="text-align:center; padding:10px;">
                                 <form action="{{route('quititem', app()->getLocale())}}" method="get">
                                     @csrf
                                 <input type="hidden" name="qarticulo" value="{{$arreglo["articulo"]}}">
@@ -182,11 +203,11 @@
 
 
                     <div class="row" style="">
-                        <div class="col-6"></div>
-                        <div class="col-3" style="text-align:left; margin-left:10px; margin-top:10px"><label
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3" style="text-align:left; margin-left:10px; margin-top:10px"><label
                                 class="">{{__('Importe Total Dolares:')}} <b style="color:blue"></b></label>
                         </div>
-                        <div class="col-2" style="text-align:right; margin-right:10px">
+                        <div class="col-md-2" style="text-align:right; margin-right:10px">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span style="font-weight:bold; color:blue" class="input-group-text">$</span>
@@ -199,6 +220,7 @@
                     </div>
 
                 </div>
+            </div>
             </div>
         </div>
         @endif
@@ -340,9 +362,9 @@
             window.onload = allEvents;
         </script>
         <div class="row">
-            <div class="col-8"></div>
-            <div class="col-4"><a href="" style="float:right" class="btn btn-lg btn-primary"
-                    data-toggle="modal" data-target="#exampleModal"> {{__('Continuar con la compra')}}</a></div>
+            <div class="d-grid gap-2 col-12 mx-auto">
+  <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" type="button">{{__('Continuar con la compra')}}</button>
+  </div>
 
         </div><br>
 
