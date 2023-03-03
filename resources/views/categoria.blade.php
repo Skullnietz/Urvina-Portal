@@ -80,7 +80,7 @@
     </style>
     <div class="container">
 
-
+<div class="row">
         @foreach ($category as $articulo)
             <div class="col-md-6 col-xs-12">
                 <?php $ART = trim($articulo->Articulo); ?>
@@ -107,6 +107,7 @@
                 </a>
             </div>
         @endforeach
+    </div>
     </div>
 
 
