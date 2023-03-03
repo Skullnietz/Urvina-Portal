@@ -40,6 +40,7 @@ return [
     'otherpc'                       => 'Other protective clothing',
     'technical'                     => 'Technical',
     'logout'                        => 'Logout',
+    'fav'                           => 'Favorites',
 
 
 

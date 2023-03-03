@@ -54,6 +54,13 @@ return[
             'label_color' => 'success',
         ],
         [
+            'text'        => 'fav',
+            'url'         => 'es/favoritos',
+            'icon'        => 'fas fa-fw fa-star',
+            'icon_color' => 'green',
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'categories',
             'url'         => 'admin/pages',
             'submenu' => [
@@ -145,6 +152,7 @@ return[
 
         ], ],
         ],
+
 
     ],
 ]

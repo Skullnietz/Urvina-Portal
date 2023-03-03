@@ -40,6 +40,7 @@ return [
     'otherpc'                       => 'Ropa De Proteccion Otros',
     'technical'                     => 'Tecnicos',
     'logout'                        => 'Salir',
+    'fav'                           => 'Favoritos',
 
 
 

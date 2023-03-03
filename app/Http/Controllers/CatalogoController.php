@@ -42,6 +42,23 @@ class CatalogoController extends Controller
         }
 
     }
+    ///////////////////////////////////////
+    ////////// Vista Categoria //////////
+    public function showfav($language){
+        session_start();
+        if(isset($_SESSION['usuario'])){
+            $favoritos = DB::select(
+                "EXEC spFavoritosApp :id",
+                [
+                    "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                ]
+            );
+            return view('favoritos')->with('favoritos',$favoritos);
+        }else {
+            return redirect()->route('login', app()->getLocale());
+        }
+
+    }
     /////////////////////////////////////////
     /////////// Vista Articulo//////////////
     public function showItem($language,$item){
