@@ -384,6 +384,7 @@
                                     <hr>
                                     <br><?php $fecha = new DateTime() ?>
                                     <form action="{{route('additem', app()->getLocale())}}" method="get">
+                                        <input type="hidden" name="excedente" value="{{ $articulo[0]->Excedente }}">
                                         <input type="hidden" name="codigo" value="{{ $codigo->Codigo }}">
                                         <input type="hidden" name="desc" value="{{ __($desc->Descripcion1) }}">
                                         <input type="hidden" name="articulo" value="{{$ART}}">
@@ -394,6 +395,12 @@
                                         <input type="hidden" name="requerido" value="{{intval($articulo[0]->Consumo)}}">
                                         <input type="hidden" name="restante" value="{{intval($articulo[0]->Limite-$articulo[0]->Consumo)}}">
                                         <input type="hidden" name="fecha" value="{{$fecha->format('d-m-Y h:i:s a')}}">
+                                        @foreach ($articulo as $item)
+                                        <input type="hidden" name="subcuenta" value="{{$item->Subcuenta}}">
+                                        @endforeach
+
+                                        
+
                                     @csrf
                                     @if(count($articulo)>=2)
                                     <div class="input-group input-group mb-3">
@@ -403,9 +410,8 @@
                                         <select name="talla" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
                                             <option value=""> {{__('Seleccione una talla')}} </option>
                                             @foreach ($articulo as $key)
-                                            <option value="{{$key->Descripcion}}"> {{$key->Descripcion}} </option>
+                                            <option value="{{$key->Descripcion}}">{{$key->Descripcion}} </option>
                                             @endforeach
-
                                         </select>
                                       </div>
                                     @endif

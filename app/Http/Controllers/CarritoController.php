@@ -55,7 +55,9 @@ class CarritoController extends Controller
         $restante = intval($request->restante)-$cantidad;
         $codigo = $request->codigo;
         $desc = $request->desc;
+        $excedente = intval($request->excedente);
         $idItem = $request->articulo;
+        $subcuenta = $request->subcuenta;
 
         if(isset($request->talla)){
         $talla = $request->talla;
@@ -121,8 +123,25 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["desc"] = $desc;
                 $_SESSION["carritodll"][$articulo]["codigo"] = $codigo;
                 $_SESSION["carritodll"][$articulo]["item"] = $idItem;
+                $_SESSION["carritodll"][$articulo]["excedente"] = $excedente;
+                // Insercion de subcuenta mediante array_search (Talla/Descripcion)
                 if(isset($request->talla)){
                 $_SESSION["carritodll"][$articulo]["talla"] = $talla;
+                $articulos = DB::select(
+                    "EXEC spArticuloApp :id,:articulo",
+                    [
+                        "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "articulo" => $idItem,
+                    ]
+                    );
+                    for($i = 0; $i < count($articulos); $i++){
+                    $articulos[$i]->Descripcion = trim($articulos[$i]->Descripcion);
+                    }
+
+                $Item = array_search($talla, array_column($articulos, 'Descripcion'));
+
+                $_SESSION["carritodll"][$articulo]["subcuenta"] = $articulos[$Item]->Subcuenta;
+
                 }
 
             }
@@ -178,9 +197,25 @@ class CarritoController extends Controller
                 $_SESSION["carritopes"][$articulo]["desc"] = $desc;
                 $_SESSION["carritopes"][$articulo]["codigo"] = $codigo;
                 $_SESSION["carritopes"][$articulo]["item"] = $idItem;
+                $_SESSION["carritopes"][$articulo]["excedente"] = $excedente;
                 if(isset($request->talla)){
                     $_SESSION["carritopes"][$articulo]["talla"] = $talla;
-                }
+                    $articulos = DB::select(
+                        "EXEC spArticuloApp :id,:articulo",
+                        [
+                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                            "articulo" => $idItem,
+                        ]
+                        );
+                        for($i = 0; $i < count($articulos); $i++){
+                        $articulos[$i]->Descripcion = trim($articulos[$i]->Descripcion);
+                        }
+
+                    $Item = array_search($talla, array_column($articulos, 'Descripcion'));
+
+                    $_SESSION["carritopes"][$articulo]["subcuenta"] = $articulos[$Item]->Subcuenta;
+
+                    }
             }
         }
 

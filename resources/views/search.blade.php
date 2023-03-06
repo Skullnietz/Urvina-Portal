@@ -1,24 +1,24 @@
 @extends('adminlte::page')
 
-@section('title', __('Categoria'))
+@section('title', __('Busqueda'))
 
 @section('content_header')
 <div class="container">
     <div class="row">
-        <div class="col-6"><h1>{{__('Favoritos')}}</h1></div>
+        <div class="col-6"><h1>{{__('Busqueda')}}</h1></div>
         <div class="col-4"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>
             <form action="{{route('search', app()->getLocale())}}" method="get">
-                <input type="text" id="search" name="item" class="form-control" pattern="[A-Za-z0-9]{2,10}" placeholder="{{__('Buscar')}}"  aria-describedby="basic-addon1">
-                </form>
+                <input type="text" id="search" name="item" class="form-control" placeholder="{{__('Buscar')}}" pattern="[A-Za-z0-9]{2,10}" aria-describedby="basic-addon1">
+            </form>
           </div></div>
           <div class="col-2">
-            <a href="{{route(Route::currentRouteName(),'en')}}/favoritos">
+            <a href="{{route(Route::currentRouteName(),'en')}}">
                 <img src="/icons/en.svg" style="width:50px" alt="EN">
               </a>
-              <a href="{{route(Route::currentRouteName(), 'es' )}}/favoritos">
+              <a href="{{route(Route::currentRouteName(), 'es' )}}">
                 <img src="/icons/es.svg" style="width:50px" alt="ES">
               </a>
 
@@ -59,6 +59,7 @@
 @stop
 
 @section('content')
+@include('sweetalert::alert')
     <style>
         .grow {
             transition: 1s ease;
@@ -83,9 +84,9 @@
     <div class="container">
 
 <div class="row">
-        @foreach ($favoritos as $articulo)
+        @foreach ($articulos as $articulo)
             <div class="col-md-6 col-xs-12">
-                <?php $ART = trim($articulo->articulo); ?>
+                <?php $ART = trim($articulo->Articulo); ?>
                 <a href="{{route('item', [app()->getLocale(), $ART])}}">
                     <div class="card grow">
                         <div class="card-body">

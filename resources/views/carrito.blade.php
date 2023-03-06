@@ -81,8 +81,8 @@
                             <div class="col-4 border" style="text-align:center; padding:10px"><small><b>{{__($arreglop["desc"])}}{{$arreglop["talla"]}}</b></small>
                             </div>
                             <div class="col-1 border" style="text-align:center; padding:10px"><input id="cantpes{{$numitem}}"
-                                    style="text-align:center" @if(isset($arreglo["talla"])) class="form-control disabled" disabled title="{{__('Debe eliminar este item para cambiar cantidad')}}" @else class="form-control" @endif type="number" min="1" max="{{$arreglop["autorizado"]}}" value="{{$arreglop["cantidad"]}}"
-                                    onchange="cambiocantp{{$numitem}}()" onkeyup="cambiocantp{{$numitem}}()">
+                                    style="text-align:center" @if(isset($arreglo["talla"])) class="form-control disabled" disabled title="{{__('Debe eliminar este item para cambiar cantidad')}}" @else class="form-control" @endif type="number"  min="1"  @if($arreglop["excedente"]==0) max="{{$arreglop["autorizado"]}}" @endif value="{{$arreglop["cantidad"]}}"
+                                    onchange="cambiocantp{{$numitem}}()" onkeyup="cambiocantp{{$numitem}}()" required>
                             </div>
                             <input id="artpes{{$numitem}}" type="hidden" value="{{$arreglop["precio"]}}">
                             <div class="col-1 border rounded-right" style="text-align:center; padding:10px">
@@ -176,7 +176,7 @@
                             </div>
                             <div class="col-md-1 border" style="text-align:center; padding:10px;">
                                 <input @if(isset($arreglo["talla"])) class="form-control disabled" disabled title="Debe eliminar este item para cambiar cantidad" @else class="form-control" @endif id="cantdol{{$numart}}" style="text-align:center" class="form-control" type="number"
-                                    min="1" max="{{$arreglo["autorizado"]}}" value="{{$arreglo["cantidad"]}}" onchange="cambiocantd{{$numart}}()" onkeyup="cambiocantd{{$numart}}()">
+                                    min="1" @if($arreglo["excedente"]==0) max="{{$arreglo["autorizado"]}}" @endif value="{{$arreglo["cantidad"]}}" onchange="cambiocantd{{$numart}}()" onkeyup="cambiocantd{{$numart}}()" required>
                                 <input id="artdol{{$numart}}" type="hidden" value="{{$arreglo["precio"]}}">
                             </div>
                             <div class="col-md-1 border rounded-right" style="text-align:center; padding:10px;">
@@ -360,13 +360,27 @@
 
             }
             window.onload = allEvents;
-        </script>
+        </script>@if(isset($_SESSION['carritodll']) || isset($_SESSION['carritopes']))
         <div class="row">
             <div class="d-grid gap-2 col-12 mx-auto">
   <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" type="button">{{__('Continuar con la compra')}}</button>
   </div>
-
         </div><br>
+        @else
+        <div class=" rounded"
+                                        style="color:#0F1934;padding:20px;border: 1px solid #63c5da;background-color:#81EEFD"
+                                        role="alert">
+                                        <div class="row">
+                                            <div class="col-1"><i class="fas fa-info-circle fa-lg"></i></div>
+                                            <div class="col-11">
+                                                <b>{{__('Aún no hay articulos en su carrito de compra')}}</b>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+        @endif
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

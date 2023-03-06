@@ -69,7 +69,9 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="{{__('Buscar')}}"  aria-describedby="basic-addon1">
+            <form action="{{route('search', app()->getLocale())}}" method="get">
+                <input type="text" pattern="[A-Za-z0-9]{2,10}" id="search" name="item" class="form-control" placeholder="{{__('Buscar')}}"  aria-describedby="basic-addon1">
+                </form>
           </div></div>
           <div class="col-2">
             <a href="{{route(Route::currentRouteName(), 'en')}}">
@@ -216,6 +218,17 @@
 
       startTimer();
     }
+    </script>
+     <script>
+        // Barra de busqueda
+        document.getElementById('search')
+    .addEventListener('keyup', function(event) {
+        if (event.code === 'Enter')
+        {
+            event.preventDefault();
+            document.querySelector('form').submit();
+        }
+    });
     </script>
 
 @stop

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 
 class CatalogoController extends Controller
@@ -89,5 +89,27 @@ class CatalogoController extends Controller
         }
 
     }
+    ///////////////////////////////////////
+    ////////// Vista Busqueda Articulo /////////////////
+    public function SearchItem(Request $request){
+        session_start();
+        if(isset($_SESSION['usuario'])){
+            $articulos = DB::select(
+                "EXEC spSearchArticulosApp :id,:articulo",
+                [
+                    "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                    "articulo" => $request->item,
+                ]
+            );
+            $Icounter= count($articulos);
+            if($Icounter==0){
+                Alert::info(__('No hay articulos'), __('No hay articulos que coincidan con la busqueda'));
+            }
+
+            return view('search')->with('articulos', $articulos);
+        }
+
+    }
+
     ///////////////////////////////////////
 }

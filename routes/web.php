@@ -45,6 +45,7 @@ Route::prefix('{language}')->group(function () {
     Route::get('categoria/{category?}', 'CatalogoController@indexCategoria')->name('categoria');
     Route::get('/item/{articulo}', 'CatalogoController@showItem')->name('item');
     Route::get('/favoritos', 'CatalogoController@showfav')->name('favoritos');
+    Route::get('/buscar', 'CatalogoController@searchItem')->name('search');
 
 
 
