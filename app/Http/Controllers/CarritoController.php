@@ -114,7 +114,7 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["articulo"] = $articulo;
                 $_SESSION["carritodll"][$articulo]["cantidad"] = $cantidad;
                 $_SESSION["carritodll"][$articulo]["moneda"] = $moneda;
-                $_SESSION["carritodll"][$articulo]["precio"] = $precio;
+                $_SESSION["carritodll"][$articulo]["precio"] = floatval($precio);
                 $_SESSION["carritodll"][$articulo]["unidad"] = $unidad;
                 $_SESSION["carritodll"][$articulo]["fecha"] = $fecha;
                 $_SESSION["carritodll"][$articulo]["autorizado"] = $autorizado;
@@ -124,6 +124,7 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["codigo"] = $codigo;
                 $_SESSION["carritodll"][$articulo]["item"] = $idItem;
                 $_SESSION["carritodll"][$articulo]["excedente"] = $excedente;
+                $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
                 // Insercion de subcuenta mediante array_search (Talla/Descripcion)
                 if(isset($request->talla)){
                 $_SESSION["carritodll"][$articulo]["talla"] = $talla;
@@ -142,6 +143,8 @@ class CarritoController extends Controller
 
                 $_SESSION["carritodll"][$articulo]["subcuenta"] = $articulos[$Item]->Subcuenta;
 
+                }else{
+                    $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
                 }
 
             }
@@ -188,7 +191,7 @@ class CarritoController extends Controller
                 $_SESSION["carritopes"][$articulo]["articulo"] = $articulo;
                 $_SESSION["carritopes"][$articulo]["cantidad"] = $cantidad;
                 $_SESSION["carritopes"][$articulo]["moneda"] = $moneda;
-                $_SESSION["carritopes"][$articulo]["precio"] = $precio;
+                $_SESSION["carritopes"][$articulo]["precio"] = floatval($precio);
                 $_SESSION["carritopes"][$articulo]["unidad"] = $unidad;
                 $_SESSION["carritopes"][$articulo]["fecha"] = $fecha;
                 $_SESSION["carritopes"][$articulo]["autorizado"] = $autorizado;
@@ -215,7 +218,9 @@ class CarritoController extends Controller
 
                     $_SESSION["carritopes"][$articulo]["subcuenta"] = $articulos[$Item]->Subcuenta;
 
-                    }
+                }else{
+                    $_SESSION["carritopes"][$articulo]["subcuenta"] = "";
+                }
             }
         }
 
@@ -227,6 +232,175 @@ class CarritoController extends Controller
 
 
     /////////////////////////////////////
+    /// Confirmar Venta Dolares /////////
+    public function confCartDll(Request $request){
+        session_start();
+        if(isset($_SESSION['carritodll'])){
+            $venta = DB::select(
+                "EXEC spInsertaVenta
+                @UsuarioCteCorp=:userId,
+                @PlantaCteCorp=:plant,
+                @Moneda=:currency,
+                @referencia=:reference,
+                @observaciones=:observations,
+                @Departamento=:department",
+                [
+                    "userId" => $_SESSION['usuario']->UsuarioCteCorp,
+                    "plant" => $request->planta,
+                    "currency" => $request->moneda,
+                    "reference" => $request->referencia,
+                    "observations" => $request->observaciones,
+                    "department" => $request->departamento,
+                ]
+            );
+            $IDV= $venta[0]->IdVenta;
+
+
+
+
+
+             foreach($_SESSION["carritodll"] as $indice => $arreglo){
+                 DB::statement(
+                    "EXEC spInsertaDetalleVenta
+                    @Planta=:plant,
+                    @NuevoID=:idVenta,
+                    @Articulo=:item,
+                    @Opcion=:option,
+                    @Cantidad=:quantity,
+                    @Precio=:price",
+                    [
+                        "plant" => $request->planta,
+                        "idVenta" => intval($IDV),
+                        "item" => $arreglo['item'],
+                        "option" => $arreglo['subcuenta'],
+                        "quantity" => $arreglo['cantidad'],
+                        "price" => $arreglo['precio'],
+                    ]
+                    );
+
+             }
+
+             $afectar = DB::select(
+                 "SET NOCOUNT ON; EXEC spafectar
+                 @Modulo=:module,
+                 @ID=:idVenta,
+                 @Accion=:action,
+                 @Base=:case,
+                 @GenerarMov=:genmov,
+                 @Usuario=:user",
+                 [
+                     "module" => 'VTAS',
+                     "idVenta" => intval($IDV),
+                     "action" => 'AFECTAR',
+                     "case" => 'TODO',
+                     "genmov" => NULL,
+                     "user" => 'CH2',
+                 ]
+                 );
+
+                 $folio = DB::select(
+                     "EXEC spFolioApp :idVenta",
+                     [
+                        "idVenta" => intval($IDV),
+                     ]
+                     );
+             unset($_SESSION["carritodll"]);
+
+            Alert::success(__('Confirmacion de compra'), __('Pedido realizado, ¡gracias!'));
+            return view('pedidosRecientes')->with('folio',$folio);
+
+
+        }else {
+            return redirect()->route('inicio', app()->getLocale());
+        }
+
+    }
+    ////////////////////////////////////
+    /// Confirmar Venta Pesos /////////
+    public function confCartPes(Request $request){
+        session_start();
+        if(isset($_SESSION['carritopes'])){
+            $venta = DB::select(
+                "EXEC spInsertaVenta
+                @UsuarioCteCorp=:userId,
+                @PlantaCteCorp=:plant,
+                @Moneda=:currency,
+                @referencia=:reference,
+                @observaciones=:observations,
+                @Departamento=:department",
+                [
+                    "userId" => $_SESSION['usuario']->UsuarioCteCorp,
+                    "plant" => $request->planta,
+                    "currency" => $request->moneda,
+                    "reference" => $request->referencia,
+                    "observations" => $request->observaciones,
+                    "department" => $request->departamento,
+                ]
+            );
+            $IDV= $venta[0]->IdVenta;
+
+
+
+
+
+             foreach($_SESSION["carritopes"] as $indice => $arreglo){
+                 DB::statement(
+                    "EXEC spInsertaDetalleVenta
+                    @Planta=:plant,
+                    @NuevoID=:idVenta,
+                    @Articulo=:item,
+                    @Opcion=:option,
+                    @Cantidad=:quantity,
+                    @Precio=:price",
+                    [
+                        "plant" => $request->planta,
+                        "idVenta" => intval($IDV),
+                        "item" => $arreglo['item'],
+                        "option" => $arreglo['subcuenta'],
+                        "quantity" => $arreglo['cantidad'],
+                        "price" => $arreglo['precio'],
+                    ]
+                    );
+
+             }
+
+
+             $afectar = DB::select(
+                 "SET NOCOUNT ON; EXEC spafectar
+                 @Modulo=:module,
+                 @ID=:idVenta,
+                 @Accion=:action,
+                 @Base=:case,
+                 @GenerarMov=:genmov,
+                 @Usuario=:user",
+                 [
+                     "module" => 'VTAS',
+                     "idVenta" => intval($IDV),
+                     "action" => 'AFECTAR',
+                     "case" => 'TODO',
+                     "genmov" => NULL,
+                     "user" => 'CH2',
+                 ]
+                 );
+
+                 $folio = DB::select(
+                     "EXEC spFolioApp :idVenta",
+                     [
+                        "idVenta" => intval($IDV),
+                     ]
+                     );
+             unset($_SESSION["carritopes"]);
+
+            Alert::success(__('Confirmacion de compra'), __('Pedido realizado, ¡gracias!'));
+            return view('pedidosRecientes')->with('folio',$folio);
+
+
+        }else {
+            return redirect()->route('inicio', app()->getLocale());
+        }
+
+    }
+    ////////////////////////////////////
     // Quitar Articulo /////////////////
     public function quitCartItem(Request $request){
         session_start();

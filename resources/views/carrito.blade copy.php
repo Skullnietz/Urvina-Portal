@@ -3,6 +3,27 @@
 @section('title', __('Carrito'))
 
 @section('content_header')
+<style>
+    @media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */
+    .flag{
+        width:20px;
+    }
+    .ftable {
+       display: block;
+       overflow-x: auto;
+     }
+ }
+ @media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .flag{
+        width:30px;
+    }
+    .ftable {
+       display: block;
+       overflow-x: auto;
+     }
+
+}
+</style>
 
 <div class="container">
     <div class="row">
@@ -23,7 +44,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                @if(isset($_SESSION["carrito"]))
+                @if(isset($_SESSION["carritopes"]))
                 <div class="card">
                     <div class="card-header" style="background-color:#0F1934; text-align:center; color:white;">
                         <b>{{__('Artículos en Pesos')}}</b>
@@ -31,53 +52,62 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2 rounded border-right border-left"
+                                style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Imagen')}}</b> </div>
+                            <div class="col-2 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Artículo')}}</b> </div>
-                            <div class="col-3 rounded border-right border-left"
+                            <div class="col-2 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Código')}}</b> </div>
                             <div class="col-4 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Descripción')}}</b> </div>
-                            <div class="col-2 rounded border-right border-left"
+                            <div class="col-1 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Cant.')}}</b> </div>
                             <div class="col-1 rounded border-right border-left"></div>
                         </div>
                     </div>
                     <div class="card-body">
 
+                        <?php $numitem = 0;?>
+                        @foreach ($_SESSION["carritopes"] as $indice=>$arreglop)
+                        <?php $numitem++;?>
                         <div class="row">
-                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px">SEF1-013</div>
-                            <div class="col-3 border" style="text-align:center; padding:10px">0032-0012,0032-D36P</div>
-                            <div class="col-4 border" style="text-align:center; padding:10px">MANDIL DE MEZCLILLA REFORZADO
+                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglop["articulo"] . '.jpg')) {
+                                echo '<img class="border rounded" id="img-'.$numitem.'" src="/images/catalogo/' . $arreglop["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
+                            } else {
+                                echo '<img class="border rounded" src="/img/productos/default_product.png" alt="no img" style="max-height:80px">';
+                            }
+                            ?> </div>
+                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px"> {{$arreglop["articulo"]}}</div>
+                            <div class="col-2 border" style="text-align:center; padding:10px">{{$arreglop["codigo"]}}</div>
+                            <div class="col-4 border" style="text-align:center; padding:10px"><small><b>{{__($arreglop["desc"])}}{{$arreglop["talla"]}}</b></small>
                             </div>
-                            <div class="col-2 border" style="text-align:center; padding:10px"><input id="cantpes1"
-                                    style="text-align:center" class="form-control" type="number" min="1" max="" value="5"
-                                    onchange="cambiocantp1()" onkeyup="cambiocantp1()">
+                            <div class="col-1 border" style="text-align:center; padding:10px"><input id="cantpes{{$numitem}}"
+                                    style="text-align:center" @if(isset($arreglo["talla"])) class="form-control disabled" disabled title="{{__('Debe eliminar este item para cambiar cantidad')}}" @else class="form-control" @endif type="number"  min="1"  @if($arreglop["excedente"]==0) max="{{$arreglop["autorizado"]}}" @endif value="{{$arreglop["cantidad"]}}"
+                                    onchange="cambiocantp{{$numitem}}()" onkeyup="cambiocantp{{$numitem}}()" required>
                             </div>
-                            <input id="artpes1" type="hidden" value="22.2">
-                            <div class="col-1 border rounded-right" style="text-align:center; padding:10px"><button
-                                    class="btn btn-danger"><i class="fas fa-times"></i></button></div>
-                                    <input onload="cambiocantp1()" class="totalarts" id="totalartpes1" value=""
+                            <input id="artpes{{$numitem}}" type="hidden" value="{{$arreglop["precio"]}}">
+                            <div class="col-1 border rounded-right" style="text-align:center; padding:10px">
+
+                                <form action="{{route('quititem', app()->getLocale())}}" method="get">
+                                    @csrf
+                                <input type="hidden" name="qarticulo" value="{{$arreglop["articulo"]}}">
+                                <input type="hidden" name="qtipo" value="{{$arreglop["moneda"]}}">
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                </form>
+
+                            </div>
+
+                                    <input onload="cambiocantp{{$numitem}}()" class="totalarts" id="totalartpes{{$numitem}}" value=""
                                 type="hidden">
                         </div>
-                        <div class="row">
-                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px">SEF1-013</div>
-                            <div class="col-3 border" style="text-align:center; padding:10px">0032-0012,0032-D36P</div>
-                            <div class="col-4 border" style="text-align:center; padding:10px">MANDIL DE MEZCLILLA REFORZADO
-                            </div>
-                            <div class="col-2 border" style="text-align:center; padding:10px"><input id="cantpes2"
-                                    style="text-align:center" class="form-control" type="number" value="5" min="1" max=""
-                                    onchange="cambiocantp2()" onkeyup="cambiocantp2()">
-                            </div>
-                            <input id="artpes2" type="hidden" value="22.2">
-                            <div class="col-1 border rounded-right" style="text-align:center; padding:10px"><button
-                                    class="btn btn-danger"><i class="fas fa-times"></i></button></div>
-                                    <input onload="cambiocantp2()" class="totalarts" id="totalartpes2" value=""
-                                type="hidden">
-                        </div>
+
+                        @endforeach
+
 
 
 
                     </div>
                     <hr>
+
                     <div class="row" style="">
                         <div class="col-6"></div>
                         <div class="col-3" style="text-align:left; margin-left:10px; margin-top:10px"><label
@@ -105,73 +135,79 @@
             </div>
         </div>
         @endif
+        @if(isset($_SESSION["carritodll"]))
         <div class="row">
             <div class="col">
+                <div class="">
                 <div class="card">
                     <div class="card-header" style="background-color:#0F1934; text-align:center; color:white;">
                         <b>{{__('Artículos en Dolares')}}</b>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-2 rounded border-right border-left"
+                            <div class="col-md-2 rounded border-right border-left"
+                                style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Imagen')}}</b> </div>
+                            <div class="col-md-2 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Artículo')}}</b> </div>
-                            <div class="col-3 rounded border-right border-left"
+                            <div class="col-md-2 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Código')}}</b> </div>
-                            <div class="col-4 rounded border-right border-left"
+                            <div class="col-md-4 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Descripción')}}</b> </div>
-                            <div class="col-2 rounded border-right border-left"
+                            <div class="col-md-1 rounded border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Cant.')}}</b> </div>
-                            <div class="col-1 rounded border-right border-left"></div>
+                            <div class="col-md-1 rounded border-right border-left"></div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px;">SGG2-037</div>
-                            <div class="col-3 border" style="text-align:center; padding:10px;">D382-1CHW</div>
-                            <div class="col-4 border" style="text-align:center; padding:10px;">GUANTE DE NYLON REC. DE
-                                NITRILO EN PALMA Y DORSO MOD.1400 SAFE FIT [6]
-                            </div>
-                            <div class="col-2 border" style="text-align:center; padding:10px;">
-                                <input id="cantdol1" style="text-align:center" class="form-control" type="number"
-                                    min="1" max="" value="1" onchange="cambiocantd1()" onkeyup="cambiocantd1()">
-                                <input id="artdol1" type="hidden" value="22.2">
-                            </div>
-                            <div class="col-1 border rounded-right" style="text-align:center; padding:10px;"><button
-                                    class="btn btn-danger"><i class="fas fa-times"></i></button></div>
+                        <?php $numart = 0;?>
 
-                            <input onload="cambiocantd1()" class="totalarts" id="totalart1" value=""
+                        @foreach ($_SESSION["carritodll"] as $indice=>$arreglo)
+                        <?php $numart++;?>
+                        <div class="row">
+                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglo["articulo"] . '.jpg')) {
+                                echo '<img class="border rounded" id="img-'.$numart.'" src="/images/catalogo/' . $arreglo["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
+                            } else {
+                                echo '<img class="border rounded" src="/img/productos/default_product.png" alt="no img" style="max-height:80px">';
+                            }
+                            ?> </div>
+                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px;">{{$arreglo["articulo"]}}</div>
+                            <div class="col-md-2 border" style="text-align:center; padding:10px;">{{$arreglo["codigo"]}}</div>
+                            <div class="col-md-4 border" style="text-align:center; padding:10px;"><small><b>{{$arreglo["desc"]}}</b></small>
+                            </div>
+                            <div class="col-md-1 border" style="text-align:center; padding:10px;">
+                                <input @if(isset($arreglo["talla"])) class="form-control disabled" disabled title="Debe eliminar este item para cambiar cantidad" @else class="form-control" @endif id="cantdol{{$numart}}" style="text-align:center" class="form-control" type="number"
+                                    min="1" @if($arreglo["excedente"]==0) max="{{$arreglo["autorizado"]}}" @endif value="{{$arreglo["cantidad"]}}" onchange="cambiocantd{{$numart}}()" onkeyup="cambiocantd{{$numart}}()" required>
+                                <input id="artdol{{$numart}}" type="hidden" value="{{$arreglo["precio"]}}">
+                            </div>
+                            <div class="col-md-1 border rounded-right" style="text-align:center; padding:10px;">
+                                <form action="{{route('quititem', app()->getLocale())}}" method="get">
+                                    @csrf
+                                <input type="hidden" name="qarticulo" value="{{$arreglo["articulo"]}}">
+                                <input type="hidden" name="qtipo" value="{{$arreglo["moneda"]}}">
+                                <button type="submit" class="btn btn-danger"><i class="fas fa-times"></i></button>
+                                </form>
+
+                                </div>
+
+                            <input onload="cambiocantd{{$numart}}()" class="totalarts" id="totalart{{$numart}}" value=""
                                 type="hidden">
 
                         </div>
+                        @endforeach
 
-                        <div class="row">
-                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px;">SGG2-037</div>
-                            <div class="col-3 border" style="text-align:center; padding:10px;">D382-1CHW</div>
-                            <div class="col-4 border" style="text-align:center; padding:10px;">GUANTE DE NYLON REC. DE
-                                NITRILO EN PALMA Y DORSO MOD.1400 SAFE FIT [6]
-                            </div>
-                            <div class="col-2 border" style="text-align:center; padding:10px;">
-                                <input id="cantdol2" style="text-align:center" class="form-control" type="number"
-                                    min="1" max="" value="1" onchange="cambiocantd2()" onkeyup="cambiocantd2()">
-                                <input id="artdol2" type="hidden" value="22.2">
-                            </div>
-                            <div class="col-1 border rounded-right" style="text-align:center; padding:10px;"><button
-                                    class="btn btn-danger"><i class="fas fa-times"></i></button></div>
 
-                            <input onload="cambiocantd2()" class="totalarts" id="totalart2" value=""
-                                type="hidden">
-                        </div>
+
                     </div>
                     <hr>
 
 
 
                     <div class="row" style="">
-                        <div class="col-6"></div>
-                        <div class="col-3" style="text-align:left; margin-left:10px; margin-top:10px"><label
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3" style="text-align:left; margin-left:10px; margin-top:10px"><label
                                 class="">{{__('Importe Total Dolares:')}} <b style="color:blue"></b></label>
                         </div>
-                        <div class="col-2" style="text-align:right; margin-right:10px">
+                        <div class="col-md-2" style="text-align:right; margin-right:10px">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span style="font-weight:bold; color:blue" class="input-group-text">$</span>
@@ -185,117 +221,166 @@
 
                 </div>
             </div>
+            </div>
         </div>
+        @endif
         <script>
-            function cambiocantp1(){
-                subtotalarticulop1();
-                subtotalarticulop2();
+            @if(isset($_SESSION["carritopes"]))
+            <?php $artnumbpesos=0; ?>
+            @foreach ($_SESSION["carritopes"] as $indicepesosc=>$arreglopesosc)
+            <?php $artnumbpesos++; ?>
+            function cambiocantp{{$artnumbpesos}}(){
+            <?php $artnumbpesosc=0; ?>
+            @foreach ($_SESSION["carritopes"] as $indicepesosco=>$arreglopesosco)
+            <?php $artnumbpesosc++; ?>
+                subtotalarticulop{{$artnumbpesosc}}();
+                @endforeach
             }
-            function cambiocantp2(){
-                subtotalarticulop1();
-                subtotalarticulop2();
-            }
+            @endforeach
+            @endif
         </script>
         <script>
-            function cambiocantd1() {
-                subtotalarticulod1();
-                subtotalarticulod2();
+            @if(isset($_SESSION["carritodll"]))
+            <?php $itemnumbd=0; ?>
+            @foreach ($_SESSION["carritodll"] as $indicedolares=>$arreglodolares)
+            <?php $itemnumbd++; ?>
+            function cambiocantd{{$itemnumbd}}() {
+                <?php $itemnumbdo=0; ?>
+                @foreach ($_SESSION["carritodll"] as $indicedolares=>$arreglodolaresc)
+                <?php $itemnumbdo++; ?>
+                subtotalarticulod{{$itemnumbdo}}();
+                @endforeach
             }
-            function cambiocantd2() {
-                subtotalarticulod1();
-                subtotalarticulod2();
-            }
+            @endforeach
+            @endif
         </script>
         <script>
-            function subtotalarticulop1() {
-                var artipes1 = document.getElementById("artpes1").value;
-                var articulopes1 = parseFloat(artipes1).toFixed(2);
-                var cantipes1 = document.getElementById("cantpes1").value;
-                var cantidadpes1 = parseFloat(cantipes1).toFixed(2);
-                var multi1 = cantidadpes1 * articulopes1;
-                document.getElementById("totalartpes1").value = multi1.toFixed(2);
+            @if(isset($_SESSION["carritopes"]))
+            <?php $artnumbpe=0; ?>
+            @foreach ($_SESSION["carritopes"] as $indicepesos=>$arreglopesos)
+            <?php $artnumbpe++; ?>
+
+            function subtotalarticulop{{$artnumbpe}}() {
+                var artipes{{$artnumbpe}} = document.getElementById("artpes{{$artnumbpe}}").value;
+                var articulopes{{$artnumbpe}} = parseFloat(artipes{{$artnumbpe}}).toFixed(2);
+                var cantipes{{$artnumbpe}} = document.getElementById("cantpes{{$artnumbpe}}").value;
+                var cantidadpes{{$artnumbpe}} = parseFloat(cantipes{{$artnumbpe}}).toFixed(2);
+                var multi{{$artnumbpe}} = cantidadpes{{$artnumbpe}} * articulopes{{$artnumbpe}};
+                document.getElementById("totalartpes{{$artnumbpe}}").value = multi{{$artnumbpe}}.toFixed(2);
                 // Suma de los totales Dolares
-                var subtotal1 = document.getElementById("totalartpes1").value;
-                var subtotal2 = document.getElementById("totalartpes2").value;
-                var restotalpes = (Number(subtotal1) + Number(subtotal2));
+                <?php $artnumbpeso=0; ?>
+                @foreach ($_SESSION["carritopes"] as $indicepesosca=>$arreglopesosca)
+                <?php $artnumbpeso++; ?>
+                var subtotal{{$artnumbpeso}} = document.getElementById("totalartpes{{$artnumbpe}}").value;
+                @endforeach
+                var restotalpes = (0 <?php $artnumbpes=0; ?>@foreach ($_SESSION["carritopes"] as $indicepesosc=>$arreglopesosc)
+                <?php $artnumbpes++; ?>
+                + Number(subtotal{{$artnumbpes}})
+                @endforeach);
                 document.getElementById("totalpes").value = restotalpes;
             }
-            function subtotalarticulop2() {
-                var artipes2 = document.getElementById("artpes2").value;
-                var articulopes2 = parseFloat(artipes2).toFixed(2);
-                var cantipes2 = document.getElementById("cantpes2").value;
-                var cantidadpes2 = parseFloat(cantipes2).toFixed(2);
-                var multi2 = cantidadpes2 * articulopes2;
-                document.getElementById("totalartpes2").value = multi2.toFixed(2);
-                // Suma de los totales Dolares
-                var subtotal1 = document.getElementById("totalartpes1").value;
-                var subtotal2 = document.getElementById("totalartpes2").value;
-                var restotalpes = (Number(subtotal1) + Number(subtotal2));
-                document.getElementById("totalpes").value = restotalpes;
-            }
+            @endforeach
+            @endif
+
         </script>
         <script>
-            // Subtotal del articulo 1 (Dolares)
-            function subtotalarticulod1(){
-                var artidol1 = document.getElementById("artdol1").value;
-                var articulodol1 = parseFloat(artidol1).toFixed(2);
-                var cantidol1 = document.getElementById("cantdol1").value;
-                var cantidaddol1 = parseFloat(cantidol1).toFixed(2);
-                var multi1 = cantidaddol1 * articulodol1;
-                document.getElementById("totalart1").value = multi1.toFixed(2);
+            @if(isset($_SESSION["carritodll"]))
+            <?php $itemnumdo=0; ?>
+            @foreach ($_SESSION["carritodll"] as $indicedola=>$arreglodola)
+            <?php $itemnumdo++; ?>
+            // Subtotal del articulo {{$itemnumdo}} (Dolares)
+            function subtotalarticulod{{$itemnumdo}}(){
+                var artidol{{$itemnumdo}} = document.getElementById("artdol{{$itemnumdo}}").value;
+                var articulodol{{$itemnumdo}} = parseFloat(artidol{{$itemnumdo}}).toFixed(2);
+                var cantidol{{$itemnumdo}} = document.getElementById("cantdol{{$itemnumdo}}").value;
+                var cantidaddol{{$itemnumdo}} = parseFloat(cantidol{{$itemnumdo}}).toFixed(2);
+                var multi{{$itemnumdo}} = cantidaddol{{$itemnumdo}} * articulodol{{$itemnumdo}};
+                document.getElementById("totalart{{$itemnumdo}}").value = multi{{$itemnumdo}}.toFixed(2);
+
                 // Suma de los totales Dolares
-                var subtotal1 = document.getElementById("totalart1").value;
-                var subtotal2 = document.getElementById("totalart2").value;
-                var restotaldol = (Number(subtotal1) + Number(subtotal2));
+                <?php $itemnumdol=0; ?>
+                @foreach ($_SESSION["carritodll"] as $indicedolar=>$arreglodolar)
+                <?php $itemnumdol++; ?>
+                var subtotal{{$itemnumdol}} = document.getElementById("totalart{{$itemnumdol}}").value;
+                @endforeach
+
+
+                var restotaldol = (0
+                <?php $itemnumdola=0; ?>
+                    @foreach ($_SESSION["carritodll"] as $indicedolare=>$arreglodolare)
+                    <?php $itemnumdola++; ?>
+                    + Number(subtotal{{$itemnumdola}})
+                    @endforeach
+                    );
                 document.getElementById("totaldol").value = restotaldol;
             }
-            // Subtotal del articulo 2 (Dolares)
-            function subtotalarticulod2(){
-                var artidol2 = document.getElementById("artdol2").value;
-                var articulodol2 = parseFloat(artidol2).toFixed(2);
-                var cantidol2 = document.getElementById("cantdol2").value;
-                var cantidaddol2 = parseFloat(cantidol2).toFixed(2);
-                var multi2 = cantidaddol2 * articulodol2;
-                document.getElementById("totalart2").value = multi2.toFixed(2);
-                // Suma de los totales Dolares
-                var subtotal1 = document.getElementById("totalart1").value;
-                var subtotal2 = document.getElementById("totalart2").value;
-                var restotaldol = (Number(subtotal1) + Number(subtotal2));
-                document.getElementById("totaldol").value = restotaldol.toFixed(2);
-            }
+            @endforeach
+
+            @endif
         </script>
         <script>
             function allEvents() {
+
+                @if(isset($_SESSION["carritopes"]))
                 //Subtotales por Producto Pesos
-                cambiocantp1();
-                cambiocantp2();
+                <?php $artnum=0; ?>
+                @foreach ($_SESSION["carritopes"] as $indicepes=>$arreglopes)
+                <?php $artnum++; ?>
+                cambiocantp{{$artnum}}();
+                var subtotalpes{{$artnum}} = document.getElementById("totalartpes{{$artnum}}").value;
+                @endforeach
 
                 // Suma de los totales Pesos
-                var subtotalpes1 = document.getElementById("totalartpes1").value;
-                var subtotalpes2 = document.getElementById("totalartpes2").value;
-                var restotalpes = (Number(subtotalpes1) + Number(subtotalpes2));
+                <?php $artnump=0; ?>
+                var restotalpes = (0
+                    @foreach ($_SESSION["carritopes"] as $indicepeso=>$arreglopeso)
+                    <?php $artnump++; ?>
+                    + Number(subtotalpes{{$artnump}}) @endforeach );
                 document.getElementById("totalpes").value = restotalpes.toFixed(2);
+                @endif
 
-                // Suma de los totales Dolares
-                var subtotal1 = document.getElementById("totalart1").value;
-                var subtotal2 = document.getElementById("totalart2").value;
-                var restotaldol = (Number(subtotal1) + Number(subtotal2));
-                document.getElementById("totaldol").value = restotaldol.toFixed(2);
+                @if(isset($_SESSION["carritodll"]))
+
+
 
                 //Subtotales por Producto Dolares
-                cambiocantd1();
-                cambiocantd2();
+                <?php $itemnum=0; ?>
+                @foreach ($_SESSION["carritodll"] as $indicedll=>$arreglodll)
+                <?php $itemnum++; ?>
+                cambiocantd{{$itemnum}}();
+                var subtotal{{$itemnum}} = document.getElementById("totalart{{$itemnum}}").value;
+                @endforeach
+
+                // Suma de los totales Dolares
+                var restotaldol = ( 0 <?php $itemnumd=0; ?>  @foreach ($_SESSION["carritodll"] as $indicedol=>$arreglodol)<?php $itemnumd++; ?>
+                  + Number(subtotal{{$itemnumd}})
+                 @endforeach);
+                document.getElementById("totaldol").value = restotaldol.toFixed(2);
+                @endif
 
             }
-
             window.onload = allEvents;
-        </script>
+        </script>@if(isset($_SESSION['carritodll']) || isset($_SESSION['carritopes']))
         <div class="row">
-            <div class="col-8"></div>
-            <div class="col-4"><a href="" style="float:right" class="btn btn-lg btn-primary"
-                    data-toggle="modal" data-target="#exampleModal"> {{__('Continuar con la compra')}}</a></div>
-
+            <div class="d-grid gap-2 col-12 mx-auto">
+  <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" type="button">{{__('Continuar con la compra')}}</button>
+  </div>
         </div><br>
+        @else
+        <div class=" rounded"
+                                        style="color:#0F1934;padding:20px;border: 1px solid #63c5da;background-color:#81EEFD"
+                                        role="alert">
+                                        <div class="row">
+                                            <div class="col-1"><i class="fas fa-info-circle fa-lg"></i></div>
+                                            <div class="col-11">
+                                                <b>{{__('Aún no hay articulos en su carrito de compra')}}</b>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+        @endif
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -377,7 +462,7 @@
 <div class="container">
     <center>
         <br>
-<h3>Contacto</h3>
+<h3>{{__('Contacto')}}</h3>
 <br><br>
 <div class="card">
 

@@ -17,4 +17,15 @@ class PedidosController extends Controller
         //////////////////////////////////////////////////
 
     }
+    public function PedidoReciente(){
+        session_start();
+        //////////////////// Vista Pedidos /////////////////
+        if(isset($_SESSION['usuario'])){
+            return view('pedidosRecientes');
+        }else {
+            return redirect()->route('login', app()->getLocale());
+        }
+        //////////////////////////////////////////////////
+
+    }
 }

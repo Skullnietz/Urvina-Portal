@@ -37,7 +37,8 @@
 
 @section('content_header')
 
-<?php $ART = trim($desc->Articulo); ?>
+<?php $ART = trim($desc->Articulo);
+$change = $articulo[0]->Moneda; ?>
     <style>
         .fcontainer {
             position: relative;
@@ -260,28 +261,34 @@
                                             style="text-align:center; background-color:#0F1934; color:white"> <b>
                                                 {{__('Restante')}}</b></div>
                                     </div>
+                                    <?php
+                                    if(count($articulo)>=2){
+
+                                        if(isset($_SESSION["carritodll"])){
+                                        $cantidad=0;
+                                        foreach($_SESSION["carritodll"] as $indice=>$arreglo){
+                                            if($arreglo["item"] == $ART){
+                                                $cantidad = $cantidad+ $arreglo["cantidad"] ;
+                                            }
+                                        }
+                                        $arreglo["cantidad"]=$cantidad ;
+
+                                        }
+                                        if(isset($_SESSION["carritopes"])){
+                                        $cantidadpes=0;
+                                        foreach($_SESSION["carritopes"] as $indice=>$arreglo){
+                                            if($arreglo["item"] == $ART){
+                                                $cantidadpes = $cantidadpes+ $arreglo["cantidad"] ;
+                                            }
+                                        }
+                                        $arreglo["cantidad"]=$cantidadpes ;
+
+                                        }
+
+                                    }
+
+                                ?>
                                     @if(count($articulo)>=2)
-
-
-                                            @isset($_SESSION["carritodll"])
-                                            <?php $cantidad=0; ?>
-                                                @foreach ($_SESSION["carritodll"] as $indice=>$arreglo)
-                                                @if($arreglo["item"] == $ART)
-                                                 <?php $cantidad = $cantidad+ $arreglo["cantidad"] ;?>
-                                                @endif
-                                                @endforeach
-                                                <?php $arreglo["cantidad"]=$cantidad ;?>
-                                            @endisset
-                                            @isset($_SESSION["carritopes"])
-                                            <?php $cantidadpes=0; ?>
-                                                @foreach ($_SESSION["carritopes"] as $indice=>$arreglo)
-                                                @if($arreglo["item"] == $ART)
-                                                 <?php $cantidadpes = $cantidadpes+ $arreglo["cantidad"] ;?>
-                                                @endif
-                                                @endforeach
-                                                <?php $arreglo["cantidad"]=$cantidadpes ;?>
-                                            @endisset
-
                                                 <div class="row">
                                                     <div class="col-4 border rounded"
                                                         style="text-align:center; font-size:1.5em; color:blue"><b>
@@ -290,42 +297,49 @@
                                                         </b></div>
                                                     <div class="col-4 border rounded"
                                                         style="text-align:center; font-size:1.5em; color:green"><b>
-                                                            @if(isset($cantidad))
-                                                            {{ $cantidad }}
-                                                            @else
-                                                            {{ number_format($articulo[0]->Consumo) }}
-                                                            @endif
+                                                            <?php
+
+
+                                                            if (str_contains($change,'Dolares')){
+                                                                if(isset($cantidad)){
+                                                                    echo $cantidad + $articulo[0]->Consumo;
+                                                                }else{
+                                                                    echo number_format($articulo[0]->Consumo);
+                                                                }
+                                                            }
+                                                            if (str_contains($change,'Pesos')){
+                                                                if(isset($cantidadpes)){
+                                                                    echo $cantidadpes + $articulo[0]->Consumo;
+                                                                }else{
+                                                                    echo number_format($articulo[0]->Consumo);
+                                                                }
+                                                            }
+                                                            ?>
+
+
+
+
                                                         </b></div>
                                                     <div class="col-4 border rounded" style="text-align:center; font-size:1.5em"><b>
+                                                        <?php
+                                                        if (str_contains($change,'Dolares')){
+                                                            if(isset($cantidad)){
+                                                                echo $articulo[0]->Limite - ($cantidad + $articulo[0]->Consumo);
+                                                            }else{
+                                                                echo number_format($articulo[0]->Limite - $articulo[0]->Consumo);
+                                                            }
+                                                        }
+                                                        if (str_contains($change,'Pesos')){
+                                                            if(isset($cantidadpes)){
+                                                                echo $articulo[0]->Limite - ($cantidad + $articulo[0]->Consumo);
+                                                            }else{
+                                                                echo number_format($articulo[0]->Limite - $articulo[0]->Consumo);
+                                                            }
+                                                        }
+                                                        ?>
 
-                                                            @if($articulo[0]->Moneda == "Dolares")
 
 
-                                                            @if(isset($cantidad))
-                                                            {{$articulo[0]->Limite - $cantidad}}
-                                                            @else
-                                                            {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
-                                                            @endif
-                                                            @else
-                                                            @if(isset($cantidad))
-                                                            {{$articulo[0]->Limite - $cantidad}}
-                                                            @else
-                                                            {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
-                                                            @endif
-                                                            @endif
-
-                                                            @if($articulo[0]->Moneda=="Pesos")
-
-                                                            @if(isset($cantidadpes))
-                                                            {{$articulo[0]->Limite - $cantidadpes}}
-                                                            @else
-                                                            {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
-                                                            @endif
-                                                            @else
-                                                            @if(isset($cantidadpes))
-                                                            {{$articulo[0]->Limite - $cantidadpes}}
-                                                            @endif
-                                                            @endif
 
                                                         </b> </div>
                                                 </div>
@@ -338,48 +352,52 @@
                                             </b></div>
                                         <div class="col-4 border rounded"
                                             style="text-align:center; font-size:1.5em; color:green"><b>
+                                                @if(str_contains($change,'Dolares'))
                                                 @if(isset($_SESSION['carritodll'][$ART]))
-                                                {{ $_SESSION['carritodll'][$ART]["cantidad"]}}
+                                                {{ $_SESSION['carritodll'][$ART]["cantidad"]+$articulo[0]->Consumo}}
                                                 @else
                                                 {{ number_format($articulo[0]->Consumo) }}
+                                                @endif
+                                                @endif
+
+                                                @if(str_contains($change,'Pesos'))
+                                                @if(isset($_SESSION['carritopes'][$ART]))
+                                                {{ $_SESSION['carritopes'][$ART]["cantidad"]}}
+                                                @else
+                                                {{ number_format($articulo[0]->Consumo) }}
+                                                @endif
                                                 @endif
                                             </b></div>
                                         <div class="col-4 border rounded" style="text-align:center; font-size:1.5em"><b>
 
-                                                @if($articulo[0]->Moneda == "Dolares")
+                                                @if(str_contains($change,'Dolares'))
 
 
                                                 @if(isset($_SESSION['carritodll'][$ART]))
-                                                {{$articulo[0]->Limite - $_SESSION['carritodll'][$ART]["cantidad"]}}
+                                                {{$articulo[0]->Limite - ($_SESSION['carritodll'][$ART]["cantidad"] + $articulo[0]->Consumo)}}
                                                 @else
                                                 {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
-                                                @endif
-                                                @else
-                                                @if(isset($_SESSION['carritodll'][$ART]))
-                                                {{$articulo[0]->Limite - $_SESSION['carritodll'][$ART]["cantidad"]}}
-                                                @else
-                                                {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
-                                                @endif
                                                 @endif
 
-                                                @if($articulo[0]->Moneda=="Pesos")
+                                                @endif
+
+
+
+                                                @if(str_contains($change,'Pesos'))
 
                                                 @if(isset($_SESSION['carritopes'][$ART]))
-
 
                                                 {{$articulo[0]->Limite - $_SESSION['carritopes'][$ART]["cantidad"]}}
                                                 @else
                                                 {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
                                                 @endif
-                                                @else
-                                                @if(isset($_SESSION['carritopes'][$ART]))
-                                                {{$articulo[0]->Limite - $_SESSION['carritopes'][$ART]["cantidad"]}}
-                                                @endif
+
                                                 @endif
 
                                             </b> </div>
                                     </div>
                                     @endif
+
 
                                     <hr>
                                     <br><?php $fecha = new DateTime() ?>
@@ -399,7 +417,7 @@
                                         <input type="hidden" name="subcuenta" value="{{$item->Subcuenta}}">
                                         @endforeach
 
-                                        
+
 
                                     @csrf
                                     @if(count($articulo)>=2)

@@ -17,7 +17,7 @@
 @stop
 
 @section('content')
-@include('sweetalert::alert')
+
     <div class="container">
          <!-- Pedido Pesos -->
             <div class="card">
@@ -39,7 +39,27 @@
                 </div>
             </div>
             <!-- FIN Pedido Pesos -->
+            <!-- Pedido Dolares -->
 
+            <div class="card">
+                <div class="row"></div>
+                <div class="col-12 "><br>
+                    <center>
+                        <div class="border rounded">
+                            <b>{{__('Su Pedido en Dolares fué levantado correctamente con numero:')}}</b>  <br>
+                                           <b style="color:blue; font-size:25px">RAA715</b>
+                        </div>
+                    </center>
+                    <br>
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4"><a href="" class="btn btn-danger"> {{__('Cancelar')}}</a>&nbsp;&nbsp;<a href="{{route('printpedido', [app()->getLocale()])}}" target="_blank" class="btn btn-warning"> {{__('Imprimir')}}</a>&nbsp;&nbsp;<a href="" class="btn btn-primary"> {{__('Continuar')}}</a></div>
+                        <div class="col-4"></div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <!-- FIN Pedido Dolares -->
 
 
     </div>

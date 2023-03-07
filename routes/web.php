@@ -57,12 +57,15 @@ Route::prefix('{language}')->group(function () {
     Route::get('/postcompra','CarritoController@postcompra')->name('postcompra');
     Route::get('/additem','CarritoController@addCartItem')->name('additem');
     Route::get('/quititem','CarritoController@quitCartItem')->name('quititem');
+    Route::get('/confirmaciondll','CarritoController@confCartDll')->name('confdll');
+    Route::get('/confirmacionpes','CarritoController@confCartPes')->name('confpes');
+
 
 
 
 
     //Pedidos
-
+    Route::get('/pedidosRe','PedidosController@PedidoReciente')->name('pedidore');
     Route::get('/impresion','PedidosController@impresion')->name('printpedido');
 
 

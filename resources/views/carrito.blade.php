@@ -3,6 +3,7 @@
 @section('title', __('Carrito'))
 
 @section('content_header')
+
 <style>
     @media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */
     .flag{
@@ -41,7 +42,7 @@
 @section('content')
 @include('sweetalert::alert')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <div class="container">
+  <div class="container">
         <div class="row">
             <div class="col">
                 @if(isset($_SESSION["carritopes"]))
@@ -78,10 +79,10 @@
                             ?> </div>
                             <div class="col-2 border rounded-left" style="text-align:center; padding:10px"> {{$arreglop["articulo"]}}</div>
                             <div class="col-2 border" style="text-align:center; padding:10px">{{$arreglop["codigo"]}}</div>
-                            <div class="col-4 border" style="text-align:center; padding:10px"><small><b>{{__($arreglop["desc"])}}{{$arreglop["talla"]}}</b></small>
+                            <div class="col-4 border" style="text-align:center; padding:10px"><small><b>{{__($arreglop["desc"])}}</b></small>
                             </div>
                             <div class="col-1 border" style="text-align:center; padding:10px"><input id="cantpes{{$numitem}}"
-                                    style="text-align:center" @if(isset($arreglo["talla"])) class="form-control disabled" disabled title="{{__('Debe eliminar este item para cambiar cantidad')}}" @else class="form-control" @endif type="number"  min="1"  @if($arreglop["excedente"]==0) max="{{$arreglop["autorizado"]}}" @endif value="{{$arreglop["cantidad"]}}"
+                                    style="text-align:center" @if(isset($arreglop["talla"])) class="form-control disabled" disabled title="{{__('Debe eliminar este item para cambiar cantidad')}}" @else class="form-control" @endif type="number"  min="1"  @if($arreglop["excedente"]==0) max="{{$arreglop["autorizado"]}}" @endif value="{{$arreglop["cantidad"]}}"
                                     onchange="cambiocantp{{$numitem}}()" onkeyup="cambiocantp{{$numitem}}()" required>
                             </div>
                             <input id="artpes{{$numitem}}" type="hidden" value="{{$arreglop["precio"]}}">
@@ -134,6 +135,80 @@
                 </div>
             </div>
         </div>
+        <!-- Modal Pesos -->
+        <div class="modal fade" id="PesosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#0E7E2D">
+                        <center>
+                            <h5 class="modal-title" id="exampleModalLabel" style="color:white">{{__('Confirmando compra')}}...</h5>
+                        </center>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color:white">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{route('confpes', app()->getLocale())}}" method="get">
+                        <div class="row">
+                            <div class="col"><b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01"><i
+                                                    class="fas fa-chart-area"></i>&nbsp;| {{__('Departamento')}}</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01" name="departamento">
+                                            @foreach ($departamentos as $departamento)
+                                            <option value="{{$departamento->Departamento}}">{{$departamento->Nombre}}</option>
+
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                </b></div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i
+                                            class="fas fa-users-cog"></i>&nbsp;| {{__('Equipo/Trabajo')}}</label>
+                                </div>
+                                @if(count($equipos) == 0)
+                                <input class="form-control" name="referencia" type="text">
+                                @else
+                                <select class="custom-select" id="inputGroupSelect01" name="referencia"  required>
+                                    <option value="">{{__('Selecciona un equipo')}}...</option>
+                                    @foreach ($equipos as $equipo)
+                                    <option value="{{$equipo->Equipo}}">{{$equipo->Equipo}}</option>
+                                    @endforeach
+                                </select>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <input class="form-control" name="observaciones" type="hidden" value="Observaciones">
+                        <input class="form-control" name="planta" type="hidden" value="{{trim($_SESSION['usuario']->Planta)}}">
+                        <input class="form-control" name="moneda" type="hidden" value="Pesos">
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cerrar')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('Confirmar')}}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-grid gap-2 col-12 mx-auto">
+  <button data-toggle="modal" data-target="#PesosModal" class="btn btn-primary" type="button">{{__('Continuar con la compra')}}</button>
+  </div>
+        </div><br>
         @endif
         @if(isset($_SESSION["carritodll"]))
         <div class="row">
@@ -223,6 +298,80 @@
             </div>
             </div>
         </div>
+        <!-- Modal Dolares -->
+        <div class="modal fade" id="DolarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color:#0E7E2D">
+                        <center>
+                            <h5 class="modal-title" id="exampleModalLabel" style="color:white">{{__('Confirmando compra')}}...</h5>
+                        </center>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="color:white">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{route('confdll', app()->getLocale())}}" method="get">
+                        <div class="row">
+                            <div class="col"><b>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01"><i
+                                                    class="fas fa-chart-area"></i>&nbsp;| {{__('Departamento')}}</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect01" name="departamento" required>
+                                            @foreach ($departamentos as $departamento)
+                                            <option value="{{$departamento->Departamento}}">{{$departamento->Nombre}}</option>
+
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                </b></div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i
+                                            class="fas fa-users-cog"></i>&nbsp;| {{__('Equipo/Trabajo')}}</label>
+                                </div>
+                                @if(count($equipos) == 0)
+                                <input name="referencia" class="form-control" type="text" required>
+                                @else
+                                <select class="custom-select" id="inputGroupSelect01" name="referencia"  required>
+                                    <option value="">{{__('Selecciona un equipo')}}...</option>
+                                    @foreach ($equipos as $equipo)
+                                    <option value="{{$equipo->Equipo}}">{{$equipo->Equipo}}</option>
+                                    @endforeach
+                                </select>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <input class="form-control" name="observaciones" type="hidden" value="Observaciones" required>
+                        <input class="form-control" name="planta" type="hidden" value="{{trim($_SESSION['usuario']->Planta)}}" required>
+                        <input class="form-control" name="moneda" type="hidden" value="Dolares" required>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cerrar')}}</button>
+                        <button type="submit" href="{{route('postcompra', [app()->getLocale()])}}" type="button" class="btn btn-primary">{{__('Confirmar')}}</a>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-grid gap-2 col-12 mx-auto">
+  <button data-toggle="modal" data-target="#DolarModal" class="btn btn-primary" type="button">{{__('Continuar con la compra')}}</button>
+  </div>
+        </div><br>
         @endif
         <script>
             @if(isset($_SESSION["carritopes"]))
@@ -360,12 +509,8 @@
 
             }
             window.onload = allEvents;
-        </script>@if(isset($_SESSION['carritodll']) || isset($_SESSION['carritopes']))
-        <div class="row">
-            <div class="d-grid gap-2 col-12 mx-auto">
-  <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary" type="button">{{__('Continuar con la compra')}}</button>
-  </div>
-        </div><br>
+        </script>
+        @if(isset($_SESSION['carritodll']) || isset($_SESSION['carritopes']))
         @else
         <div class=" rounded"
                                         style="color:#0F1934;padding:20px;border: 1px solid #63c5da;background-color:#81EEFD"
@@ -382,77 +527,7 @@
 
         @endif
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header" style="background-color:#0E7E2D">
-                        <center>
-                            <h5 class="modal-title" id="exampleModalLabel" style="color:white">{{__('Confirmando compra')}}...</h5>
-                        </center>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" style="color:white">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col"><b>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect01"><i
-                                                    class="fas fa-chart-area"></i>&nbsp;| {{__('Departamento')}}</label>
-                                        </div>
-                                        <select class="custom-select" id="inputGroupSelect01">
-                                            @foreach ($departamentos as $departamento)
-                                            <option value="{{$departamento->Departamento}}">{{$departamento->Nombre}}</option>
 
-                                            @endforeach
-
-                                        </select>
-                                    </div>
-                                </b></div>
-
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i
-                                            class="fas fa-users-cog"></i>&nbsp;| {{__('Equipo/Trabajo')}}</label>
-                                </div>
-                                @if(count($equipos) == 0)
-                                <input class="form-control" type="text">
-                                @else
-                                <select class="custom-select" id="inputGroupSelect01">
-                                    <option selected>{{__('Selecciona un equipo')}}...</option>
-                                    @foreach ($equipos as $equipo)
-                                    <option value="{{$equipo->Equipo}}">{{$equipo->Equipo}}</option>
-                                    @endforeach
-                                </select>
-                                @endif
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01"><i
-                                            class="fas fa-truck"></i>&nbsp;| {{__('Envio')}}</label>
-                                </div>
-                                <input class="form-control" type="number">
-                            </div>
-                        </div>
-                        <hr>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('Cerrar')}}</button>
-                        <a href="{{route('postcompra', [app()->getLocale()])}}" type="button" class="btn btn-primary">{{__('Confirmar')}}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
     </div>
