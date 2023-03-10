@@ -95,7 +95,7 @@ $change = $articulo[0]->Moneda; ?>
 }
 @media (max-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
 #img-1{
-    width:400px;
+    width:250px;
 }
 #img-2{
     display:none;
