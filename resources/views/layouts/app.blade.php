@@ -1,4 +1,30 @@
 <!doctype html>
+<style>
+    @media (max-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
+
+.enflag{
+    margin-right:-150px;
+    margin-top:-60px;
+}
+.esflag{
+    margin-left:-150px;
+    margin-top:-50px;
+}
+ }
+@media (max-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+
+.enflag{
+    margin-left:-150px;
+    margin-top:-60px;
+
+}
+.esflag{
+    margin-right:-150px;
+    margin-top:-50px;
+}
+}
+
+</style>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -26,9 +52,9 @@
 <body style="background-color:#CCC">
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
-                <ul class="navbar-nav ml-auto text-center">
-                    <li class="nav-item active">
+            <div class="navbar-collapse  w-100 dual-collapse2 order-1 order-md-0">
+                <ul class="navbar-nav ml-auto text-center flags esflag">
+                    <li class="nav-item">
                         <a href="{{route(Route::currentRouteName(), 'es')}}">
                             <img src="/icons/es.svg" style="width:50px" alt="ES">
                           </a>
@@ -41,7 +67,7 @@
                 </a>
 
             </div>
-            <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+            <div class="navbar-collapse  w-100 dual-collapse2 order-2 order-md-2 flags enflag">
                 <ul class="navbar-nav mr-auto text-center">
                     <li class="nav-item">
                         <a href="{{route(Route::currentRouteName(), 'en')}}">

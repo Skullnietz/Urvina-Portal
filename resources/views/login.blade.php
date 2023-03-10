@@ -15,6 +15,16 @@
   background-color: #0E7E2D;
   cursor: pointer;
 }
+@media (max-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
+#logincart{
+    margin-left:-20px;
+} }
+@media (max-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    #logincart{
+    margin-left:-20px;
+} }
+
+
 </style>
 <div class="container" >
 
@@ -32,18 +42,19 @@
 
         <div class="row justify-content-center" style="margin-top:-80px">
             <div class="col" >
-                <div class="card" style="margin-top:20%;margin-bottom:20%">
+                <div class="card" id="logincart" style="margin-top:20%;margin-bottom:20%">
                     <div class="card-header bg-dark text-white" ><center><b>{{ __('Acceso al sistema') }}</b></center></div>
 
 
-                    <div class="card-body">
+                    <div class="card-body" >
                         <form method="POST" action="{{route('validar-registro', app()->getLocale())}}">
                             @csrf
-
+                            <center>
                             <div class="row mb-3">
-                                <label for="usuario" class="col-md-4 col-form-label text-md-end">{{ __('Usuario') }}</label>
 
-                                <div class="">
+                                <label for="usuario" class="col-sm-4 col-form-label text-md-end">{{ __('Usuario') }}</label>
+
+                                <div class="col-sm-6">
                                     <input id="usuario" type="usuario" class="form-control @if(isset($msg))('email') is-invalid @endif" name="usuario" value="{{ old('usuario') }}" required autocomplete="email" autofocus>
 
                                     @error('usuario')
@@ -52,12 +63,13 @@
                                         </span>
                                     @enderror
                                 </div>
+
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
+                                <label for="password" class="col-sm-4 col-form-label ">{{ __('Contraseña') }}</label>
 
-                                <div class="">
+                                <div class="col-sm-6">
                                     <input id="password" type="password" class="form-control @if(isset($msg)) is-invalid @endif" name="password" required autocomplete="current-password">
 
                                     @if(isset($msg))
@@ -86,6 +98,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Entrar') }}
                                     </button>
+                                </center>
 
 
                                 </div>
