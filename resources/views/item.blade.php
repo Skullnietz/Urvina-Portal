@@ -93,6 +93,20 @@ $change = $articulo[0]->Moneda; ?>
   border-radius: 100%;
   transition: opacity .2s;
 }
+@media (max-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
+#img-1{
+    width:400px;
+}
+#img-2{
+    display:none;
+} }
+@media (max-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    #img-1{
+    width:400px;
+}
+#img-2{
+    display:none;
+}}
     </style>
 @stop
 
