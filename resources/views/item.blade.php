@@ -126,7 +126,7 @@ $change = $articulo[0]->Moneda; ?>
                                 <center>
 
                                     <?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
-                                        echo '<div id="img-zoomer-box" style="max-width:350px"><div id="img-2" ></div><img class="border rounded" id="img-1" src="/images/catalogo/' . $ART . '.jpg" alt="$ART"style="max-width:200px"></div>';
+                                        echo '<div id="img-zoomer-box" style="max-width:350px"><div id="img-2" ></div><img class="border rounded" id="img-1" src="/images/catalogo/' . $ART . '.jpg" alt="$ART"></div>';
                                     } else {
                                         echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="max-width:350px">';
                                     }
