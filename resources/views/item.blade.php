@@ -95,14 +95,14 @@ $change = $articulo[0]->Moneda; ?>
 }
 @media (max-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
 #img-1{
-    width:250px;
+    width:200px;
 }
 #img-2{
     display:none;
 } }
 @media (max-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     #img-1{
-    width:400px;
+    width:200px;
 }
 #img-2{
     display:none;
@@ -126,9 +126,9 @@ $change = $articulo[0]->Moneda; ?>
                                 <center>
 
                                     <?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
-                                        echo '<div id="img-zoomer-box" style="max-width:350px"><div id="img-2" ></div><img class="border rounded" id="img-1" src="/images/catalogo/' . $ART . '.jpg" alt="$ART"style="max-width:350px"></div>';
+                                        echo '<div id="img-zoomer-box" style="max-width:350px"><div id="img-2" ></div><img class="border rounded" id="img-1" src="/images/catalogo/' . $ART . '.jpg" alt="$ART"style="max-width:200px"></div>';
                                     } else {
-                                        echo '<img class="border rounded" src="/img/productos/default_product.png" alt="no img" style="max-width:350px">';
+                                        echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="max-width:350px">';
                                     }
                                     ?><br><br>
                                     <?php if (file_exists(public_path() . '/specs/specs/' . $ART . '.pdf')) {
