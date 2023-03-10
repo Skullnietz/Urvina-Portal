@@ -5,8 +5,8 @@
 @section('content_header')
 <div class="container">
     <div class="row">
-        <div class="col-6"><h1>{{__('Busqueda')}}</h1></div>
-        <div class="col-4"> <div class="input-group mb-3">
+        <div class=" col-md-5 col-xs-6"><h1>{{__('Busqueda')}}</h1></div>
+        <div class=" col-md-5 col-xs-5"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>
@@ -14,7 +14,7 @@
                 <input type="text" id="search" name="item" class="form-control" placeholder="{{__('Buscar')}}" pattern="[A-Za-z0-9]{2,10}" aria-describedby="basic-addon1">
             </form>
           </div></div>
-          <div class="col-2">
+          <div class="col-md-2 col-xs-2">
             <a href="{{route(Route::currentRouteName(),'en')}}">
                 <img src="/icons/en.svg" style="width:50px" alt="EN">
               </a>
@@ -80,35 +80,110 @@
             text-decoration: inherit;
             /* no underline */
         }
+        @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px;
+
+            }
+            .card{
+                width: 15rem;
+                height:21rem;
+
+            }
+        }
+        @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+            .img-card-top{
+                height:10rem;
+                width: 10rem;
+                margin-top:10px;
+
+            }
+            .card{
+                width: 10rem;
+                height:23rem;
+            }
+        }
+        @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px;
+                width: 10rem;
+
+            }
+            .card{
+                width: 10rem;
+                height:23rem;
+
+            }
+        }
+        @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px;
+
+            }
+            .card{
+                width: 15rem;
+                height:21rem;
+
+            }
+        }
+        @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px;
+
+            }
+            .card{
+                width: 15rem;
+                height:21rem;
+
+            }
+        }
+        @media (min-width:1281px) { /* hi-res laptops and desktops */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px
+
+            }
+            .card{
+                width: 15rem;
+                height:21rem;
+
+            }
+        }
     </style>
     <div class="container">
 
 <div class="row">
         @foreach ($articulos as $articulo)
-            <div class="col-md-6 col-xs-12">
-                <?php $ART = trim($articulo->Articulo); ?>
-                <a href="{{route('item', [app()->getLocale(), $ART])}}">
-                    <div class="card grow">
-                        <div class="card-body">
-                            <div class="row ">
-                                <div class="col-3"><?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
-                                    echo '<img src="/images/catalogo/' . $ART . '.jpg" alt="$ART"style="width:100px">';
-                                } else {
-                                    echo '<img src="/img/productos/default_product.png" alt="no img" style="width:100px">';
-                                }
-                                ?>
-                                </div>
-                                <div class="col-7"><small><b>{{ __(trim($articulo->Descripcion)) }}
-                                        </b></small><br>
-                                    <small>{{ $ART }}</small><br>
-                                    <small style="color:blue;"><b><a
-                                                href="">{{ trim($articulo->Codigo) }}</a></b></small>
-                                </div>
+        <div class="col-md-3 col-sm-6 col-xs-6"  >
+            <?php $ART = trim($articulo->Articulo); ?>
+            <a href="{{route('item', [app()->getLocale(), $ART])}}">
+                <div class="card grow text-center" style="" >
+                    <?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
+                        echo '<img class="img-card-top mx-auto"  src="/images/catalogo/' . $ART . '.jpg" alt="$ART">';
+                    } else {
+                        echo '<img class="img-card-top mx-auto"  src="/img/productos/default_product.png" alt="no img">';
+                    }
+                    ?>
+                    <div class="card-body border-top">
+
+                        <div class="row ">
+                            <button class="btn btn-xs btn-primary"><a
+                                href=""><b>{{ trim($articulo->Codigo) }}</b></a></button>
+                            <div ><small><b>{{ __(trim($articulo->Descripcion)) }}
+                                    </b></small><br>
+                                   <small style="color: #00a650"><b>{{ $ART }}</b></small>
+                                <br>
+
                             </div>
                         </div>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
+        </div>
         @endforeach
     </div>
     </div>

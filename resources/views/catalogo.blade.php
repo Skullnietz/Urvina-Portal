@@ -5,20 +5,20 @@
 @section('content_header')
 <div class="container">
     <div class="row">
-        <div class="col-6"><h1>{{__('Catalogo')}}</h1></div>
-        <div class="col-4"> <div class="input-group mb-3">
+        <div class=" col-md-5 col-xs-6"><h1>{{__('Catalogo')}}</h1></div>
+        <div class=" col-md-5 col-xs-5"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>
             <form action="{{route('search', app()->getLocale())}}" method="get">
-                <input type="text" id="search" pattern="[A-Za-z0-9]{2,10}" name="item" class="form-control" placeholder="{{__('Buscar')}}"  aria-describedby="basic-addon1">
-                </form>
+                <input type="text" id="search" name="item" class="form-control" placeholder="{{__('Buscar')}}" pattern="[A-Za-z0-9]{2,10}" aria-describedby="basic-addon1">
+            </form>
           </div></div>
-          <div class="col-2">
-            <a href="{{route(Route::currentRouteName(), 'en')}}">
+          <div class="col-md-2 col-xs-2">
+            <a href="{{route(Route::currentRouteName(),'en')}}">
                 <img src="/icons/en.svg" style="width:50px" alt="EN">
               </a>
-              <a href="{{route(Route::currentRouteName(), 'es')}}">
+              <a href="{{route(Route::currentRouteName(), 'es' )}}">
                 <img src="/icons/es.svg" style="width:50px" alt="ES">
               </a>
 
@@ -46,6 +46,7 @@
             text-decoration: inherit;
             /* no underline */
         }
+
     </style>
 @stop
 
@@ -96,8 +97,8 @@
                     @foreach ($catalogo as $articulo)
                         <tr class="grow">
                             <?php $category =trim($articulo->clave) ?>
-                            <td><img src="<?php echo '/images/categoria/' . trim($articulo->clave) . '.jpg'; ?>" alt="{{ trim($articulo->clave) }}" style="max-height:100px; max-width:120px"> </td>
-                            <td><a href="{{route('categoria', [app()->getLocale(), $category])}}">{{ __(trim($articulo->categoria)) }}</a></td>
+                            <td><img src="<?php echo '/images/categoria/' . __(trim($articulo->clave)) . '.jpg'; ?>" alt="{{ trim($articulo->clave) }}" style="max-height:200px; "> </td>
+                            <td style="vertical-align: middle"><a href="{{route('categoria', [app()->getLocale(), $category])}}"><h5>{{ __(trim($articulo->categoria)) }}</h5></a></td>
                         </tr>
                     @endforeach
 

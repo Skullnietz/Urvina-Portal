@@ -98,7 +98,7 @@ class CatalogoController extends Controller
                 "EXEC spSearchArticulosApp :id,:articulo",
                 [
                     "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                    "articulo" => $request->item,
+                    "articulo" => '%'.$request->item.'%',
                 ]
             );
             $Icounter= count($articulos);

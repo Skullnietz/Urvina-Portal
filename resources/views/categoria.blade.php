@@ -79,29 +79,104 @@
             text-decoration: inherit;
             /* no underline */
         }
+        @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px;
+
+            }
+            .card{
+                width: 15rem;
+                height:21rem;
+
+            }
+        }
+        @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+            .img-card-top{
+                height:10rem;
+                width: 10rem;
+                margin-top:10px;
+
+            }
+            .card{
+                width: 10rem;
+                height:23rem;
+            }
+        }
+        @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px;
+                width: 10rem;
+
+            }
+            .card{
+                width: 10rem;
+                height:23rem;
+
+            }
+        }
+        @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px;
+
+            }
+            .card{
+                width: 15rem;
+                height:21rem;
+
+            }
+        }
+        @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px;
+
+            }
+            .card{
+                width: 15rem;
+                height:21rem;
+
+            }
+        }
+        @media (min-width:1281px) { /* hi-res laptops and desktops */
+            .img-card-top{
+                height:11rem;
+                margin-top:10px
+
+            }
+            .card{
+                width: 15rem;
+                height:21rem;
+
+            }
+        }
     </style>
     <div class="container">
 
 <div class="row">
         @foreach ($category as $articulo)
-            <div class="col-md-6 col-xs-12">
+            <div class="col-md-3 col-xs-4"  >
                 <?php $ART = trim($articulo->Articulo); ?>
                 <a href="{{route('item', [app()->getLocale(), $ART])}}">
-                    <div class="card grow">
-                        <div class="card-body">
+                    <div class="card grow text-center" style="width: 15rem; height:21rem;" >
+                        <?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
+                            echo '<img class="img-card-top mx-auto" style=" height:11rem;margin-top:10px" src="/images/catalogo/' . $ART . '.jpg" alt="$ART">';
+                        } else {
+                            echo '<img class="img-card-top mx-auto"  style=" height:11rem;margin-top:10px" src="/img/productos/default_product.png" alt="no img">';
+                        }
+                        ?>
+                        <div class="card-body border-top">
+
                             <div class="row ">
-                                <div class="col-3"><?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
-                                    echo '<img src="/images/catalogo/' . $ART . '.jpg" alt="$ART"style="width:100px">';
-                                } else {
-                                    echo '<img src="/img/productos/default_product.png" alt="no img" style="width:100px">';
-                                }
-                                ?>
-                                </div>
-                                <div class="col-7"><small><b>{{ __(trim($articulo->Descripcion)) }}
+                                <button class="btn btn-xs btn-primary"><a
+                                    href=""><b>{{ trim($articulo->Codigo) }}</b></a></button>
+                                <div ><small><b>{{ __(trim($articulo->Descripcion)) }}
                                         </b></small><br>
-                                    <small>{{ $ART }}</small><br>
-                                    <small style="color:blue;"><b><a
-                                                href="">{{ trim($articulo->Codigo) }}</a></b></small>
+                                       <small style="color: #00a650"><b>{{ $ART }}</b></small>
+                                    <br>
+
                                 </div>
                             </div>
                         </div>
