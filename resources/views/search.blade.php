@@ -84,6 +84,7 @@
             .img-card-top{
                 height:11rem;
                 margin-top:10px;
+                max-width:14.5rem;
 
             }
             .card{
@@ -95,7 +96,7 @@
         @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
             .img-card-top{
                 height:10rem;
-                width: 10rem;
+                max-width:9.5rem;
                 margin-top:10px;
 
             }
@@ -108,7 +109,7 @@
             .img-card-top{
                 height:11rem;
                 margin-top:10px;
-                width: 10rem;
+                max-width:9.5rem;
 
             }
             .card{
@@ -120,6 +121,7 @@
         @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
             .img-card-top{
                 height:11rem;
+                max-width:14.5rem;
                 margin-top:10px;
 
             }

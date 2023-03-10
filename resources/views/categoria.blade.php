@@ -4,25 +4,27 @@
 
 @section('content_header')
 <div class="container">
-    <div class="row">
-        <div class="col-6"><h1>{{__('Categoria')}}</h1></div>
-        <div class="col-4"> <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-            </div>
-            <form action="{{route('search', app()->getLocale())}}" method="get">
-                <input type="text" id="search" pattern="[A-Za-z0-9]{2,10}" name="item" class="form-control" placeholder="{{__('Buscar')}}"  aria-describedby="basic-addon1">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-5 col-xs-6"><h1>{{__('Categoria')}}</h1></div>
+            <div class=" col-md-5 col-xs-5"> <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                </div>
+                <form action="{{route('search', app()->getLocale())}}" method="get">
+                    <input type="text" id="search" name="item" class="form-control" placeholder="{{__('Buscar')}}" pattern="[A-Za-z0-9]{2,10}" aria-describedby="basic-addon1">
                 </form>
-          </div></div>
-          <div class="col-2">
-            <a href="{{route(Route::currentRouteName(),'en')}}/{{$categoria}}">
-                <img src="/icons/en.svg" style="width:50px" alt="EN">
-              </a>
-              <a href="{{route(Route::currentRouteName(), 'es' )}}/{{$categoria}}">
-                <img src="/icons/es.svg" style="width:50px" alt="ES">
-              </a>
+              </div></div>
+              <div class="col-md-2 col-xs-2">
+                <a href="{{route(Route::currentRouteName(),'en')}}">
+                    <img src="/icons/en.svg" style="width:50px" alt="EN">
+                  </a>
+                  <a href="{{route(Route::currentRouteName(), 'es' )}}">
+                    <img src="/icons/es.svg" style="width:50px" alt="ES">
+                  </a>
 
-          </div>
+              </div>
+        </div>
     </div>
 </div>
 @stop
@@ -83,6 +85,7 @@
             .img-card-top{
                 height:11rem;
                 margin-top:10px;
+                max-width:14.5rem;
 
             }
             .card{
@@ -94,7 +97,7 @@
         @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
             .img-card-top{
                 height:10rem;
-                width: 10rem;
+                max-width:9.5rem;
                 margin-top:10px;
 
             }
@@ -107,7 +110,7 @@
             .img-card-top{
                 height:11rem;
                 margin-top:10px;
-                width: 10rem;
+                max-width:9.5rem;
 
             }
             .card{
@@ -119,6 +122,7 @@
         @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
             .img-card-top{
                 height:11rem;
+                max-width:14.5rem;
                 margin-top:10px;
 
             }

@@ -40,29 +40,11 @@
     width: 100%;
   }
 }
-@media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */
-    .flag{
-        width:20px;
-    }
-    .ftable {
-       display: block;
-       overflow-x: auto;
-     }
- }
- @media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
-    .flag{
-        width:30px;
-    }
-    .ftable {
-       display: block;
-       overflow-x: auto;
-     }
-
-}
 @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
             .img-card-top{
                 height:11rem;
                 margin-top:10px;
+                max-width:14.5rem;
 
             }
             .card{
@@ -74,7 +56,7 @@
         @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
             .img-card-top{
                 height:10rem;
-                width: 10rem;
+                max-width:9.5rem;
                 margin-top:10px;
 
             }
@@ -87,7 +69,7 @@
             .img-card-top{
                 height:11rem;
                 margin-top:10px;
-                width: 10rem;
+                max-width:9.5rem;
 
             }
             .card{
@@ -99,6 +81,7 @@
         @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
             .img-card-top{
                 height:11rem;
+                max-width:14.5rem;
                 margin-top:10px;
 
             }
@@ -132,7 +115,6 @@
 
             }
         }
-
 </style>
 
 <div class="container">
