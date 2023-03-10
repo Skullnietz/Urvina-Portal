@@ -97,7 +97,7 @@
                     @foreach ($catalogo as $articulo)
                         <tr class="grow">
                             <?php $category =trim($articulo->clave) ?>
-                            <td><img src="<?php echo '/images/categoria/' . __(trim($articulo->clave)) . '.jpg'; ?>" alt="{{ trim($articulo->clave) }}" style="max-height:200px; "> </td>
+                            <td><img src="<?php echo '/images/categoria/' . __(trim($articulo->clave)) . '.jpg'; ?>" alt="{{ trim($articulo->clave) }}" style="max-height:200px; max-width:160px "> </td>
                             <td style="vertical-align: middle"><a href="{{route('categoria', [app()->getLocale(), $category])}}"><h5>{{ __(trim($articulo->categoria)) }}</h5></a></td>
                         </tr>
                     @endforeach
