@@ -82,7 +82,7 @@
                             <div class="col-md-4 border" style="text-align:center; padding:10px"><small><b>{{__($arreglop["desc"])}}</b></small>
                             </div>
                             <div class="col-md-1 border" style="text-align:center; padding:10px"><input id="cantpes{{$numitem}}"
-                                    style="text-align:center" @if(isset($arreglop["talla"])) class="form-control disabled" disabled title="{{__('Debe eliminar este item para cambiar cantidad')}}" @else class="form-control" @endif type="number"  min="1"  @if($arreglop["excedente"]==0) max="{{$arreglop["autorizado"]}}" @endif value="{{$arreglop["cantidad"]}}"
+                                    style="text-align:center" @if(isset($arreglop["talla"])) class="form-control disabled" disabled title="{{__('Debe eliminar este item para cambiar cantidad')}}" @else class="form-control" @endif type="number"  min="1"  @if($arreglop["excedente"]==0) max="{{$arreglop["restante"]}}" @endif value="{{$arreglop["cantidad"]}}"
                                     onchange="cambiocantp{{$numitem}}()" onkeyup="cambiocantp{{$numitem}}()" required>
                             </div>
                             <input id="artpes{{$numitem}}" type="hidden" value="{{$arreglop["precio"]}}">
@@ -257,7 +257,7 @@
                             </div>
                             <div class="col-md-1 border" style="text-align:center; padding:10px;">
                                 <input @if(isset($arreglo["talla"])) class="form-control disabled" disabled title="Debe eliminar este item para cambiar cantidad" @else class="form-control" @endif id="cantdol{{$numart}}" style="text-align:center" class="form-control" type="number"
-                                    min="1" @if($arreglo["excedente"]==0) max="{{$arreglo["autorizado"]}}" @endif value="{{$arreglo["cantidad"]}}" onchange="cambiocantd{{$numart}}()" onkeyup="cambiocantd{{$numart}}()" required>
+                                    min="1" @if($arreglo["excedente"]==0) max="{{$arreglo["restante"]}}" @endif value="{{$arreglo["cantidad"]}}" onchange="cambiocantd{{$numart}}()" onkeyup="cambiocantd{{$numart}}()" required>
                                 <input id="artdol{{$numart}}" type="hidden" value="{{$arreglo["precio"]}}">
                             </div>
                             <div class="col-md-1 border" style="text-align:center; padding:10px;">
