@@ -456,7 +456,8 @@
                 var artidol{{$itemnumdo}} = document.getElementById("artdol{{$itemnumdo}}").value;
                 var articulodol{{$itemnumdo}} = parseFloat(artidol{{$itemnumdo}}).toFixed(2);
                 var cantidol{{$itemnumdo}} = document.getElementById("cantdol{{$itemnumdo}}").value;
-                console.log(cantidol{{$itemnumdo}});
+                var formcantdl{{$itemnumdo}} = cantidol{{$itemnumdo}}
+                console.log(formcantdl{{$itemnumdo}});
                 var cantidaddol{{$itemnumdo}} = parseFloat(cantidol{{$itemnumdo}}).toFixed(2);
                 var multi{{$itemnumdo}} = cantidaddol{{$itemnumdo}} * articulodol{{$itemnumdo}};
                 document.getElementById("totalart{{$itemnumdo}}").value = multi{{$itemnumdo}}.toFixed(2);
