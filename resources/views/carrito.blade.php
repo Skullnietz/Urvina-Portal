@@ -52,17 +52,17 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-2 rounded border-right border-left"
+                            <div class="col-md-2 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Imagen')}}</b> </div>
-                            <div class="col-md-2 rounded border-right border-left"
+                            <div class="col-md-2 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Artículo')}}</b> </div>
-                            <div class="col-md-2 rounded border-right border-left"
+                            <div class="col-md-2 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Código')}}</b> </div>
-                            <div class="col-md-4 rounded border-right border-left"
+                            <div class="col-md-4 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Descripción')}}</b> </div>
-                            <div class="col-md-1 rounded border-right border-left"
+                            <div class="col-md-1 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Cant.')}}</b> </div>
-                            <div class="col-md-1 rounded border-right border-left"></div>
+                            <div class="col-md-1 border-right border-left"></div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -71,13 +71,13 @@
                         @foreach ($_SESSION["carritopes"] as $indice=>$arreglop)
                         <?php $numitem++;?>
                         <div class="row">
-                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglop["articulo"] . '.jpg')) {
+                            <div class="col-md-2 border" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglop["articulo"] . '.jpg')) {
                                 echo '<img class="border rounded" id="img-'.$numitem.'" src="/images/catalogo/' . $arreglop["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
                             } else {
                                 echo '<img class="border rounded" src="/img/productos/default_product.png" alt="no img" style="max-height:80px">';
                             }
                             ?> </div>
-                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px"> {{$arreglop["articulo"]}}</div>
+                            <div class="col-md-2 border " style="text-align:center; padding:10px"> {{$arreglop["articulo"]}}</div>
                             <div class="col-md-2 border" style="text-align:center; padding:10px">{{$arreglop["codigo"]}}</div>
                             <div class="col-md-4 border" style="text-align:center; padding:10px"><small><b>{{__($arreglop["desc"])}}</b></small>
                             </div>
@@ -86,7 +86,7 @@
                                     onchange="cambiocantp{{$numitem}}()" onkeyup="cambiocantp{{$numitem}}()" required>
                             </div>
                             <input id="artpes{{$numitem}}" type="hidden" value="{{$arreglop["precio"]}}">
-                            <div class="col-md-1 border rounded-right" style="text-align:center; padding:10px">
+                            <div class="col-md-1 border" style="text-align:center; padding:10px">
 
                                 <form action="{{route('quititem', app()->getLocale())}}" method="get">
                                     @csrf
@@ -220,17 +220,17 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-2 rounded border-right border-left"
+                            <div class="col-md-2 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Imagen')}}</b> </div>
-                            <div class="col-md-2 rounded border-right border-left"
+                            <div class="col-md-2 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Artículo')}}</b> </div>
-                            <div class="col-md-2 rounded border-right border-left"
+                            <div class="col-md-2 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Código')}}</b> </div>
-                            <div class="col-md-4 rounded border-right border-left"
+                            <div class="col-md-4 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Descripción')}}</b> </div>
-                            <div class="col-md-1 rounded border-right border-left"
+                            <div class="col-md-1 border-right border-left"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Cant.')}}</b> </div>
-                            <div class="col-md-1 rounded border-right border-left"></div>
+                            <div class="col-md-1 border-right border-left"></div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -239,13 +239,13 @@
                         @foreach ($_SESSION["carritodll"] as $indice=>$arreglo)
                         <?php $numart++;?>
                         <div class="row">
-                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglo["articulo"] . '.jpg')) {
-                                echo '<img class="border rounded" id="img-'.$numart.'" src="/images/catalogo/' . $arreglo["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
+                            <div class="col-md-2 border" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglo["articulo"] . '.jpg')) {
+                                echo '<img class="border" id="img-'.$numart.'" src="/images/catalogo/' . $arreglo["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
                             } else {
-                                echo '<img class="border rounded" src="/img/productos/default_product.png" alt="no img" style="max-height:80px">';
+                                echo '<img class="border" src="/img/productos/default_product.png" alt="no img" style="max-height:80px">';
                             }
                             ?> </div>
-                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px;">{{$arreglo["articulo"]}}</div>
+                            <div class="col-md-2 border" style="text-align:center; padding:10px;">{{$arreglo["articulo"]}}</div>
                             <div class="col-md-2 border" style="text-align:center; padding:10px;">{{$arreglo["codigo"]}}</div>
                             <div class="col-md-4 border" style="text-align:center; padding:10px;"><small><b>{{$arreglo["desc"]}}</b></small>
                             </div>
@@ -254,7 +254,7 @@
                                     min="1" @if($arreglo["excedente"]==0) max="{{$arreglo["autorizado"]}}" @endif value="{{$arreglo["cantidad"]}}" onchange="cambiocantd{{$numart}}()" onkeyup="cambiocantd{{$numart}}()" required>
                                 <input id="artdol{{$numart}}" type="hidden" value="{{$arreglo["precio"]}}">
                             </div>
-                            <div class="col-md-1 border rounded-right" style="text-align:center; padding:10px;">
+                            <div class="col-md-1 border" style="text-align:center; padding:10px;">
                                 <form action="{{route('quititem', app()->getLocale())}}" method="get">
                                     @csrf
                                 <input type="hidden" name="qarticulo" value="{{$arreglo["articulo"]}}">
