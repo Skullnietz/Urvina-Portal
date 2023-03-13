@@ -52,17 +52,17 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-2 border-right border-left"
+                            <div class="col-md-2 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Imagen')}}</b> </div>
-                            <div class="col-md-2 border-right border-left"
+                            <div class="col-md-2 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Artículo')}}</b> </div>
-                            <div class="col-md-2 border-right border-left"
+                            <div class="col-md-2 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Código')}}</b> </div>
-                            <div class="col-md-4 border-right border-left"
+                            <div class="col-md-4 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Descripción')}}</b> </div>
-                            <div class="col-md-1 border-right border-left"
+                            <div class="col-md-1 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Cant.')}}</b> </div>
-                            <div class="col-md-1 border-right border-left"></div>
+                            <div class="col-md-1 border border-light"></div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -220,17 +220,17 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-2 border-right border-left"
+                            <div class="col-md-2 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Imagen')}}</b> </div>
-                            <div class="col-md-2 border-right border-left"
+                            <div class="col-md-2 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Artículo')}}</b> </div>
-                            <div class="col-md-2 border-right border-left"
+                            <div class="col-md-2 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Código')}}</b> </div>
-                            <div class="col-md-4 border-right border-left"
+                            <div class="col-md-4 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Descripción')}}</b> </div>
-                            <div class="col-md-1 border-right border-left"
+                            <div class="col-md-1 border border-light"
                                 style="text-align:center; background-color:#0E7E2D; color:white"><b>{{__('Cant.')}}</b> </div>
-                            <div class="col-md-1 border-right border-left"></div>
+                            <div class="col-md-1 border border-light"></div>
                         </div>
                     </div>
                     <div class="card-body">
