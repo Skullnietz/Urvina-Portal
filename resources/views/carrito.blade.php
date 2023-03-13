@@ -70,7 +70,7 @@
                         <?php $numitem = 0;?>
                         @foreach ($_SESSION["carritopes"] as $indice=>$arreglop)
                         <?php $numitem++;?>
-                        <div class="row border-secondary">
+                        <div class="row border-dark">
                             <div class="col-md-2 border" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglop["articulo"] . '.jpg')) {
                                 echo '<img class="border rounded" id="img-'.$numitem.'" src="/images/catalogo/' . $arreglop["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
                             } else {
@@ -238,7 +238,7 @@
 
                         @foreach ($_SESSION["carritodll"] as $indice=>$arreglo)
                         <?php $numart++;?>
-                        <div class="row border-secondary">
+                        <div class="row border-dark">
                             <div class="col-md-2 border" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglo["articulo"] . '.jpg')) {
                                 echo '<img class="border" id="img-'.$numart.'" src="/images/catalogo/' . $arreglo["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
                             } else {
