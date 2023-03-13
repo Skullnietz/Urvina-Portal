@@ -424,7 +424,7 @@
                 var artipes{{$artnumbpe}} = document.getElementById("artpes{{$artnumbpe}}").value;
                 var articulopes{{$artnumbpe}} = parseFloat(artipes{{$artnumbpe}}).toFixed(2);
                 var cantipes{{$artnumbpe}} = document.getElementById("cantpes{{$artnumbpe}}").value;
-                
+                console.log(cantipes{{$artnumbpe}});
                 var cantidadpes{{$artnumbpe}} = parseFloat(cantipes{{$artnumbpe}}).toFixed(2);
                 var multi{{$artnumbpe}} = cantidadpes{{$artnumbpe}} * articulopes{{$artnumbpe}};
                 document.getElementById("totalartpes{{$artnumbpe}}").value = multi{{$artnumbpe}}.toFixed(2);
@@ -456,7 +456,7 @@
                 var artidol{{$itemnumdo}} = document.getElementById("artdol{{$itemnumdo}}").value;
                 var articulodol{{$itemnumdo}} = parseFloat(artidol{{$itemnumdo}}).toFixed(2);
                 var cantidol{{$itemnumdo}} = document.getElementById("cantdol{{$itemnumdo}}").value;
-
+                console.log(cantidol{{$itemnumdo}});
                 var cantidaddol{{$itemnumdo}} = parseFloat(cantidol{{$itemnumdo}}).toFixed(2);
                 var multi{{$itemnumdo}} = cantidaddol{{$itemnumdo}} * articulodol{{$itemnumdo}};
                 document.getElementById("totalart{{$itemnumdo}}").value = multi{{$itemnumdo}}.toFixed(2);
@@ -626,14 +626,7 @@
       startTimer();
     }
     </script>
-    <script>
-        function cambiocantp() {
-            document.getElementById("artpes").value;
-            document.getElementById("cantpes").value;
-        }
 
-
-    </script>
 
 
 
