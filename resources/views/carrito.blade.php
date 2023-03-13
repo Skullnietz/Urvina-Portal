@@ -195,7 +195,7 @@
                         <?php $varccantp= 0; ?>
                         @foreach($_SESSION["carritopes"] as $indice=>$arreglopes)
                         <?php $varccantp++; ?>
-                        <input class="form-control" name="cantformpes{{$varccantp}}" type="hidden" value="">
+                        <input class="form-control" name="cantformpes{{$varccantp}}" type="hidden">
                         @endforeach
 
 
@@ -364,7 +364,7 @@
                         <?php $varccantd= 0; ?>
                         @foreach($_SESSION["carritodll"] as $indice=>$arreglodll)
                         <?php $varccantd++; ?>
-                        <input class="form-control" name="cantformdol{{$varccantd}}" type="hidden" value="">
+                        <input class="form-control" name="cantformdol{{$varccantd}}" type="hidden" >
                         @endforeach
 
 
@@ -427,7 +427,7 @@
                 var cantidadpes{{$artnumbpe}} = parseFloat(cantipes{{$artnumbpe}}).toFixed(2);
                 var multi{{$artnumbpe}} = cantidadpes{{$artnumbpe}} * articulopes{{$artnumbpe}};
                 document.getElementById("totalartpes{{$artnumbpe}}").value = multi{{$artnumbpe}}.toFixed(2);
-                document.getElementById("cantformpes{{$artnumbpe}}").value = cantipes{{$artnumbpe}}
+                
                 // Suma de los totales Dolares
                 <?php $artnumbpeso=0; ?>
                 @foreach ($_SESSION["carritopes"] as $indicepesosca=>$arreglopesosca)
@@ -449,7 +449,7 @@
             <?php $itemnumdo=0; ?>
             @foreach ($_SESSION["carritodll"] as $indicedola=>$arreglodola)
             <?php $itemnumdo++; ?>
-            // Subtotal del articulo {{$itemnumdo}} (Dolares)
+
             function subtotalarticulod{{$itemnumdo}}(){
                 var artidol{{$itemnumdo}} = document.getElementById("artdol{{$itemnumdo}}").value;
                 var articulodol{{$itemnumdo}} = parseFloat(artidol{{$itemnumdo}}).toFixed(2);
@@ -457,7 +457,7 @@
                 var cantidaddol{{$itemnumdo}} = parseFloat(cantidol{{$itemnumdo}}).toFixed(2);
                 var multi{{$itemnumdo}} = cantidaddol{{$itemnumdo}} * articulodol{{$itemnumdo}};
                 document.getElementById("totalart{{$itemnumdo}}").value = multi{{$itemnumdo}}.toFixed(2);
-                document.getElementById("cantformdol{{$itemnumdo}}").value = cantidol{{$itemnumdo}}
+
 
                 // Suma de los totales Dolares
                 <?php $itemnumdol=0; ?>
