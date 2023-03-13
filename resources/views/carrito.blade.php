@@ -3,7 +3,7 @@
 @section('title', __('Carrito'))
 
 @section('content_header')
-{{dd($_SESSION)}}
+{{dd(($arreglo['restante']+$arreglo['cantidad']))}}
 <style>
     @media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */
     .flag{
