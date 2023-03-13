@@ -197,11 +197,7 @@
                         <?php $varccantp++; ?>
                         <input class="form-control" name="cantformpes{{$varccantp}}" type="hidden" value="">
                         @endforeach
-                        <?php $varccantd= 0; ?>
-                        @foreach($_SESSION["carritodll"] as $indice=>$arreglodll)
-                        <?php $varccantd++; ?>
-                        <input class="form-control" name="cantformdol{{$varccantd}}" type="hidden" value="">
-                        @endforeach
+
 
 
 
@@ -365,6 +361,11 @@
                         <input class="form-control" name="observaciones" type="hidden" value="Observaciones" required>
                         <input class="form-control" name="planta" type="hidden" value="{{trim($_SESSION['usuario']->Planta)}}" required>
                         <input class="form-control" name="moneda" type="hidden" value="Dolares" required>
+                        <?php $varccantd= 0; ?>
+                        @foreach($_SESSION["carritodll"] as $indice=>$arreglodll)
+                        <?php $varccantd++; ?>
+                        <input class="form-control" name="cantformdol{{$varccantd}}" type="hidden" value="">
+                        @endforeach
 
 
 
