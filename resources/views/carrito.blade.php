@@ -195,7 +195,7 @@
                         <?php $varccantp= 0; ?>
                         @foreach($_SESSION["carritopes"] as $indice=>$arreglopes)
                         <?php $varccantp++; ?>
-                        <input class="form-control" id="cantformpes{{$varccantp}}" name="cantformpes{{$varccantp}}" type="hidden" value="0">
+                        <input class="form-control" id="cantformpes{{$varccantp}}" name="cantformpes{{$varccantp}}" type="hidden" value="{{$arreglopes["cantidad"]}}">
                         @endforeach
 
 
@@ -364,7 +364,7 @@
                         <?php $varccantd= 0; ?>
                         @foreach($_SESSION["carritodll"] as $indice=>$arreglodll)
                         <?php $varccantd++; ?>
-                        <input class="form-control" id="cantformdol{{$varccantd}}" name="cantformdol{{$varccantd}}" type="hidden" value="0">
+                        <input class="form-control" id="cantformdol{{$varccantd}}" name="cantformdol{{$varccantd}}" type="hidden" value="{{$arreglodll["cantidad"]}}">
                         @endforeach
 
 
