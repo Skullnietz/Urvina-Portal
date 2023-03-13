@@ -258,9 +258,10 @@ class CarritoController extends Controller
 
 
 
-
+            $contadoritemdolar=0;
              foreach($_SESSION["carritodll"] as $indice => $arreglo){
-                if(($arreglo['restante']+$arreglo['cantidad'])>$arreglo['autorizado']){
+                $contadoritemdolar++;
+                if(($arreglo['restante']+$arreglo['restante']+$request->formdol.$contadoritemdolar)>$arreglo['autorizado']){
                     Alert::error(__('No esta autorizada esta compra'), __('Ha excedido su limite, contacte a soporte'));
                     return redirect()->back();
                 }
@@ -277,7 +278,7 @@ class CarritoController extends Controller
                         "idVenta" => intval($IDV),
                         "item" => $arreglo['item'],
                         "option" => $arreglo['subcuenta'],
-                        "quantity" => $arreglo['cantidad'],
+                        "quantity" => $request->formdol.$contadoritemdolar,
                         "price" => $arreglo['precio'],
                     ]
                     );
@@ -346,9 +347,10 @@ class CarritoController extends Controller
 
 
 
-
+            $contadoritempesos=0;
              foreach($_SESSION["carritopes"] as $indice => $arreglo){
-                if(($arreglo['restante']+$arreglo['cantidad'])>$arreglo['autorizado']){
+                $contadoritempesos++;
+                if(($arreglo['restante']+$request->formpes.$contadoritempesos)>$arreglo['autorizado']){
                     Alert::error(__('No esta autorizada esta compra'), __('Ha excedido su limite, contacte a soporte'));
                     return redirect()->back();
                 }
@@ -365,7 +367,7 @@ class CarritoController extends Controller
                         "idVenta" => intval($IDV),
                         "item" => $arreglo['item'],
                         "option" => $arreglo['subcuenta'],
-                        "quantity" => $arreglo['cantidad'],
+                        "quantity" => $request->formdol.$contadoritempesos,
                         "price" => $arreglo['precio'],
                     ]
                     );
