@@ -316,7 +316,8 @@ class CarritoController extends Controller
 
 
         }else {
-            return redirect()->route('inicio', app()->getLocale());
+            Alert::info(__('No tiene articulos'), __('Añada articulos a su carrito de compra'));
+            return redirect()->back();
         }
 
     }
@@ -406,7 +407,8 @@ class CarritoController extends Controller
 
 
         }else {
-            return redirect()->route('inicio', app()->getLocale());
+            Alert::info(__('No tiene articulos'), __('Añada articulos a su carrito de compra'));
+            return redirect()->back();
         }
 
     }
