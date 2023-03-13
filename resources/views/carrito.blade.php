@@ -71,22 +71,22 @@
                         @foreach ($_SESSION["carritopes"] as $indice=>$arreglop)
                         <?php $numitem++;?>
                         <div class="row">
-                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglop["articulo"] . '.jpg')) {
+                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglop["articulo"] . '.jpg')) {
                                 echo '<img class="border rounded" id="img-'.$numitem.'" src="/images/catalogo/' . $arreglop["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
                             } else {
                                 echo '<img class="border rounded" src="/img/productos/default_product.png" alt="no img" style="max-height:80px">';
                             }
                             ?> </div>
-                            <div class="col-2 border rounded-left" style="text-align:center; padding:10px"> {{$arreglop["articulo"]}}</div>
-                            <div class="col-2 border" style="text-align:center; padding:10px">{{$arreglop["codigo"]}}</div>
-                            <div class="col-4 border" style="text-align:center; padding:10px"><small><b>{{__($arreglop["desc"])}}</b></small>
+                            <div class="col-md-2 border rounded-left" style="text-align:center; padding:10px"> {{$arreglop["articulo"]}}</div>
+                            <div class="col-md-2 border" style="text-align:center; padding:10px">{{$arreglop["codigo"]}}</div>
+                            <div class="col-md-4 border" style="text-align:center; padding:10px"><small><b>{{__($arreglop["desc"])}}</b></small>
                             </div>
-                            <div class="col-1 border" style="text-align:center; padding:10px"><input id="cantpes{{$numitem}}"
+                            <div class="col-md-1 border" style="text-align:center; padding:10px"><input id="cantpes{{$numitem}}"
                                     style="text-align:center" @if(isset($arreglop["talla"])) class="form-control disabled" disabled title="{{__('Debe eliminar este item para cambiar cantidad')}}" @else class="form-control" @endif type="number"  min="1"  @if($arreglop["excedente"]==0) max="{{$arreglop["autorizado"]}}" @endif value="{{$arreglop["cantidad"]}}"
                                     onchange="cambiocantp{{$numitem}}()" onkeyup="cambiocantp{{$numitem}}()" required>
                             </div>
                             <input id="artpes{{$numitem}}" type="hidden" value="{{$arreglop["precio"]}}">
-                            <div class="col-1 border rounded-right" style="text-align:center; padding:10px">
+                            <div class="col-md-1 border rounded-right" style="text-align:center; padding:10px">
 
                                 <form action="{{route('quititem', app()->getLocale())}}" method="get">
                                     @csrf
