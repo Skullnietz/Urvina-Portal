@@ -192,6 +192,16 @@
                         <input class="form-control" name="observaciones" type="hidden" value="Observaciones">
                         <input class="form-control" name="planta" type="hidden" value="{{trim($_SESSION['usuario']->Planta)}}">
                         <input class="form-control" name="moneda" type="hidden" value="Pesos">
+                        <?php $varccantp= 0; ?>
+                        @foreach($_SESSION["carritopes"] as $indice=>$arreglopes)
+                        <?php $varccantp++; ?>
+                        <input class="form-control" name="cantformpes{{$varccantp}}" type="hidden" value="">
+                        @endforeach
+                        <?php $varccantd= 0; ?>
+                        @foreach($_SESSION["carritodll"] as $indice=>$arreglodll)
+                        <?php $varccantd++; ?>
+                        <input class="form-control" name="cantformdol{{$varccantd}}" type="hidden" value="">
+                        @endforeach
 
 
 
@@ -416,6 +426,7 @@
                 var cantidadpes{{$artnumbpe}} = parseFloat(cantipes{{$artnumbpe}}).toFixed(2);
                 var multi{{$artnumbpe}} = cantidadpes{{$artnumbpe}} * articulopes{{$artnumbpe}};
                 document.getElementById("totalartpes{{$artnumbpe}}").value = multi{{$artnumbpe}}.toFixed(2);
+                document.getElementById("cantformpes{{$artnumbpe}}").value = cantipes{{$artnumbpe}}
                 // Suma de los totales Dolares
                 <?php $artnumbpeso=0; ?>
                 @foreach ($_SESSION["carritopes"] as $indicepesosca=>$arreglopesosca)
@@ -445,6 +456,7 @@
                 var cantidaddol{{$itemnumdo}} = parseFloat(cantidol{{$itemnumdo}}).toFixed(2);
                 var multi{{$itemnumdo}} = cantidaddol{{$itemnumdo}} * articulodol{{$itemnumdo}};
                 document.getElementById("totalart{{$itemnumdo}}").value = multi{{$itemnumdo}}.toFixed(2);
+                document.getElementById("cantformdol{{$itemnumdo}}").value = cantidol{{$itemnumdo}}
 
                 // Suma de los totales Dolares
                 <?php $itemnumdol=0; ?>
