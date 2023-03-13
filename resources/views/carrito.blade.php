@@ -424,10 +424,11 @@
                 var artipes{{$artnumbpe}} = document.getElementById("artpes{{$artnumbpe}}").value;
                 var articulopes{{$artnumbpe}} = parseFloat(artipes{{$artnumbpe}}).toFixed(2);
                 var cantipes{{$artnumbpe}} = document.getElementById("cantpes{{$artnumbpe}}").value;
+                cantipes{{$artnumbpe}}  = document.getElementById("cantformpes{{$artnumbpe}}").value;
                 var cantidadpes{{$artnumbpe}} = parseFloat(cantipes{{$artnumbpe}}).toFixed(2);
                 var multi{{$artnumbpe}} = cantidadpes{{$artnumbpe}} * articulopes{{$artnumbpe}};
                 document.getElementById("totalartpes{{$artnumbpe}}").value = multi{{$artnumbpe}}.toFixed(2);
-                document.getElementById("cantformpes{{$artnumbpe}}").value = document.getElementById("cantpes{{$artnumbpe}}").value;
+
 
                 // Suma de los totales Dolares
                 <?php $artnumbpeso=0; ?>
@@ -455,10 +456,11 @@
                 var artidol{{$itemnumdo}} = document.getElementById("artdol{{$itemnumdo}}").value;
                 var articulodol{{$itemnumdo}} = parseFloat(artidol{{$itemnumdo}}).toFixed(2);
                 var cantidol{{$itemnumdo}} = document.getElementById("cantdol{{$itemnumdo}}").value;
+                var cantidol{{$itemnumdo}} = document.getElementById("cantformdol{{$itemnumdo}}").value;
                 var cantidaddol{{$itemnumdo}} = parseFloat(cantidol{{$itemnumdo}}).toFixed(2);
                 var multi{{$itemnumdo}} = cantidaddol{{$itemnumdo}} * articulodol{{$itemnumdo}};
                 document.getElementById("totalart{{$itemnumdo}}").value = multi{{$itemnumdo}}.toFixed(2);
-                document.getElementById("cantformdol{{$itemnumdo}}").value = document.getElementById("cantdol{{$itemnumdo}}").value;
+
 
 
                 // Suma de los totales Dolares
