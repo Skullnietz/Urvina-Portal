@@ -110,8 +110,8 @@
                     <hr>
 
                     <div class="row" style="">
-                        <div class="col-6"></div>
-                        <div class="col-3" style="text-align:left; margin-left:10px; margin-top:10px"><label
+                        <div class="col-md-6"></div>
+                        <div class="col-md-3" style="text-align:left; margin-left:10px; margin-top:10px"><label
                                 class="">{{__('Importe Total Pesos:')}} <b style="color:blue"></b></label>
                         </div>
                         <div class="col-2" style="text-align:right; margin-right:10px">
