@@ -187,14 +187,15 @@
                                 @endif
                             </div>
                         </div>
+                        <hr>
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01"><i
-                                            class="fas fa-eye"></i>&nbsp;| {{__('Observaciones')}}</label>
+                                            class="fas fa-users-cog"></i>&nbsp;| {{__('Equipo/Trabajo')}}</label>
                                 </div>
 
-                                <input class="form-control" name="observaciones" type="hidden" value="Observaciones">
+                                <input class="form-control" name="observaciones" value="Observaciones">
 
                             </div>
                         </div>
@@ -367,6 +368,7 @@
                                 @endif
                             </div>
                         </div>
+                        <hr>
                         <div class="row">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -374,7 +376,7 @@
                                             class="fas fa-eye"></i>&nbsp;| {{__('Observaciones')}}</label>
                                 </div>
 
-                                <input class="form-control" name="observaciones" type="hidden" value="" required>
+                                <input class="form-control" name="observaciones"  value="" required>
 
                             </div>
                         </div>
