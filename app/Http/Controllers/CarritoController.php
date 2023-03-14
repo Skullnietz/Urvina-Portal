@@ -261,7 +261,8 @@ class CarritoController extends Controller
             $contadoritemdolar=0;
              foreach($_SESSION["carritodll"] as $indice => $arreglo){
                 $contadoritemdolar++;
-                if(($arreglo['restante']+$request->input('formdol'.$contadoritemdolar))>$arreglo['autorizado']){
+                $inputdll = $request->input('formdol'.$contadoritemdolar);
+                if(($arreglo['restante']+$inputdll)>$arreglo['autorizado']){
                     Alert::error(__('No esta autorizada esta compra'), __('Ha excedido su limite, contacte a soporte'));
                     return redirect()->back();
                 }
@@ -278,7 +279,7 @@ class CarritoController extends Controller
                         "idVenta" => intval($IDV),
                         "item" => $arreglo['item'],
                         "option" => $arreglo['subcuenta'],
-                        "quantity" => $request->formdol.$contadoritemdolar,
+                        "quantity" => $inputdll,
                         "price" => $arreglo['precio'],
                     ]
                     );
@@ -352,7 +353,8 @@ class CarritoController extends Controller
             $contadoritempesos=0;
              foreach($_SESSION["carritopes"] as $indice => $arreglo){
                 $contadoritempesos++;
-                if(($arreglo['restante']+$request->input('formpes'.$contadoritempesos))>$arreglo['autorizado']){
+                $inputpesos=$request->input('formpes'.$contadoritempesos);
+                if(($arreglo['restante']+$inputpesos)>$arreglo['autorizado']){
                     Alert::error(__('No esta autorizada esta compra'), __('Ha excedido su limite, contacte a soporte'));
                     return redirect()->back();
                 }
@@ -369,7 +371,7 @@ class CarritoController extends Controller
                         "idVenta" => intval($IDV),
                         "item" => $arreglo['item'],
                         "option" => $arreglo['subcuenta'],
-                        "quantity" => $request->formdol.$contadoritempesos,
+                        "quantity" => $inputpesos,
                         "price" => $arreglo['precio'],
                     ]
                     );
