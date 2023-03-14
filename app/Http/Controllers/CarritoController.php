@@ -235,7 +235,7 @@ class CarritoController extends Controller
     /// Confirmar Venta Dolares /////////
     public function confCartDll(Request $request){
         session_start();
-        if(isset($_SESSION['carritodll'])){
+        if(count($_SESSION['carritodll'])>0){
             $venta = DB::select(
                 "EXEC spInsertaVenta
                 @UsuarioCteCorp=:userId,
@@ -325,8 +325,8 @@ class CarritoController extends Controller
     /// Confirmar Venta Pesos /////////
     public function confCartPes(Request $request){
         session_start();
-        if(isset($_SESSION['carritopes'])){
-        
+        if(count($_SESSION['carritopes'])>0){
+
             $venta = DB::select(
                 "EXEC spInsertaVenta
                 @UsuarioCteCorp=:userId,
