@@ -157,7 +157,7 @@
                                             <label class="input-group-text" for="inputGroupSelect01"><i
                                                     class="fas fa-chart-area"></i>&nbsp;| {{__('Departamento')}}</label>
                                         </div>
-                                        <select class="custom-select" id="inputGroupSelect01" name="departamento">
+                                        <select class="custom-select" id="inputGroupSelect01" name="departamento" required>
                                             @foreach ($departamentos as $departamento)
                                             <option value="{{$departamento->Departamento}}">{{$departamento->Nombre}}</option>
 
@@ -178,7 +178,7 @@
                                 @if(count($equipos) == 0)
                                 <input class="form-control" name="referencia" type="text">
                                 @else
-                                <select class="custom-select" id="inputGroupSelect01" name="referencia"  required>
+                                <select class="custom-select" id="inputGroupSelect01" name="referencia" pattern="[A-Za-z0-9]+" required>
                                     <option value="">{{__('Selecciona un equipo')}}...</option>
                                     @foreach ($equipos as $equipo)
                                     <option value="{{$equipo->Equipo}}">{{$equipo->Equipo}}</option>
@@ -195,7 +195,7 @@
                                             class="fas fa-users-cog"></i>&nbsp;| {{__('Equipo/Trabajo')}}</label>
                                 </div>
 
-                                <input class="form-control" name="observaciones" value="Observaciones">
+                                <input class="form-control" name="observaciones" value="" pattern="[A-Za-z0-9]+" required>
 
                             </div>
                         </div>
@@ -357,7 +357,7 @@
                                             class="fas fa-users-cog"></i>&nbsp;| {{__('Equipo/Trabajo')}}</label>
                                 </div>
                                 @if(count($equipos) == 0)
-                                <input name="referencia" class="form-control" type="text" required>
+                                <input name="referencia" class="form-control" type="text" pattern="[A-Za-z0-9]+" required>
                                 @else
                                 <select class="custom-select" id="inputGroupSelect01" name="referencia"  required>
                                     <option value="">{{__('Selecciona un equipo')}}...</option>
@@ -376,7 +376,7 @@
                                             class="fas fa-eye"></i>&nbsp;| {{__('Observaciones')}}</label>
                                 </div>
 
-                                <input class="form-control" name="observaciones"  value="" required>
+                                <input class="form-control" name="observaciones"  value="" pattern="[A-Za-z0-9]+" required>
 
                             </div>
                         </div>
