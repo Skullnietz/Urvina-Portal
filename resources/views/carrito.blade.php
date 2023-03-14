@@ -114,7 +114,7 @@
                         <div class="col-md-3" style="text-align:left; margin-left:10px; margin-top:10px"><label
                                 class="">{{__('Importe Total Pesos:')}} <b style="color:blue"></b></label>
                         </div>
-                        <div class="col-2" style="text-align:right; margin-right:10px">
+                        <div class="col-md-2" style="text-align:right; margin-right:10px">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span style="font-weight:bold; color:blue" class="input-group-text">$</span>
