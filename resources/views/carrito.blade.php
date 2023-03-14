@@ -3,7 +3,7 @@
 @section('title', __('Carrito'))
 
 @section('content_header')
-{{dd($_SESSION)}}
+{{dd(count($_SESSION["carritodll"]))}}
 <style>
     @media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */
     .flag{
