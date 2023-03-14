@@ -3,7 +3,7 @@
 @section('title', __('Carrito'))
 
 @section('content_header')
-
+{{dd($_SESSION)}}
 <style>
     @media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */
     .flag{

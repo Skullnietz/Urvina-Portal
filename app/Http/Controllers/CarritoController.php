@@ -326,6 +326,7 @@ class CarritoController extends Controller
     public function confCartPes(Request $request){
         session_start();
         if(isset($_SESSION['carritopes'])){
+        
             $venta = DB::select(
                 "EXEC spInsertaVenta
                 @UsuarioCteCorp=:userId,
