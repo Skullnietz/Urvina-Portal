@@ -187,9 +187,20 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i
+                                            class="fas fa-eye"></i>&nbsp;| {{__('Observaciones')}}</label>
+                                </div>
+
+                                <input class="form-control" name="observaciones" type="hidden" value="Observaciones">
+
+                            </div>
+                        </div>
 
 
-                        <input class="form-control" name="observaciones" type="hidden" value="Observaciones">
+
                         <input class="form-control" name="planta" type="hidden" value="{{trim($_SESSION['usuario']->Planta)}}">
                         <input class="form-control" name="moneda" type="hidden" value="Pesos">
                         <?php $varccantp= 0; ?>
@@ -356,9 +367,20 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01"><i
+                                            class="fas fa-eye"></i>&nbsp;| {{__('Observaciones')}}</label>
+                                </div>
+
+                                <input class="form-control" name="observaciones" type="hidden" value="" required>
+
+                            </div>
+                        </div>
 
 
-                        <input class="form-control" name="observaciones" type="hidden" value="Observaciones" required>
+
                         <input class="form-control" name="planta" type="hidden" value="{{trim($_SESSION['usuario']->Planta)}}" required>
                         <input class="form-control" name="moneda" type="hidden" value="Dolares" required>
                         <?php $varccantd= 0; ?>
