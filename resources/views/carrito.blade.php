@@ -79,7 +79,7 @@
                             ?> </div>
                             <div class="col-md-2 border " style="text-align:center; padding:10px"> {{$arreglop["articulo"]}}</div>
                             <div class="col-md-2 border" style="text-align:center; padding:10px">{{$arreglop["codigo"]}}</div>
-                            <div class="col-md-4 border" style="text-align:center; padding:10px"><small><b>{{__($arreglop["desc"])}}</b></small>
+                            <div class="col-md-4 border" style="text-align:center; padding:10px"><a href="{{route('item', [app()->getLocale(), trim($arreglop["articulo"])])}}"><small><b>{{__($arreglop["desc"])}}</b></a></small>
                             </div>
                             <div class="col-md-1 border" style="text-align:center; padding:10px"><input id="cantpes{{$numitem}}"
                                     style="text-align:center" @if(isset($arreglop["talla"])) class="form-control disabled" disabled title="{{__('Debe eliminar este item para cambiar cantidad')}}" @else class="form-control" @endif type="number"  min="1"  @if($arreglop["excedente"]==0) max="{{$arreglop["restante"]}}" @endif value="{{$arreglop["cantidad"]}}"
@@ -253,7 +253,7 @@
                             ?> </div>
                             <div class="col-md-2 border" style="text-align:center; padding:10px;">{{$arreglo["articulo"]}}</div>
                             <div class="col-md-2 border" style="text-align:center; padding:10px;">{{$arreglo["codigo"]}}</div>
-                            <div class="col-md-4 border" style="text-align:center; padding:10px;"><small><b>{{$arreglo["desc"]}}</b></small>
+                            <div class="col-md-4 border" style="text-align:center; padding:10px;"><a href="{{route('item', [app()->getLocale(), trim($arreglo["articulo"])])}}"><small><b>{{$arreglo["desc"]}}</b></small></a>
                             </div>
                             <div class="col-md-1 border" style="text-align:center; padding:10px;">
                                 <input @if(isset($arreglo["talla"])) class="form-control disabled" disabled title="Debe eliminar este item para cambiar cantidad" @else class="form-control" @endif id="cantdol{{$numart}}" style="text-align:center" class="form-control" type="number"
