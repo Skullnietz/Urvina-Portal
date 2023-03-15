@@ -20,10 +20,11 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::prefix('{language}')->group(function () {
+    Route::redirect('/', 'inicio');
     Route::get('/', function () {
         return view('login');
     });
-    
+
     Route::get('/login', function () {
         return view('login');
     })->name('login');
