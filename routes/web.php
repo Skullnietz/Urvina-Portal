@@ -18,7 +18,7 @@ use App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::redirect('/', 'es/login');
+Route::redirect('/', 'home');
 Route::prefix('{language}')->group(function () {
     Route::get('/', function () {
         return view('login');
