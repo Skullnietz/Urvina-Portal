@@ -11,7 +11,6 @@ class LoginController extends Controller
 {
 
     public function login(Request $request){
-        //Validar Datos
         $msg = "";
         $user = DB::select(
             "EXEC spAccesoApp :user, :password",
@@ -20,6 +19,11 @@ class LoginController extends Controller
                 "password" => $request->password ,
             ]
         );
+        if(isset($_SESSION)){
+            return redirect()->route('home', app()->getLocale())->with('usuario', $user[0]);
+        }else{
+        //Validar Datos
+
 
         if($user[0]->Nombre == "Usuario o Contraseña Incorrecta"){
             $msg = "Usuario o Contraseña Incorrecta";
@@ -34,6 +38,7 @@ class LoginController extends Controller
             $_SESSION['usuario'] = $user[0];
             return redirect()->route('home', app()->getLocale())->with('usuario', $user[0]);
         }
+    }
 
         //$user[0]->Nombre
     }
