@@ -230,7 +230,7 @@ $limite = $articulo[0]->Mensaje2;
                                                 <td class="border" style="text-align:right">{{ __($articulo[0]->Periodo) }}
                                                 </td>
                                             @else
-                                                <td class="border" style="text-align:right">{{ $articulo[0]->Perido }}</td>
+                                                <td class="border" style="text-align:right">{{ __($articulo[0]->Perido) }}</td>
                                             @endif
                                         </tr>
                                         <?php
