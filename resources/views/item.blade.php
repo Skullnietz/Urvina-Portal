@@ -372,7 +372,7 @@ $limite = $articulo[0]->Mensaje2;
                                                 </div>
                                                 <?php
                                                 if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
-                                                    echo '<div class=" rounded"
+                                                    echo '<br><div class=" rounded"
                                         style="color:#640d14;padding:20px;border: 1px solid #ee6b6e;background-color:#ffcbd1"
                                         role="alert">
                                         <div class="row">
@@ -448,7 +448,7 @@ $limite = $articulo[0]->Mensaje2;
                                             </b> </div>
                                     </div>
                                     <?php if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
-                                        echo '<div class=" rounded"
+                                        echo '<br><div class=" rounded"
                             style="color:#640d14;padding:20px;border: 1px solid #ee6b6e;background-color:#ffcbd1"
                             role="alert">
                             <div class="row">
