@@ -262,7 +262,7 @@ class CarritoController extends Controller
              foreach($_SESSION["carritodll"] as $indice => $arreglo){
                 $contadoritemdolar++;
                 $inputdll = $request->input('formdol'.$contadoritemdolar);
-                dd($arreglo['restante']);
+                dd($_SESSION);
                 if(($arreglo['restante']+$inputdll)>$arreglo['autorizado']){
                     Alert::error(__('No esta autorizada esta compra'), __('Ha excedido su limite, contacte a soporte'));
                     return redirect()->back();
