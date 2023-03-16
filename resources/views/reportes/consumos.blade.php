@@ -428,27 +428,16 @@ Highcharts.chart('container', {
 
   credits: { enabled: false },
 
-  series: [
-    {
-      name: 'Consumos por departamento',
-      colorByPoint: true,
-      data: [
-        {
-          name: '1',
-          y: 6675,
-        },
-        {
-          name: '2',
-          y: 1512,
-        },
-        {
-          name: '4',
-          y: 1241,
-        },
-
-      ]
-    }
-  ],
+  series: [{
+    name: '1',
+    data: [6675]
+  }, {
+    name: '2',
+    data: [1241]
+  }, {
+    name: '4',
+    data: [1,241]
+  }],
   responsive: {
     rules: [{
       condition: {
