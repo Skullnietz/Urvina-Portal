@@ -411,8 +411,7 @@ Highcharts.chart('container', {
   },
 
   xAxis: {
-    categories: ['1', '2', '4'],
-    type: '{{__('Departamento')}}'
+    text: '{{__('Departamento')}}'
   },
   yAxis: {
     title: {
