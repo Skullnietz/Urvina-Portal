@@ -597,7 +597,7 @@ $limite = $articulo[0]->Mensaje2;
 
     function startTimer() {
       // wait 2 seconds before calling goInactive
-      timeoutID = window.setTimeout(goInactive, 300000);
+      timeoutID = window.setTimeout(goInactive, 600000);
     }
 
     function resetTimer(e) {
