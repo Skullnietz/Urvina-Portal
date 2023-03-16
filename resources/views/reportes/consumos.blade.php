@@ -436,7 +436,7 @@ Highcharts.chart('container', {
     data: [1241]
   }, {
     name: '4',
-    data: [1,241]
+    data: [1241]
   }],
   responsive: {
     rules: [{
