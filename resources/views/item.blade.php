@@ -183,14 +183,17 @@ $change = $articulo[0]->Moneda; ?>
 
                                             </td>
                                         </tr>
+
+                                    @endif
+                                    @if (isset($articulo[0]->Precio))
                                         <tr>
                                             <td class="border"><b>{{__('Precio:')}}</b></td>
                                             <td class="border" style="text-align:right">
                                                 ${{ number_format($articulo[0]->Precio, 2, '.', '') }}
                                                 {{ __($articulo[0]->Moneda) }}</td>
                                         </tr><br>
-                                    @else
                                     @endif
+
                                     <br>
 
                                 </table>
@@ -318,14 +321,14 @@ $change = $articulo[0]->Moneda; ?>
                                                                 if(isset($cantidad)){
                                                                     echo $cantidad + $articulo[0]->Consumo;
                                                                 }else{
-                                                                    echo number_format($articulo[0]->Consumo);
+                                                                    echo $articulo[0]->Consumo;
                                                                 }
                                                             }
                                                             if (str_contains($change,'Pesos')){
                                                                 if(isset($cantidadpes)){
                                                                     echo $cantidadpes + $articulo[0]->Consumo;
                                                                 }else{
-                                                                    echo number_format($articulo[0]->Consumo);
+                                                                    echo $articulo[0]->Consumo;
                                                                 }
                                                             }
                                                             ?>
@@ -370,7 +373,7 @@ $change = $articulo[0]->Moneda; ?>
                                                 @if(isset($_SESSION['carritodll'][$ART]))
                                                 {{ $_SESSION['carritodll'][$ART]["cantidad"]+$articulo[0]->Consumo}}
                                                 @else
-                                                {{ number_format($articulo[0]->Consumo) }}
+                                                {{ $articulo[0]->Consumo }}
                                                 @endif
                                                 @endif
 
@@ -378,7 +381,7 @@ $change = $articulo[0]->Moneda; ?>
                                                 @if(isset($_SESSION['carritopes'][$ART]))
                                                 {{ $_SESSION['carritopes'][$ART]["cantidad"]}}
                                                 @else
-                                                {{ number_format($articulo[0]->Consumo) }}
+                                                {{ $articulo[0]->Consumo }}
                                                 @endif
                                                 @endif
                                             </b></div>
