@@ -409,12 +409,9 @@ Highcharts.chart('container', {
     align: 'left',
     text: '{{__('Mostrando los 10 primeros resultados...')}}'
   },
-  accessibility: {
-    announceNewData: {
-      enabled: true
-    }
-  },
+
   xAxis: {
+    categories: ['1', '2', '4'],
     type: '{{__('Departamento')}}'
   },
   yAxis: {
@@ -426,21 +423,8 @@ Highcharts.chart('container', {
   legend: {
     enabled: false
   },
-  plotOptions: {
-    series: {
-      borderWidth: 0,
-      dataLabels: {
-        enabled: true,
-        format: '{point.y:.1f}'
-      }
-    }
-  },
-  credits: { enabled: false },
 
-  tooltip: {
-    headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-    pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b> en total<br/>'
-  },
+  credits: { enabled: false },
 
   series: [
     {
