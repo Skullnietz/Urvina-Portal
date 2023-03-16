@@ -38,7 +38,9 @@
 @section('content_header')
 
 <?php $ART = trim($desc->Articulo);
-$change = $articulo[0]->Moneda; ?>
+$change = $articulo[0]->Moneda;
+$limite = $articulo[0]->Mensaje2;
+ ?>
     <style>
         .fcontainer {
             position: relative;
@@ -332,6 +334,11 @@ $change = $articulo[0]->Moneda; ?>
                                                                 }
                                                             }
                                                             ?>
+                                                            <?php
+                                                             if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
+                                                                echo $articulo[0]->Consumo;
+                                                             }
+                                                            ?>
 
 
 
@@ -354,6 +361,11 @@ $change = $articulo[0]->Moneda; ?>
                                                             }
                                                         }
                                                         ?>
+                                                        <?php
+                                                        if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
+                                                           echo 0;
+                                                        }
+                                                       ?>
 
 
 
