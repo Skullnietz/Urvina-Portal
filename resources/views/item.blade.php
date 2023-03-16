@@ -396,6 +396,11 @@ $limite = $articulo[0]->Mensaje2;
                                                 {{ $articulo[0]->Consumo }}
                                                 @endif
                                                 @endif
+                                                <?php
+                                                        if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
+                                                           echo $articulo[0]->Consumo;
+                                                        }
+                                                       ?>
                                             </b></div>
                                         <div class="col-4 border rounded" style="text-align:center; font-size:1.5em"><b>
 
@@ -422,6 +427,11 @@ $limite = $articulo[0]->Mensaje2;
                                                 @endif
 
                                                 @endif
+                                                <?php
+                                                        if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
+                                                           echo 0;
+                                                        }
+                                                       ?>
 
                                             </b> </div>
                                     </div>
