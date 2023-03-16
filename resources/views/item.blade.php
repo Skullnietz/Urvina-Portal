@@ -213,8 +213,6 @@ $limite = $articulo[0]->Mensaje2;
                                                 <center><b>{{__('Este artículo no esta en su presupuesto')}}</b></center>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 @else
                                     <div class="rounded" style="background-color:red">
@@ -372,6 +370,20 @@ $limite = $articulo[0]->Mensaje2;
 
                                                         </b> </div>
                                                 </div>
+                                                <?php
+                                                if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
+                                                    echo '<div class=" rounded"
+                                        style="color:#640d14;padding:20px;border: 1px solid #ee6b6e;background-color:#ffcbd1"
+                                        role="alert">
+                                        <div class="row">
+                                            <div class="col-1"><i class="fas fa-times-circle fa-lg"></i></div>
+                                            <div class="col-11">
+                                                <center><b>{{__("Ha Llegado al Límite Presupuestado")}}</b></center>
+                                            </div>
+                                        </div>
+                                    </div>';
+                                                 }
+                                                 ?>
                                     @else
                                     <div class="row">
                                         <div class="col-4 border rounded"
@@ -435,6 +447,18 @@ $limite = $articulo[0]->Mensaje2;
 
                                             </b> </div>
                                     </div>
+                                    <?php if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
+                                        echo '<div class=" rounded"
+                            style="color:#640d14;padding:20px;border: 1px solid #ee6b6e;background-color:#ffcbd1"
+                            role="alert">
+                            <div class="row">
+                                <div class="col-1"><i class="fas fa-times-circle fa-lg"></i></div>
+                                <div class="col-11">
+                                    <center><b>{{__("Ha Llegado al Límite Presupuestado")}}</b></center>
+                                </div>
+                            </div>
+                        </div>';
+                                     } ?>
                                     @endif
 
 
