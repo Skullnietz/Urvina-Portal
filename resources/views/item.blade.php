@@ -321,22 +321,22 @@ $limite = $articulo[0]->Mensaje2;
 
                                                             if (str_contains($change,'Dolares')){
                                                                 if(isset($cantidad)){
-                                                                    echo $cantidad + $articulo[0]->Consumo;
+                                                                    echo number_format($cantidad + $articulo[0]->Consumo);
                                                                 }else{
-                                                                    echo $articulo[0]->Consumo;
+                                                                    echo number_format($articulo[0]->Consumo);
                                                                 }
                                                             }
                                                             if (str_contains($change,'Pesos')){
                                                                 if(isset($cantidadpes)){
-                                                                    echo $cantidadpes + $articulo[0]->Consumo;
+                                                                    echo number_format($cantidadpes + $articulo[0]->Consumo);
                                                                 }else{
-                                                                    echo $articulo[0]->Consumo;
+                                                                    echo number_format($articulo[0]->Consumo);
                                                                 }
                                                             }
                                                             ?>
                                                             <?php
                                                              if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
-                                                                echo $articulo[0]->Consumo;
+                                                                echo number_format($articulo[0]->Consumo);
                                                              }
                                                             ?>
 
@@ -385,7 +385,7 @@ $limite = $articulo[0]->Mensaje2;
                                                 @if(isset($_SESSION['carritodll'][$ART]))
                                                 {{ $_SESSION['carritodll'][$ART]["cantidad"]+$articulo[0]->Consumo}}
                                                 @else
-                                                {{ $articulo[0]->Consumo }}
+                                                {{ number_format($articulo[0]->Consumo) }}
                                                 @endif
                                                 @endif
 
@@ -393,12 +393,12 @@ $limite = $articulo[0]->Mensaje2;
                                                 @if(isset($_SESSION['carritopes'][$ART]))
                                                 {{ $_SESSION['carritopes'][$ART]["cantidad"]}}
                                                 @else
-                                                {{ $articulo[0]->Consumo }}
+                                                {{ number_format($articulo[0]->Consumo) }}
                                                 @endif
                                                 @endif
                                                 <?php
                                                         if(str_contains($limite,'Ha Llegado al Límite Presupuestado')){
-                                                           echo $articulo[0]->Consumo;
+                                                           echo number_format($articulo[0]->Consumo);
                                                         }
                                                        ?>
                                             </b></div>
@@ -410,7 +410,7 @@ $limite = $articulo[0]->Mensaje2;
                                                 @if(isset($_SESSION['carritodll'][$ART]))
                                                 {{$articulo[0]->Limite - ($_SESSION['carritodll'][$ART]["cantidad"] + $articulo[0]->Consumo)}}
                                                 @else
-                                                {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
+                                                {{ number_format($articulo[0]->Limite-$articulo[0]->Consumo) }}
                                                 @endif
 
                                                 @endif
@@ -423,7 +423,7 @@ $limite = $articulo[0]->Mensaje2;
 
                                                 {{$articulo[0]->Limite - $_SESSION['carritopes'][$ART]["cantidad"]}}
                                                 @else
-                                                {{ $articulo[0]->Limite-$articulo[0]->Consumo }}
+                                                {{ number_format($articulo[0]->Limite-$articulo[0]->Consumo) }}
                                                 @endif
 
                                                 @endif
