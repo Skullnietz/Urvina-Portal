@@ -378,7 +378,7 @@ $limite = $articulo[0]->Mensaje2;
                                         <div class="row">
                                             <div class="col-1"><i class="fas fa-times-circle fa-lg"></i></div>
                                             <div class="col-11">
-                                                <center><b>{{__("Ha Llegado al Límite Presupuestado")}}</b></center>
+                                                <center><b>'.__('Ha Llegado al Límite Presupuestado').'</b></center>
                                             </div>
                                         </div>
                                     </div>';
@@ -454,7 +454,7 @@ $limite = $articulo[0]->Mensaje2;
                             <div class="row">
                                 <div class="col-1"><i class="fas fa-times-circle fa-lg"></i></div>
                                 <div class="col-11">
-                                    <center><b>{{__("Ha Llegado al Límite Presupuestado")}}</b></center>
+                                    <center><b>'.__('Ha Llegado al Límite Presupuestado').'</b></center>
                                 </div>
                             </div>
                         </div>';
