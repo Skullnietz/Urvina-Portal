@@ -421,7 +421,9 @@ Highcharts.chart('container', {
 
   },
   legend: {
-    enabled: false
+    align: 'right',
+    verticalAlign: 'middle',
+    layout: 'vertical'
   },
 
   credits: { enabled: false },
