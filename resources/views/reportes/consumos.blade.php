@@ -422,7 +422,7 @@ Highcharts.chart('container', {
 @foreach ($dataConsulta as $dataS)
     {
     name: '{{$dataS->Articulo}}',
-    data: [{{$dataS->Cantidad}}]
+    data: ['{{$dataS->Descripcion}}',{{$dataS->Cantidad}}]
   },
 @endforeach
 ],
