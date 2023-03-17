@@ -423,8 +423,8 @@ Highcharts.chart('container', {
     {
     name: '{{$dataS->Articulo}}',
     data: [{{$dataS->Cantidad}}]
-  }
-  @endforeach
+  },
+@endforeach
 ],
   responsive: {
     rules: [{
