@@ -287,13 +287,14 @@
                                             <th>{{__('Nombre')}}</th>
                                             <th>{{__('Cantidad')}}</th>
                                         </tr>
-                                        @foreach ($dataConsulta->take(3) as $data)
+                                        @foreach ($dataConsulta as $data)
+                                        <?php if($count == 3) break; ?>
                                         <tr>
                                             <td>{{$data->Articulo}}</td>
                                             <td>{{$data->Descripcion}}</td>
                                             <td>{{$data->Cantidad}}</td>
                                         </tr>
-
+                                        <?php $count++; ?>
                                         @endforeach
 
 
