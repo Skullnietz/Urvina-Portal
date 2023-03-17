@@ -45,6 +45,18 @@ class ConsultasCController extends Controller
                 "to" => $dateto->format('Ymd'),
             ]
         );
+        if($request->tipo = "Consumo"){
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta);
+        }
+        if($request->tipo = "Departamento"){
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta);
+        }
+        if($request->tipo = "Equipo"){
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta);
+        }
+        if($request->tipo = "Anual"){
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta);
+        }
     }else{
         $datehasta = Carbon::now()->format('Ymd');
         $dataConsulta = DB::select(
@@ -59,6 +71,19 @@ class ConsultasCController extends Controller
                 "to" => $datehasta,
             ]
         );
+        if($request->tipo = "Consumo"){
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta);
+        }
+        if($request->tipo = "Departamento"){
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta);
+        }
+        if($request->tipo = "Equipo"){
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta);
+        }
+        if($request->tipo = "Anual"){
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta);
+        }
+
     }
 
 
