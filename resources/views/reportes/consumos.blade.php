@@ -288,7 +288,7 @@
                                             <th>{{__('Cantidad')}}</th>
                                         </tr>
                                         @foreach ($dataConsulta as $data)
-                                        <?php if($count == 3) break; ?>
+                                        <?php $count=0; if($count == 3) break; ?>
                                         <tr>
                                             <td>{{$data->Articulo}}</td>
                                             <td>{{$data->Descripcion}}</td>
