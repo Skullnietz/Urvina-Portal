@@ -88,8 +88,8 @@
                             <div class="col"><b>{{__('Hasta')}}</b> </div>
                         </div>
                         <div class="row">
-                            <div class="col"><input class="form-control" type="date"></div>
-                            <div class="col"><input class="form-control" type="date"></div>
+                            <div class="col"><input name="desde" value="" class="form-control" type="date"></div>
+                            <div class="col"><input name="hasta" value="" class="form-control" type="date"></div>
 
                         </div><br>
                         <div class="row">
@@ -99,8 +99,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="col"><input class="form-control" type="text" class=""></div>
-                            <div class="col"><input class="form-control" type="text"></div>
+                            <div class="col"><input name="articulo" class="form-control" type="text" class=""></div>
+                            <div class="col"><input name="equipo" class="form-control" type="text"></div>
                         </div><br>
                         <div class="row">
                             <div class="col-3">
@@ -108,9 +108,10 @@
 
                             </div>
                             <div class="col-9">
-                                <select name="" id="" class="form-control">
-                                    <option value="">{{__('Mis movimientos')}}</option>
-                                <option value="">{{__('Recursos Humanos')}}</option>
+                                <select name="departamento" id="" class="form-control">
+                                    @foreach ($departamentos as $departamento)
+                                    <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div><br>
