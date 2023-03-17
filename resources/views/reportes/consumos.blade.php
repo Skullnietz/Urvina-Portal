@@ -129,8 +129,8 @@
                             <div class="col"><b>{{__('Hasta')}}</b> </div>
                         </div>
                         <div class="row">
-                            <div class="col"><input class="form-control" name="desde" type="date"></div>
-                            <div class="col"><input class="form-control" name="hasta" type="date"></div>
+                            <div class="col"><input class="form-control" name="desde" value="" type="date"></div>
+                            <div class="col"><input class="form-control" name="hasta" value="" type="date"></div>
 
                         </div><br>
                         <div class="row">
@@ -140,8 +140,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="col"><input class="form-control" name="articulo" type="text" class=""></div>
-                            <div class="col"><input class="form-control" name="equipo" type="text"></div>
+                            <div class="col"><input class="form-control" value="" name="articulo" type="text" class=""></div>
+                            <div class="col"><input class="form-control" value="" name="equipo" type="text"></div>
                         </div><br>
                         <div class="row">
                             <div class="col-3">
