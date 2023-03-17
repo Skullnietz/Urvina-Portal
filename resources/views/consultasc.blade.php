@@ -83,6 +83,8 @@
                 <div class="row">
                     <div class="col-9">
 
+                        <form action="{{route('reporteC', app()->getLocale())}}" method="get">
+
                         <div class="row">
                             <div class="col"><b>{{__('Desde')}}</b> </div>
                             <div class="col"><b>{{__('Hasta')}}</b> </div>
@@ -110,12 +112,13 @@
                             <div class="col-9">
                                 <select name="departamento" id="" class="form-control" required>
                                     @foreach ($departamentos as $departamento)
-                                    <option value="">{{__('Selecciona una opcion')}}</option>
+                                    <option value="">{{__('Selecciona una opción')}}</option>
                                     <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                        </div><br>
+                        </div>
+                    </form><br>
 
                     </div>
                     <div class="col-3">
@@ -128,11 +131,11 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input type="radio" name="tipo" value="Consumo"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Consumos')}}</b>
+                                            <b class="form-control">{{__('Consumo')}}</b>
                                         </div>
                                     </div>
 
@@ -142,11 +145,11 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input name="tipo" type="radio" value="Departamento"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Pedidos')}}</b>
+                                            <b class="form-control">{{__('Departamento')}}</b>
                                         </div>
                                     </div>
 
@@ -156,11 +159,11 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input type="radio" type="radio" value="Equipo"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Inventarios')}}</b>
+                                            <b class="form-control">{{__('Equipo')}}</b>
                                         </div>
                                     </div>
 
@@ -170,28 +173,15 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input type="radio" type="radio" value="Anual"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Consumo Mensual')}}</b>
+                                            <b class="form-control">{{__('Anual')}}</b>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <input type="radio"
-                                                        aria-label="Radio button for following text input">
-                                                </div>
-                                            </div>
-                                            <b class="form-control">{{__('Consumo Articulo')}}</b>
-                                        </div>
-                                    </div>
 
-                                </div>
                             </div>
                         </div>
 

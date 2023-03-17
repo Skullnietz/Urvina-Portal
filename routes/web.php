@@ -82,6 +82,7 @@ Route::prefix('{language}')->group(function () {
     //Consultas Clientes
 
     Route::get('/consultas', 'ConsultasCController@index')->name('consultasc');
+    Route::get('/consultRep', 'ConsultasCController@ReporteConsulta')->name('reporteC');
 
 });
 
