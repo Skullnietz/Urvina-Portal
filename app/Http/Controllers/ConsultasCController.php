@@ -34,7 +34,7 @@ class ConsultasCController extends Controller
             $dateto = $request->desde;
 
         $dataConsulta = DB::select(
-            "EXEC spReportesApp :id,:type,:department:item,:reference,:from,:to",
+            "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
             [
                 "id" => $_SESSION['usuario']->UsuarioCteCorp,
                 "type" => $request->tipo,
@@ -60,7 +60,7 @@ class ConsultasCController extends Controller
     }else{
         $datehasta = Carbon::now()->format('Ymd');
         $dataConsulta = DB::select(
-            "EXEC spReportesApp :id,:type,:department:item,:reference,:from,:to",
+            "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
             [
                 "id" => $_SESSION['usuario']->UsuarioCteCorp,
                 "type" => $request->tipo,
