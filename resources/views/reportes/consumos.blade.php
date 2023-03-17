@@ -291,7 +291,7 @@
                                         <?php if($count == 3){break;}   ?>
                                         <tr>
                                             <td>{{$data->Articulo}}</td>
-                                            <td>{{$data->Descripcion}}</td>
+                                            <td>{{__($data->Descripcion)}}</td>
                                             <td>{{number_format($data->Cantidad)}}</td>
                                         </tr>
                                         <?php $count++; ?>
@@ -316,7 +316,7 @@
                                 @foreach ($dataConsulta as $dataD)
                                 <tr>
                                 <td>{{$dataD->Articulo}}</td>
-                                <td>{{$dataD->Descripcion}}</td>
+                                <td>{{__($dataD->Descripcion)}}</td>
                                 <td>{{number_format($dataD->Cantidad)}}</td>
                                 <td>{{number_format($dataD->Importe, 2, '.', '')}}</td>
                                 </tr>
