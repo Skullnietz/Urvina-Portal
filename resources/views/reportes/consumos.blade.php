@@ -405,10 +405,10 @@ Highcharts.chart('container', {
     categories: ['{{__('Articulo')}}'],
   },
   yAxis: {
+    allowDecimals: false,
     title: {
-      text: '{{__('Cantidad')}}'
+        text: '{{__('Cantidad')}}'
     }
-
   },
   legend: {
     align: 'right',
