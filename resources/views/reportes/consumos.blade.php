@@ -292,7 +292,7 @@
                                         <tr>
                                             <td>{{$data->Articulo}}</td>
                                             <td>{{$data->Descripcion}}</td>
-                                            <td>{{$data->Cantidad}}</td>
+                                            <td>{{number_format($data->Cantidad)}}</td>
                                         </tr>
                                         <?php $count++; ?>
                                         @endforeach
@@ -317,8 +317,8 @@
                                 <tr>
                                 <td>{{$dataD->Articulo}}</td>
                                 <td>{{$dataD->Descripcion}}</td>
-                                <td>{{$dataD->Cantidad}}</td>
-                                <td>{{$dataD->Importe}}</td>
+                                <td>{{number_format($dataD->Cantidad)}}</td>
+                                <td>{{number_format($dataD->Importe, 2, '.', '')}}</td>
                                 </tr>
                                 @endforeach
 
