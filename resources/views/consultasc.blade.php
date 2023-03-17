@@ -118,7 +118,7 @@
                                 </select>
                             </div>
                         </div>
-                    </form><br>
+                    <br>
 
                     </div>
                     <div class="col-3">
@@ -159,7 +159,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio" type="radio" value="Equipo"
+                                                    <input type="radio" name="tipo" value="Equipo"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
@@ -173,7 +173,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio" type="radio" value="Anual"
+                                                    <input type="radio" name="tipo" value="Anual"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
@@ -193,8 +193,9 @@
             </div>
             <div class="card-footer">
                 <center>
-                    <button class="btn btn-primary">{{__('Consultar')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Consultar')}}</button>
                 </center>
+            </form>
 
             </div>
         </div>
