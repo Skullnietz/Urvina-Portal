@@ -129,8 +129,8 @@
                             <div class="col"><b>{{__('Hasta')}}</b> </div>
                         </div>
                         <div class="row">
-                            <div class="col"><input class="form-control" type="date"></div>
-                            <div class="col"><input class="form-control" type="date"></div>
+                            <div class="col"><input class="form-control" name="desde" type="date"></div>
+                            <div class="col"><input class="form-control" name="hasta" type="date"></div>
 
                         </div><br>
                         <div class="row">
@@ -140,8 +140,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="col"><input class="form-control" type="text" class=""></div>
-                            <div class="col"><input class="form-control" type="text"></div>
+                            <div class="col"><input class="form-control" name="articulo" type="text" class=""></div>
+                            <div class="col"><input class="form-control" name="equipo" type="text"></div>
                         </div><br>
                         <div class="row">
                             <div class="col-3">
@@ -167,7 +167,7 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input type="radio" name="tipo" value="consumo"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
@@ -411,9 +411,7 @@ Highcharts.chart('container', {
   },
 
   xAxis: {
-    title: {
-    text: '{{__('Departamento')}}'
-    }
+    type: '{{__('Departamento')}}'
   },
   yAxis: {
     title: {
