@@ -101,8 +101,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="col"><input name="articulo" class="form-control" type="text" class=""></div>
-                            <div class="col"><input name="equipo" class="form-control" type="text"></div>
+                            <div class="col"><input name="articulo" class="form-control" type="text" value=""></div>
+                            <div class="col"><input name="equipo" class="form-control" type="text" value=""></div>
                         </div><br>
                         <div class="row">
                             <div class="col-3">
