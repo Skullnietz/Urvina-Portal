@@ -402,7 +402,7 @@ Highcharts.chart('container', {
   },
 
   xAxis: {
-    categories: ['{{__('Articulo')}}'],
+    categories: ['{{__('$dataS->Articulo')}}'],
   },
   yAxis: {
     title: {
@@ -421,8 +421,8 @@ Highcharts.chart('container', {
   series: [
 @foreach ($dataConsulta as $dataS)
     {
-    name: '{{$dataS->Articulo}}',
-    data: ['{{$dataS->Descripcion}}',{{$dataS->Cantidad}}]
+    name: '{{$dataS->Descripcion}}',
+    data: [{{$dataS->Cantidad}}]
   },
 @endforeach
 ],
