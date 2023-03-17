@@ -283,25 +283,19 @@
                                 <div class="card-body">
                                     <table class="table table-striped">
                                         <tr>
-                                            <th>{{__('Depto')}}</th>
+                                            <th>{{__('Articulo')}}</th>
                                             <th>{{__('Nombre')}}</th>
                                             <th>{{__('Cantidad')}}</th>
                                         </tr>
+                                        @foreach ($dataConsulta as $data)
                                         <tr>
-                                            <td>1</td>
-                                            <td>CUARTO DE HERRAMIENTAS L1 (METALICO Y PINTURA)</td>
-                                            <td>6,675</td>
+                                            <td>{{$data->Articulo}}</td>
+                                            <td>{{$data->Descripcion}}</td>
+                                            <td>{{$data->Cantidad}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>CUARTO DE HERRAMIENTAS L2 (FABRICACION PESADA)</td>
-                                            <td>1,241</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>ALMACEN MIRO</td>
-                                            <td>1,241</td>
-                                        </tr>
+                                        @endforeach
+
+
                                     </table>
                                 </div>
                             </div>
