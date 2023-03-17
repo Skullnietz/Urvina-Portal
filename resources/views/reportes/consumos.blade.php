@@ -394,7 +394,7 @@ Highcharts.chart('container', {
   },
   title: {
     align: 'left',
-    text: '{{__('Consumos')}}'
+    text: '{{__('Consumos por articulo en cantidades')}}'
   },
   subtitle: {
     align: 'left',
