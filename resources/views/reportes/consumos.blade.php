@@ -287,12 +287,13 @@
                                             <th>{{__('Nombre')}}</th>
                                             <th>{{__('Cantidad')}}</th>
                                         </tr>
-                                        @foreach ($dataConsulta as $data)
+                                        @foreach ($dataConsulta->take(3) as $data)
                                         <tr>
                                             <td>{{$data->Articulo}}</td>
                                             <td>{{$data->Descripcion}}</td>
                                             <td>{{$data->Cantidad}}</td>
                                         </tr>
+
                                         @endforeach
 
 
@@ -305,26 +306,21 @@
                     <div class="row" id="datos-UAT">
                         <table class="table table-striped">
                             <tr class="bg-secondary">
-                                <th>{{__('Planta')}}</th>
-                                <th>{{__('Area')}}</th>
-                                <th>{{__('Departamento')}}</th>
+                                <th>{{__('Articulo')}}</th>
+                                <th>{{__('Descripcion')}}</th>
                                 <th>{{__('Cantidad')}}</th>
                                 <th>{{__('Importe')}}</th>
                             </tr>
-                            <tr>
-                                <td>1118</td>
-                                <td>General</td>
-                                <td>CUARTO DE HERRAMIENTAS L1 (METALICO Y PINTURA)</td>
-                                <td>6,675</td>
-                                <td>$298,602.61</td>
-                            </tr>
-                            <tr>
-                                <td>1118</td>
-                                <td>General</td>
-                                <td>CUARTO DE HERRAMIENTAS L1 (METALICO Y PINTURA)</td>
-                                <td>6,675</td>
-                                <td>$298,602.61</td>
-                            </tr>
+
+                                @foreach ($dataConsulta as $dataD)
+                                <tr>
+                                <td>{{$dataD->Articulo}}</td>
+                                <td>{{$dataD->Descripcion}}</td>
+                                <td>{{$dataD->Cantidad}}</td>
+                                <td>{{$dataD->Importe}}</td>
+                                </tr>
+                                @endforeach
+
                         </table>
                     </div>
                 </div>
@@ -405,7 +401,7 @@ Highcharts.chart('container', {
   },
 
   xAxis: {
-    categories: ['{{__('Departamento')}}'],
+    categories: ['{{__('Articulo')}}'],
   },
   yAxis: {
     title: {
@@ -421,16 +417,14 @@ Highcharts.chart('container', {
 
   credits: { enabled: false },
 
-  series: [{
-    name: '1',
-    data: [6675]
-  }, {
-    name: '2',
-    data: [1241]
-  }, {
-    name: '4',
-    data: [1241]
-  }],
+  series: [
+@foreach ($dataConsulta as $dataS)
+    {
+    name: '{{$dataS->Articulo}}',
+    data: [{{$dataS->Cantidad}}]
+  }
+  @endforeach
+],
   responsive: {
     rules: [{
       condition: {
