@@ -113,7 +113,7 @@
                 <h5 class="card-title">{{__('Reportes')}}</h5>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i style="color:white" class="fas fa-plus"></i>
+                    <i style="color:white" class="fas fa-minus"></i>
                     </button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i style="color:white" class="fas fa-times"></i>
@@ -124,13 +124,15 @@
                 <div class="row">
                     <div class="col-9">
 
+                        <form action="{{route('reporteC', app()->getLocale())}}" method="get">
+
                         <div class="row">
                             <div class="col"><b>{{__('Desde')}}</b> </div>
                             <div class="col"><b>{{__('Hasta')}}</b> </div>
                         </div>
                         <div class="row">
-                            <div class="col"><input class="form-control" name="desde" value="" type="date"></div>
-                            <div class="col"><input class="form-control" name="hasta" value="" type="date"></div>
+                            <div class="col"><input name="desde" value="" class="form-control" type="date"></div>
+                            <div class="col"><input name="hasta" value="" class="form-control" type="date"></div>
 
                         </div><br>
                         <div class="row">
@@ -140,8 +142,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="col"><input class="form-control" value="" name="articulo" type="text" class=""></div>
-                            <div class="col"><input class="form-control" value="" name="equipo" type="text"></div>
+                            <div class="col"><input name="articulo" class="form-control" type="text" value=""></div>
+                            <div class="col"><input name="equipo" class="form-control" type="text" value=""></div>
                         </div><br>
                         <div class="row">
                             <div class="col-3">
@@ -149,12 +151,15 @@
 
                             </div>
                             <div class="col-9">
-                                <select name="" id="" class="form-control">
-                                    <option value="">{{__('Mis movimientos')}}</option>
-                                <option value="">{{__('Recursos Humanos')}}</option>
+                                <select name="departamento" id="" class="form-control" required>
+                                    @foreach ($departamentos as $departamento)
+                                    <option value="">{{__('Selecciona una opción')}}</option>
+                                    <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                        </div><br>
+                        </div>
+                    <br>
 
                     </div>
                     <div class="col-3">
@@ -167,11 +172,11 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio" name="tipo" value="consumo"
+                                                    <input type="radio" name="tipo" value="Consumo"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Consumos')}}</b>
+                                            <b class="form-control">{{__('Consumo')}}</b>
                                         </div>
                                     </div>
 
@@ -181,11 +186,11 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input name="tipo" type="radio" value="Departamento"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Pedidos')}}</b>
+                                            <b class="form-control">{{__('Departamento')}}</b>
                                         </div>
                                     </div>
 
@@ -195,11 +200,11 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input type="radio" name="tipo" value="Equipo"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Inventarios')}}</b>
+                                            <b class="form-control">{{__('Equipo')}}</b>
                                         </div>
                                     </div>
 
@@ -209,28 +214,15 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input type="radio" name="tipo" value="Anual"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Consumo Mensual')}}</b>
+                                            <b class="form-control">{{__('Anual')}}</b>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <input type="radio"
-                                                        aria-label="Radio button for following text input">
-                                                </div>
-                                            </div>
-                                            <b class="form-control">{{__('Consumo Articulo')}}</b>
-                                        </div>
-                                    </div>
 
-                                </div>
                             </div>
                         </div>
 
@@ -242,8 +234,9 @@
             </div>
             <div class="card-footer">
                 <center>
-                    <button class="btn btn-primary">{{__('Consultar')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Consultar')}}</button>
                 </center>
+            </form>
 
             </div>
         </div>
@@ -283,25 +276,19 @@
                                 <div class="card-body">
                                     <table class="table table-striped">
                                         <tr>
-                                            <th>{{__('Depto')}}</th>
-                                            <th>{{__('Nombre')}}</th>
+                                            <th>{{__('Proyecto')}}</th>
                                             <th>{{__('Cantidad')}}</th>
-                                        </tr>
+                                        </tr><?php $count=0; ?>
+                                        @foreach ($dataConsulta as $data)
+                                        <?php if($count == 3){break;}   ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>CUARTO DE HERRAMIENTAS L1 (METALICO Y PINTURA)</td>
-                                            <td>6,675</td>
+                                            <td>{{__($data->Proyecto)}}</td>
+                                            <td>{{number_format($data->Cantidad)}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>CUARTO DE HERRAMIENTAS L2 (FABRICACION PESADA)</td>
-                                            <td>1,241</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>ALMACEN MIRO</td>
-                                            <td>1,241</td>
-                                        </tr>
+                                        <?php $count++; ?>
+                                        @endforeach
+
+
                                     </table>
                                 </div>
                             </div>
@@ -311,26 +298,19 @@
                     <div class="row" id="datos-UAT">
                         <table class="table table-striped">
                             <tr class="bg-secondary">
-                                <th>{{__('Planta')}}</th>
-                                <th>{{__('Area')}}</th>
-                                <th>{{__('Departamento')}}</th>
+                                <th>{{__('Proyecto')}}</th>
                                 <th>{{__('Cantidad')}}</th>
                                 <th>{{__('Importe')}}</th>
                             </tr>
-                            <tr>
-                                <td>1118</td>
-                                <td>General</td>
-                                <td>CUARTO DE HERRAMIENTAS L1 (METALICO Y PINTURA)</td>
-                                <td>6,675</td>
-                                <td>$298,602.61</td>
-                            </tr>
-                            <tr>
-                                <td>1118</td>
-                                <td>General</td>
-                                <td>CUARTO DE HERRAMIENTAS L1 (METALICO Y PINTURA)</td>
-                                <td>6,675</td>
-                                <td>$298,602.61</td>
-                            </tr>
+
+                                @foreach ($dataConsulta as $dataD)
+                                <tr>
+                                <td>{{__($dataD->Proyecto)}}</td>
+                                <td>{{number_format($dataD->Cantidad)}}</td>
+                                <td>{{number_format($dataD->Importe, 2, '.', '')}}</td>
+                                </tr>
+                                @endforeach
+
                         </table>
                     </div>
                 </div>
@@ -397,76 +377,61 @@
     </script>
     <script>
         // Create the chart
+        Highcharts.setOptions({
+  colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+    return {
+      radialGradient: {
+        cx: 0.5,
+        cy: 0.3,
+        r: 0.7
+      },
+      stops: [
+        [0, color],
+        [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
+      ]
+    };
+  })
+});
+
+// Build the chart
 Highcharts.chart('container', {
   chart: {
-    type: 'column'
+    plotBackgroundColor: null,
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: 'pie'
   },
   title: {
-    align: 'left',
-    text: '{{__('Consumos')}}'
+    text: 'Browser market shares in April, 2022',
+    align: 'left'
   },
-  subtitle: {
-    align: 'left',
-    text: '{{__('Mostrando los 10 primeros resultados...')}}'
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
   },
-
-  xAxis: {
-    categories: ['{{__('Departamento')}}'],
-  },
-  yAxis: {
-    title: {
-      text: '{{__('Cantidad')}}'
+  accessibility: {
+    point: {
+      valueSuffix: '%'
     }
-
   },
-  legend: {
-    align: 'right',
-    verticalAlign: 'middle',
-    layout: 'vertical'
-  },
-
-  credits: { enabled: false },
-
-  series: [{
-    name: '1',
-    data: [6675]
-  }, {
-    name: '2',
-    data: [1241]
-  }, {
-    name: '4',
-    data: [1241]
-  }],
-  responsive: {
-    rules: [{
-      condition: {
-        maxWidth: 500
-      },
-      chartOptions: {
-        legend: {
-          align: 'center',
-          verticalAlign: 'bottom',
-          layout: 'horizontal'
-        },
-        yAxis: {
-          labels: {
-            align: 'left',
-            x: 0,
-            y: -5
-          },
-          title: {
-            text: null
-          }
-        },
-        subtitle: {
-          text: null
-        },
-        credits: {
-          enabled: false
-        }
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      dataLabels: {
+        enabled: true,
+        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+        connectorColor: 'silver'
       }
-    }]
-  }
+    }
+  },
+  series: [{
+    name: 'Share',
+    data: [
+        @foreach ($dataConsulta as $dataS)
+      { name: '{{$dataS->Proyecto}}', y: {{$dataS->Importe}} },
+      @endforeach
+    ]
+  }]
 });
         </script>
 @stop
