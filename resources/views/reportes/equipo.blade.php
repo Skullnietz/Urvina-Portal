@@ -125,6 +125,7 @@ display: none !important;
             </div>
             <div class="card-body">
                 <div class="row">
+                    <form action="{{route('reporteC', app()->getLocale())}}" method="get">
                     <div class="col-3">
                         <div class="card">
 
@@ -196,7 +197,7 @@ display: none !important;
                         <div class="card-header bg-primary" data-card-widget="collapse"> <center><b>{{__('Información detallada (Opcional)')}}</b></center></div>
                         <div class="card-body">
 
-                        <form action="{{route('reporteC', app()->getLocale())}}" method="get">
+
                             <ul class="nav nav-tabs">
                                 <li style="margin-right:10px"><a class="btn btn-secondary checked" data-toggle="tab" href="#fecha">{{__('Fecha')}}</a></li>
                                 <li style="margin-right:10px"><a class="btn btn-secondary checked" data-toggle="tab" href="#articulo">{{__('Articulo')}}</a></li>
