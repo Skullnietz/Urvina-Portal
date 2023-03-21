@@ -149,7 +149,7 @@
                     </div>
                     <div class="col-9">
                         <div class="card">
-                        <div class="card-header bg-primary" data-card-widget="collapse"> <center><b>{{__('Información detallada')}}</b></center></div>
+                        <div class="card-header bg-primary" data-card-widget="collapse"> <center><b>{{__('Información detallada (Opcional)')}}</b></center></div>
                         <div class="card-body">
                         <form action="{{route('reporteC', app()->getLocale())}}" method="get">
 
