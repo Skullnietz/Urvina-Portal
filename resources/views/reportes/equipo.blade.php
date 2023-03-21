@@ -413,29 +413,6 @@ Highcharts.chart('container', {
       valueSuffix: '%'
     }
   },
-  chartOptions: {
-        legend: {
-          align: 'center',
-          verticalAlign: 'bottom',
-          layout: 'horizontal'
-        },
-        yAxis: {
-          labels: {
-            align: 'left',
-            x: 0,
-            y: -5
-          },
-          title: {
-            text: null
-          }
-        },
-        subtitle: {
-          text: null
-        },
-        credits: {
-          enabled: false
-        }
-      },
   plotOptions: {
     pie: {
       allowPointSelect: true,
@@ -445,6 +422,9 @@ Highcharts.chart('container', {
         format: '<b>{point.name}</b>: {point.percentage:.1f} %',
         connectorColor: 'silver'
       }
+      credits: {
+          enabled: false
+        }
     }
   },
   series: [{
