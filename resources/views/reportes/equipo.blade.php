@@ -280,7 +280,7 @@
                                             <th>{{__('Cantidad')}}</th>
                                         </tr><?php $count=0; ?>
                                         @foreach ($dataConsulta as $data)
-                                        <?php if($count == 3){break;}   ?>
+                                        <?php if($count == 5){break;}   ?>
                                         <tr>
                                             <td>{{__($data->Proyecto)}}</td>
                                             <td>{{number_format($data->Cantidad)}}</td>
@@ -402,7 +402,7 @@ Highcharts.chart('container', {
     type: 'pie'
   },
   title: {
-    text: 'Browser market shares in April, 2022',
+    text: 'Consumo por Equipo/Proyecto/Referencia',
     align: 'left'
   },
   tooltip: {
@@ -413,6 +413,29 @@ Highcharts.chart('container', {
       valueSuffix: '%'
     }
   },
+  chartOptions: {
+        legend: {
+          align: 'center',
+          verticalAlign: 'bottom',
+          layout: 'horizontal'
+        },
+        yAxis: {
+          labels: {
+            align: 'left',
+            x: 0,
+            y: -5
+          },
+          title: {
+            text: null
+          }
+        },
+        subtitle: {
+          text: null
+        },
+        credits: {
+          enabled: false
+        }
+      },
   plotOptions: {
     pie: {
       allowPointSelect: true,
