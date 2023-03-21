@@ -421,7 +421,7 @@ Highcharts.chart('container', {
         enabled: true,
         format: '<b>{point.name}</b>: {point.percentage:.1f} %',
         connectorColor: 'silver'
-      }
+      },
       credits: {
           enabled: false
         }
