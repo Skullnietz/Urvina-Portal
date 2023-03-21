@@ -148,7 +148,7 @@
 
                     </div>
                     <div class="col-9">
-                        <div class="card-header bg-primary"><center><b>{{__('Información detallada')}}</b></center></div>
+                        <div class="card-header bg-primary"><center><b>{{__('Información detallada')}}</b></center>
                         <form action="{{route('reporteC', app()->getLocale())}}" method="get">
 
                         <div class="row">
