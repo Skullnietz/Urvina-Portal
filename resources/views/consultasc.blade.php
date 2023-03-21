@@ -154,58 +154,62 @@
 
                         <form action="{{route('reporteC', app()->getLocale())}}" method="get">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                                <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-                                <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                                <li class="active"><a data-toggle="tab" href="#fecha">{{__('Fecha')}}</a></li>
+                                <li><a data-toggle="tab" href="#articulo">{{__('Articulo')}}</a></li>
+                                <li><a data-toggle="tab" href="#equipo">{{__('Equipo')}}</a></li>
+                                <li><a data-toggle="tab" href="#departamento">{{__('Departamento')}}</a></li>
                               </ul>
 
                               <div class="tab-content">
-                                <div id="home" class="tab-pane fade in active">
-                                  <h3>HOME</h3>
-                                  <p>Some content.</p>
+                                <div id="fecha" class="tab-pane fade in active">
+                                    <div class="row">
+                                        <div class="col"><b>{{__('Desde')}}</b> </div>
+                                        <div class="col"><b>{{__('Hasta')}}</b> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col"><input name="desde" value="" class="form-control" type="date"></div>
+                                        <div class="col"><input name="hasta" value="" class="form-control" type="date"></div>
+
+                                    </div>
                                 </div>
-                                <div id="menu1" class="tab-pane fade">
-                                  <h3>Menu 1</h3>
-                                  <p>Some content in menu 1.</p>
+                                <div id="articulo" class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="col"><b>{{__('Artículo')}}</b> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col"><input name="articulo" class="form-control" type="text" value=""></div>
+                                    </div><br>
                                 </div>
-                                <div id="menu2" class="tab-pane fade">
-                                  <h3>Menu 2</h3>
-                                  <p>Some content in menu 2.</p>
+                                <div id="equipo" class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="col"><b>{{__('Equipo/Linea/Ref')}}</b></div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col"><input name="equipo" class="form-control" type="text" value=""></div>
+                                    </div><br>
                                 </div>
+                                <div id="departamento" class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <b>{{__('Departamento:')}}</b>
+
+                                        </div>
+                                        <div class="col-9">
+                                            <select name="departamento" id="" class="form-control" required>
+                                                @foreach ($departamentos as $departamento)
+                                                <option value="0">{{__('Selecciona una opción')}}</option>
+                                                <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                  </div>
                               </div>
 
-                        <div class="row">
-                            <div class="col"><b>{{__('Desde')}}</b> </div>
-                            <div class="col"><b>{{__('Hasta')}}</b> </div>
-                        </div>
-                        <div class="row">
-                            <div class="col"><input name="desde" value="" class="form-control" type="date"></div>
-                            <div class="col"><input name="hasta" value="" class="form-control" type="date"></div>
+                        +
 
-                        </div><br>
-                        <div class="row">
-
-                            <div class="col"><b>{{__('Artículo')}}</b> </div>
-                            <div class="col"><b>{{__('Equipo/Linea/Ref')}}</b></div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col"><input name="articulo" class="form-control" type="text" value=""></div>
-                            <div class="col"><input name="equipo" class="form-control" type="text" value=""></div>
-                        </div><br>
-                        <div class="row">
-                            <div class="col-3">
-                                <b>{{__('Departamento:')}}</b>
-
-                            </div>
-                            <div class="col-9">
-                                <select name="departamento" id="" class="form-control" required>
-                                    @foreach ($departamentos as $departamento)
-                                    <option value="0">{{__('Selecciona una opción')}}</option>
-                                    <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                         </div>
                     </div>
                     <br>
