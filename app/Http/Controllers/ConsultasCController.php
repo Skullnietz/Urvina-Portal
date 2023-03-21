@@ -31,8 +31,8 @@ class ConsultasCController extends Controller
     public function ReporteConsulta(Request $request){
         session_start();
         if(isset($request->desde) || isset($request->hasta)){
-            $datefrom = $request->desde;
-            $dateto = $request->desde;
+            $datefrom  = new \DateTime($request->desde);
+            $dateto  = new \DateTime($request->hasta);
 
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
@@ -42,8 +42,8 @@ class ConsultasCController extends Controller
                 "department" => $request->departamento,
                 "item" => $request->articulo,
                 "reference" => $request->equipo,
-                "from" => date_format(new DateTime($datefrom), 'Ymd'),
-                "to" => date_format(new DateTime($datefrom),'Ymd'),
+                "from" => date_format($datefrom, 'Ymd'),
+                "to" => date_format($dateto,'Ymd'),
             ]
         );
         if($request->tipo = "Consumo"){
