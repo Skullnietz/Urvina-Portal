@@ -46,6 +46,9 @@
 .highcharts-data-table tr:hover {
   background: #f1f7ff;
 }
+.highcharts-credits {
+display: none !important;
+}
 
 #button-bar {
   min-width: 310px;
@@ -422,9 +425,7 @@ Highcharts.chart('container', {
         format: '<b>{point.name}</b>: {point.percentage:.1f} %',
         connectorColor: 'silver'
       },
-      credits: {
-          enabled: false
-        }
+
     }
   },
   series: [{
