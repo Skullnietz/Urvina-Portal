@@ -154,7 +154,7 @@
 
                         <form action="{{route('reporteC', app()->getLocale())}}" method="get">
                             <ul class="nav nav-tabs">
-                                <li class="btn active"><a data-toggle="tab" href="#fecha">{{__('Fecha')}}</a></li>
+                                <li class="btn checked"><a data-toggle="tab" href="#fecha">{{__('Fecha')}}</a></li>
                                 <li class="btn"><a data-toggle="tab" href="#articulo">{{__('Articulo')}}</a></li>
                                 <li class="btn"><a data-toggle="tab" href="#equipo">{{__('Equipo')}}</a></li>
                                 <li class="btn"><a data-toggle="tab" href="#departamento">{{__('Departamento')}}</a></li>
@@ -206,7 +206,7 @@
                                                 <option value="0">{{__('Selecciona una opción')}}</option>
                                                 <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
                                                 @endforeach
-                                                
+
                                             </select>
                                         </div>
                                     </div>
