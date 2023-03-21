@@ -160,7 +160,7 @@
                                 <li style="margin-right:10px"><a class="btn btn-secondary checked" data-toggle="tab" href="#departamento">{{__('Departamento')}}</a></li>
                             </ul>
 
-                              <div class="tab-content">
+                              <div class="tab-content" style="margin-top:10px">
 
                                 <div id="fecha" class="tab-pane fade in active">
                                     <div class="row">
