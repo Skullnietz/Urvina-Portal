@@ -52,16 +52,16 @@ class ConsultasCController extends Controller
                 "to" => date_format($dateto,'Ymd'),
             ]
         );
-        if($request->tipo = "Consumo"){
+        if($request->tipo == "Consumo"){
             return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
-        if($request->tipo = "Departamento"){
+        if($request->tipo == "Departamento"){
             return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
-        if($request->tipo = "Equipo"){
+        if($request->tipo == "Equipo"){
             return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
-        if($request->tipo = "Anual"){
+        if($request->tipo == "Anual"){
             return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
     }else{
@@ -78,16 +78,16 @@ class ConsultasCController extends Controller
                 "to" => $datehasta,
             ]
         );
-        if($request->tipo = "Consumo"){
+        if($request->tipo == "Consumo"){
             return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
-        if($request->tipo = "Departamento"){
+        if($request->tipo == "Departamento"){
             return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
-        if($request->tipo = "Equipo"){
+        if($request->tipo == "Equipo"){
             return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
-        if($request->tipo = "Anual"){
+        if($request->tipo == "Anual"){
             return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
 
