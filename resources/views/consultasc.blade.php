@@ -154,10 +154,10 @@
 
                         <form action="{{route('reporteC', app()->getLocale())}}" method="get">
                             <ul class="nav nav-tabs">
-                                <li><a data-toggle="tab" href="#fecha">{{__('Fecha')}}</a></li>
-                                <li><a class="btn" data-toggle="tab" href="#articulo">{{__('Articulo')}}</a></li>
-                                <li><a class="btn" data-toggle="tab" href="#equipo">{{__('Equipo')}}</a></li>
-                                <li><a class="btn" data-toggle="tab" href="#departamento">{{__('Departamento')}}</a></li>
+                                <li><a class="btn checked" data-toggle="tab" href="#fecha">{{__('Fecha')}}</a></li>
+                                <li><a class="btn checked" data-toggle="tab" href="#articulo">{{__('Articulo')}}</a></li>
+                                <li><a class="btn checked" data-toggle="tab" href="#equipo">{{__('Equipo')}}</a></li>
+                                <li><a class="btn checked" data-toggle="tab" href="#departamento">{{__('Departamento')}}</a></li>
                               </ul>
 
                               <div class="tab-content">
