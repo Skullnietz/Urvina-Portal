@@ -405,7 +405,7 @@ Highcharts.chart('container', {
     type: 'pie'
   },
   title: {
-    text: 'Consumo por Equipo/Proyecto/Referencia',
+    text: '{{__('Consumo por Equipo/Proyecto/Referencia')}}',
     align: 'left'
   },
   tooltip: {
