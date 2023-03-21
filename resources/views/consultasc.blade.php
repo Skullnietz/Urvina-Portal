@@ -161,6 +161,7 @@
                               </ul>
 
                               <div class="tab-content">
+                                <br>
                                 <div id="fecha" class="tab-pane fade in active">
                                     <div class="row">
                                         <div class="col"><b>{{__('Desde')}}</b> </div>
@@ -173,6 +174,7 @@
                                     </div>
                                 </div>
                                 <div id="articulo" class="tab-pane fade">
+                                    <br>
                                     <div class="row">
                                         <div class="col"><b>{{__('Artículo')}}</b> </div>
                                     </div>
@@ -181,6 +183,7 @@
                                     </div><br>
                                 </div>
                                 <div id="equipo" class="tab-pane fade">
+                                    <br>
                                     <div class="row">
                                         <div class="col"><b>{{__('Equipo/Linea/Ref')}}</b></div>
                                     </div>
@@ -191,6 +194,7 @@
                                     </div><br>
                                 </div>
                                 <div id="departamento" class="tab-pane fade">
+                                    <br>
                                     <div class="row">
                                         <div class="col-3">
                                             <b>{{__('Departamento:')}}</b>
