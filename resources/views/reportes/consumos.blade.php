@@ -153,7 +153,7 @@
                             <div class="col-9">
                                 <select name="departamento" id="" class="form-control" required>
                                     @foreach ($departamentos as $departamento)
-                                    <option value="">{{__('Selecciona una opción')}}</option>
+                                    <option value="0">{{__('Selecciona una opción')}}</option>
                                     <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
                                     @endforeach
                                 </select>

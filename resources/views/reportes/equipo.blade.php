@@ -156,7 +156,7 @@ display: none !important;
                             <div class="col-9">
                                 <select name="departamento" id="" class="form-control" required>
                                     @foreach ($departamentos as $departamento)
-                                    <option value="">{{__('Selecciona una opción')}}</option>
+                                    <option value="0">{{__('Selecciona una opción')}}</option>
                                     <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
                                     @endforeach
                                 </select>
@@ -429,7 +429,7 @@ Highcharts.chart('container', {
     }
   },
   series: [{
-    name: 'Share',
+    name: 'Porcentaje',
     data: [
         @foreach ($dataConsulta as $dataS)
       { name: '{{$dataS->Proyecto}}', y: {{$dataS->Importe}} },
