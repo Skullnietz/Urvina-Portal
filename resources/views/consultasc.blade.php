@@ -150,6 +150,7 @@
                     <div class="col-9">
                         <div class="card">
                         <div class="card-header bg-primary"><center><b>{{__('Información detallada')}}</b></center></div>
+                        <div class="card-body">
                         <form action="{{route('reporteC', app()->getLocale())}}" method="get">
 
                         <div class="row">
@@ -187,6 +188,7 @@
                         </div>
                     </div>
                     <br>
+                </div>
 
                     </div>
 
