@@ -41,8 +41,8 @@ class ConsultasCController extends Controller
                 "department" => $request->departamento,
                 "item" => $request->articulo,
                 "reference" => $request->equipo,
-                "from" => $datefrom->format('Ymd'),
-                "to" => $dateto->format('Ymd'),
+                "from" => date_format($datefrom, 'Ymd'),
+                "to" => date_format($datefrom,'Ymd'),
             ]
         );
         if($request->tipo = "Consumo"){
