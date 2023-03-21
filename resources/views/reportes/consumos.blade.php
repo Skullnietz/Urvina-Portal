@@ -113,7 +113,7 @@
                 <h5 class="card-title">{{__('Reportes')}}</h5>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i style="color:white" class="fas fa-plus"></i>
+                    <i style="color:white" class="fas fa-minus"></i>
                     </button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove">
                     <i style="color:white" class="fas fa-times"></i>
@@ -124,13 +124,15 @@
                 <div class="row">
                     <div class="col-9">
 
+                        <form action="{{route('reporteC', app()->getLocale())}}" method="get">
+
                         <div class="row">
                             <div class="col"><b>{{__('Desde')}}</b> </div>
                             <div class="col"><b>{{__('Hasta')}}</b> </div>
                         </div>
                         <div class="row">
-                            <div class="col"><input class="form-control" name="desde" value="" type="date"></div>
-                            <div class="col"><input class="form-control" name="hasta" value="" type="date"></div>
+                            <div class="col"><input name="desde" value="" class="form-control" type="date"></div>
+                            <div class="col"><input name="hasta" value="" class="form-control" type="date"></div>
 
                         </div><br>
                         <div class="row">
@@ -140,8 +142,8 @@
                         </div>
 
                         <div class="row">
-                            <div class="col"><input class="form-control" value="" name="articulo" type="text" class=""></div>
-                            <div class="col"><input class="form-control" value="" name="equipo" type="text"></div>
+                            <div class="col"><input name="articulo" class="form-control" type="text" value=""></div>
+                            <div class="col"><input name="equipo" class="form-control" type="text" value=""></div>
                         </div><br>
                         <div class="row">
                             <div class="col-3">
@@ -149,12 +151,15 @@
 
                             </div>
                             <div class="col-9">
-                                <select name="" id="" class="form-control">
-                                    <option value="">{{__('Mis movimientos')}}</option>
-                                <option value="">{{__('Recursos Humanos')}}</option>
+                                <select name="departamento" id="" class="form-control" required>
+                                    @foreach ($departamentos as $departamento)
+                                    <option value="">{{__('Selecciona una opción')}}</option>
+                                    <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                        </div><br>
+                        </div>
+                    <br>
 
                     </div>
                     <div class="col-3">
@@ -167,11 +172,11 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio" name="tipo" value="consumo"
+                                                    <input type="radio" name="tipo" value="Consumo"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Consumos')}}</b>
+                                            <b class="form-control">{{__('Consumo')}}</b>
                                         </div>
                                     </div>
 
@@ -181,11 +186,11 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input name="tipo" type="radio" value="Departamento"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Pedidos')}}</b>
+                                            <b class="form-control">{{__('Departamento')}}</b>
                                         </div>
                                     </div>
 
@@ -195,11 +200,11 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input type="radio" name="tipo" value="Equipo"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Inventarios')}}</b>
+                                            <b class="form-control">{{__('Equipo')}}</b>
                                         </div>
                                     </div>
 
@@ -209,28 +214,15 @@
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
-                                                    <input type="radio"
+                                                    <input type="radio" name="tipo" value="Anual"
                                                         aria-label="Radio button for following text input">
                                                 </div>
                                             </div>
-                                            <b class="form-control">{{__('Consumo Mensual')}}</b>
+                                            <b class="form-control">{{__('Anual')}}</b>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text">
-                                                    <input type="radio"
-                                                        aria-label="Radio button for following text input">
-                                                </div>
-                                            </div>
-                                            <b class="form-control">{{__('Consumo Articulo')}}</b>
-                                        </div>
-                                    </div>
 
-                                </div>
                             </div>
                         </div>
 
@@ -242,8 +234,9 @@
             </div>
             <div class="card-footer">
                 <center>
-                    <button class="btn btn-primary">{{__('Consultar')}}</button>
+                    <button type="submit" class="btn btn-primary">{{__('Consultar')}}</button>
                 </center>
+            </form>
 
             </div>
         </div>
