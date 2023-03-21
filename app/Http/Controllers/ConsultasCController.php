@@ -30,6 +30,12 @@ class ConsultasCController extends Controller
 
     public function ReporteConsulta(Request $request){
         session_start();
+        $departamentos = DB::select(
+            "EXEC spDepartamentosApp :id",
+            [
+                "id" => $_SESSION['usuario']->UsuarioCteCorp,
+            ]
+        );
         if(isset($request->desde) || isset($request->hasta)){
             $datefrom  = new \DateTime($request->desde);
             $dateto  = new \DateTime($request->hasta);
@@ -47,16 +53,16 @@ class ConsultasCController extends Controller
             ]
         );
         if($request->tipo = "Consumo"){
-            return view('reportes.consumos')->with('dataConsulta',$dataConsulta);
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
         if($request->tipo = "Departamento"){
-            return view('reportes.departamento')->with('dataConsulta',$dataConsulta);
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
         if($request->tipo = "Equipo"){
-            return view('reportes.equipo')->with('dataConsulta',$dataConsulta);
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
         if($request->tipo = "Anual"){
-            return view('reportes.anual')->with('dataConsulta',$dataConsulta);
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
     }else{
         $datehasta = Carbon::now()->format('Ymd');
@@ -73,16 +79,16 @@ class ConsultasCController extends Controller
             ]
         );
         if($request->tipo = "Consumo"){
-            return view('reportes.consumos')->with('dataConsulta',$dataConsulta);
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
         if($request->tipo = "Departamento"){
-            return view('reportes.departamento')->with('dataConsulta',$dataConsulta);
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
         if($request->tipo = "Equipo"){
-            return view('reportes.equipo')->with('dataConsulta',$dataConsulta);
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
         if($request->tipo = "Anual"){
-            return view('reportes.anual')->with('dataConsulta',$dataConsulta);
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
 
     }
