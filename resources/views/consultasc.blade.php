@@ -206,6 +206,7 @@
                                                 <option value="0">{{__('Selecciona una opción')}}</option>
                                                 <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
                                                 @endforeach
+                                                
                                             </select>
                                         </div>
                                     </div>
