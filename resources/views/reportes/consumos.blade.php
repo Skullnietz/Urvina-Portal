@@ -20,6 +20,9 @@
   width: 100%;
   max-width: 500px;
 }
+.highcharts-credits {
+display: none !important;
+}
 
 .highcharts-data-table caption {
   padding: 1em 0;
