@@ -298,7 +298,7 @@
                         </div>
                 </div>
                 <div class="card-body">
-                  <select id="chart-selector" class="form-control">
+                  <select id="select-graficas" class="form-control">
                     <option value="container">Gráfica de barra | Consumo por Cantidades</option>
                     <option value="container1">Gráfica de pastel | Consumo por Cantidades</option>
                     <option value="container2">Gráfica de barra | Consumo por Importe</option>
@@ -648,20 +648,31 @@ Highcharts.chart('container', {
           });
                   </script>
                   <script>
-                    var chartSelector = document.querySelector('#chart-selector');
-var charts = document.querySelectorAll('.chart-container');
-
-chartSelector.addEventListener('change', function() {
-  var selectedChart = chartSelector.value;
-
-  charts.forEach(function(chart) {
-    if (chart.id === selectedChart) {
-      chart.style.display = 'block';
-    } else {
-      chart.style.display = 'none';
+                    $('#select-graficas').on('change', function() {
+    var container = $(this).val();
+    if (container === 'container') {
+        $('#container').show();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').hide();
+    } else if (container === 'container1') {
+        $('#container').hide();
+        $('#container1').show();
+        $('#container2').hide();
+        $('#container3').hide();
+    } else if (container === 'container2') {
+        $('#container').hide();
+        $('#container1').hide();
+        $('#container2').show();
+        $('#container3').hide();
+    } else if (container === 'container3') {
+        $('#container').hide();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').show();
     }
-  });
 });
+
                   </script>
 
 @stop
