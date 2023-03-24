@@ -648,6 +648,12 @@ Highcharts.chart('container', {
           });
                   </script>
                   <script>
+                    $(document).ready(function() {
+        $('#container').show();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').hide();
+      });
                     $('#select-graficas').on('change', function() {
     var container = $(this).val();
     if (container === 'container') {
