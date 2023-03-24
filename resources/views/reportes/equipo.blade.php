@@ -116,7 +116,7 @@ display: none !important;
                         <h5 class="card-title">{{__('Reportes')}}</h5>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i style="color:white" class="fas fa-minus"></i>
+                            <i style="color:white" class="fas fa-plus"></i>
                             </button>
                             <button type="button" class="btn btn-tool" data-card-widget="remove">
                             <i style="color:white" class="fas fa-times"></i>
@@ -126,7 +126,7 @@ display: none !important;
                     <div class="card-body">
                         <form action="{{route('reporteC', app()->getLocale())}}" method="get">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-md-6">
                                 <div class="card">
 
                                     <div class="card-header bg-secondary"><center><b>{{__('Tipo de Reporte')}}</b></center></div>
@@ -192,17 +192,17 @@ display: none !important;
 
 
                             </div>
-                            <div class="col-9">
+                            <div class="col-md-6">
                                 <div class="card">
                                 <div class="card-header bg-primary" data-card-widget="collapse"> <center><b>{{__('Información detallada (Opcional)')}}</b></center></div>
                                 <div class="card-body">
 
 
                                     <ul class="nav nav-tabs">
-                                        <li style="margin-right:10px"><a class="btn btn-secondary checked" data-toggle="tab" href="#fecha">{{__('Fecha')}}</a></li>
-                                        <li style="margin-right:10px"><a class="btn btn-secondary checked" data-toggle="tab" href="#articulo">{{__('Articulo')}}</a></li>
-                                        <li style="margin-right:10px"><a class="btn btn-secondary checked" data-toggle="tab" href="#equipo">{{__('Equipo')}}</a></li>
-                                        <li style="margin-right:10px"><a class="btn btn-secondary checked" data-toggle="tab" href="#departamento">{{__('Departamento')}}</a></li>
+                                        <li style="margin-right:10px ; margin-bottom:5px"><a class="btn btn-secondary checked" data-toggle="tab" href="#fecha">{{__('Fecha')}}</a></li>
+                                        <li style="margin-right:10px ; margin-bottom:5px"><a class="btn btn-secondary checked" data-toggle="tab" href="#articulo">{{__('Articulo')}}</a></li>
+                                        <li style="margin-right:10px ; margin-bottom:5px"><a class="btn btn-secondary checked" data-toggle="tab" href="#equipo">{{__('Equipo')}}</a></li>
+                                        <li style="margin-right:10px ; margin-bottom:5px"><a class="btn btn-secondary checked" data-toggle="tab" href="#departamento">{{__('Departamento')}}</a></li>
                                     </ul>
 
                                       <div class="tab-content" style="margin-top:10px">
@@ -241,11 +241,13 @@ display: none !important;
                                         <div id="departamento" class="tab-pane fade">
 
                                             <div class="row">
-                                                <div class="col-3">
+                                                <div class="col">
                                                     <b>{{__('Departamento:')}}</b>
 
                                                 </div>
-                                                <div class="col-9">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
                                                     <select name="departamento" id="" class="form-control" required>
                                                         @foreach ($departamentos as $departamento)
                                                         <option value="0">{{__('Selecciona una opción')}}</option>
@@ -267,15 +269,17 @@ display: none !important;
 
 
                         </div>
+                        <div class="card-footer">
+                            <center>
+                                <button type="submit" class="btn btn-primary">{{__('Consultar')}}</button>
+                            </center>
+                        </form>
+
+                        </div>
 
                     </div>
-                    <div class="card-footer">
-                        <center>
-                            <button type="submit" class="btn btn-primary">{{__('Consultar')}}</button>
-                        </center>
-                    </form>
 
-                    </div>
+
                 </div>
     </div>
     </div>

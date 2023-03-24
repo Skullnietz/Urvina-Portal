@@ -136,7 +136,7 @@ display: none !important;
                         <h5 class="card-title">{{__('Reportes')}}</h5>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                            <i style="color:white" class="fas fa-minus"></i>
+                            <i style="color:white" class="fas fa-plus"></i>
                             </button>
                             <button type="button" class="btn btn-tool" data-card-widget="remove">
                             <i style="color:white" class="fas fa-times"></i>
