@@ -201,6 +201,8 @@
                                             <b>{{__('Departamento:')}}</b>
 
                                         </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-9">
                                             <select name="departamento" id="" class="form-control" required>
                                                 @foreach ($departamentos as $departamento)
