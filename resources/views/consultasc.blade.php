@@ -197,13 +197,13 @@
                                 <div id="departamento" class="tab-pane fade">
 
                                     <div class="row">
-                                        <div class="col-3">
+                                        <div class="col">
                                             <b>{{__('Departamento:')}}</b>
 
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-9">
+                                        <div class="col">
                                             <select name="departamento" id="" class="form-control" required>
                                                 @foreach ($departamentos as $departamento)
                                                 <option value="0">{{__('Selecciona una opción')}}</option>
