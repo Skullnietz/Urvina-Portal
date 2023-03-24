@@ -299,8 +299,10 @@
                 </div>
                 <div class="card-body">
                     <ul id="chart-menu">
-                        <li><a href="#container">Gráfica 1</a></li>
-                        <li><a href="#container1">Gráfica 2</a></li>
+                        <li><a href="#container">Gráfica de barra | consumo por Cantidades</a></li>
+                        <li><a href="#container1">Gráfica de pastel | consumo por Cantidades</a></li>
+                        <li><a href="#container2">Gráfica de barra | consumo por Importe</a></li>
+                        <li><a href="#container3">Gráfica de pastel | consumo por Importe</a></li>
                       </ul>
                     <div class="row">
                         <div class="col">
