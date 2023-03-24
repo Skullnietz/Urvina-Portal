@@ -282,7 +282,7 @@
             <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">{{__('Consumos')}}</h5>
+                    <h5 class="card-title">{{__('Graficas de Consumos')}}</h5>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool">
                             {{__('Descargar reporte')}}
@@ -299,10 +299,10 @@
                 </div>
                 <div class="card-body">
                     <ul id="chart-menu">
-                        <li><a href="#container">Gráfica de barra | consumo por Cantidades</a></li>
-                        <li><a href="#container1">Gráfica de pastel | consumo por Cantidades</a></li>
-                        <li><a href="#container2">Gráfica de barra | consumo por Importe</a></li>
-                        <li><a href="#container3">Gráfica de pastel | consumo por Importe</a></li>
+                        <li><a href="#container">Gráfica de barra | Consumo por Cantidades</a></li>
+                        <li><a href="#container1">Gráfica de pastel | Consumo por Cantidades</a></li>
+                        <li><a href="#container2">Gráfica de barra | Consumo por Importe</a></li>
+                        <li><a href="#container3">Gráfica de pastel | Consumo por Importe</a></li>
                       </ul>
                     <div class="row">
                         <div class="col">
@@ -435,7 +435,7 @@
   },
   title: {
     align: 'left',
-    text: '{{__('Consumos por articulo en cantidades')}}'
+    text: '{{__('Consumos por articulo en Cantidades')}}'
   },
   accessibility: {
     point: {
@@ -521,7 +521,7 @@ Highcharts.chart('container', {
   },
   title: {
     align: 'left',
-    text: '{{__('Consumos por articulo en cantidades')}}'
+    text: '{{__('Consumos por articulo en Cantidades')}}'
   },
   xAxis: {
     categories: ['{{__('Articulo')}}'],
