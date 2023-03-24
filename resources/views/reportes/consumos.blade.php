@@ -298,12 +298,12 @@
                         </div>
                 </div>
                 <div class="card-body">
-                    <ul id="chart-menu">
-                        <li><a href="#container">Gráfica de barra | Consumo por Cantidades</a></li>
-                        <li><a href="#container1">Gráfica de pastel | Consumo por Cantidades</a></li>
-                        <li><a href="#container2">Gráfica de barra | Consumo por Importe</a></li>
-                        <li><a href="#container3">Gráfica de pastel | Consumo por Importe</a></li>
-                      </ul>
+                  <select id="chart-selector" class="form-control">
+                    <option value="container">Gráfica de barra | Consumo por Cantidades</option>
+                    <option value="container1">Gráfica de pastel | Consumo por Cantidades</option>
+                    <option value="container2">Gráfica de barra | Consumo por Importe</option>
+                    <option value="container3">Gráfica de pastel | Consumo por Importe</option>
+                  </select>
                     <div class="row">
                         <div class="col">
                             <figure class="highcharts-figure">
@@ -646,6 +646,22 @@ Highcharts.chart('container', {
               }]
             }
           });
+                  </script>
+                  <script>
+                    var chartSelector = document.querySelector('#chart-selector');
+var charts = document.querySelectorAll('.chart-container');
+
+chartSelector.addEventListener('change', function() {
+  var selectedChart = chartSelector.value;
+
+  charts.forEach(function(chart) {
+    if (chart.id === selectedChart) {
+      chart.style.display = 'block';
+    } else {
+      chart.style.display = 'none';
+    }
+  });
+});
                   </script>
 
 @stop
