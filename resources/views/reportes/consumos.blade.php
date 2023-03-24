@@ -34,23 +34,27 @@ display: none !important;
   font-weight: 600;
   padding: 0.5em;
 }
-.tabla-responsive {
+.tabla-seccion {
+  max-width: 100%;
   overflow-x: auto;
 }
-table {
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* para mejorar el desplazamiento en iOS */
+}
+.tabla {
   width: 100%;
   border-collapse: collapse;
+  white-space: nowrap; /* para evitar el ajuste automático de texto en celdas */
 }
-th, td {
-  padding: 8px;
+.tabla th,
+.tabla td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
   text-align: left;
-  border-bottom: 1px solid #ddd;
 }
-@media screen and (max-width: 600px) {
-  th, td {
-    padding: 6px;
-  }
-}
+
 .highcharts-data-table td,
 .highcharts-data-table th,
 .highcharts-data-table caption {
@@ -336,7 +340,9 @@ th, td {
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <table class="table table-striped tabla-responsive">
+                                    <div class="tabla-seccion">
+                                        <div class="tabla-contenedor">
+                                    <table class="table table-striped">
                                         <tr>
                                             <th>{{__('Articulo')}}</th>
                                             <th>{{__('Nombre')}}</th>
@@ -357,10 +363,14 @@ th, td {
                                 </div>
                             </div>
                         </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row" id="datos-UAT">
-                        <table class="table tabla-responsive table-striped">
+                        <div class="tabla-seccion">
+                        <div class="tabla-contenedor">
+                        <table class="table table-striped">
                             <tr class="bg-secondary">
                                 <th>{{__('Articulo')}}</th>
                                 <th>{{__('Descripcion')}}</th>
@@ -379,6 +389,8 @@ th, td {
 
                         </table>
                     </div>
+                </div>
+                </div>
                 </div>
             </div>
         </div>
