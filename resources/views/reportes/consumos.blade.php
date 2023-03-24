@@ -299,14 +299,14 @@
                 </div>
                 <div class="card-body">
                     <ul id="chart-menu">
-                        <li><a href="#chart1">Gráfica 1</a></li>
-                        <li><a href="#chart2">Gráfica 2</a></li>
+                        <li><a href="#container">Gráfica 1</a></li>
+                        <li><a href="#container1">Gráfica 2</a></li>
                       </ul>
                     <div class="row">
                         <div class="col">
                             <figure class="highcharts-figure">
-                                <div id="chart1"></div>
-                                <div id="chart2"></div>
+                                <div id="container"></div>
+                                <div id="container1"></div>
 
                               </figure>
                         </div>
@@ -420,7 +420,7 @@
     </script>
     <script>
         // Create the chart
-        Highcharts.chart('chart2', {
+        Highcharts.chart('container1', {
   chart: {
     type: 'pie',
     options3d: {
@@ -457,12 +457,12 @@
     name: 'Share',
     data: [
         @foreach ($dataConsulta as $dataS2)
-      ['{{__($dataS2->Articulo)}}', {{__($dataS2->Cantidad)}}],
+      ['{{__('$dataS2->Articulo')}}', {{__($dataS2->Cantidad)}}],
       @endforeach
     ]
   }]
 });
-Highcharts.chart('chart1', {
+Highcharts.chart('container', {
   chart: {
     type: 'column'
   },
@@ -483,10 +483,6 @@ Highcharts.chart('chart1', {
     align: 'right',
     verticalAlign: 'middle',
     layout: 'vertical'
-  },
-  chart: {
-    renderTo: 'chart1',
-    visible: true
   },
 
   credits: { enabled: false },
@@ -523,10 +519,6 @@ Highcharts.chart('chart1', {
         subtitle: {
           text: null
         },
-        chart: {
-    renderTo: 'chart2',
-    visible: true
-  },
         credits: {
           enabled: false
         }
@@ -534,25 +526,5 @@ Highcharts.chart('chart1', {
     }]
   }
 });
-        </script>
-        <script>
-          var menuItems = document.querySelectorAll('#chart-menu a');
-var charts = document.querySelectorAll('.chart-container');
-
-menuItems.forEach(function(item) {
-  item.addEventListener('click', function(event) {
-    event.preventDefault();
-    var target = this.getAttribute('href');
-
-    charts.forEach(function(chart) {
-      if (chart.id === target) {
-        chart.style.display = 'block';
-      } else {
-        chart.style.display = 'none';
-      }
-    });
-  });
-});
-
         </script>
 @stop
