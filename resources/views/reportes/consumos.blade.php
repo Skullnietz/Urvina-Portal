@@ -478,7 +478,7 @@ beta: 0
 },
 title: {
 align: 'left',
-text: '{{__('Consumos por articulo en cantidades')}}'
+text: '{{__('Consumos por articulo en Importe')}}'
 },
 accessibility: {
 point: {
@@ -586,7 +586,7 @@ Highcharts.chart('container', {
             },
             title: {
               align: 'left',
-              text: '{{__('Consumos por articulo en cantidades')}}'
+              text: '{{__('Consumos por articulo en Importe')}}'
             },
             xAxis: {
               categories: ['{{__('Articulo')}}'],
@@ -594,7 +594,7 @@ Highcharts.chart('container', {
             yAxis: {
               allowDecimals: false,
               title: {
-                  text: '{{__('Cantidad')}}'
+                  text: '{{__('Importe')}}'
               }
             },
             legend: {
