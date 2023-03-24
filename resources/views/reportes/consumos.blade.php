@@ -457,7 +457,7 @@
     name: 'Share',
     data: [
         @foreach ($dataConsulta as $dataS2)
-      ['{{__('$dataS2->Articulo')}}', {{__($dataS2->Cantidad)}}],
+      ['{{__($dataS2->Articulo)}}', {{__($dataS2->Cantidad)}}],
       @endforeach
     ]
   }]
