@@ -461,7 +461,7 @@ display: none !important;
   },
   series: [{
     type: 'pie',
-    name: 'Share',
+    name: 'Cantidad',
     data: [
         @foreach ($dataConsulta as $dataS2)
       ['{{__($dataS2->Articulo)}}', {{__($dataS2->Cantidad)}}],
@@ -506,7 +506,7 @@ dataLabels: {
 },
 series: [{
 type: 'pie',
-name: 'Share',
+name: 'Importe',
 data: [
   @foreach ($dataConsulta as $dataS4)
 ['{{__($dataS4->Articulo)}}', {{__($dataS4->Importe)}}],
