@@ -20,6 +20,9 @@
   width: 100%;
   max-width: 500px;
 }
+.highcharts-credits {
+display: none !important;
+}
 
 .highcharts-data-table caption {
   padding: 1em 0;
@@ -30,6 +33,26 @@
 .highcharts-data-table th {
   font-weight: 600;
   padding: 0.5em;
+}
+.tabla-seccion {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* para mejorar el desplazamiento en iOS */
+}
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap; /* para evitar el ajuste automático de texto en celdas */
+}
+.tabla th,
+.tabla td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  text-align: left;
 }
 
 .highcharts-data-table td,
@@ -45,9 +68,6 @@
 
 .highcharts-data-table tr:hover {
   background: #f1f7ff;
-}
-.highcharts-credits {
-display: none !important;
 }
 
 #button-bar {
@@ -289,7 +309,7 @@ display: none !important;
             <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">{{__('Consumos')}}</h5>
+                    <h5 class="card-title">{{__('Graficas de Consumos en Proyecto/Equipo/Ref')}}</h5>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool">
                             {{__('Descargar reporte')}}
@@ -305,25 +325,36 @@ display: none !important;
                         </div>
                 </div>
                 <div class="card-body">
+                  <select id="select-graficas" class="form-control">
+                    <option value="container">Gráfica de barra | Consumo por Equipo en Cantidades</option>
+                    <option value="container1">Gráfica de pastel | Consumo por Equipo en Cantidades</option>
+                    <option value="container2">Gráfica de barra | Consumo por Equipo en Importe</option>
+                    <option value="container3">Gráfica de pastel | Consumo por Equipo en Importe</option>
+                  </select>
                     <div class="row">
                         <div class="col">
                             <figure class="highcharts-figure">
                                 <div id="container"></div>
+                                <div id="container1"></div>
+                                <div id="container2"></div>
+                                <div id="container3"></div>
 
                               </figure>
                         </div>
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="tabla-seccion">
+                                        <div class="tabla-contenedor">
                                     <table class="table table-striped">
                                         <tr>
                                             <th>{{__('Proyecto')}}</th>
                                             <th>{{__('Cantidad')}}</th>
                                         </tr><?php $count=0; ?>
                                         @foreach ($dataConsulta as $data)
-                                        <?php if($count == 5){break;}   ?>
+                                        <?php if($count == 3){break;}   ?>
                                         <tr>
-                                            <td>{{__($data->Proyecto)}}</td>
+                                            <td>{{$data->Proyecto}}</td>
                                             <td>{{number_format($data->Cantidad)}}</td>
                                         </tr>
                                         <?php $count++; ?>
@@ -334,19 +365,22 @@ display: none !important;
                                 </div>
                             </div>
                         </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row" id="datos-UAT">
+                        <div class="tabla-seccion">
+                        <div class="tabla-contenedor">
                         <table class="table table-striped">
                             <tr class="bg-secondary">
                                 <th>{{__('Proyecto')}}</th>
                                 <th>{{__('Cantidad')}}</th>
-                                <th>{{__('Importe')}}</th>
                             </tr>
 
                                 @foreach ($dataConsulta as $dataD)
                                 <tr>
-                                <td>{{__($dataD->Proyecto)}}</td>
+                                <td>{{$dataD->Proyecto}}</td>
                                 <td>{{number_format($dataD->Cantidad)}}</td>
                                 <td>{{number_format($dataD->Importe, 2, '.', '')}}</td>
                                 </tr>
@@ -354,6 +388,8 @@ display: none !important;
 
                         </table>
                     </div>
+                </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -417,63 +453,262 @@ display: none !important;
     }
     </script>
     <script>
-        // Create the chart
-        Highcharts.setOptions({
-  colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
-    return {
-      radialGradient: {
-        cx: 0.5,
-        cy: 0.3,
-        r: 0.7
-      },
-      stops: [
-        [0, color],
-        [1, Highcharts.color(color).brighten(-0.3).get('rgb')] // darken
-      ]
-    };
-  })
-});
-
-// Build the chart
-Highcharts.chart('container', {
+        // Grafica de Cantidad Pastel
+        Highcharts.chart('container1', {
   chart: {
-    plotBackgroundColor: null,
-    plotBorderWidth: null,
-    plotShadow: false,
-    type: 'pie'
+    type: 'pie',
+    options3d: {
+      enabled: true,
+      alpha: 45,
+      beta: 0
+    }
   },
   title: {
-    text: '{{__('Consumo por Equipo/Proyecto/Referencia')}}',
-    align: 'left'
-  },
-  tooltip: {
-    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    align: 'left',
+    text: '{{__('Consumos por articulo en Cantidades')}}'
   },
   accessibility: {
     point: {
       valueSuffix: '%'
     }
   },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
   plotOptions: {
     pie: {
       allowPointSelect: true,
       cursor: 'pointer',
+      depth: 35,
       dataLabels: {
         enabled: true,
-        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-        connectorColor: 'silver'
-      },
-
+        format: '{point.name}'
+      }
     }
   },
   series: [{
-    name: 'Porcentaje',
+    type: 'pie',
+    name: 'Cantidad',
     data: [
-        @foreach ($dataConsulta as $dataS)
-      { name: '{{$dataS->Proyecto}}', y: {{$dataS->Importe}} },
+        @foreach ($dataConsulta as $dataS2)
+      ['{{__($dataS2->Proyecto)}}', {{__($dataS2->Cantidad)}}],
       @endforeach
     ]
   }]
 });
+</script>
+<script>
+  // Grafica de Cantidad Pastel
+  Highcharts.chart('container3', {
+chart: {
+type: 'pie',
+options3d: {
+enabled: true,
+alpha: 45,
+beta: 0
+}
+},
+title: {
+align: 'left',
+text: '{{__('Consumos por articulo en Importe')}}'
+},
+accessibility: {
+point: {
+valueSuffix: '%'
+}
+},
+tooltip: {
+pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+},
+plotOptions: {
+pie: {
+allowPointSelect: true,
+cursor: 'pointer',
+depth: 35,
+dataLabels: {
+  enabled: true,
+  format: '{point.name}'
+}
+}
+},
+series: [{
+type: 'pie',
+name: 'Importe',
+data: [
+  @foreach ($dataConsulta as $dataS4)
+['{{__($dataS4->Proyecto)}}', {{__($dataS4->Importe)}}],
+@endforeach
+]
+}]
+});
+</script>
+
+<script>
+Highcharts.chart('container', {
+  //Grafica de Cantidad Barra
+  chart: {
+    type: 'column'
+  },
+  title: {
+    align: 'left',
+    text: '{{__('Consumos por articulo en Cantidades')}}'
+  },
+  xAxis: {
+    categories: ['{{__('Articulo')}}'],
+  },
+  yAxis: {
+    allowDecimals: false,
+    title: {
+        text: '{{__('Cantidad')}}'
+    }
+  },
+  legend: {
+    align: 'right',
+    verticalAlign: 'middle',
+    layout: 'vertical'
+  },
+
+  credits: { enabled: false },
+
+  series: [
+@foreach ($dataConsulta as $dataS)
+    {
+    name: '{{$dataS->Proyecto}}',
+    data: [{{$dataS->Cantidad}}]
+  },
+@endforeach
+],
+  responsive: {
+    rules: [{
+      condition: {
+        maxWidth: 500
+      },
+      chartOptions: {
+        legend: {
+          align: 'center',
+          verticalAlign: 'bottom',
+          layout: 'horizontal'
+        },
+        yAxis: {
+          labels: {
+            align: 'left',
+            x: 0,
+            y: -5
+          },
+          title: {
+            text: null
+          }
+        },
+        subtitle: {
+          text: null
+        },
+        credits: {
+          enabled: false
+        }
+      }
+    }]
+  }
+});
         </script>
+        <script>
+          Highcharts.chart('container2', {
+            //Grafica de Cantidad Barra
+            chart: {
+              type: 'column'
+            },
+            title: {
+              align: 'left',
+              text: '{{__('Consumos por articulo en Importe')}}'
+            },
+            xAxis: {
+              categories: ['{{__('Articulo')}}'],
+            },
+            yAxis: {
+              allowDecimals: false,
+              title: {
+                  text: '{{__('Importe')}}'
+              }
+            },
+            legend: {
+              align: 'right',
+              verticalAlign: 'middle',
+              layout: 'vertical'
+            },
+
+            credits: { enabled: false },
+
+            series: [
+          @foreach ($dataConsulta as $dataS3)
+              {
+              name: '{{$dataS3->Proyecto}}',
+              data: [{{$dataS3->Importe}}]
+            },
+          @endforeach
+          ],
+            responsive: {
+              rules: [{
+                condition: {
+                  maxWidth: 500
+                },
+                chartOptions: {
+                  legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    layout: 'horizontal'
+                  },
+                  yAxis: {
+                    labels: {
+                      align: 'left',
+                      x: 0,
+                      y: -5
+                    },
+                    title: {
+                      text: null
+                    }
+                  },
+                  subtitle: {
+                    text: null
+                  },
+                  credits: {
+                    enabled: false
+                  }
+                }
+              }]
+            }
+          });
+                  </script>
+                  <script>
+                    $(document).ready(function() {
+        $('#container').show();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').hide();
+      });
+                    $('#select-graficas').on('change', function() {
+    var container = $(this).val();
+    if (container === 'container') {
+        $('#container').show();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').hide();
+    } else if (container === 'container1') {
+        $('#container').hide();
+        $('#container1').show();
+        $('#container2').hide();
+        $('#container3').hide();
+    } else if (container === 'container2') {
+        $('#container').hide();
+        $('#container1').hide();
+        $('#container2').show();
+        $('#container3').hide();
+    } else if (container === 'container3') {
+        $('#container').hide();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').show();
+    }
+});
+
+                  </script>
+
 @stop
