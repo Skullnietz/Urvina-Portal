@@ -376,6 +376,7 @@ display: none !important;
                             <tr class="bg-secondary">
                                 <th>{{__('Proyecto')}}</th>
                                 <th>{{__('Cantidad')}}</th>
+                                <th>{{__('Importe')}}</th>
                             </tr>
 
                                 @foreach ($dataConsulta as $dataD)
