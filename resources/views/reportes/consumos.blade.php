@@ -504,7 +504,7 @@ type: 'pie',
 name: 'Share',
 data: [
   @foreach ($dataConsulta as $dataS4)
-['{{__($dataS4->Articulo)}}', {{__($dataS4->Cantidad)}}],
+['{{__($dataS4->Articulo)}}', {{__($dataS4->Importe)}}],
 @endforeach
 ]
 }]
