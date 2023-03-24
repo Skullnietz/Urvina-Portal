@@ -419,7 +419,7 @@
     }
     </script>
     <script>
-        // Create the chart
+        // Grafica de Cantidad Pastel
         Highcharts.chart('container1', {
   chart: {
     type: 'pie',
@@ -462,7 +462,11 @@
     ]
   }]
 });
+</script>
+
+<script>
 Highcharts.chart('container', {
+  //Grafica de Cantidad Barra
   chart: {
     type: 'column'
   },
@@ -527,4 +531,5 @@ Highcharts.chart('container', {
   }
 });
         </script>
+        
 @stop
