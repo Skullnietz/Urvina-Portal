@@ -326,10 +326,10 @@ display: none !important;
                 </div>
                 <div class="card-body">
                   <select id="select-graficas" class="form-control">
-                    <option value="container">Gráfica de barra | Consumo por Equipo en Cantidades</option>
-                    <option value="container1">Gráfica de pastel | Consumo por Equipo en Cantidades</option>
-                    <option value="container2">Gráfica de barra | Consumo por Equipo en Importe</option>
-                    <option value="container3">Gráfica de pastel | Consumo por Equipo en Importe</option>
+                    <option value="container">Gráfica de barra | Consumo por Departamento en Cantidades</option>
+                    <option value="container1">Gráfica de pastel | Consumo por Departamento en Cantidades</option>
+                    <option value="container2">Gráfica de barra | Consumo por Departamento en Importe</option>
+                    <option value="container3">Gráfica de pastel | Consumo por Departamento en Importe</option>
                   </select>
                     <div class="row">
                         <div class="col">

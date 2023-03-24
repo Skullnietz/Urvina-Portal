@@ -20,6 +20,9 @@
   width: 100%;
   max-width: 500px;
 }
+.highcharts-credits {
+display: none !important;
+}
 
 .highcharts-data-table caption {
   padding: 1em 0;
@@ -30,6 +33,26 @@
 .highcharts-data-table th {
   font-weight: 600;
   padding: 0.5em;
+}
+.tabla-seccion {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* para mejorar el desplazamiento en iOS */
+}
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap; /* para evitar el ajuste automático de texto en celdas */
+}
+.tabla th,
+.tabla td {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  text-align: left;
 }
 
 .highcharts-data-table td,
@@ -286,7 +309,7 @@
             <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">{{__('Consumos')}}</h5>
+                    <h5 class="card-title">{{__('Graficas de Consumos en Departamento')}}</h5>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool">
                             {{__('Descargar reporte')}}
@@ -302,68 +325,72 @@
                         </div>
                 </div>
                 <div class="card-body">
+                  <select id="select-graficas" class="form-control">
+                    <option value="container">Gráfica de barra | Consumo por Periodo en Cantidades</option>
+                    <option value="container1">Gráfica de pastel | Consumo por Periodo en Cantidades</option>
+                    <option value="container2">Gráfica de barra | Consumo por Periodo en Importe</option>
+                    <option value="container3">Gráfica de pastel | Consumo por Periodo en Importe</option>
+                  </select>
                     <div class="row">
                         <div class="col">
                             <figure class="highcharts-figure">
                                 <div id="container"></div>
+                                <div id="container1"></div>
+                                <div id="container2"></div>
+                                <div id="container3"></div>
 
                               </figure>
                         </div>
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="tabla-seccion">
+                                        <div class="tabla-contenedor">
                                     <table class="table table-striped">
                                         <tr>
-                                            <th>{{__('Depto')}}</th>
-                                            <th>{{__('Nombre')}}</th>
+                                            <th>{{__('Periodo')}}</th>
                                             <th>{{__('Cantidad')}}</th>
-                                        </tr>
+                                        </tr><?php $count=0; ?>
+                                        @foreach ($dataConsulta as $data)
+                                        <?php if($count == 3){break;}   ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>CUARTO DE HERRAMIENTAS L1 (METALICO Y PINTURA)</td>
-                                            <td>6,675</td>
+                                            <td>{{$data->Periodo}}</td>
+                                            <td>{{number_format($data->Cantidad)}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>CUARTO DE HERRAMIENTAS L2 (FABRICACION PESADA)</td>
-                                            <td>1,241</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>ALMACEN MIRO</td>
-                                            <td>1,241</td>
-                                        </tr>
+                                        <?php $count++; ?>
+                                        @endforeach
+
+
                                     </table>
                                 </div>
+                            </div>
+                        </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row" id="datos-UAT">
+                        <div class="tabla-seccion">
+                        <div class="tabla-contenedor">
                         <table class="table table-striped">
                             <tr class="bg-secondary">
-                                <th>{{__('Planta')}}</th>
-                                <th>{{__('Area')}}</th>
-                                <th>{{__('Departamento')}}</th>
-                                <th>{{__('Cantidad')}}</th>
-                                <th>{{__('Importe')}}</th>
+                                <th style="width:300px">{{__('Periodo')}}</th>
+                                <th style="width:300px">{{__('Cantidad')}}</th>
+                                <th style="width:300px">{{__('Importe')}}</th>
                             </tr>
-                            <tr>
-                                <td>1118</td>
-                                <td>General</td>
-                                <td>CUARTO DE HERRAMIENTAS L1 (METALICO Y PINTURA)</td>
-                                <td>6,675</td>
-                                <td>$298,602.61</td>
-                            </tr>
-                            <tr>
-                                <td>1118</td>
-                                <td>General</td>
-                                <td>CUARTO DE HERRAMIENTAS L1 (METALICO Y PINTURA)</td>
-                                <td>6,675</td>
-                                <td>$298,602.61</td>
-                            </tr>
+
+                                @foreach ($dataConsulta as $dataD)
+                                <tr>
+                                <td>{{$dataD->Periodo}}</td>
+                                <td>{{number_format($dataD->Cantidad)}}</td>
+                                <td>{{number_format($dataD->Importe, 2, '.', '')}}</td>
+                                </tr>
+                                @endforeach
+
                         </table>
                     </div>
+                </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -427,28 +454,114 @@
     }
     </script>
     <script>
-        // Create the chart
+        // Grafica de Cantidad Pastel
+        Highcharts.chart('container1', {
+  chart: {
+    type: 'pie',
+    options3d: {
+      enabled: true,
+      alpha: 45,
+      beta: 0
+    }
+  },
+  title: {
+    align: 'left',
+    text: '{{__('Consumos por articulo en Cantidades')}}'
+  },
+  accessibility: {
+    point: {
+      valueSuffix: '%'
+    }
+  },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      depth: 35,
+      dataLabels: {
+        enabled: true,
+        format: '{point.name}'
+      }
+    }
+  },
+  series: [{
+    type: 'pie',
+    name: 'Cantidad',
+    data: [
+        @foreach ($dataConsulta as $dataS2)
+      ['{{__($dataS2->Periodo)}}', {{__($dataS2->Cantidad)}}],
+      @endforeach
+    ]
+  }]
+});
+</script>
+<script>
+  // Grafica de Cantidad Pastel
+  Highcharts.chart('container3', {
+chart: {
+type: 'pie',
+options3d: {
+enabled: true,
+alpha: 45,
+beta: 0
+}
+},
+title: {
+align: 'left',
+text: '{{__('Consumos por articulo en Importe')}}'
+},
+accessibility: {
+point: {
+valueSuffix: '%'
+}
+},
+tooltip: {
+pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+},
+plotOptions: {
+pie: {
+allowPointSelect: true,
+cursor: 'pointer',
+depth: 35,
+dataLabels: {
+  enabled: true,
+  format: '{point.name}'
+}
+}
+},
+series: [{
+type: 'pie',
+name: 'Importe',
+data: [
+  @foreach ($dataConsulta as $dataS4)
+['{{__($dataS4->Periodo)}}', {{__($dataS4->Importe)}}],
+@endforeach
+]
+}]
+});
+</script>
+
+<script>
 Highcharts.chart('container', {
+  //Grafica de Cantidad Barra
   chart: {
     type: 'column'
   },
   title: {
     align: 'left',
-    text: '{{__('Consumos')}}'
+    text: '{{__('Consumos por articulo en Cantidades')}}'
   },
-  subtitle: {
-    align: 'left',
-    text: '{{__('Mostrando los 10 primeros resultados...')}}'
-  },
-
   xAxis: {
-    categories: ['{{__('Departamento')}}'],
+    categories: ['{{__('Articulo')}}'],
   },
   yAxis: {
+    allowDecimals: false,
     title: {
-      text: '{{__('Cantidad')}}'
+        text: '{{__('Cantidad')}}'
     }
-
   },
   legend: {
     align: 'right',
@@ -458,16 +571,14 @@ Highcharts.chart('container', {
 
   credits: { enabled: false },
 
-  series: [{
-    name: '1',
-    data: [6675]
-  }, {
-    name: '2',
-    data: [1241]
-  }, {
-    name: '4',
-    data: [1241]
-  }],
+  series: [
+@foreach ($dataConsulta as $dataS)
+    {
+    name: '{{$dataS->Periodo}}',
+    data: [{{$dataS->Cantidad}}]
+  },
+@endforeach
+],
   responsive: {
     rules: [{
       condition: {
@@ -500,4 +611,105 @@ Highcharts.chart('container', {
   }
 });
         </script>
+        <script>
+          Highcharts.chart('container2', {
+            //Grafica de Cantidad Barra
+            chart: {
+              type: 'column'
+            },
+            title: {
+              align: 'left',
+              text: '{{__('Consumos por articulo en Importe')}}'
+            },
+            xAxis: {
+              categories: ['{{__('Articulo')}}'],
+            },
+            yAxis: {
+              allowDecimals: false,
+              title: {
+                  text: '{{__('Importe')}}'
+              }
+            },
+            legend: {
+              align: 'right',
+              verticalAlign: 'middle',
+              layout: 'vertical'
+            },
+
+            credits: { enabled: false },
+
+            series: [
+          @foreach ($dataConsulta as $dataS3)
+              {
+              name: '{{$dataS3->Periodo}}',
+              data: [{{$dataS3->Importe}}]
+            },
+          @endforeach
+          ],
+            responsive: {
+              rules: [{
+                condition: {
+                  maxWidth: 500
+                },
+                chartOptions: {
+                  legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    layout: 'horizontal'
+                  },
+                  yAxis: {
+                    labels: {
+                      align: 'left',
+                      x: 0,
+                      y: -5
+                    },
+                    title: {
+                      text: null
+                    }
+                  },
+                  subtitle: {
+                    text: null
+                  },
+                  credits: {
+                    enabled: false
+                  }
+                }
+              }]
+            }
+          });
+                  </script>
+                  <script>
+                    $(document).ready(function() {
+        $('#container').show();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').hide();
+      });
+                    $('#select-graficas').on('change', function() {
+    var container = $(this).val();
+    if (container === 'container') {
+        $('#container').show();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').hide();
+    } else if (container === 'container1') {
+        $('#container').hide();
+        $('#container1').show();
+        $('#container2').hide();
+        $('#container3').hide();
+    } else if (container === 'container2') {
+        $('#container').hide();
+        $('#container1').hide();
+        $('#container2').show();
+        $('#container3').hide();
+    } else if (container === 'container3') {
+        $('#container').hide();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').show();
+    }
+});
+
+                  </script>
+
 @stop
