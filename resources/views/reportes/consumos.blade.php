@@ -34,7 +34,23 @@ display: none !important;
   font-weight: 600;
   padding: 0.5em;
 }
-
+.tabla-responsive {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+@media screen and (max-width: 600px) {
+  th, td {
+    padding: 6px;
+  }
+}
 .highcharts-data-table td,
 .highcharts-data-table th,
 .highcharts-data-table caption {
@@ -320,7 +336,7 @@ display: none !important;
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped tabla-responsive">
                                         <tr>
                                             <th>{{__('Articulo')}}</th>
                                             <th>{{__('Nombre')}}</th>
@@ -344,7 +360,7 @@ display: none !important;
                     </div>
 
                     <div class="row" id="datos-UAT">
-                        <table class="table table-striped">
+                        <table class="table tabla-responsive table-striped">
                             <tr class="bg-secondary">
                                 <th>{{__('Articulo')}}</th>
                                 <th>{{__('Descripcion')}}</th>
