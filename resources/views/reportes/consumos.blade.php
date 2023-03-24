@@ -298,10 +298,15 @@
                         </div>
                 </div>
                 <div class="card-body">
+                    <ul id="chart-menu">
+                        <li><a href="#container">Gráfica 1</a></li>
+                        <li><a href="#container1">Gráfica 2</a></li>
+                      </ul>
                     <div class="row">
                         <div class="col">
                             <figure class="highcharts-figure">
                                 <div id="container"></div>
+                                <div id="container1"></div>
 
                               </figure>
                         </div>
@@ -415,6 +420,48 @@
     </script>
     <script>
         // Create the chart
+        Highcharts.chart('container1', {
+  chart: {
+    type: 'pie',
+    options3d: {
+      enabled: true,
+      alpha: 45,
+      beta: 0
+    }
+  },
+  title: {
+    align: 'left',
+    text: '{{__('Consumos por articulo en cantidades')}}'
+  },
+  accessibility: {
+    point: {
+      valueSuffix: '%'
+    }
+  },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      depth: 35,
+      dataLabels: {
+        enabled: true,
+        format: '{point.name}'
+      }
+    }
+  },
+  series: [{
+    type: 'pie',
+    name: 'Share',
+    data: [
+        @foreach ($dataConsulta as $dataS2)
+      ['{{__('$dataS2->Articulo')}}', {{__($dataS2->Cantidad)}}],
+      @endforeach
+    ]
+  }]
+});
 Highcharts.chart('container', {
   chart: {
     type: 'column'
@@ -423,11 +470,6 @@ Highcharts.chart('container', {
     align: 'left',
     text: '{{__('Consumos por articulo en cantidades')}}'
   },
-  subtitle: {
-    align: 'left',
-    text: '{{__('Mostrando los 10 primeros resultados...')}}'
-  },
-
   xAxis: {
     categories: ['{{__('Articulo')}}'],
   },
