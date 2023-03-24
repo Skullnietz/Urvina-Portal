@@ -223,15 +223,16 @@
 
 
                 </div>
+                <div class="card-footer">
+                    <center>
+                        <button type="submit" class="btn btn-primary">{{__('Consultar')}}</button>
+                    </center>
+                </form>
+
+                </div>
 
             </div>
-            <div class="card-footer">
-                <center>
-                    <button type="submit" class="btn btn-primary">{{__('Consultar')}}</button>
-                </center>
-            </form>
 
-            </div>
 
         </div>
     </div>
