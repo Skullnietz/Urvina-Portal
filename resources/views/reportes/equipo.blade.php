@@ -374,9 +374,9 @@ display: none !important;
                         <div class="tabla-contenedor">
                         <table class="table table-striped">
                             <tr class="bg-secondary">
-                                <th>{{__('Proyecto')}}</th>
-                                <th>{{__('Cantidad')}}</th>
-                                <th>{{__('Importe')}}</th>
+                                <th style="width:100px">{{__('Proyecto')}}</th>
+                                <th style="width:100px">{{__('Cantidad')}}</th>
+                                <th style="width:100px">{{__('Importe')}}</th>
                             </tr>
 
                                 @foreach ($dataConsulta as $dataD)
