@@ -420,7 +420,7 @@
     </script>
     <script>
         // Create the chart
-        Highcharts.chart('chart1', {
+        Highcharts.chart('chart2', {
   chart: {
     type: 'pie',
     options3d: {
