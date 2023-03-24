@@ -307,6 +307,8 @@
                             <figure class="highcharts-figure">
                                 <div id="container"></div>
                                 <div id="container1"></div>
+                                <div id="container2"></div>
+                                <div id="container3"></div>
 
                               </figure>
                         </div>
@@ -463,6 +465,51 @@
   }]
 });
 </script>
+<script>
+  // Grafica de Cantidad Pastel
+  Highcharts.chart('container3', {
+chart: {
+type: 'pie',
+options3d: {
+enabled: true,
+alpha: 45,
+beta: 0
+}
+},
+title: {
+align: 'left',
+text: '{{__('Consumos por articulo en cantidades')}}'
+},
+accessibility: {
+point: {
+valueSuffix: '%'
+}
+},
+tooltip: {
+pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+},
+plotOptions: {
+pie: {
+allowPointSelect: true,
+cursor: 'pointer',
+depth: 35,
+dataLabels: {
+  enabled: true,
+  format: '{point.name}'
+}
+}
+},
+series: [{
+type: 'pie',
+name: 'Share',
+data: [
+  @foreach ($dataConsulta as $dataS4)
+['{{__($dataS4->Articulo)}}', {{__($dataS4->Cantidad)}}],
+@endforeach
+]
+}]
+});
+</script>
 
 <script>
 Highcharts.chart('container', {
@@ -531,5 +578,72 @@ Highcharts.chart('container', {
   }
 });
         </script>
-        
+        <script>
+          Highcharts.chart('container2', {
+            //Grafica de Cantidad Barra
+            chart: {
+              type: 'column'
+            },
+            title: {
+              align: 'left',
+              text: '{{__('Consumos por articulo en cantidades')}}'
+            },
+            xAxis: {
+              categories: ['{{__('Articulo')}}'],
+            },
+            yAxis: {
+              allowDecimals: false,
+              title: {
+                  text: '{{__('Cantidad')}}'
+              }
+            },
+            legend: {
+              align: 'right',
+              verticalAlign: 'middle',
+              layout: 'vertical'
+            },
+
+            credits: { enabled: false },
+
+            series: [
+          @foreach ($dataConsulta as $dataS3)
+              {
+              name: '{{$dataS3->Articulo}}',
+              data: [{{$dataS3->Importe}}]
+            },
+          @endforeach
+          ],
+            responsive: {
+              rules: [{
+                condition: {
+                  maxWidth: 500
+                },
+                chartOptions: {
+                  legend: {
+                    align: 'center',
+                    verticalAlign: 'bottom',
+                    layout: 'horizontal'
+                  },
+                  yAxis: {
+                    labels: {
+                      align: 'left',
+                      x: 0,
+                      y: -5
+                    },
+                    title: {
+                      text: null
+                    }
+                  },
+                  subtitle: {
+                    text: null
+                  },
+                  credits: {
+                    enabled: false
+                  }
+                }
+              }]
+            }
+          });
+                  </script>
+
 @stop
