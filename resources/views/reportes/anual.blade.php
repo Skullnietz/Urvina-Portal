@@ -360,7 +360,7 @@ display: none !important;
             <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">{{__('Graficas de Consumos en Departamento')}}</h5>
+                    <h5 class="card-title">{{__('Graficas de Consumos por Periodo')}}</h5>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool">
                             {{__('Descargar reporte')}}
