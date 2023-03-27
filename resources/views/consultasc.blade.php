@@ -449,9 +449,13 @@ mySelect.addEventListener("change", function() {
   if (mySelect.value === "Selección detallada") {
     input1.style.display = "block";
     input2.style.display = "block";
+    input3.style.display = "block";
+    input4.style.display = "block";
   } else {
     input1.style.display = "none";
     input2.style.display = "none";
+    input3.style.display = "none";
+    input4.style.display = "none";
   }
 });
 
