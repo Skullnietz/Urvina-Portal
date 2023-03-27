@@ -263,7 +263,55 @@
                     <label for="lastDayOfApril">Último día de abril:</label>
                     <input type="date" id="lastDayOfApril" name="lastDayOfApril" />
 
-                    <button type="submit">Enviar</button>
+                    <label for="firstDayOfMay">Primer día de mayo:</label>
+                    <input type="date" id="firstDayOfMay" name="firstDayOfMay" />
+
+                    <label for="lastDayOfMay">Último día de mayo:</label>
+                    <input type="date" id="lastDayOfMay" name="lastDayOfMay" />
+
+                    <label for="firstDayOfJune">Primer día de junio:</label>
+                    <input type="date" id="firstDayOfJune" name="firstDayOfJune" />
+
+                    <label for="lastDayOfJune">Último día de junio:</label>
+                    <input type="date" id="lastDayOfJune" name="lastDayOfJune" />
+
+                    <label for="firstDayOfJuly">Primer día de julio:</label>
+                    <input type="date" id="firstDayOfJuly" name="firstDayOfJuly" />
+
+                    <label for="lastDayOfJuly">Último día de julio:</label>
+                    <input type="date" id="lastDayOfJuly" name="lastDayOfJuly" />
+
+                    <label for="firstDayOfAugust">Primer día de agosto:</label>
+                    <input type="date" id="firstDayOfAugust" name="firstDayOfAugust" />
+
+                    <label for="lastDayOfAugust">Último día de agosto:</label>
+                    <input type="date" id="lastDayOfAugust" name="lastDayOfAugust" />
+
+                    <label for="firstDayOfSeptember">Primer día de septiembre:</label>
+                    <input type="date" id="firstDayOfSeptember" name="firstDayOfSeptember" />
+
+                    <label for="lastDayOfSeptember">Último día de septiembre:</label>
+                    <input type="date" id="lastDayOfSeptember" name="lastDayOfSeptember" />
+
+                    <label for="firstDayOfOctober">Primer día de octubre:</label>
+                    <input type="date" id="firstDayOfOctober" name="firstDayOfOctober" />
+
+                    <label for="lastDayOfOctober">Último día de octubre:</label>
+                    <input type="date" id="lastDayOfOctober" name="lastDayOfOctober" />
+
+                    <label for="firstDayOfNovember">Primer día de noviembre:</label>
+                    <input type="date" id="firstDayOfNovember" name="firstDayOfNovember" />
+
+                    <label for="lastDayOfNovember">Último día de noviembre:</label>
+                    <input type="date" id="lastDayOfNovember" name="lastDayOfNovember" />
+
+                    <label for="firstDayOfDecember">Primer día de diciembre:</label>
+                    <input type="date" id="firstDayOfDecember" name="firstDayOfDecember" />
+
+                    <label for="lastDayOfDecember">Último día de diciembre:</label>
+                    <input type="date" id="lastDayOfDecember" name="lastDayOfDecember" />
+
+
 
 
 
@@ -385,6 +433,56 @@ document.getElementById('firstDayOfApril').value = firstDayOfApril.toISOString()
 
 const lastDayOfApril = new Date(today.getFullYear(), 3, 30);
 document.getElementById('lastDayOfApril').value = lastDayOfApril.toISOString().split('T')[0];
+
+const firstDayOfMay = new Date(today.getFullYear(), 4, 1);
+document.getElementById('firstDayOfMay').value = firstDayOfMay.toISOString().split('T')[0];
+
+const lastDayOfMay = new Date(today.getFullYear(), 4, 31);
+document.getElementById('lastDayOfMay').value = lastDayOfMay.toISOString().split('T')[0];
+
+const firstDayOfJune = new Date(today.getFullYear(), 5, 1);
+document.getElementById('firstDayOfJune').value = firstDayOfJune.toISOString().split('T')[0];
+
+const lastDayOfJune = new Date(today.getFullYear(), 5, 30);
+document.getElementById('lastDayOfJune').value = lastDayOfJune.toISOString().split('T')[0];
+
+const firstDayOfJuly = new Date(today.getFullYear(), 6, 1);
+document.getElementById('firstDayOfJuly').value = firstDayOfJuly.toISOString().split('T')[0];
+
+const lastDayOfJuly = new Date(today.getFullYear(), 6, 31);
+document.getElementById('lastDayOfJuly').value = lastDayOfJuly.toISOString().split('T')[0];
+
+const firstDayOfAugust = new Date(today.getFullYear(), 7, 1);
+document.getElementById('firstDayOfAugust').value = firstDayOfAugust.toISOString().split('T')[0];
+
+const lastDayOfAugust = new Date(today.getFullYear(), 7, 31);
+document.getElementById('lastDayOfAugust').value = lastDayOfAugust.toISOString().split('T')[0];
+
+const firstDayOfSeptember = new Date(today.getFullYear(), 8, 1);
+document.getElementById('firstDayOfSeptember').value = firstDayOfSeptember.toISOString().split('T')[0];
+
+const lastDayOfSeptember = new Date(today.getFullYear(), 8, 30);
+document.getElementById('lastDayOfSeptember').value = lastDayOfSeptember.toISOString().split('T')[0];
+
+const firstDayOfOctober = new Date(today.getFullYear(), 9, 1);
+document.getElementById('firstDayOfOctober').value = firstDayOfOctober.toISOString().split('T')[0];
+
+const lastDayOfOctober = new Date(today.getFullYear(), 9, 31);
+document.getElementById('lastDayOfOctober').value = lastDayOfOctober.toISOString().split('T')[0];
+
+const firstDayOfNovember = new Date(today.getFullYear(), 10, 1);
+document.getElementById('firstDayOfNovember').value = firstDayOfNovember.toISOString().split('T')[0];
+
+const lastDayOfNovember = new Date(today.getFullYear(), 10, 30);
+document.getElementById('lastDayOfNovember').value = lastDayOfNovember.toISOString().split('T')[0];
+
+const firstDayOfDecember = new Date(today.getFullYear(), 11, 1);
+document.getElementById('firstDayOfDecember').value = firstDayOfDecember.toISOString().split('T')[0];
+
+const lastDayOfDecember = new Date(today.getFullYear(), 11, 31);
+document.getElementById('lastDayOfDecember').value = lastDayOfDecember.toISOString().split('T')[0];
+
+
 
     </script>
 @stop
