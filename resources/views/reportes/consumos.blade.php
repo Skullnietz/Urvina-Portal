@@ -592,7 +592,7 @@ type: 'pie',
 name: 'Importe',
 data: [
   @foreach ($dataConsulta as $dataS4)
-['{{__($dataS4->Articulo)}}', {{__($dataS4->Importe)}}],
+['{{__($dataS4->Articulo)}}', {{__((number_format($dataS4->Importe, 2, '.', '')))}}],
 @endforeach
 ]
 }]
@@ -697,7 +697,7 @@ Highcharts.chart('container', {
           @foreach ($dataConsulta as $dataS3)
               {
               name: '{{$dataS3->Articulo}}',
-              data: [{{$dataS3->Importe}}]
+              data: [{{(number_format($dataS3->Importe, 2, '.', ''))}}]
             },
           @endforeach
           ],
