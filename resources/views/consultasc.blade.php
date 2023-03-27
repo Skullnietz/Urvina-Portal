@@ -220,6 +220,23 @@
                     </div>
                     <br>
                 </div>
+                <label>Primer día de la semana:</label>
+  <input type="text" id="firstDayOfWeek" name="firstDayOfWeek">
+
+  <label>Último día de la semana:</label>
+  <input type="text" id="lastDayOfWeek" name="lastDayOfWeek">
+
+  <label>Último día del mes:</label>
+  <input type="text" id="lastDayOfMonth" name="lastDayOfMonth">
+
+  <label>Primer día del mes:</label>
+  <input type="text" id="firstDayOfMonth" name="firstDayOfMonth">
+
+  <label>Primer día del año:</label>
+  <input type="text" id="firstDayOfYear" name="firstDayOfYear">
+
+  <label>Último día del año:</label>
+  <input type="text" id="lastDayOfYear" name="lastDayOfYear">
 
                     </div>
 
@@ -290,5 +307,22 @@
 
       startTimer();
     }
+    </script>
+    <script>
+let today = new Date();
+let firstDayOfWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 1);
+let lastDayOfWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 7);
+let lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+let firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+let firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+let lastDayOfYear = new Date(today.getFullYear(), 11, 31);
+
+document.getElementById("firstDayOfWeek").value = firstDayOfWeek.toLocaleDateString();
+document.getElementById("lastDayOfWeek").value = lastDayOfWeek.toLocaleDateString();
+document.getElementById("lastDayOfMonth").value = lastDayOfMonth.toLocaleDateString();
+document.getElementById("firstDayOfMonth").value = firstDayOfMonth.toLocaleDateString();
+document.getElementById("firstDayOfYear").value = firstDayOfYear.toLocaleDateString();
+document.getElementById("lastDayOfYear").value = lastDayOfYear.toLocaleDateString();
+
     </script>
 @stop
