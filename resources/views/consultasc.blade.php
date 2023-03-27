@@ -444,9 +444,13 @@ const input1 = document.getElementById("div1Fecha");
 const input2 = document.getElementById("div2Fecha");
 
 mySelect.addEventListener("change", function() {
+  if (mySelect.value === "") {
+    input1.style.display = "block";
+    input2.style.display = "block";
+  } else {
     input1.style.display = "none";
     input2.style.display = "none";
-
+  }
 });
 
     </script>
