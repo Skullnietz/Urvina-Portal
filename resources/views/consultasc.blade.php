@@ -169,6 +169,7 @@
                                     </div>
                                     <div style="margin-bottom:10px;" class="row">
                                         <div class="col"><select  class="form-control" name="fechaRapida" id="selectFechaRapida">
+                                            <option value="">Seleccione una opción</option>
                                             <option value="semana">Semana</option>
                                             <option value="mes">Mes</option>
                                             <option value="anio">Año</option>
@@ -186,14 +187,13 @@
                                             <option value="diciembre">Diciembre</option>
                                         </select></div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" id="div1Fecha">
                                         <div class="col"><b>{{__('Desde')}}</b> </div>
                                         <div class="col"><b>{{__('Hasta')}}</b> </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" id="div2Fecha">
                                         <div class="col"><input name="desde" value="" class="form-control" type="date"></div>
                                         <div class="col"><input name="hasta" value="" class="form-control" type="date"></div>
-
                                     </div>
                                 </div>
                                 <div id="articulo" class="tab-pane fade">
@@ -439,7 +439,15 @@ document.getElementById('firstDayOfDecember').value = firstDayOfDecember.toISOSt
 const lastDayOfDecember = new Date(today.getFullYear(), 11, 31);
 document.getElementById('lastDayOfDecember').value = lastDayOfDecember.toISOString().split('T')[0];
 
+const mySelect = document.getElementById("selectFechaRapida");
+const input1 = document.getElementById("div1Fecha");
+const input2 = document.getElementById("div2Fecha");
 
+mySelect.addEventListener("change", function() {
+    input1.style.display = "none";
+    input2.style.display = "none";
+
+});
 
     </script>
 @stop
