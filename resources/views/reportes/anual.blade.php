@@ -376,12 +376,12 @@ display: none !important;
                         </div>
                 </div>
                 <div class="card-body">
-                  <select id="select-graficas" class="form-control">
-                    <option value="container">Gráfica de barra | Consumo por Periodo en Cantidades</option>
-                    <option value="container1">Gráfica de pastel | Consumo por Periodo en Cantidades</option>
-                    <option value="container2">Gráfica de barra | Consumo por Periodo en Importe</option>
-                    <option value="container3">Gráfica de pastel | Consumo por Periodo en Importe</option>
-                  </select>
+                    <select id="select-graficas" class="form-control">
+                        <option value="container">{{__('Gráfica de barra | Consumo por Cantidades')}}</option>
+                        <option value="container1">{{__('Gráfica de pastel | Consumo por Cantidades')}}</option>
+                        <option value="container2">{{__('Gráfica de barra | Consumo por Importe')}}</option>
+                        <option value="container3">{{__('Gráfica de pastel | Consumo por Importe')}}</option>
+                      </select>
                     <div class="row">
                         <div class="col">
                             <figure class="highcharts-figure">
