@@ -188,12 +188,12 @@
                                         </select></div>
                                     </div>
                                     <div class="row" id="div1Fecha">
-                                        <div class="col"><b>{{__('Desde')}}</b> </div>
-                                        <div class="col"><b>{{__('Hasta')}}</b> </div>
+                                        <div class="col"><b id="input1Fecha">{{__('Desde')}}</b> </div>
+                                        <div class="col"><b id="input2Fecha">{{__('Hasta')}}</b> </div>
                                     </div>
-                                    <div class="row" id="div2Fecha">
-                                        <div class="col"><input name="desde" value="" class="form-control" type="date"></div>
-                                        <div class="col"><input name="hasta" value="" class="form-control" type="date"></div>
+                                    <div class="row" >
+                                        <div class="col"><input id="input3Fecha" name="desde" value="" class="form-control" type="date"></div>
+                                        <div class="col"><input id="input4Fecha" name="hasta" value="" class="form-control" type="date"></div>
                                     </div>
                                 </div>
                                 <div id="articulo" class="tab-pane fade">
@@ -440,8 +440,10 @@ const lastDayOfDecember = new Date(today.getFullYear(), 11, 31);
 document.getElementById('lastDayOfDecember').value = lastDayOfDecember.toISOString().split('T')[0];
 
 const mySelect = document.getElementById("selectFechaRapida");
-const input1 = document.getElementById("div1Fecha");
-const input2 = document.getElementById("div2Fecha");
+const input1 = document.getElementById("input1Fecha");
+const input2 = document.getElementById("input2Fecha");
+const input3 = document.getElementById("input3Fecha");
+const input4 = document.getElementById("input4Fecha");
 
 mySelect.addEventListener("change", function() {
   if (mySelect.value === "Selección detallada") {
