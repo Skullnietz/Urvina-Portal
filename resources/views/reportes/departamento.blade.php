@@ -229,13 +229,35 @@ display: none !important;
 
                                         <div id="fecha" class="tab-pane fade in active">
                                             <div class="row">
-                                                <div class="col"><b>{{__('Desde')}}</b> </div>
-                                                <div class="col"><b>{{__('Hasta')}}</b> </div>
+                                                <div class="col"><b>{{__('Selección rapida')}}</b> </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col"><input name="desde" value="" class="form-control" type="date"></div>
-                                                <div class="col"><input name="hasta" value="" class="form-control" type="date"></div>
-
+                                            <div style="margin-bottom:10px;" class="row">
+                                                <div class="col"><select  class="form-control" name="fechaRapida" id="selectFechaRapida">
+                                                    <option value="Selección detallada">{{__('Selección detallada')}}</option>
+                                                    <option value="semana">{{__('Semana')}}</option>
+                                                    <option value="mes">{{__('Mes')}}</option>
+                                                    <option value="anio">{{__('Año')}}</option>
+                                                    <option value="enero">{{__('Enero')}}</option>
+                                                    <option value="febrero">{{__('Febrero')}}</option>
+                                                    <option value="marzo">{{__('Marzo')}}</option>
+                                                    <option value="abril">{{__('Abril')}}</option>
+                                                    <option value="mayo">{{__('Mayo')}}</option>
+                                                    <option value="junio">{{__('Junio')}}</option>
+                                                    <option value="julio">{{__('Julio')}}</option>
+                                                    <option value="agosto">{{__('Agosto')}}</option>
+                                                    <option value="septiembre">{{__('Septiembre')}}</option>
+                                                    <option value="octubre">{{__('Octubre')}}</option>
+                                                    <option value="noviembre">{{__('Noviembre')}}</option>
+                                                    <option value="diciembre">{{__('Diciembre')}}</option>
+                                                </select></div>
+                                            </div>
+                                            <div class="row" id="div1Fecha">
+                                                <div class="col"><b id="input1Fecha">{{__('Desde')}}</b> </div>
+                                                <div class="col"><b id="input2Fecha">{{__('Hasta')}}</b> </div>
+                                            </div>
+                                            <div class="row" >
+                                                <div class="col"><input id="input3Fecha" name="desde" value="" class="form-control" type="date"></div>
+                                                <div class="col"><input id="input4Fecha" name="hasta" value="" class="form-control" type="date"></div>
                                             </div>
                                         </div>
                                         <div id="articulo" class="tab-pane fade">
@@ -284,7 +306,36 @@ display: none !important;
                             </div>
                             <br>
                         </div>
-
+                            <input type="hidden" id="firstDayOfWeek" name="firstDayOfWeek" />
+                            <input type="hidden" id="lastDayOfWeek" name="lastDayOfWeek" />
+                            <input type="hidden" id="firstDayOfMonth" name="firstDayOfMonth" />
+                            <input type="hidden" id="lastDayOfMonth" name="lastDayOfMonth" />
+                            <input type="hidden" id="firstDayOfYear" name="firstDayOfYear" />
+                            <input type="hidden" id="lastDayOfYear" name="lastDayOfYear" />
+                            <input type="hidden" id="firstDayOfJanuary" name="firstDayOfJanuary" />
+                            <input type="hidden" id="lastDayOfJanuary" name="lastDayOfJanuary" />
+                            <input type="hidden" id="firstDayOfFebruary" name="firstDayOfFebruary" />
+                            <input type="hidden" id="lastDayOfFebruary" name="lastDayOfFebruary" />
+                            <input type="hidden" id="firstDayOfMarch" name="firstDayOfMarch" />
+                            <input type="hidden" id="lastDayOfMarch" name="lastDayOfMarch" />
+                            <input type="hidden" id="firstDayOfApril" name="firstDayOfApril" />
+                            <input type="hidden" id="lastDayOfApril" name="lastDayOfApril" />
+                            <input type="hidden" id="firstDayOfMay" name="firstDayOfMay" />
+                            <input type="hidden" id="lastDayOfMay" name="lastDayOfMay" />
+                            <input type="hidden" id="firstDayOfJune" name="firstDayOfJune" />
+                            <input type="hidden" id="lastDayOfJune" name="lastDayOfJune" />
+                            <input type="hidden" id="firstDayOfJuly" name="firstDayOfJuly" />
+                            <input type="hidden" id="lastDayOfJuly" name="lastDayOfJuly" />
+                            <input type="hidden" id="firstDayOfAugust" name="firstDayOfAugust" />
+                            <input type="hidden" id="lastDayOfAugust" name="lastDayOfAugust" />
+                            <input type="hidden" id="firstDayOfSeptember" name="firstDayOfSeptember" />
+                            <input type="hidden" id="lastDayOfSeptember" name="lastDayOfSeptember" />
+                            <input type="hidden" id="firstDayOfOctober" name="firstDayOfOctober" />
+                            <input type="hidden" id="lastDayOfOctober" name="lastDayOfOctober" />
+                            <input type="hidden" id="firstDayOfNovember" name="firstDayOfNovember" />
+                            <input type="hidden" id="lastDayOfNovember" name="lastDayOfNovember" />
+                            <input type="hidden" id="firstDayOfDecember" name="firstDayOfDecember" />
+                            <input type="hidden" id="lastDayOfDecember" name="lastDayOfDecember" />
                             </div>
 
 
@@ -344,210 +395,24 @@ display: none !important;
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{route('reporteC', app()->getLocale())}}" method="get">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="card">
-
-                                                <div class="card-header bg-secondary"><center><b>{{__('Tipo de Reporte')}}</b></center></div>
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="input-group">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-text">
-                                                                        <input type="radio" name="tipo" value="Consumo"
-                                                                            aria-label="Radio button for following text input">
-                                                                    </div>
-                                                                </div>
-                                                                <b class="form-control">{{__('Consumo')}}</b>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="input-group">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-text">
-                                                                        <input name="tipo" type="radio" value="Departamento"
-                                                                            aria-label="Radio button for following text input">
-                                                                    </div>
-                                                                </div>
-                                                                <b class="form-control">{{__('Departamento')}}</b>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="input-group">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-text">
-                                                                        <input type="radio" name="tipo" value="Equipo"
-                                                                            aria-label="Radio button for following text input">
-                                                                    </div>
-                                                                </div>
-                                                                <b class="form-control">{{__('Equipo')}}</b>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <div class="input-group">
-                                                                <div class="input-group-prepend">
-                                                                    <div class="input-group-text">
-                                                                        <input type="radio" name="tipo" value="Anual"
-                                                                            aria-label="Radio button for following text input">
-                                                                    </div>
-                                                                </div>
-                                                                <b class="form-control">{{__('Anual')}}</b>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
+                                    <div class="tabla-seccion">
+                                        <div class="tabla-contenedor">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th>{{__('Departamento')}}</th>
+                                            <th>{{__('Cantidad')}}</th>
+                                        </tr><?php $count=0; ?>
+                                        @foreach ($dataConsulta as $data)
+                                        <?php if($count == 3){break;}   ?>
+                                        <tr>
+                                            <td>{{$data->Departamento}}</td>
+                                            <td>{{number_format($data->Cantidad)}}</td>
+                                        </tr>
+                                        <?php $count++; ?>
+                                        @endforeach
 
 
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card">
-                                            <div class="card-header bg-primary" data-card-widget="collapse"> <center><b>{{__('Información detallada (Opcional)')}}</b></center></div>
-                                            <div class="card-body">
-
-
-                                                <ul class="nav nav-tabs">
-                                                    <li style="margin-right:10px ; margin-bottom:5px"><a class="btn btn-secondary checked" data-toggle="tab" href="#fecha">{{__('Fecha')}}</a></li>
-                                                    <li style="margin-right:10px ; margin-bottom:5px"><a class="btn btn-secondary checked" data-toggle="tab" href="#articulo">{{__('Articulo')}}</a></li>
-                                                    <li style="margin-right:10px ; margin-bottom:5px"><a class="btn btn-secondary checked" data-toggle="tab" href="#equipo">{{__('Equipo')}}</a></li>
-                                                    <li style="margin-right:10px ; margin-bottom:5px"><a class="btn btn-secondary checked" data-toggle="tab" href="#departamento">{{__('Departamento')}}</a></li>
-                                                </ul>
-
-                                                  <div class="tab-content" style="margin-top:10px">
-
-                                                    <div id="fecha" class="tab-pane fade in active">
-                                                        <div class="row">
-                                                            <div class="col"><b>{{__('Selección rapida')}}</b> </div>
-                                                        </div>
-                                                        <div style="margin-bottom:10px;" class="row">
-                                                            <div class="col"><select  class="form-control" name="fechaRapida" id="selectFechaRapida">
-                                                                <option value="Selección detallada">{{__('Selección detallada')}}</option>
-                                                                <option value="semana">{{__('Semana')}}</option>
-                                                                <option value="mes">{{__('Mes')}}</option>
-                                                                <option value="anio">{{__('Año')}}</option>
-                                                                <option value="enero">{{__('Enero')}}</option>
-                                                                <option value="febrero">{{__('Febrero')}}</option>
-                                                                <option value="marzo">{{__('Marzo')}}</option>
-                                                                <option value="abril">{{__('Abril')}}</option>
-                                                                <option value="mayo">{{__('Mayo')}}</option>
-                                                                <option value="junio">{{__('Junio')}}</option>
-                                                                <option value="julio">{{__('Julio')}}</option>
-                                                                <option value="agosto">{{__('Agosto')}}</option>
-                                                                <option value="septiembre">{{__('Septiembre')}}</option>
-                                                                <option value="octubre">{{__('Octubre')}}</option>
-                                                                <option value="noviembre">{{__('Noviembre')}}</option>
-                                                                <option value="diciembre">{{__('Diciembre')}}</option>
-                                                            </select></div>
-                                                        </div>
-                                                        <div class="row" id="div1Fecha">
-                                                            <div class="col"><b id="input1Fecha">{{__('Desde')}}</b> </div>
-                                                            <div class="col"><b id="input2Fecha">{{__('Hasta')}}</b> </div>
-                                                        </div>
-                                                        <div class="row" >
-                                                            <div class="col"><input id="input3Fecha" name="desde" value="" class="form-control" type="date"></div>
-                                                            <div class="col"><input id="input4Fecha" name="hasta" value="" class="form-control" type="date"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="articulo" class="tab-pane fade">
-
-                                                        <div class="row">
-                                                            <div class="col"><b>{{__('Artículo')}}</b> </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col"><input name="articulo" class="form-control" type="text" value=""></div>
-                                                        </div><br>
-                                                    </div>
-                                                    <div id="equipo" class="tab-pane fade">
-
-                                                        <div class="row">
-                                                            <div class="col"><b>{{__('Equipo/Linea/Ref')}}</b></div>
-                                                        </div>
-
-                                                        <div class="row">
-
-                                                            <div class="col"><input name="equipo" class="form-control" type="text" value=""></div>
-                                                        </div><br>
-                                                    </div>
-                                                    <div id="departamento" class="tab-pane fade">
-
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <b>{{__('Departamento:')}}</b>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <select name="departamento" id="" class="form-control" required>
-                                                                    @foreach ($departamentos as $departamento)
-                                                                    <option value="0">{{__('Selecciona una opción')}}</option>
-                                                                    <option value="{{$departamento->Departamento}}">{{__($departamento->Nombre)}}</option>
-                                                                    @endforeach
-
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                      </div>
-                                                  </div>
-
-                                            </div>
-                                        </div>
-                                        <br>
-                                    </div>
-                                        <input type="hidden" id="firstDayOfWeek" name="firstDayOfWeek" />
-                                        <input type="hidden" id="lastDayOfWeek" name="lastDayOfWeek" />
-                                        <input type="hidden" id="firstDayOfMonth" name="firstDayOfMonth" />
-                                        <input type="hidden" id="lastDayOfMonth" name="lastDayOfMonth" />
-                                        <input type="hidden" id="firstDayOfYear" name="firstDayOfYear" />
-                                        <input type="hidden" id="lastDayOfYear" name="lastDayOfYear" />
-                                        <input type="hidden" id="firstDayOfJanuary" name="firstDayOfJanuary" />
-                                        <input type="hidden" id="lastDayOfJanuary" name="lastDayOfJanuary" />
-                                        <input type="hidden" id="firstDayOfFebruary" name="firstDayOfFebruary" />
-                                        <input type="hidden" id="lastDayOfFebruary" name="lastDayOfFebruary" />
-                                        <input type="hidden" id="firstDayOfMarch" name="firstDayOfMarch" />
-                                        <input type="hidden" id="lastDayOfMarch" name="lastDayOfMarch" />
-                                        <input type="hidden" id="firstDayOfApril" name="firstDayOfApril" />
-                                        <input type="hidden" id="lastDayOfApril" name="lastDayOfApril" />
-                                        <input type="hidden" id="firstDayOfMay" name="firstDayOfMay" />
-                                        <input type="hidden" id="lastDayOfMay" name="lastDayOfMay" />
-                                        <input type="hidden" id="firstDayOfJune" name="firstDayOfJune" />
-                                        <input type="hidden" id="lastDayOfJune" name="lastDayOfJune" />
-                                        <input type="hidden" id="firstDayOfJuly" name="firstDayOfJuly" />
-                                        <input type="hidden" id="lastDayOfJuly" name="lastDayOfJuly" />
-                                        <input type="hidden" id="firstDayOfAugust" name="firstDayOfAugust" />
-                                        <input type="hidden" id="lastDayOfAugust" name="lastDayOfAugust" />
-                                        <input type="hidden" id="firstDayOfSeptember" name="firstDayOfSeptember" />
-                                        <input type="hidden" id="lastDayOfSeptember" name="lastDayOfSeptember" />
-                                        <input type="hidden" id="firstDayOfOctober" name="firstDayOfOctober" />
-                                        <input type="hidden" id="lastDayOfOctober" name="lastDayOfOctober" />
-                                        <input type="hidden" id="firstDayOfNovember" name="firstDayOfNovember" />
-                                        <input type="hidden" id="lastDayOfNovember" name="lastDayOfNovember" />
-                                        <input type="hidden" id="firstDayOfDecember" name="firstDayOfDecember" />
-                                        <input type="hidden" id="lastDayOfDecember" name="lastDayOfDecember" />
-                                        </div>
-
-
-                                    </div>
-                                    <div class="card-footer">
-                                        <center>
-                                            <button type="submit" class="btn btn-primary">{{__('Consultar')}}</button>
-                                        </center>
-                                    </form>
-
-                                    </div>
-
+                                    </table>
                                 </div>
                             </div>
                         </div>
