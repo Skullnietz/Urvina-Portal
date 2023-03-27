@@ -165,6 +165,28 @@
 
                                 <div id="fecha" class="tab-pane fade in active">
                                     <div class="row">
+                                        <div class="col"><b>{{__('Selección rapida')}}</b> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col"><select class="form-control" name="fechaRapida" id="selectFechaRapida">
+                                            <option value="semana">Semana</option>
+                                            <option value="mes">Mes</option>
+                                            <option value="anio">Año</option>
+                                            <option value="enero">Enero</option>
+                                            <option value="febrero">Febrero</option>
+                                            <option value="marzo">Marzo</option>
+                                            <option value="abril">Abril</option>
+                                            <option value="mayo">Mayo</option>
+                                            <option value="junio">Junio</option>
+                                            <option value="julio">Julio</option>
+                                            <option value="agosto">Agosto</option>
+                                            <option value="septiembre">Septiembre</option>
+                                            <option value="octubre">Octubre</option>
+                                            <option value="noviembre">Noviembre</option>
+                                            <option value="diciembre">Diciembre</option>
+                                        </select></div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col"><b>{{__('Desde')}}</b> </div>
                                         <div class="col"><b>{{__('Hasta')}}</b> </div>
                                     </div>
