@@ -220,101 +220,36 @@
                     </div>
                     <br>
                 </div>
-
-                    <label for="firstDayOfWeek">Primer día de la semana:</label>
-                    <input type="date" id="firstDayOfWeek" name="firstDayOfWeek" />
-
-                    <label for="lastDayOfWeek">Último día de la semana:</label>
-                    <input type="date" id="lastDayOfWeek" name="lastDayOfWeek" />
-
-                    <label for="firstDayOfMonth">Primer día del mes:</label>
-                    <input type="date" id="firstDayOfMonth" name="firstDayOfMonth" />
-
-                    <label for="lastDayOfMonth">Último día del mes:</label>
-                    <input type="date" id="lastDayOfMonth" name="lastDayOfMonth" />
-
-                    <label for="firstDayOfYear">Primer día del año:</label>
-                    <input type="date" id="firstDayOfYear" name="firstDayOfYear" />
-
-                    <label for="lastDayOfYear">Último día del año:</label>
-                    <input type="date" id="lastDayOfYear" name="lastDayOfYear" />
-
-                    <label for="firstDayOfJanuary">Primer día de enero:</label>
-                    <input type="date" id="firstDayOfJanuary" name="firstDayOfJanuary" />
-
-                    <label for="lastDayOfJanuary">Último día de enero:</label>
-                    <input type="date" id="lastDayOfJanuary" name="lastDayOfJanuary" />
-
-                    <label for="firstDayOfFebruary">Primer día de febrero:</label>
-                    <input type="date" id="firstDayOfFebruary" name="firstDayOfFebruary" />
-
-                    <label for="lastDayOfFebruary">Último día de febrero:</label>
-                    <input type="date" id="lastDayOfFebruary" name="lastDayOfFebruary" />
-
-                    <label for="firstDayOfMarch">Primer día de marzo:</label>
-                    <input type="date" id="firstDayOfMarch" name="firstDayOfMarch" />
-
-                    <label for="lastDayOfMarch">Último día de marzo:</label>
-                    <input type="date" id="lastDayOfMarch" name="lastDayOfMarch" />
-
-                    <label for="firstDayOfApril">Primer día de abril:</label>
-                    <input type="date" id="firstDayOfApril" name="firstDayOfApril" />
-
-                    <label for="lastDayOfApril">Último día de abril:</label>
-                    <input type="date" id="lastDayOfApril" name="lastDayOfApril" />
-
-                    <label for="firstDayOfMay">Primer día de mayo:</label>
-                    <input type="date" id="firstDayOfMay" name="firstDayOfMay" />
-
-                    <label for="lastDayOfMay">Último día de mayo:</label>
-                    <input type="date" id="lastDayOfMay" name="lastDayOfMay" />
-
-                    <label for="firstDayOfJune">Primer día de junio:</label>
-                    <input type="date" id="firstDayOfJune" name="firstDayOfJune" />
-
-                    <label for="lastDayOfJune">Último día de junio:</label>
-                    <input type="date" id="lastDayOfJune" name="lastDayOfJune" />
-
-                    <label for="firstDayOfJuly">Primer día de julio:</label>
-                    <input type="date" id="firstDayOfJuly" name="firstDayOfJuly" />
-
-                    <label for="lastDayOfJuly">Último día de julio:</label>
-                    <input type="date" id="lastDayOfJuly" name="lastDayOfJuly" />
-
-                    <label for="firstDayOfAugust">Primer día de agosto:</label>
-                    <input type="date" id="firstDayOfAugust" name="firstDayOfAugust" />
-
-                    <label for="lastDayOfAugust">Último día de agosto:</label>
-                    <input type="date" id="lastDayOfAugust" name="lastDayOfAugust" />
-
-                    <label for="firstDayOfSeptember">Primer día de septiembre:</label>
-                    <input type="date" id="firstDayOfSeptember" name="firstDayOfSeptember" />
-
-                    <label for="lastDayOfSeptember">Último día de septiembre:</label>
-                    <input type="date" id="lastDayOfSeptember" name="lastDayOfSeptember" />
-
-                    <label for="firstDayOfOctober">Primer día de octubre:</label>
-                    <input type="date" id="firstDayOfOctober" name="firstDayOfOctober" />
-
-                    <label for="lastDayOfOctober">Último día de octubre:</label>
-                    <input type="date" id="lastDayOfOctober" name="lastDayOfOctober" />
-
-                    <label for="firstDayOfNovember">Primer día de noviembre:</label>
-                    <input type="date" id="firstDayOfNovember" name="firstDayOfNovember" />
-
-                    <label for="lastDayOfNovember">Último día de noviembre:</label>
-                    <input type="date" id="lastDayOfNovember" name="lastDayOfNovember" />
-
-                    <label for="firstDayOfDecember">Primer día de diciembre:</label>
-                    <input type="date" id="firstDayOfDecember" name="firstDayOfDecember" />
-
-                    <label for="lastDayOfDecember">Último día de diciembre:</label>
-                    <input type="date" id="lastDayOfDecember" name="lastDayOfDecember" />
-
-
-
-
-
+                    <input type="hidden" id="firstDayOfWeek" name="firstDayOfWeek" />
+                    <input type="hidden" id="lastDayOfWeek" name="lastDayOfWeek" />
+                    <input type="hidden" id="firstDayOfMonth" name="firstDayOfMonth" />
+                    <input type="hidden" id="lastDayOfMonth" name="lastDayOfMonth" />
+                    <input type="hidden" id="firstDayOfYear" name="firstDayOfYear" />
+                    <input type="hidden" id="lastDayOfYear" name="lastDayOfYear" />
+                    <input type="hidden" id="firstDayOfJanuary" name="firstDayOfJanuary" />
+                    <input type="hidden" id="lastDayOfJanuary" name="lastDayOfJanuary" />
+                    <input type="hidden" id="firstDayOfFebruary" name="firstDayOfFebruary" />
+                    <input type="hidden" id="lastDayOfFebruary" name="lastDayOfFebruary" />
+                    <input type="hidden" id="firstDayOfMarch" name="firstDayOfMarch" />
+                    <input type="hidden" id="lastDayOfMarch" name="lastDayOfMarch" />
+                    <input type="hidden" id="firstDayOfApril" name="firstDayOfApril" />
+                    <input type="hidden" id="lastDayOfApril" name="lastDayOfApril" />
+                    <input type="hidden" id="firstDayOfMay" name="firstDayOfMay" />
+                    <input type="hidden" id="lastDayOfMay" name="lastDayOfMay" />
+                    <input type="hidden" id="firstDayOfJune" name="firstDayOfJune" />
+                    <input type="hidden" id="lastDayOfJune" name="lastDayOfJune" />
+                    <input type="hidden" id="firstDayOfJuly" name="firstDayOfJuly" />
+                    <input type="hidden" id="lastDayOfJuly" name="lastDayOfJuly" />
+                    <input type="hidden" id="firstDayOfAugust" name="firstDayOfAugust" />
+                    <input type="hidden" id="lastDayOfAugust" name="lastDayOfAugust" />
+                    <input type="hidden" id="firstDayOfSeptember" name="firstDayOfSeptember" />
+                    <input type="hidden" id="lastDayOfSeptember" name="lastDayOfSeptember" />
+                    <input type="hidden" id="firstDayOfOctober" name="firstDayOfOctober" />
+                    <input type="hidden" id="lastDayOfOctober" name="lastDayOfOctober" />
+                    <input type="hidden" id="firstDayOfNovember" name="firstDayOfNovember" />
+                    <input type="hidden" id="lastDayOfNovember" name="lastDayOfNovember" />
+                    <input type="hidden" id="firstDayOfDecember" name="firstDayOfDecember" />
+                    <input type="hidden" id="lastDayOfDecember" name="lastDayOfDecember" />
                     </div>
 
 
