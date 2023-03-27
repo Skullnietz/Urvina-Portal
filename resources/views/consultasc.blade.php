@@ -220,23 +220,52 @@
                     </div>
                     <br>
                 </div>
-                <label>Primer día de la semana:</label>
-  <input type="text" id="firstDayOfWeek" name="firstDayOfWeek">
 
-  <label>Último día de la semana:</label>
-  <input type="text" id="lastDayOfWeek" name="lastDayOfWeek">
+                    <label for="firstDayOfWeek">Primer día de la semana:</label>
+                    <input type="date" id="firstDayOfWeek" name="firstDayOfWeek" />
 
-  <label>Último día del mes:</label>
-  <input type="text" id="lastDayOfMonth" name="lastDayOfMonth">
+                    <label for="lastDayOfWeek">Último día de la semana:</label>
+                    <input type="date" id="lastDayOfWeek" name="lastDayOfWeek" />
 
-  <label>Primer día del mes:</label>
-  <input type="text" id="firstDayOfMonth" name="firstDayOfMonth">
+                    <label for="firstDayOfMonth">Primer día del mes:</label>
+                    <input type="date" id="firstDayOfMonth" name="firstDayOfMonth" />
 
-  <label>Primer día del año:</label>
-  <input type="text" id="firstDayOfYear" name="firstDayOfYear">
+                    <label for="lastDayOfMonth">Último día del mes:</label>
+                    <input type="date" id="lastDayOfMonth" name="lastDayOfMonth" />
 
-  <label>Último día del año:</label>
-  <input type="text" id="lastDayOfYear" name="lastDayOfYear">
+                    <label for="firstDayOfYear">Primer día del año:</label>
+                    <input type="date" id="firstDayOfYear" name="firstDayOfYear" />
+
+                    <label for="lastDayOfYear">Último día del año:</label>
+                    <input type="date" id="lastDayOfYear" name="lastDayOfYear" />
+
+                    <label for="firstDayOfJanuary">Primer día de enero:</label>
+                    <input type="date" id="firstDayOfJanuary" name="firstDayOfJanuary" />
+
+                    <label for="lastDayOfJanuary">Último día de enero:</label>
+                    <input type="date" id="lastDayOfJanuary" name="lastDayOfJanuary" />
+
+                    <label for="firstDayOfFebruary">Primer día de febrero:</label>
+                    <input type="date" id="firstDayOfFebruary" name="firstDayOfFebruary" />
+
+                    <label for="lastDayOfFebruary">Último día de febrero:</label>
+                    <input type="date" id="lastDayOfFebruary" name="lastDayOfFebruary" />
+
+                    <label for="firstDayOfMarch">Primer día de marzo:</label>
+                    <input type="date" id="firstDayOfMarch" name="firstDayOfMarch" />
+
+                    <label for="lastDayOfMarch">Último día de marzo:</label>
+                    <input type="date" id="lastDayOfMarch" name="lastDayOfMarch" />
+
+                    <label for="firstDayOfApril">Primer día de abril:</label>
+                    <input type="date" id="firstDayOfApril" name="firstDayOfApril" />
+
+                    <label for="lastDayOfApril">Último día de abril:</label>
+                    <input type="date" id="lastDayOfApril" name="lastDayOfApril" />
+
+                    <button type="submit">Enviar</button>
+
+
 
                     </div>
 
@@ -309,20 +338,53 @@
     }
     </script>
     <script>
-let today = new Date();
-let firstDayOfWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 1);
-let lastDayOfWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() + 7);
-let lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-let firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-let firstDayOfYear = new Date(today.getFullYear(), 0, 1);
-let lastDayOfYear = new Date(today.getFullYear(), 11, 31);
+const today = new Date();
 
-document.getElementById("firstDayOfWeek").value = firstDayOfWeek.toLocaleDateString();
-document.getElementById("lastDayOfWeek").value = lastDayOfWeek.toLocaleDateString();
-document.getElementById("lastDayOfMonth").value = lastDayOfMonth.toLocaleDateString();
-document.getElementById("firstDayOfMonth").value = firstDayOfMonth.toLocaleDateString();
-document.getElementById("firstDayOfYear").value = firstDayOfYear.toLocaleDateString();
-document.getElementById("lastDayOfYear").value = lastDayOfYear.toLocaleDateString();
+const firstDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 1));
+document.getElementById('firstDayOfWeek').value = firstDayOfWeek.toISOString().split('T')[0];
+
+const lastDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 7));
+document.getElementById('lastDayOfWeek').value = lastDayOfWeek.toISOString().split('T')[0];
+
+const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+document.getElementById('firstDayOfMonth').value = firstDayOfMonth.toISOString().split('T')[0];
+
+const
+lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+document.getElementById('lastDayOfMonth').value = lastDayOfMonth.toISOString().split('T')[0];
+
+const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+document.getElementById('firstDayOfYear').value = firstDayOfYear.toISOString().split('T')[0];
+
+const lastDayOfYear = new Date(today.getFullYear(), 11, 31);
+document.getElementById('lastDayOfYear').value = lastDayOfYear.toISOString().split('T')[0];
+
+const firstDayOfJanuary = new Date(today.getFullYear(), 0, 1);
+document.getElementById('firstDayOfJanuary').value = firstDayOfJanuary.toISOString().split('T')[0];
+
+const lastDayOfJanuary = new Date(today.getFullYear(), 0, 31);
+document.getElementById('lastDayOfJanuary').value = lastDayOfJanuary.toISOString().split('T')[0];
+
+const firstDayOfFebruary = new Date(today.getFullYear(), 1, 1);
+document.getElementById('firstDayOfFebruary').value = firstDayOfFebruary.toISOString().split('T')[0];
+
+const lastDayOfFebruary = new Date(today.getFullYear(), 1, 28);
+if (lastDayOfFebruary.getDate() === 29) {
+lastDayOfFebruary.setDate(28);
+}
+document.getElementById('lastDayOfFebruary').value = lastDayOfFebruary.toISOString().split('T')[0];
+
+const firstDayOfMarch = new Date(today.getFullYear(), 2, 1);
+document.getElementById('firstDayOfMarch').value = firstDayOfMarch.toISOString().split('T')[0];
+
+const lastDayOfMarch = new Date(today.getFullYear(), 2, 31);
+document.getElementById('lastDayOfMarch').value = lastDayOfMarch.toISOString().split('T')[0];
+
+const firstDayOfApril = new Date(today.getFullYear(), 3, 1);
+document.getElementById('firstDayOfApril').value = firstDayOfApril.toISOString().split('T')[0];
+
+const lastDayOfApril = new Date(today.getFullYear(), 3, 30);
+document.getElementById('lastDayOfApril').value = lastDayOfApril.toISOString().split('T')[0];
 
     </script>
 @stop
