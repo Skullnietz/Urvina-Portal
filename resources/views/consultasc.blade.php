@@ -169,7 +169,7 @@
                                     </div>
                                     <div style="margin-bottom:10px;" class="row">
                                         <div class="col"><select  class="form-control" name="fechaRapida" id="selectFechaRapida">
-                                            <option value="">Seleccione una opción</option>
+                                            <option value="Selección detallada">Selección detallada</option>
                                             <option value="semana">Semana</option>
                                             <option value="mes">Mes</option>
                                             <option value="anio">Año</option>
@@ -444,7 +444,7 @@ const input1 = document.getElementById("div1Fecha");
 const input2 = document.getElementById("div2Fecha");
 
 mySelect.addEventListener("change", function() {
-  if (mySelect.value === "") {
+  if (mySelect.value === "Selección detallada") {
     input1.style.display = "block";
     input2.style.display = "block";
   } else {
