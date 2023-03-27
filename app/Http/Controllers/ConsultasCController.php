@@ -36,9 +36,79 @@ class ConsultasCController extends Controller
                 "id" => $_SESSION['usuario']->UsuarioCteCorp,
             ]
         );
-        if(isset($request->desde) || isset($request->hasta)){
-            $datefrom  = new \DateTime($request->desde);
-            $dateto  = new \DateTime($request->hasta);
+        if(isset($request->desde) || isset($request->hasta) || isset($request->fechaRapida)){
+
+            if ($request->fechaRapida==="Selección detallada"){
+                $datefrom  = new \DateTime($request->desde);
+                $dateto  = new \DateTime($request->hasta);
+            }
+            if ($request->fechaRapida===""){
+                $datefrom  = new \DateTime($request->desde);
+                $dateto  = new \DateTime($request->hasta);
+            }
+            if ($request->fechaRapida==="semana"){
+                $datefrom  = new \DateTime($request->firstDayOfWeek);
+                $dateto  = new \DateTime($request->lastDayOfWeek);
+            }
+            if ($request->fechaRapida==="mes"){
+                $datefrom  = new \DateTime($request->firstDayOfMonth);
+                $dateto  = new \DateTime($request->lastDayOfMonth);
+            }
+            if ($request->fechaRapida==="anio"){
+                $datefrom  = new \DateTime($request->firstDayOfYear);
+                $dateto  = new \DateTime($request->lastDayOfYear);
+            }
+            if ($request->fechaRapida==="enero"){
+                $datefrom  = new \DateTime($request->firstDayOfJanuary);
+                $dateto  = new \DateTime($request->lastDayOfJanuary);
+            }
+            if ($request->fechaRapida==="febrero"){
+                $datefrom  = new \DateTime($request->firstDayOfFebruary);
+                $dateto  = new \DateTime($request->lastDayOfFebruary);
+            }
+            if ($request->fechaRapida==="marzo"){
+                $datefrom  = new \DateTime($request->firstDayOfMarch);
+                $dateto  = new \DateTime($request->lastDayOfMarch);
+            }
+            if ($request->fechaRapida==="abril"){
+                $datefrom  = new \DateTime($request->firstDayOfApril);
+                $dateto  = new \DateTime($request->lastDayOfApril);
+            }
+            if ($request->fechaRapida==="mayo"){
+                $datefrom  = new \DateTime($request->firstDayOfMay);
+                $dateto  = new \DateTime($request->lastDayOfMay);
+            }
+            if ($request->fechaRapida==="junio"){
+                $datefrom  = new \DateTime($request->firstDayOfJune);
+                $dateto  = new \DateTime($request->lastDayOfJune);
+            }
+            if ($request->fechaRapida==="julio"){
+                $datefrom  = new \DateTime($request->firstDayOfJuly);
+                $dateto  = new \DateTime($request->lastDayOfJuly);
+            }
+            if ($request->fechaRapida==="agosto"){
+                $datefrom  = new \DateTime($request->firstDayOfAugust);
+                $dateto  = new \DateTime($request->lastDayOfAugust);
+            }
+            if ($request->fechaRapida==="septiembre"){
+                $datefrom  = new \DateTime($request->firstDayOfSeptember);
+                $dateto  = new \DateTime($request->lastDayOfSeptember);
+            }
+            if ($request->fechaRapida==="octubre"){
+                $datefrom  = new \DateTime($request->firstDayOfOctober);
+                $dateto  = new \DateTime($request->lastDayOfOctober);
+            }
+            if ($request->fechaRapida==="noviembre"){
+                $datefrom  = new \DateTime($request->firstDayOfNovember);
+                $dateto  = new \DateTime($request->lastDayOfNovember);
+            }
+            if ($request->fechaRapida==="diciembre"){
+                $datefrom  = new \DateTime($request->firstDayOfDecember);
+                $dateto  = new \DateTime($request->lastDayOfDecember);
+            }
+
+
+
 
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
