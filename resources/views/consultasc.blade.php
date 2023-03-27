@@ -169,22 +169,22 @@
                                     </div>
                                     <div style="margin-bottom:10px;" class="row">
                                         <div class="col"><select  class="form-control" name="fechaRapida" id="selectFechaRapida">
-                                            <option value="Selección detallada">Selección detallada</option>
-                                            <option value="semana">Semana</option>
-                                            <option value="mes">Mes</option>
-                                            <option value="anio">Año</option>
-                                            <option value="enero">Enero</option>
-                                            <option value="febrero">Febrero</option>
-                                            <option value="marzo">Marzo</option>
-                                            <option value="abril">Abril</option>
-                                            <option value="mayo">Mayo</option>
-                                            <option value="junio">Junio</option>
-                                            <option value="julio">Julio</option>
-                                            <option value="agosto">Agosto</option>
-                                            <option value="septiembre">Septiembre</option>
-                                            <option value="octubre">Octubre</option>
-                                            <option value="noviembre">Noviembre</option>
-                                            <option value="diciembre">Diciembre</option>
+                                            <option value="Selección detallada">{{__('Selección detallada')}}</option>
+                                            <option value="semana">{{__('Semana')}}</option>
+                                            <option value="mes">{{__('Mes')}}</option>
+                                            <option value="anio">{{__('Año')}}</option>
+                                            <option value="enero">{{__('Enero')}}</option>
+                                            <option value="febrero">{{__('Febrero')}}</option>
+                                            <option value="marzo">{{__('Marzo')}}</option>
+                                            <option value="abril">{{__('Abril')}}</option>
+                                            <option value="mayo">{{__('Mayo')}}</option>
+                                            <option value="junio">{{__('Junio')}}</option>
+                                            <option value="julio">{{__('Julio')}}</option>
+                                            <option value="agosto">{{__('Agosto')}}</option>
+                                            <option value="septiembre">{{__('Septiembre')}}</option>
+                                            <option value="octubre">{{__('Octubre')}}</option>
+                                            <option value="noviembre">{{__('Noviembre')}}</option>
+                                            <option value="diciembre">{{__('Diciembre')}}</option>
                                         </select></div>
                                     </div>
                                     <div class="row" id="div1Fecha">
