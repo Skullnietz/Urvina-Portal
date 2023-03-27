@@ -167,8 +167,8 @@
                                     <div class="row">
                                         <div class="col"><b>{{__('Selección rapida')}}</b> </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col"><select class="form-control" name="fechaRapida" id="selectFechaRapida">
+                                    <div style="margin-bottom:10px;" class="row">
+                                        <div class="col"><select  class="form-control" name="fechaRapida" id="selectFechaRapida">
                                             <option value="semana">Semana</option>
                                             <option value="mes">Mes</option>
                                             <option value="anio">Año</option>
