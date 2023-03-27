@@ -762,5 +762,123 @@ Highcharts.chart('container', {
 });
 
                   </script>
+                  <script>
+                    const today = new Date();
+
+                    const firstDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 1));
+                    document.getElementById('firstDayOfWeek').value = firstDayOfWeek.toISOString().split('T')[0];
+
+                    const lastDayOfWeek = new Date(today.setDate(today.getDate() - today.getDay() + 7));
+                    document.getElementById('lastDayOfWeek').value = lastDayOfWeek.toISOString().split('T')[0];
+
+                    const firstDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+                    document.getElementById('firstDayOfMonth').value = firstDayOfMonth.toISOString().split('T')[0];
+
+                    const
+                    lastDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+                    document.getElementById('lastDayOfMonth').value = lastDayOfMonth.toISOString().split('T')[0];
+
+                    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+                    document.getElementById('firstDayOfYear').value = firstDayOfYear.toISOString().split('T')[0];
+
+                    const lastDayOfYear = new Date(today.getFullYear(), 11, 31);
+                    document.getElementById('lastDayOfYear').value = lastDayOfYear.toISOString().split('T')[0];
+
+                    const firstDayOfJanuary = new Date(today.getFullYear(), 0, 1);
+                    document.getElementById('firstDayOfJanuary').value = firstDayOfJanuary.toISOString().split('T')[0];
+
+                    const lastDayOfJanuary = new Date(today.getFullYear(), 0, 31);
+                    document.getElementById('lastDayOfJanuary').value = lastDayOfJanuary.toISOString().split('T')[0];
+
+                    const firstDayOfFebruary = new Date(today.getFullYear(), 1, 1);
+                    document.getElementById('firstDayOfFebruary').value = firstDayOfFebruary.toISOString().split('T')[0];
+
+                    const lastDayOfFebruary = new Date(today.getFullYear(), 1, 28);
+                    if (lastDayOfFebruary.getDate() === 29) {
+                    lastDayOfFebruary.setDate(28);
+                    }
+                    document.getElementById('lastDayOfFebruary').value = lastDayOfFebruary.toISOString().split('T')[0];
+
+                    const firstDayOfMarch = new Date(today.getFullYear(), 2, 1);
+                    document.getElementById('firstDayOfMarch').value = firstDayOfMarch.toISOString().split('T')[0];
+
+                    const lastDayOfMarch = new Date(today.getFullYear(), 2, 31);
+                    document.getElementById('lastDayOfMarch').value = lastDayOfMarch.toISOString().split('T')[0];
+
+                    const firstDayOfApril = new Date(today.getFullYear(), 3, 1);
+                    document.getElementById('firstDayOfApril').value = firstDayOfApril.toISOString().split('T')[0];
+
+                    const lastDayOfApril = new Date(today.getFullYear(), 3, 30);
+                    document.getElementById('lastDayOfApril').value = lastDayOfApril.toISOString().split('T')[0];
+
+                    const firstDayOfMay = new Date(today.getFullYear(), 4, 1);
+                    document.getElementById('firstDayOfMay').value = firstDayOfMay.toISOString().split('T')[0];
+
+                    const lastDayOfMay = new Date(today.getFullYear(), 4, 31);
+                    document.getElementById('lastDayOfMay').value = lastDayOfMay.toISOString().split('T')[0];
+
+                    const firstDayOfJune = new Date(today.getFullYear(), 5, 1);
+                    document.getElementById('firstDayOfJune').value = firstDayOfJune.toISOString().split('T')[0];
+
+                    const lastDayOfJune = new Date(today.getFullYear(), 5, 30);
+                    document.getElementById('lastDayOfJune').value = lastDayOfJune.toISOString().split('T')[0];
+
+                    const firstDayOfJuly = new Date(today.getFullYear(), 6, 1);
+                    document.getElementById('firstDayOfJuly').value = firstDayOfJuly.toISOString().split('T')[0];
+
+                    const lastDayOfJuly = new Date(today.getFullYear(), 6, 31);
+                    document.getElementById('lastDayOfJuly').value = lastDayOfJuly.toISOString().split('T')[0];
+
+                    const firstDayOfAugust = new Date(today.getFullYear(), 7, 1);
+                    document.getElementById('firstDayOfAugust').value = firstDayOfAugust.toISOString().split('T')[0];
+
+                    const lastDayOfAugust = new Date(today.getFullYear(), 7, 31);
+                    document.getElementById('lastDayOfAugust').value = lastDayOfAugust.toISOString().split('T')[0];
+
+                    const firstDayOfSeptember = new Date(today.getFullYear(), 8, 1);
+                    document.getElementById('firstDayOfSeptember').value = firstDayOfSeptember.toISOString().split('T')[0];
+
+                    const lastDayOfSeptember = new Date(today.getFullYear(), 8, 30);
+                    document.getElementById('lastDayOfSeptember').value = lastDayOfSeptember.toISOString().split('T')[0];
+
+                    const firstDayOfOctober = new Date(today.getFullYear(), 9, 1);
+                    document.getElementById('firstDayOfOctober').value = firstDayOfOctober.toISOString().split('T')[0];
+
+                    const lastDayOfOctober = new Date(today.getFullYear(), 9, 31);
+                    document.getElementById('lastDayOfOctober').value = lastDayOfOctober.toISOString().split('T')[0];
+
+                    const firstDayOfNovember = new Date(today.getFullYear(), 10, 1);
+                    document.getElementById('firstDayOfNovember').value = firstDayOfNovember.toISOString().split('T')[0];
+
+                    const lastDayOfNovember = new Date(today.getFullYear(), 10, 30);
+                    document.getElementById('lastDayOfNovember').value = lastDayOfNovember.toISOString().split('T')[0];
+
+                    const firstDayOfDecember = new Date(today.getFullYear(), 11, 1);
+                    document.getElementById('firstDayOfDecember').value = firstDayOfDecember.toISOString().split('T')[0];
+
+                    const lastDayOfDecember = new Date(today.getFullYear(), 11, 31);
+                    document.getElementById('lastDayOfDecember').value = lastDayOfDecember.toISOString().split('T')[0];
+
+                    const mySelect = document.getElementById("selectFechaRapida");
+                    const input1 = document.getElementById("input1Fecha");
+                    const input2 = document.getElementById("input2Fecha");
+                    const input3 = document.getElementById("input3Fecha");
+                    const input4 = document.getElementById("input4Fecha");
+
+                    mySelect.addEventListener("change", function() {
+                      if (mySelect.value === "Selección detallada") {
+                        input1.style.display = "block";
+                        input2.style.display = "block";
+                        input3.style.display = "block";
+                        input4.style.display = "block";
+                      } else {
+                        input1.style.display = "none";
+                        input2.style.display = "none";
+                        input3.style.display = "none";
+                        input4.style.display = "none";
+                      }
+                    });
+
+                        </script>
 
 @stop
