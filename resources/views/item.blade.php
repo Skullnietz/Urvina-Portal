@@ -523,8 +523,10 @@ $limite = $articulo[0]->Mensaje2;
 <script>
     // Código para obtener el primer y último día de la semana
 
+
     // En español
     const hoy = moment(); // Obtiene la fecha actual
+    moment.locale('es');
     const primerDiaSemanaEs = hoy.startOf('week').locale('es').format('dddd, D [de] MMMM [de] YYYY');
     const ultimoDiaSemanaEs = hoy.endOf('week').locale('es').format('dddd, D [de] MMMM [de] YYYY');
     document.getElementById('primer-dia-es').textContent = primerDiaSemanaEs;
