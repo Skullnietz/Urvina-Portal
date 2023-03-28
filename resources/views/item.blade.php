@@ -521,6 +521,7 @@ $limite = $articulo[0]->Mensaje2;
 <!-- Incluye Moment.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script>
+    require('moment/locale/es');
     // Código para obtener el primer y último día de la semana
 
 
