@@ -233,38 +233,15 @@ $limite = $articulo[0]->Mensaje2;
                                                 <td class="border" style="text-align:right">{{ __($articulo[0]->Perido) }}</td>
                                             @endif
                                         </tr>
-                                        <?php
 
-                                        $year = date('Y');
-                                        $month = date('m');
-                                        $day = date('d');
-
-                                        # Obtenemos el numero de la semana
-                                        $semana = date('W', mktime(0, 0, 0, $month, $day, $year));
-
-                                        # Obtenemos el día de la semana de la fecha dada
-                                        $diaSemana = date('w', mktime(0, 0, 0, $month, $day, $year));
-
-                                        # el 0 equivale al domingo...
-                                        if ($diaSemana == 0) {
-                                            $diaSemana = 7;
-                                        }
-
-                                        # A la fecha recibida, le restamos el dia de la semana y obtendremos el lunes
-                                        $primerDia = date('l, d M Y', mktime(0, 0, 0, $month, $day - $diaSemana + 1, $year));
-
-                                        # A la fecha recibida, le sumamos el dia de la semana menos siete y obtendremos el domingo
-                                        $ultimoDia = date('l, d M Y', mktime(0, 0, 0, $month, $day + (7 - $diaSemana), $year));
-
-                                        ?>
                                         <tr>
                                             <td class="border"> <b>{{__('De:')}}</b> </td>
-                                            <td class="border" style="text-align:right">{{ $primerDia }}</td>
+                                            <td class="border" style="text-align:right"><span id="primer-dia-es"></td>
 
                                         </tr>
                                         <tr>
                                             <td class="border"> <b>{{__('A:')}}</b> </td>
-                                            <td class="border" style="text-align:right">{{ $ultimoDia }}</td>
+                                            <td class="border" style="text-align:right"><span id="ultimo-dia-es"></td>
                                         </tr>
                                     </table>
                                     <div class="row">
@@ -541,7 +518,25 @@ $limite = $articulo[0]->Mensaje2;
 @stop
 
 @section('js')
+<!-- Incluye Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
+    // Código para obtener el primer y último día de la semana
 
+    // En español
+    const hoy = moment(); // Obtiene la fecha actual
+    const primerDiaSemanaEs = hoy.startOf('week').locale('es').format('dddd, D [de] MMMM [de] YYYY');
+    const ultimoDiaSemanaEs = hoy.endOf('week').locale('es').format('dddd, D [de] MMMM [de] YYYY');
+    document.getElementById('primer-dia-es').textContent = primerDiaSemanaEs;
+    document.getElementById('ultimo-dia-es').textContent = ultimoDiaSemanaEs;
+
+    // En inglés
+    const today = moment(); // Obtiene la fecha actual
+    const firstDayOfWeekEn = today.startOf('week').locale('en').format('dddd, MMMM Do YYYY');
+    const lastDayOfWeekEn = today.endOf('week').locale('en').format('dddd, MMMM Do YYYY');
+    document.getElementById('primer-dia-en').textContent = firstDayOfWeekEn;
+    document.getElementById('ultimo-dia-en').textContent = lastDayOfWeekEn;
+  </script>
 <script>
     //SCRIPT DE LUPA EN IMG
     let zoomer = function (){
