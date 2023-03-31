@@ -254,12 +254,12 @@ $limite = $articulo[0]->Mensaje2;
 
                                         <tr>
                                             <td class="border"> <b>{{__('De:')}}</b> </td>
-                                            <td class="border" style="text-align:right">{{new Date($primerDia)}}</td>
+                                            <td class="border" style="text-align:right">{{new Date($primerDia->diffForHumans())}}</td>
 
                                         </tr>
                                         <tr>
                                             <td class="border"> <b>{{__('A:')}}</b> </td>
-                                            <td class="border" style="text-align:right"><span id="ultimo-dia-es">{{new Date($ultimoDia)}}</td>
+                                            <td class="border" style="text-align:right"><span id="ultimo-dia-es">{{new Date($ultimoDia->diffForHumans())}}</td>
                                         </tr>
                                     </table>
                                     <div class="row">
