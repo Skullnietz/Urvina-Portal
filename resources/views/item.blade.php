@@ -238,12 +238,12 @@ $limite = $articulo[0]->Mensaje2;
 
                                         <tr>
                                             <td class="border"> <b>{{__('De:')}}</b> </td>
-                                            <td class="border" style="text-align:right">{{$date1->format('l jS \of F Y h:i:s A')}}</td>
+                                            <td class="border" style="text-align:right">{{$date1->format('l jS \of F Y')}}</td>
 
                                         </tr>
                                         <tr>
                                             <td class="border"> <b>{{__('A:')}}</b> </td>
-                                            <td class="border" style="text-align:right"><span id="ultimo-dia-es">{{$date2->format('l jS \of F Y h:i:s A')}}</td>
+                                            <td class="border" style="text-align:right"><span id="ultimo-dia-es">{{$date2->format('l jS \of F Y')}}</td>
                                         </tr>
                                     </table>
                                     <div class="row">
