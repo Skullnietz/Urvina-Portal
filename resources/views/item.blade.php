@@ -250,16 +250,18 @@ $limite = $articulo[0]->Mensaje2;
                                         $primerDia = date('l, d M Y', mktime(0, 0, 0, $month, $day - $diaSemana + 1, $year));
                                         # A la fecha recibida, le sumamos el dia de la semana menos siete y obtendremos el domingo
                                         $ultimoDia = date('l, d M Y', mktime(0, 0, 0, $month, $day + (7 - $diaSemana), $year));
+                                        $date1 = Carbon::parse($primerDia); // now date is a carbon instance
+                                        $date2 = Carbon::parse($ultimoDia); // now date is a carbon instance
                                         ?>
 
                                         <tr>
                                             <td class="border"> <b>{{__('De:')}}</b> </td>
-                                            <td class="border" style="text-align:right">{{new Date($primerDia->diffForHumans())}}</td>
+                                            <td class="border" style="text-align:right">{{new Date($date1->diffForHumans())}}</td>
 
                                         </tr>
                                         <tr>
                                             <td class="border"> <b>{{__('A:')}}</b> </td>
-                                            <td class="border" style="text-align:right"><span id="ultimo-dia-es">{{new Date($ultimoDia->diffForHumans())}}</td>
+                                            <td class="border" style="text-align:right"><span id="ultimo-dia-es">{{new Date($date2->diffForHumans())}}</td>
                                         </tr>
                                     </table>
                                     <div class="row">
