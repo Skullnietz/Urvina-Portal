@@ -234,16 +234,16 @@ $limite = $articulo[0]->Mensaje2;
                                                 <td class="border" style="text-align:right">{{ __($articulo[0]->Perido) }}</td>
                                             @endif
                                         </tr>
-                                    
+
 
                                         <tr>
                                             <td class="border"> <b>{{__('De:')}}</b> </td>
-                                            <td class="border" style="text-align:right">{{new Date($date1->diffForHumans())}}</td>
+                                            <td class="border" style="text-align:right">{{$date1->diffForHumans()}}</td>
 
                                         </tr>
                                         <tr>
                                             <td class="border"> <b>{{__('A:')}}</b> </td>
-                                            <td class="border" style="text-align:right"><span id="ultimo-dia-es">{{new Date($date2->diffForHumans())}}</td>
+                                            <td class="border" style="text-align:right"><span id="ultimo-dia-es">{{$date2->diffForHumans()}}</td>
                                         </tr>
                                     </table>
                                     <div class="row">
