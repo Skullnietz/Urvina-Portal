@@ -74,6 +74,7 @@ class CatalogoController extends Controller
                 ]
 
             );
+            Date::setLocale(app()->getLocale());
             $desc = DB::table('Art')->select('Articulo'
             ,'Rama'
             ,'Descripcion1'
