@@ -100,8 +100,8 @@ class CatalogoController extends Controller
                                         $primerDia = date('l, d M Y', mktime(0, 0, 0, $month, $day - $diaSemana + 1, $year));
                                         # A la fecha recibida, le sumamos el dia de la semana menos siete y obtendremos el domingo
                                         $ultimoDia = date('l, d M Y', mktime(0, 0, 0, $month, $day + (7 - $diaSemana), $year));
-                                        $date1 = Carbon::parse($primerDia); // now date is a carbon instance
-                                        $date2 = Carbon::parse($ultimoDia); // now date is a carbon instance
+                                        $date1 = Date::parse($primerDia); // now date is a carbon instance
+                                        $date2 = Date::parse($ultimoDia); // now date is a carbon instance
 
             return view('item')->with('articulo',$articulo)->with('desc',$desc)->with('codigo',$codigo)->with('date1',$date1)->with('date2',$date2);
         }else {
