@@ -20,7 +20,7 @@ class LoginController extends Controller
             "EXEC spAccesoApp :user, :password",
             [
                 "user" => $request->usuario,
-                "password" => $request->password ,
+                "password" => $request->password,
             ]
         );
 

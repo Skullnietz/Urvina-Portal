@@ -39,11 +39,11 @@ class ConsultasCController extends Controller
         if(isset($request->desde) || isset($request->hasta) || isset($request->fechaRapida)){
 
             if ($request->fechaRapida==="Selección detallada"){
-                $datefrom  = new \DateTime($request->desde);
+                $datefrom  = '20000101';
                 $dateto  = new \DateTime($request->hasta);
             }
             if ($request->fechaRapida===""){
-                $datefrom  = new \DateTime($request->desde);
+                $datefrom  = '20000101';
                 $dateto  = new \DateTime($request->hasta);
             }
             if ($request->fechaRapida==="semana"){
