@@ -233,7 +233,7 @@ display: none !important;
                                             </div>
                                             <div style="margin-bottom:10px;" class="row">
                                                 <div class="col"><select  class="form-control" name="fechaRapida" id="selectFechaRapida">
-                                                    <option value="Selección detallada">{{__('Selección detallada')}}</option>
+                                                    <option value="Seleccion detallada">{{__('Selección detallada')}}</option>
                                                     <option value="semana">{{__('Semana')}}</option>
                                                     <option value="mes">{{__('Mes')}}</option>
                                                     <option value="anio">{{__('Año')}}</option>
@@ -866,7 +866,7 @@ Highcharts.chart('container', {
                     const input4 = document.getElementById("input4Fecha");
 
                     mySelect.addEventListener("change", function() {
-                      if (mySelect.value === "Selección detallada") {
+                      if (mySelect.value === "Seleccion detallada") {
                         input1.style.display = "block";
                         input2.style.display = "block";
                         input3.style.display = "block";
