@@ -362,7 +362,7 @@ display: none !important;
                 <div class="card-header">
                     <h5 class="card-title">{{__('Graficas de Consumos en Departamento')}}</h5>
                     <div class="card-tools">
-                        <a  href="Ereport/{{$pID}}/{{$pTipo}}/{{$pDepartamento}}/{{$pItem}}/{{$pReference}}/{{$pFrom}}/{{$pTo}}" type="button" class="btn btn-tool">
+                        <a  href="Ereport/{{$pID}}/{{$pTipo}}/{{$pDepartamento}}/{{$pItem}}/{{$pReference}}/{{$DateFrom}}/{{$pTo}}" type="button" class="btn btn-tool">
                             {{__('Descargar reporte')}}
                             <i class="fas fa-file-excel"></i>
                         </a>
