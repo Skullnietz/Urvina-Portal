@@ -185,31 +185,31 @@ class ConsultasCController extends Controller
     }
     }
 
-    public function ExcelReporteConsulta(Request $request,$UsuarioCteCorp,$tipo,$departamento,$articulo,$equipo,$from,$to){
+    public function ExcelReporteConsulta(Request $request,$pID,$pTipo,$pDepartamento,$pItem,$pReference,$pFrom,$pTo){
         session_start();
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
             [
-                "id" => $UsuarioCteCorp,
-                "type" => $tipo,
-                "department" => $departamento,
-                "item" => $articulo,
-                "reference" => $equipo,
-                "from" => $from,
-                "to" => $to,
+                "id" => $pID,
+                "type" => $pTipo,
+                "department" => $pDepartamento,
+                "item" => $pItem,
+                "reference" => $pReference,
+                "from" => $pFrom,
+                "to" => $pTo,
             ]
         );
         if($request->tipo == "Consumo"){
-            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);
         }
         if($request->tipo == "Departamento"){
-            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
         if($request->tipo == "Equipo"){
-            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
         if($request->tipo == "Anual"){
-            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
     }
 }
