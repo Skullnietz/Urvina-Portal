@@ -271,6 +271,12 @@ class ConsultasCController extends Controller
 
     public function ExcelReporteConsultaD($lang,$pID,$pTipo,$pDepartamento,$pFrom,$pTo){
         session_start();
+        $departamentos = DB::select(
+            "EXEC spDepartamentosApp :id",
+            [
+                "id" => $_SESSION['usuario']->UsuarioCteCorp,
+            ]
+        );
 
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
