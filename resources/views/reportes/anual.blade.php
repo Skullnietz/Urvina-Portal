@@ -365,20 +365,20 @@ display: none !important;
                         <?php if ($pItem="" && $pReference=""){ echo '<a  href="Ereport/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pItem.'/'.$pReference.'/'.$pFrom.'/'.$pTo.'type="button" class="btn btn-tool">
                             '.__('Descargar reporte').'
                             <i class="fas fa-file-excel"></i>
-                        </a>' }elseif ($pItem="") {
-                            echo '<a  href="EreportI/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pItem.'/'.$pFrom.'/'.$pTo'.type="button" class="btn btn-tool">
+                        </a>'; }elseif($pItem=""){
+                            echo '<a  href="EreportI/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pItem.'/'.$pFrom.'/'.$pTo.'type="button" class="btn btn-tool">
                             '.__('Descargar reporte').'
                             <i class="fas fa-file-excel"></i>
-                        </a>'} elseif ($pReference="") {
-                            echo '<a  href="EreportR/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pReference.'/'.$pFrom.'/'.$pTo'.type="button" class="btn btn-tool">
+                        </a>';} elseif ($pReference="") {
+                            echo '<a  href="EreportR/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pReference.'/'.$pFrom.'/'.$pTo.'type="button" class="btn btn-tool">
                             '.__('Descargar reporte').'
                             <i class="fas fa-file-excel"></i>
-                        </a>'
+                        </a>';
                         }else{
-                            echo '<a  href="EreportD/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pFrom.'/'.$pTo'.type="button" class="btn btn-tool">
+                            echo '<a  href="EreportD/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pFrom.'/'.$pTo.'type="button" class="btn btn-tool">
                             '.__('Descargar reporte').'
                             <i class="fas fa-file-excel"></i>
-                        </a>'
+                        </a>';
                         }  ?>
 
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
