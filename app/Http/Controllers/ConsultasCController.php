@@ -185,7 +185,7 @@ class ConsultasCController extends Controller
     }
     }
 
-    public function ExcelReporteConsulta(Request $request,$pID,$pTipo,$pDepartamento,$pItem,$pReference,$pFrom,$pTo){
+    public function ExcelReporteConsulta($lang,$pID,$pTipo,$pDepartamento,$pItem,$pReference,$pFrom,$pTo){
         session_start();
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
@@ -213,7 +213,7 @@ class ConsultasCController extends Controller
         }
     }
 
-    public function ExcelReporteConsultaI(Request $request,$pID,$pTipo,$pDepartamento,$pItem,$pFrom,$pTo){
+    public function ExcelReporteConsultaI($lang,$pID,$pTipo,$pDepartamento,$pItem,$pFrom,$pTo){
         session_start();
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
@@ -241,7 +241,7 @@ class ConsultasCController extends Controller
         }
     }
 
-    public function ExcelReporteConsultaR(Request $request,$pID,$pTipo,$pDepartamento,$pReference,$pFrom,$pTo){
+    public function ExcelReporteConsultaR($lang,$pID,$pTipo,$pDepartamento,$pReference,$pFrom,$pTo){
         session_start();
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
