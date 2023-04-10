@@ -129,8 +129,8 @@ class ConsultasCController extends Controller
         $pDepartamento = $request->departamento;
         $pItem = $request->articulo;
         $pReference = $request->equipo;
-        $pFrom = $datefrom;
-        $pTo = $dateto;
+        $pFrom = date_format($datefrom, 'Ymd');
+        $pTo = date_format($dateto,'Ymd');
 
         if($request->tipo == "Consumo"){
             return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
@@ -163,8 +163,8 @@ class ConsultasCController extends Controller
         $pDepartamento = $request->departamento;
         $pItem = $request->articulo;
         $pReference = $request->equipo;
-        $pFrom = $datefrom;
-        $pTo = $dateto;
+        $pFrom = date_format($datefrom, 'Ymd');
+        $pTo = date_format($dateto,'Ymd');
 
         if($request->tipo == "Consumo"){
             return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
