@@ -269,7 +269,7 @@ class ConsultasCController extends Controller
         }
     }
 
-    public function ExcelReporteConsultaD($pID,$pTipo,$pDepartamento,$pFrom,$pTo){
+    public function ExcelReporteConsultaD($lang,$pID,$pTipo,$pDepartamento,$pFrom,$pTo){
         session_start();
         dd($pID);
         $dataConsulta = DB::select(
