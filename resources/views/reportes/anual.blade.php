@@ -362,20 +362,20 @@ display: none !important;
                 <div class="card-header">
                     <h5 class="card-title">{{__('Graficas de Consumos por Periodo')}}</h5>
                     <div class="card-tools">
-                        <?php if ($pItem="" && $pReference=""){ echo '<a  href="Ereport/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pItem.'/'.$pReference.'/'.$pFrom.'/'.$pTo.'type="button" class="btn btn-tool">
+                        <?php if ($pItem="" && $pReference=""){ echo '<a  href="Ereport/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pItem.'/'.$pReference.'/'.$pFrom.'/'.$pTo.'" type="button" class="btn btn-tool">
                             '.__('Descargar reporte').'
                             <i class="fas fa-file-excel"></i>
                         </a>'; }elseif($pItem=""){
-                            echo '<a  href="EreportI/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pItem.'/'.$pFrom.'/'.$pTo.'type="button" class="btn btn-tool">
+                            echo '<a  href="EreportI/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pItem.'/'.$pFrom.'/'.$pTo.'" type="button" class="btn btn-tool">
                             '.__('Descargar reporte').'
                             <i class="fas fa-file-excel"></i>
                         </a>';} elseif ($pReference="") {
-                            echo '<a  href="EreportR/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pReference.'/'.$pFrom.'/'.$pTo.'type="button" class="btn btn-tool">
+                            echo '<a  href="EreportR/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pReference.'/'.$pFrom.'/'.$pTo.'" type="button" class="btn btn-tool">
                             '.__('Descargar reporte').'
                             <i class="fas fa-file-excel"></i>
                         </a>';
                         }else{
-                            echo '<a  href="EreportD/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pFrom.'/'.$pTo.'type="button" class="btn btn-tool">
+                            echo '<a  href="EreportD/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pFrom.'/'.$pTo.'" type="button" class="btn btn-tool">
                             '.__('Descargar reporte').'
                             <i class="fas fa-file-excel"></i>
                         </a>';
