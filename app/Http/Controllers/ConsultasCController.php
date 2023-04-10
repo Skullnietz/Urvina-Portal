@@ -284,6 +284,7 @@ class ConsultasCController extends Controller
             ]
         );
         if($request->tipo == "Consumo"){
+            dd($pID);
             return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);
         }
         if($request->tipo == "Departamento"){
