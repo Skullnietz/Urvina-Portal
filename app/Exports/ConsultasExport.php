@@ -28,6 +28,6 @@ class ConsultasExport implements FromCollection
     }
     public function collection()
     {
-        return collect($this->$dataConsulta);
+        return collect($this->dataConsulta);
     }
 }
