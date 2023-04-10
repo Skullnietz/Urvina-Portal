@@ -10,7 +10,7 @@
   max-width: 800px;
   margin: 1em auto;
 }
-
+{{dd($pDateForm)}}
 .highcharts-data-table table {
   font-family: Verdana, sans-serif;
   border-collapse: collapse;
