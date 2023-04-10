@@ -271,6 +271,7 @@ class ConsultasCController extends Controller
 
     public function ExcelReporteConsultaD($pID,$pTipo,$pDepartamento,$pFrom,$pTo){
         session_start();
+        dd($pID);
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
             [
@@ -284,7 +285,7 @@ class ConsultasCController extends Controller
             ]
         );
         if($request->tipo == "Consumo"){
-            dd($pID);
+
             return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);
         }
         if($request->tipo == "Departamento"){
