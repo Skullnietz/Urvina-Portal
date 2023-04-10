@@ -78,7 +78,7 @@ Route::prefix('{language}')->group(function () {
 
 
     //Reportes en Excel
-    Route::get('/Ereport/{pID}/{pTipo}/{pDepartamento}/{pItem}/{pReference}/{pFrom}/{pTo}', 'ConsultasCController@ExcelReporteConsulta')->name('Ereporte');
+    Route::get('/Ereport', 'ConsultasCController@ExcelReporteConsulta')->name('Ereporte');
 
     //Consultas Clientes
 

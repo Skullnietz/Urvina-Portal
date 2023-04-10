@@ -185,7 +185,7 @@ class ConsultasCController extends Controller
     }
     }
 
-    public function ExcelReporteConsulta(Request $request,$pID,$pTipo,$pDepartamento,$pItem,$pReference,$pFrom,$pTo){
+    public function ExcelReporteConsulta(){
         session_start();
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
