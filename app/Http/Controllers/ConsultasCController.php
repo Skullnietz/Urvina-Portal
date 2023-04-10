@@ -274,7 +274,7 @@ class ConsultasCController extends Controller
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
             [
-                "id" => intval($pID),
+                "id" => $pID,
                 "type" => $pTipo,
                 "department" => $pDepartamento,
                 "item" => "",
