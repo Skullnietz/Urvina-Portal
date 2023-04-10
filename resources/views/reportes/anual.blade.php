@@ -362,10 +362,10 @@ display: none !important;
                 <div class="card-header">
                     <h5 class="card-title">{{__('Graficas de Consumos por Periodo')}}</h5>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-tool">
+                        <a  href="{{Ereport/$pID/$pTipo/$pDepartamento/$pItem/$pReference/$pFrom/$pTo}}"type="button" class="btn btn-tool">
                             {{__('Descargar reporte')}}
                             <i class="fas fa-file-excel"></i>
-                            </button>
+                        </a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i  class="fas fa-minus"></i>
                         </button>

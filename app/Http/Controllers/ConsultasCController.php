@@ -122,18 +122,27 @@ class ConsultasCController extends Controller
                 "from" => date_format($datefrom, 'Ymd'),
                 "to" => date_format($dateto,'Ymd'),
             ]
+
         );
+        $pID = $_SESSION['usuario']->UsuarioCteCorp;
+        $pTipo = $request->tipo;
+        $pDepartamento = $request->departamento;
+        $pItem = $request->articulo;
+        $pReference = $request->equipo;
+        $pFrom = date_format($datefrom, 'Ymd');
+        $pTo = date_format($dateto,'Ymd');
+
         if($request->tipo == "Consumo"){
-            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
         }
         if($request->tipo == "Departamento"){
-            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
         }
         if($request->tipo == "Equipo"){
-            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
         }
         if($request->tipo == "Anual"){
-            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
         }
     }else{
         $datehasta = Carbon::now()->format('Ymd');
@@ -149,6 +158,44 @@ class ConsultasCController extends Controller
                 "to" => $datehasta,
             ]
         );
+        $pID = $_SESSION['usuario']->UsuarioCteCorp;
+        $pTipo = $request->tipo;
+        $pDepartamento = $request->departamento;
+        $pItem = $request->articulo;
+        $pReference = $request->equipo;
+        $pFrom = date_format($datefrom, 'Ymd');
+        $pTo = date_format($dateto,'Ymd');
+        
+        if($request->tipo == "Consumo"){
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
+        }
+        if($request->tipo == "Departamento"){
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
+        }
+        if($request->tipo == "Equipo"){
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
+        }
+        if($request->tipo == "Anual"){
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pFrom ',$pFrom )->with('pTo',$pTo);
+        }
+
+    }
+    }
+
+    public function ExcelReporteConsulta(Request $request,$UsuarioCteCorp,$tipo,$departamento,$articulo,$equipo,$from,$to){
+        session_start();
+        $dataConsulta = DB::select(
+            "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
+            [
+                "id" => $UsuarioCteCorp,
+                "type" => $tipo,
+                "department" => $departamento,
+                "item" => $articulo,
+                "reference" => $equipo,
+                "from" => $from,
+                "to" => $to,
+            ]
+        );
         if($request->tipo == "Consumo"){
             return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
@@ -161,9 +208,5 @@ class ConsultasCController extends Controller
         if($request->tipo == "Anual"){
             return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos);
         }
-
-    }
-
-
     }
 }
