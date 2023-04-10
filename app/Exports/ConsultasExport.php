@@ -9,6 +9,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class ConsultasExport implements FromCollection
 {
+    private $dataConsulta;
     /**
     * @return \Illuminate\Support\Collection
     */
@@ -21,8 +22,12 @@ class ConsultasExport implements FromCollection
             'Importe',
         ];
     }
+    public function __construct($dataConsulta)
+    {
+        $this->dataConsulta = $dataConsulta;
+    }
     public function collection()
     {
-        //
+        return collect($this->$dataConsulta);
     }
 }

@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\ConsultasExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use DateTime;
+
 
 class ConsultasCController extends Controller
 {
@@ -271,12 +274,6 @@ class ConsultasCController extends Controller
 
     public function ExcelReporteConsultaD($lang,$pID,$pTipo,$pDepartamento,$pFrom,$pTo){
         session_start();
-        $departamentos = DB::select(
-            "EXEC spDepartamentosApp :id",
-            [
-                "id" => $_SESSION['usuario']->UsuarioCteCorp,
-            ]
-        );
 
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
@@ -291,17 +288,16 @@ class ConsultasCController extends Controller
             ]
         );
         if($pTipo == "Consumo"){
-
-            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);
+            return Excel::download(new ConsultasExport($dataConsulta), 'consumos.xlsx');
         }
         if($pTipo == "Departamento"){
-            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+            return Excel::download(new ConsultasExport($dataConsulta), 'consumosdepartamento.xlsx');
         }
         if($pTipo == "Equipo"){
-            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+            return Excel::download(new ConsultasExport($dataConsulta), 'consumosequipo.xlsx');
         }
         if($pTipo == "Anual"){
-            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+            return Excel::download(new ConsultasExport($dataConsulta), 'consumosanual.xlsx');
         }
     }
 }
