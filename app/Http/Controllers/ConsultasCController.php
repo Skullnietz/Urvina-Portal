@@ -212,4 +212,88 @@ class ConsultasCController extends Controller
             return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
     }
+
+    public function ExcelReporteConsultaI(Request $request,$pID,$pTipo,$pDepartamento,$pItem,$pFrom,$pTo){
+        session_start();
+        $dataConsulta = DB::select(
+            "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
+            [
+                "id" => $pID,
+                "type" => $pTipo,
+                "department" => $pDepartamento,
+                "item" => $pItem,
+                "reference" => "",
+                "from" => $pFrom,
+                "to" => $pTo,
+            ]
+        );
+        if($request->tipo == "Consumo"){
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);
+        }
+        if($request->tipo == "Departamento"){
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        }
+        if($request->tipo == "Equipo"){
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        }
+        if($request->tipo == "Anual"){
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        }
+    }
+
+    public function ExcelReporteConsultaR(Request $request,$pID,$pTipo,$pDepartamento,$pReference,$pFrom,$pTo){
+        session_start();
+        $dataConsulta = DB::select(
+            "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
+            [
+                "id" => $pID,
+                "type" => $pTipo,
+                "department" => $pDepartamento,
+                "item" => "",
+                "reference" => $pReference,
+                "from" => $pFrom,
+                "to" => $pTo,
+            ]
+        );
+        if($request->tipo == "Consumo"){
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);
+        }
+        if($request->tipo == "Departamento"){
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        }
+        if($request->tipo == "Equipo"){
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        }
+        if($request->tipo == "Anual"){
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        }
+    }
+
+    public function ExcelReporteConsultaD(Request $request,$pID,$pTipo,$pDepartamento,$pFrom,$pTo){
+        session_start();
+        $dataConsulta = DB::select(
+            "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
+            [
+                "id" => $pID,
+                "type" => $pTipo,
+                "department" => $pDepartamento,
+                "item" => "",
+                "reference" => "",
+                "from" => $pFrom,
+                "to" => $pTo,
+            ]
+        );
+        if($request->tipo == "Consumo"){
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);
+        }
+        if($request->tipo == "Departamento"){
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        }
+        if($request->tipo == "Equipo"){
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        }
+        if($request->tipo == "Anual"){
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        }
+    }
 }

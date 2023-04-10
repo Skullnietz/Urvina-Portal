@@ -79,6 +79,9 @@ Route::prefix('{language}')->group(function () {
 
     //Reportes en Excel
     Route::get('/Ereport/{pID}/{pTipo}/{pDepartamento}/{pItem?}/{pReference?}/{pFrom}/{pTo}', 'ConsultasCController@ExcelReporteConsulta')->name('Ereporte');
+    Route::get('/EreportI/{pID}/{pTipo}/{pDepartamento}/{pItem?}/{pFrom}/{pTo}', 'ConsultasCController@ExcelReporteConsultaI')->name('EreporteI');
+    Route::get('/EreportR/{pID}/{pTipo}/{pDepartamento}/{pReference?}/{pFrom}/{pTo}', 'ConsultasCController@ExcelReporteConsultaR')->name('EreporteR');
+    Route::get('/EreportD/{pID}/{pTipo}/{pDepartamento}/{pFrom}/{pTo}', 'ConsultasCController@ExcelReporteConsultaD')->name('EreporteD');
 
     //Consultas Clientes
 
