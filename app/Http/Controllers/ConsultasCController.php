@@ -131,19 +131,20 @@ class ConsultasCController extends Controller
         $pReference = $request->equipo;
         $pDateFrom = date_format($datefrom, 'Ymd');
         $pTo = date_format($dateto,'Ymd');
+        $pFrom = date_format($datefrom, 'Ymd');
 
 
         if($request->tipo == "Consumo"){
-            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo);
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
         if($request->tipo == "Departamento"){
-            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo);
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
         if($request->tipo == "Equipo"){
-            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo);
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
         if($request->tipo == "Anual"){
-            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo);
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
     }else{
         $datehasta = Carbon::now()->format('Ymd');
@@ -166,18 +167,19 @@ class ConsultasCController extends Controller
         $pReference = $request->equipo;
         $pDateFrom = date_format($datefrom, 'Ymd');
         $pTo = date_format($dateto,'Ymd');
+        $pFrom = date_format($datefrom, 'Ymd');
 
         if($request->tipo == "Consumo"){
-            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo);
+            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);
         }
         if($request->tipo == "Departamento"){
-            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo);
+            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
         if($request->tipo == "Equipo"){
-            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo);
+            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
         if($request->tipo == "Anual"){
-            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo);
+            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
         }
 
     }
