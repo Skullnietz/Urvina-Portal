@@ -296,14 +296,14 @@ class ConsultasCController extends Controller
             $writer = new Xlsx($spreadsheet);
 
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-            header('Content-Disposition: attachment;filename="myfile.xlx"');
+            header('Content-Disposition: attachment;filename="myfile.xlsx"');
             header('Cache-Control: max-age=0');
 
-            $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'xls');
+            $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'xlsx');
             $writer->save('php://output');
         }
         if($pTipo == "Departamento"){
-            return Excel::download(new ConsultasExport(), 'consumosdepartamento.xlsx');
+            return Excel::download(new ConsultasExport($dataConsulta), 'consumosdepartamento.xlsx');
         }
         if($pTipo == "Equipo"){
             return Excel::download(new ConsultasExport($dataConsulta), 'consumosequipo.xlsx');
