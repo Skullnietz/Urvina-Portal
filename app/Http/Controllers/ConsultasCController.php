@@ -299,7 +299,7 @@ class ConsultasCController extends Controller
             header('Content-Disposition: attachment;filename="myfile.xlsx"');
             header('Cache-Control: max-age=0');
 
-            $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
+            $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'xls');
             $writer->save('php://output');
         }
         if($pTipo == "Departamento"){
