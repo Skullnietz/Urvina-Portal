@@ -288,7 +288,7 @@ class ConsultasCController extends Controller
             ]
         );
         if($pTipo == "Consumo"){
-            return view('excel.generar-excelD');
+            return view('excel.generar-excelD')->with('dataConsulta',$dataConsulta);
         }
         if($pTipo == "Departamento"){
             return Excel::download(new ConsultasExport($dataConsulta), 'consumosdepartamento.xlsx');
