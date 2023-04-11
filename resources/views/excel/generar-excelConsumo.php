@@ -1,9 +1,9 @@
 
 <?php
 header("Content-Type: application/vnd.ms-excel; charset=iso-8859-1");
-header("Content-Disposition: attachment; filename=datos-usuario.xls");
+header("Content-Disposition: attachment; filename=consumo".$pFrom."-".$pTo.".xls");
 ?>
-<table class="table table-striped">
+<table border="1">
 
                             <tr class="bg-secondary">
                                 <th> <?php echo __('Articulo') ?> </th>
@@ -22,4 +22,4 @@ header("Content-Disposition: attachment; filename=datos-usuario.xls");
                             }
                                 ?>
 
-                        </table>
+</table>
