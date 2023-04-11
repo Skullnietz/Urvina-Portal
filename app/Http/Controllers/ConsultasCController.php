@@ -288,16 +288,16 @@ class ConsultasCController extends Controller
             ]
         );
         if($pTipo == "Consumo"){
-            return view('excel.generar-excelConsumo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-Consumo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Departamento"){
-            return view('excel.generar-excelDepartamento')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-Departamento')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Equipo"){
-            return view('excel.generar-excelEquipo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-Equipo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Anual"){
-            return view('excel.generar-excelAnual')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-Anual')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
     }
 }
