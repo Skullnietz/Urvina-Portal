@@ -293,9 +293,8 @@ class ConsultasCController extends Controller
             $spreadsheet = new Spreadsheet();
             $activeWorksheet = $spreadsheet->getActiveSheet();
             $activeWorksheet->setCellValue('A1', 'Consumos !');
-
             $writer = new Xlsx($spreadsheet);
-            
+
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             header('Content-Disposition: attachment;filename="myfile.xlsx"');
             header('Cache-Control: max-age=0');
@@ -304,7 +303,7 @@ class ConsultasCController extends Controller
             $writer->save('php://output');
         }
         if($pTipo == "Departamento"){
-            return Excel::download(new ConsultasExport($dataConsulta), 'consumosdepartamento.xlsx');
+            return Excel::download(new ConsultasExport(), 'consumosdepartamento.xlsx');
         }
         if($pTipo == "Equipo"){
             return Excel::download(new ConsultasExport($dataConsulta), 'consumosequipo.xlsx');

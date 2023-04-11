@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class ConsultasExport implements FromCollection
 {
-    private $dataConsulta;
+    
     /**
     * @return \Illuminate\Support\Collection
     */
