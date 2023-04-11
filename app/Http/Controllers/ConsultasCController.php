@@ -303,7 +303,7 @@ class ConsultasCController extends Controller
             $writer->save('php://output');
         }
         if($pTipo == "Departamento"){
-            return Excel::download(new ConsultasExport($dataConsulta), 'consumosdepartamento.xlsx');
+            return Excel::download(new ConsultasExport, 'consumosdepartamento.xlsx');
         }
         if($pTipo == "Equipo"){
             return Excel::download(new ConsultasExport($dataConsulta), 'consumosequipo.xlsx');
