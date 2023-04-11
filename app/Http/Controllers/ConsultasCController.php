@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Exports\ConsultasExport;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 use DateTime;
@@ -290,20 +288,10 @@ class ConsultasCController extends Controller
             ]
         );
         if($pTipo == "Consumo"){
-            $spreadsheet = new Spreadsheet();
-            $activeWorksheet = $spreadsheet->getActiveSheet();
-            $activeWorksheet->setCellValue('A1', 'Consumos !');
-            $writer = new Xlsx($spreadsheet);
-
-            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-            header('Content-Disposition: attachment;filename="myfile.xlsx"');
-            header('Cache-Control: max-age=0');
-
-            $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'xlsx');
-            $writer->save('php://output');
+            return view('excel.generar-excelD');
         }
         if($pTipo == "Departamento"){
-            return Excel::download(new ConsultasExport, 'consumosdepartamento.xlsx');
+            return Excel::download(new ConsultasExport($dataConsulta), 'consumosdepartamento.xlsx');
         }
         if($pTipo == "Equipo"){
             return Excel::download(new ConsultasExport($dataConsulta), 'consumosequipo.xlsx');
