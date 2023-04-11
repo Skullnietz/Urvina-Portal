@@ -295,7 +295,7 @@ class ConsultasCController extends Controller
             $activeWorksheet->setCellValue('A1', 'Consumos !');
 
             $writer = new Xlsx($spreadsheet);
-            $writer->save('consumos.xlsx');
+            
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             header('Content-Disposition: attachment;filename="myfile.xlsx"');
             header('Cache-Control: max-age=0');
