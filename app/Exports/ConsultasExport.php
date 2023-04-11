@@ -22,12 +22,8 @@ class ConsultasExport implements FromCollection
             'Importe',
         ];
     }
-    public function __construct($dataConsulta)
-    {
-        $this->dataConsulta = $dataConsulta;
-    }
     public function collection()
     {
-        return collect($this->dataConsulta);
+        return collect();
     }
 }
