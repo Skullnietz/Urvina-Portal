@@ -158,7 +158,7 @@
     <div class="container">
 
         <div class="row">
-            @foreach ($articulos as $articulo)
+            @foreach ($favoritos as $articulo)
             <div class="col-md-3 col-sm-6 col-xs-6"  >
                 <?php $ART = trim($articulo->Articulo); ?>
                 <a href="{{route('item', [app()->getLocale(), $ART])}}">
