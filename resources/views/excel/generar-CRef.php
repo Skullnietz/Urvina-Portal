@@ -1,7 +1,7 @@
 
 <?php
 header("Content-Type: application/vnd.ms-excel; charset=iso-8859-1");
-header("Content-Disposition: attachment; filename=consumo-ref-".$pFrom."-".$pTo.".xls");
+header("Content-Disposition: attachment; filename=c-ref-".$pFrom."-".$pTo.".xls");
 ?>
 <table border="1">
 
