@@ -56,7 +56,7 @@ return[
         [
             'text'        => 'orders',
             'url'         => 'manual/Manual_de_Usuario.pdf',
-            'icon'        => 'fas fa-fw fa-inventory',
+            'icon'        => 'fas fa-fw fa-box',
             'icon_color' => 'green',
             'label_color' => 'success',
         ],
