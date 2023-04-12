@@ -157,34 +157,36 @@
     </style>
     <div class="container">
 
-<div class="row">
-        @foreach ($favoritos as $articulo)
-            <div class="col-md-6 col-xs-12">
-                <?php $ART = trim($articulo->articulo); ?>
+        <div class="row">
+            @foreach ($articulos as $articulo)
+            <div class="col-md-3 col-sm-6 col-xs-6"  >
+                <?php $ART = trim($articulo->Articulo); ?>
                 <a href="{{route('item', [app()->getLocale(), $ART])}}">
-                    <div class="card grow">
-                        <div class="card-body">
+                    <div class="card grow text-center" style="" >
+                        <?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
+                            echo '<img class="img-card-top mx-auto"  src="/images/catalogo/' . $ART . '.jpg" alt="$ART">';
+                        } else {
+                            echo '<img class="img-card-top mx-auto"  src="/img/productos/default_product.png" alt="no img">';
+                        }
+                        ?>
+                        <div class="card-body border-top">
+
                             <div class="row ">
-                                <div class="col-3"><?php if (file_exists(public_path() . '/images/catalogo/' . $ART . '.jpg')) {
-                                    echo '<img src="/images/catalogo/' . $ART . '.jpg" alt="$ART"style="width:100px">';
-                                } else {
-                                    echo '<img src="/img/productos/default_product.png" alt="no img" style="width:100px">';
-                                }
-                                ?>
-                                </div>
-                                <div class="col-7"><small><b>{{ __(trim($articulo->Descripcion)) }}
+                                <button class="btn btn-xs btn-primary"><a
+                                    href=""><b>{{ trim($articulo->Codigo) }}</b></a></button>
+                                <div ><small><b>{{ __(trim($articulo->Descripcion)) }}
                                         </b></small><br>
-                                    <small>{{ $ART }}</small><br>
-                                    <small style="color:blue;"><b><a
-                                                href="">{{ trim($articulo->Codigo) }}</a></b></small>
+                                       <small style="color: #00a650"><b>{{ $ART }}</b></small>
+                                    <br>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
-        @endforeach
-    </div>
+            @endforeach
+        </div>
     </div>
 
 
