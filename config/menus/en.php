@@ -48,7 +48,7 @@ return[
         ],
         [
             'text'        => 'help',
-            'url'         => 'admin/pages',
+            'url'         => 'es/manual/User_Manual.pdf',
             'icon'        => 'fas fa-fw fa-question',
             'icon_color' => 'green',
             'label_color' => 'success',
