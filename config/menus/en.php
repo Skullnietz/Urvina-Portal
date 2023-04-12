@@ -54,7 +54,7 @@ return[
             'label_color' => 'success',
         ],
         [
-            'text'        => 'orders',
+            'text'        => 'Orders',
             'url'         => 'manual/User_Manual.pdf',
             'icon'        => 'fas fa-fw fa-box',
             'icon_color' => 'green',
