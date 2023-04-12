@@ -105,17 +105,18 @@ display: none !important;
 
                 <a href="">
                     <div class="card-body"><i class="fas fa-user"></i><br>
-                        <b>Hugo Reyna</b>
+                        <b>{{ $_SESSION['usuario']->AyudaNombre }}</b>
                 </a>
                 <hr><br>
-                <a href="">
+                <a href="tel:+52{{ $_SESSION['usuario']->Ayudatel }}" target="_blank">
                     <i class="fas fa-phone"></i><br>
-                    <b>884 439 3695</b>
+                    <b>{{ $_SESSION['usuario']->Ayudatel }}</b>
                 </a>
                 <hr><br>
-                <a href="">
+
+                <a href="mailto:{{ $_SESSION['usuario']->AyudaMail }}" target="_blank">
                     <i class="fas fa-envelope"></i><br>
-                    <small>almacen.saltillo@urvina.com.mx</small>
+                    <small>{{ $_SESSION['usuario']->AyudaMail }}</small>
                 </a>
             </div>
     </div>

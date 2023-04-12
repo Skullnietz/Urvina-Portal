@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', __('Categoria'))
+@section('title', __('Favoritos'))
 
 @section('content_header')
 <div class="container">
