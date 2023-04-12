@@ -256,7 +256,7 @@ class ConsultasCController extends Controller
                 "reference" => "",
                 "from" => $pFrom,
                 "to" => $pTo,
-            ]""
+            ]
         );
         if($pTipo == "Consumo"){
             return view('excel.generar-Consumo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
