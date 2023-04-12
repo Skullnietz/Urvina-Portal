@@ -93,7 +93,7 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <input type="radio" name="tipo" value="Consumo"
-                                                        aria-label="Radio button for following text input">
+                                                        aria-label="Radio button for following text input" required>
                                                 </div>
                                             </div>
                                             <b class="form-control">{{__('Consumo')}}</b>
