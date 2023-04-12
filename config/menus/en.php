@@ -54,6 +54,13 @@ return[
             'label_color' => 'success',
         ],
         [
+            'text'        => 'orders',
+            'url'         => 'manual/User_Manual.pdf',
+            'icon'        => 'fas fa-fw fa-bags-shopping',
+            'icon_color' => 'green',
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'fav',
             'url'         => 'en/favoritos',
             'icon'        => 'fas fa-fw fa-star',
