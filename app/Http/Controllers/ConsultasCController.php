@@ -294,7 +294,7 @@ class ConsultasCController extends Controller
             return view('excel.generar-Departamento')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Equipo"){
-            return view('excel.PorEquipo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-Equipo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Anual"){
             return view('excel.generar-CAnual')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
