@@ -202,17 +202,17 @@ class ConsultasCController extends Controller
                 "to" => $pTo,
             ]
         );
-        if($request->tipo == "Consumo"){
-            return view('reportes.consumos')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);
+        if($pTipo == "Consumo"){
+            return view('excel.generar-Consumo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
-        if($request->tipo == "Departamento"){
-            return view('reportes.departamento')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        if($pTipo == "Departamento"){
+            return view('excel.generar-Departamento')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
-        if($request->tipo == "Equipo"){
-            return view('reportes.equipo')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        if($pTipo == "Equipo"){
+            return view('excel.generar-CRef')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
-        if($request->tipo == "Anual"){
-            return view('reportes.anual')->with('dataConsulta',$dataConsulta)->with('departamentos',$departamentos)->with('pID',$pID)->with('pTipo',$pTipo)->with('pDepartamento',$pDepartamento)->with('pItem',$pItem)->with('pReference',$pReference)->with('pDateFrom ',$pDateFrom )->with('pTo',$pTo)->with('pFrom',$pFrom);;
+        if($pTipo == "Anual"){
+            return view('excel.generar-CAnual')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
     }
 
@@ -231,16 +231,16 @@ class ConsultasCController extends Controller
             ]
         );
         if($pTipo == "Consumo"){
-            return view('excel.generar-excelConsumo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-Consumo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Departamento"){
-            return view('excel.generar-excelDepartamento')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-Departamento')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Equipo"){
-            return view('excel.generar-excelEquipo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-CRef')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Anual"){
-            return view('excel.generar-excelAnual')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-CAnual')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
     }
 
@@ -259,16 +259,16 @@ class ConsultasCController extends Controller
             ]
         );
         if($pTipo == "Consumo"){
-            return view('excel.generar-excelConsumo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-Consumo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Departamento"){
-            return view('excel.generar-excelDepartamento')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-Departamento')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Equipo"){
-            return view('excel.generar-excelEquipo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-CRef')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
         if($pTipo == "Anual"){
-            return view('excel.generar-excelAnual')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
+            return view('excel.generar-CAnual')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
         }
     }
 
