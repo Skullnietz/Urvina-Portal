@@ -244,7 +244,7 @@ class ConsultasCController extends Controller
         }
     }
 
-    public function ExcelReporteConsultaR($lang,$pID,$pTipo,$pDepartamento,$pReference,$pFrom,$pTo){
+    public function ExcelReporteConsultaR($lang,$pID,$pTipo,$pDepartamento,$pItem,$pFrom,$pTo){
         session_start();
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
@@ -252,11 +252,11 @@ class ConsultasCController extends Controller
                 "id" => $pID,
                 "type" => $pTipo,
                 "department" => $pDepartamento,
-                "item" => "",
-                "reference" => $pReference,
+                "item" => $pItem,
+                "reference" => "",
                 "from" => $pFrom,
                 "to" => $pTo,
-            ]
+            ]""
         );
         if($pTipo == "Consumo"){
             return view('excel.generar-Consumo')->with('dataConsulta',$dataConsulta)->with('pFrom',$pFrom)->with('pTo',$pTo);
