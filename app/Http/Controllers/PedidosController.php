@@ -66,8 +66,12 @@ class PedidosController extends Controller
                     "idP" => $id,
                 ]
             );
+
             foreach($pedidos as $pedido){
                 $art=trim($pedido->Articulo);
+
+
+
                 $artdesc = DB::select(
                     "EXEC spArticuloApp :idu, :item",
                     [
@@ -75,6 +79,8 @@ class PedidosController extends Controller
                         "item" => $art,
                     ]
                 );
+
+
 
                 $CFecha = Date::parse($pedido->Fecha);
                 $pedido->CFecha = $CFecha;

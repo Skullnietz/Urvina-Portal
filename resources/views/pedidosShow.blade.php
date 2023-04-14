@@ -25,8 +25,19 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12 border-right" style="height:500px; overflow-x: auto;">
-
+            <?php
+            $sumapesos = 0;
+            $sumadolares = 0;
+            ?>
             @foreach ($data as $pedido)
+            @foreach ($pedido->articulo as $articulo)
+            <?php
+
+            $sumapesos = $sumapesos+$articulo->Precio;
+            $sumadolares = $sumadolares+$articulo->Precio;
+            ?>
+
+            @endforeach
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12" >
             <div class="card">
@@ -51,6 +62,8 @@
                             @else
                             <div class="row"><span class="badge badge-secondary"><h5>{{$pedido->Cantidad}} {{$pedido->Unidad}}</h5></span></div>
                             @endif</div>
+
+
                     </div>
                 </div>
 
@@ -64,10 +77,78 @@
             @endforeach
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4 d-flex"  style="background-color:#f9f9f9">
-            <div class="container">
+            <div class="container d-flex align-items-center" >
+                <div class="mx-auto">
 
-            <div class="row"><h5><b>Detalle de compra:</b></h5></div>
-            <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} | <b style="color:gray">#{{$id}}</b></div>
+            <div class="row"><h5><b>Detalle de pedido:</b></h5></div>
+            <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} &nbsp;| &nbsp;<b style="color:gray">#{{$id}}</b></div>
+            <hr>
+            <div class="row justify-content-between">
+                <div>Equip\Ref</div>
+
+                <div></div>
+                <?php
+                $cantartpeso = 0;
+                $cantartdolar = 0;
+                $sumaPDolar = 0;
+                $sumaPPeso = 0;
+                $Periodo = "";
+
+                foreach($pedido->articulo as $articulo){
+                    if(str_contains($articulo->Moneda, "Dolares")){
+                    $cantartdolar = $cantartdolar+$pedido->Cantidad;
+                    $sumaPDolar = $sumaPDolar+$articulo->Precio;
+                    $Periodo = $articulo->Periodo;
+                    }
+                    if(str_contains($articulo->Moneda, "Pesos")){
+                     $cantartpeso = $cantartpeso+$pedido->Cantidad;
+                     $sumaPPeso = $sumaPPeso+$articulo->Precio;
+                     $Periodo = $articulo->Periodo;
+                    }
+                }
+                    ?>
+            </div><br>
+            @if($cantartdolar != 0)
+            <div class="row justify-content-between">
+                <div>Articulos en Dolares({{$cantartdolar}})</div>
+
+                <div>$ {{$sumaPDolar}} USD</div>
+            </div>
+            @endif
+            @if($cantartpeso != 0)
+            <div class="row justify-content-between">
+                <div>Articulos en Pesos({{$cantartpeso}})</div>
+
+                <div>$ {{$sumaPPeso}} MXN</div>
+            </div>
+            @endif
+            <br>
+            <div class="row justify-content-between">
+                <div>Envio</div>
+
+                <div>{{$Periodo}}</div>
+            </div>
+            <hr>
+            <div class="row justify-content-between">
+                <div>Total USD</div>
+
+                <div>$ Total</div>
+            </div>
+            <div class="row justify-content-between">
+                <div>Total MXN</div>
+
+                <div>$ Total</div>
+            </div>
+            <hr>
+            <br><br>
+            <div class="row">
+                Observaciones
+            </div>
+            <div class="row">
+                Observaciones
+            </div>
+
+        </div>
         </div>
 
         </div>
