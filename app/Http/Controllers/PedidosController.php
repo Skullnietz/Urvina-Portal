@@ -25,7 +25,7 @@ class PedidosController extends Controller
                 $descpedido = DB::select(
                     "EXEC spPedidosDetalleApp :idP",
                     [
-                        "idP" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "idP" => $pedido->ID,
 
                     ]
                 );
