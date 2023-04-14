@@ -32,9 +32,10 @@
             </div>
             <div class="card-body">
                     <div class="row">
-                    <div class="col-3">{{$pedido->Pedido}} </div>
-                    <div class="col-6">
+                    <div class="col-md-3 col-sd-3 col-xs-3"> <h4>{{$pedido->Pedido}}</h4> </div>
+                    <div class="col-md-6 col-sd-6 col-xs-6">
                         @foreach ($pedido->desc as $descpedido)
+
                         <div class="row">
                             <div class="col-2"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($descpedido->Articulo) . '.jpg')) {
                                 echo '<img width="100px" class="border rounded" id="img-1" src="/images/catalogo/' . trim($descpedido->Articulo) . '.jpg" alt="$ART">';
