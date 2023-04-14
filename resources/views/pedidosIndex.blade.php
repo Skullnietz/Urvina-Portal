@@ -45,7 +45,12 @@
                             }
                             ?></div>
                             <div class="col-md-10 col-sm-10 col-xs-10"><div class="row">{{$descpedido->art->Descripcion1}}</div>
-                            <div class="row">{{$descpedido->Cantidad}}{{$descpedido->Unidad}}</div></div>
+                            @if ($descpedido->Unidad == 'pza' || $descpedido->Unidad == 'par')
+                                                <div class="row"><h5>{{intval($descpedido->Cantidad)}} {{$descpedido->Unidad}}</h5></div>
+                                                @else
+                                                <div class="row"><h5>{{$descpedido->Cantidad}} {{$descpedido->Unidad}}</h5></div>
+                                                @endif
+                            </div>
 
 
                         </div>
