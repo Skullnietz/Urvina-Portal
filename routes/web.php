@@ -68,6 +68,8 @@ Route::prefix('{language}')->group(function () {
     //Pedidos
     Route::get('/pedidosRe','PedidosController@PedidoReciente')->name('pedidore');
     Route::get('/impresion','PedidosController@impresion')->name('printpedido');
+    Route::get('/pedidos','PedidosController@index')->name('indexpedido');
+    Route::get('/pedidos/{id}','PedidosController@show')->name('showpedido');
 
 
 

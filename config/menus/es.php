@@ -55,7 +55,7 @@ return[
         ],
         [
             'text'        => 'Pedidos',
-            'url'         => 'manual/Manual_de_Usuario.pdf',
+            'url'         => 'es/pedidos',
             'icon'        => 'fas fa-fw fa-box',
             'icon_color' => 'green',
             'label_color' => 'success',
