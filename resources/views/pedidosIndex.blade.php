@@ -20,7 +20,27 @@
 @stop
 
 @section('content')
-
+<div class="container">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                Fecha
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3">Pedido</div>
+                    <div class="col-6">
+                        <div class="row">Pedido 1</div>
+                        <div class="row">Pedido 2</div>
+                        <div class="row">Pedido 3</div>
+                        <div class="row">Pedido 4</div>
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 @stop
