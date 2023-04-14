@@ -3,14 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PedidosController extends Controller
 {
     public function index(){
         session_start();
+        $datehasta = Carbon::now()->format('Y-m-d');
         //////////////////// Vista Pedidos /////////////////
+        $data = array();
         if(isset($_SESSION['usuario'])){
-            return view('pedidosIndex');
+            $pedidos = DB::select(
+                "EXEC spPedidosApp :id, :from, :to",
+                [
+                    "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                    "from" => '2000-01-01',
+                    "to" => $datehasta,
+                ]
+            );
+            foreach($pedidos as $pedido){
+                $descpedido = DB::select(
+                    "EXEC spPedidosDetalleApp :idP",
+                    [
+                        "idP" => $_SESSION['usuario']->UsuarioCteCorp,
+
+                    ]
+                );
+                $pedido->desc = $descpedido;
+                array_push($data, $pedido);
+            }
+            return view('pedidosIndex')->with('data',$data);
         }else {
             return redirect()->route('login', app()->getLocale());
         }

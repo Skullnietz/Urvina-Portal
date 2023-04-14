@@ -21,11 +21,12 @@
 
 @section('content')
 <div class="container">
+    @foreach ($data as $pedido)
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
-                Pedido | Fecha
+                {{$pedido->Pedido}} | {{$pedido->Fecha}}
             </div>
             <div class="card-body">
                     <div class="row">
@@ -43,6 +44,7 @@
         </div>
     </div>
     </div>
+    @endforeach
 </div>
 
 
