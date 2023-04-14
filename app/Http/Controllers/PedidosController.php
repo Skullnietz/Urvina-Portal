@@ -22,12 +22,10 @@ class PedidosController extends Controller
                 ]
             );
             foreach($pedidos as $pedido){
-                dd($pedido->ID);
                 $descpedido = DB::select(
                     "EXEC spPedidosDetalleApp :idP",
                     [
-                        "idP" => $pedido->ID,
-
+                        "idP" => intval($pedido->ID),
                     ]
                 );
                 $pedido->desc = $descpedido;
