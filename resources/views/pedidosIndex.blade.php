@@ -22,6 +22,7 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-6">
         <div class="card">
             <div class="card-header">
                 Fecha
@@ -36,9 +37,10 @@
                         <div class="row">Pedido 4</div>
                     </div>
                     <div class="col-3"></div>
-                
+
             </div>
         </div>
+    </div>
     </div>
 </div>
 
