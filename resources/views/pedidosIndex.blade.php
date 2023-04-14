@@ -33,11 +33,11 @@
                     <div class="col-3">Fotos Pedido</div>
                     <div class="col-6">
                         @foreach ($pedido->desc as $descpedido)
-
-                        {{$descpedido->art->Descripcion1}}
-
-                       </div><hr>
+                        <div class="row">
+                            {{$descpedido->art->Descripcion1}}
+                        </div><hr>
                         @endforeach
+                    </div><hr>
                     </div>
                     <div class="col-3"><a class="btn btn-primary">Ver Pedido</a></div>
 
