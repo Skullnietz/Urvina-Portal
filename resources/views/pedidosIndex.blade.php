@@ -34,7 +34,7 @@
                     <div class="col-6">
                         @foreach ($pedido->desc as $descpedido)
 
-                        {{$descpedido->art["Descripcion1"]}}
+                        {{$descpedido->art->Descripcion1}}
 
                        </div><hr>
                         @endforeach
