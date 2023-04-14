@@ -36,7 +36,7 @@
                         <div class="row">Pedido 3</div>
                         <div class="row">Pedido 4</div>
                     </div>
-                    <div class="col-3"></div>
+                    <div class="col-3"><a class="btn btn-primary">Ver Pedido</a></div>
                 </div>
 
             </div>
