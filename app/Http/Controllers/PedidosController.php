@@ -29,7 +29,19 @@ class PedidosController extends Controller
                         "idP" => $pedido->ID,
                     ]
                 );
+
                 $pedido->desc = $descpedido;
+                foreach($pedido->desc as $p){
+                    $artdesc = DB::table('Art')->select('Articulo'
+                    ,'Rama'
+                    ,'Descripcion1'
+                    ,'Descripcion2'
+                    ,'NombreCorto'
+                    ,'Grupo'
+                    ,'Categoria'
+                    ,'Codigo')->where('Articulo', '=' , $p->Articulo)->first();
+                    $pedido->art = $artdesc;
+                }
                 array_push($data, $pedido);
             }
             return view('pedidosIndex')->with('data',$data);

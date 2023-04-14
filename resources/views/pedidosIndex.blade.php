@@ -36,7 +36,7 @@
                        <div class="row">{{$descpedido->Articulo}}-{{$descpedido->Codigo}}</div><hr>
                         @endforeach
                     </div>
-                    <center><div class="col-3"><a class="btn btn-primary">Ver Pedido</a></div></center>
+                    <div class="col-3"><a class="btn btn-primary">Ver Pedido</a></div>
 
                 </div>
 
