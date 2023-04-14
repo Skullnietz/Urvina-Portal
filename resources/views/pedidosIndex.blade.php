@@ -25,11 +25,11 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
-                Fecha
+                Pedido | Fecha
             </div>
             <div class="card-body">
                     <div class="row">
-                    <div class="col-3">Pedido</div>
+                    <div class="col-3">Fotos Pedido</div>
                     <div class="col-6">
                         <div class="row">Pedido 1</div>
                         <div class="row">Pedido 2</div>
