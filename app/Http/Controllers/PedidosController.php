@@ -40,7 +40,7 @@ class PedidosController extends Controller
                     ,'Grupo'
                     ,'Categoria'
                     ,'Codigo')->where('Articulo', '=' , $p->Articulo)->first();
-                    $pedido->art = $artdesc;
+                    $p->art = $artdesc;
                 }
                 array_push($data, $pedido);
             }
