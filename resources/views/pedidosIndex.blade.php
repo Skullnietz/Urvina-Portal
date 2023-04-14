@@ -36,7 +36,7 @@
 
                         {{$pedido->art}}
 
-                       </div>@endforeach<hr>
+                       </div><hr>
                         @endforeach
                     </div>
                     <div class="col-3"><a class="btn btn-primary">Ver Pedido</a></div>
