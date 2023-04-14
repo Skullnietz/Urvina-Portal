@@ -10,7 +10,7 @@ class PedidosController extends Controller
         session_start();
         //////////////////// Vista Pedidos /////////////////
         if(isset($_SESSION['usuario'])){
-            return view('indexpedidos');
+            return view('pedidosIndex');
         }else {
             return redirect()->route('login', app()->getLocale());
         }
@@ -21,7 +21,7 @@ class PedidosController extends Controller
         session_start();
         //////////////////// Vista Pedidos /////////////////
         if(isset($_SESSION['usuario'])){
-            return view('impresionpedido');
+            return view('pedidosShow');
         }else {
             return redirect()->route('login', app()->getLocale());
         }
