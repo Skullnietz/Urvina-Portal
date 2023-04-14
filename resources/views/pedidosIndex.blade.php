@@ -27,7 +27,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
-                <?php echo $Date = $pedido->Fecha ?>
+                <?php $Date = $pedido->CFecha ?>
                 {{$Date->format('l, j F Y')}}
             </div>
             <div class="card-body">

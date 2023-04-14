@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Jenssegers\Date\Date;
 
 class PedidosController extends Controller
 {
@@ -29,7 +30,8 @@ class PedidosController extends Controller
                         "idP" => $pedido->ID,
                     ]
                 );
-
+                $CFecha = Date::parse($pedido->Fecha);
+                $pedido->CFecha = $CFecha;
                 $pedido->desc = $descpedido;
                 foreach($pedido->desc as $p){
                     $artdesc = DB::table('Art')->select('Articulo'
@@ -44,7 +46,7 @@ class PedidosController extends Controller
                 }
                 array_push($data, $pedido);
             }
-            
+
             return view('pedidosIndex')->with('data',$data);
         }else {
             return redirect()->route('login', app()->getLocale());
