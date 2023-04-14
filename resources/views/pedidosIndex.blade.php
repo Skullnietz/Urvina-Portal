@@ -28,7 +28,7 @@
                 Fecha
             </div>
             <div class="card-body">
-
+                    <div class="row">
                     <div class="col-3">Pedido</div>
                     <div class="col-6">
                         <div class="row">Pedido 1</div>
@@ -37,6 +37,7 @@
                         <div class="row">Pedido 4</div>
                     </div>
                     <div class="col-3"></div>
+                </div>
 
             </div>
         </div>
