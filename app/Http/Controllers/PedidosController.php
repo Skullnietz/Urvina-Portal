@@ -44,6 +44,7 @@ class PedidosController extends Controller
                 }
                 array_push($data, $pedido);
             }
+            dd($pedido);
             return view('pedidosIndex')->with('data',$data);
         }else {
             return redirect()->route('login', app()->getLocale());
