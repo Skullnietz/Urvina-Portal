@@ -33,8 +33,8 @@
                     <div class="col-3">Fotos Pedido</div>
                     <div class="col-6">
                         @foreach ($pedido->desc as $descpedido)
-                        @foreach ($descpedido->art as $artdesc)<div class="row">
-                        {{$artdesc->Descripcion1}}
+
+                        {{$pedido->art}}
 
                        </div>@endforeach<hr>
                         @endforeach
