@@ -23,9 +23,10 @@ class PedidosController extends Controller
             );
             foreach($pedidos as $pedido){
                 $descpedido = DB::select(
-                    "EXEC spPedidosDetalleApp :idP",
+                    "EXEC spPedidosDetalleApp :id, :idP",
                     [
-                        "idP" => intval($pedido->ID),
+                        "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "idP" => $pedido->ID,
                     ]
                 );
                 $pedido->desc = $descpedido;
