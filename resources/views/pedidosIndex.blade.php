@@ -32,25 +32,28 @@
             </div>
             <div class="card-body">
                     <div class="row">
-                    <div class="col-md-3 col-sd-3 col-xs-3"> <h4>{{$pedido->Pedido}}</h4> </div>
-                    <div class="col-md-6 col-sd-6 col-xs-6">
+                    <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"> <div class="mx-auto"> <b> <h4>{{$pedido->Pedido}}</h4> </b> </div> </div>
+                    <div class="col-md-8 col-sm-8 col-xs-8">
                         @foreach ($pedido->desc as $descpedido)
+                        <hr>
 
                         <div class="row">
-                            <div class="col-2"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($descpedido->Articulo) . '.jpg')) {
+                            <div class="col-md-2 col-sm-2 col-xs-2"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($descpedido->Articulo) . '.jpg')) {
                                 echo '<img width="100px" class="border rounded" id="img-1" src="/images/catalogo/' . trim($descpedido->Articulo) . '.jpg" alt="$ART">';
                             } else {
                                 echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="width:100px">';
                             }
                             ?></div>
-                            <div class="col"></div>
+                            <div class="col-md-10 col-sm-10 col-xs-10"><div class="row">{{$descpedido->art->Descripcion1}}</div>
+                            <div class="row">{{$pedido->Cantidad}}{{$pedido->Unidad}}</div></div>
 
-                            {{$descpedido->art->Descripcion1}}
-                        </div><hr>
+
+                        </div>
                         @endforeach
-                    </div><hr>
                     </div>
-                    <div class="col-3"><a class="btn btn-primary">Ver Pedido</a></div>
+                    <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"><div class="mx-auto"><a class="btn btn-primary">Ver Pedido</a></div></div><hr>
+                    </div>
+
 
                 </div>
 
