@@ -28,7 +28,7 @@
         <div class="card">
             <div class="card-header">
                 <?php $Date = $pedido->CFecha ?>
-                {{$Date->format('l, j F Y')}}
+                {{$Date->format('l, j F Y H:i:s')}}
             </div>
             <div class="card-body">
                     <div class="row">
