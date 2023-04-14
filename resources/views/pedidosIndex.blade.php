@@ -23,15 +23,6 @@
 
 
 
-<div class="jumbotron">
-    <h1 class="display-4">Bienvenido de vuelta!</h1>
-    <p class="lead">Te damos la bienvenida a la actualización del Portal Urvina. Sientase libre de utilizar el portal y realizar sus compras...</p>
-    <hr class="my-4">
-    <p>Puede explorar nuestros productos en el apartado de Catalogo</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="{{route('catalogo'), app()->getLocale()}}" role="button">Ir al Catalogo</a>
-    </p>
-  </div>
 @stop
 
 @section('right-sidebar')
