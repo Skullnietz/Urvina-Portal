@@ -3,9 +3,10 @@
 @section('title', 'Pedido')
 
 @section('content_header')
+{{dd($data)}}
 <div class="container">
     <div class="row">
-        <div class="col-6"><h1>Pedido</h1></div>
+        <div class="col-6"><h1>Pedido <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div>
         <div class="col-6"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
@@ -21,17 +22,59 @@
 
 @section('content')
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12 border-right" style="height:500px; overflow-x: auto;">
+
+            @foreach ($data as $pedido)
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12" >
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($pedido->Articulo) . '.jpg')) {
+                        echo '<img width="190px" class="border rounded" id="img-1" src="/images/catalogo/' . trim($pedido->Articulo) . '.jpg" alt="$ART">';
+                    } else {
+                        echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="width:190px">';
+                    }
+                    ?></div>
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <div class="row">
+                            <h5>{{$pedido->Descripcion}}</h5>
+                        </div>
+                        <div class="row">
+                            <h6>{{$pedido->Codigo}}</h6>
+                        </div>
+                        <div class="row"></div>
+                        <div class="row">@if ($pedido->Unidad == 'pza' || $pedido->Unidad == 'par')
+                            <div class="row"><span class="badge badge-secondary"><h5>{{intval($pedido->Cantidad)}} {{$pedido->Unidad}}</h5></span></div>
+                            @else
+                            <div class="row"><span class="badge badge-secondary"><h5>{{$pedido->Cantidad}} {{$pedido->Unidad}}</h5></span></div>
+                            @endif</div>
+                    </div>
+                </div>
 
 
-<div class="jumbotron">
-    <h1 class="display-4">Bienvenido de vuelta!</h1>
-    <p class="lead">Te damos la bienvenida a la actualización del Portal Urvina. Sientase libre de utilizar el portal y realizar sus compras...</p>
-    <hr class="my-4">
-    <p>Puede explorar nuestros productos en el apartado de Catalogo</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="{{route('catalogo'), app()->getLocale()}}" role="button">Ir al Catalogo</a>
-    </p>
-  </div>
+
+
+                </div>
+            </div>
+        </div>
+        </div>
+            @endforeach
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-4 d-flex"  style="background-color:#f9f9f9">
+            <div class="container">
+
+            <div class="row"><h5><b>Detalle de compra:</b></h5></div>
+            <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} | <b style="color:gray">#{{$id}}</b></div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+
 @stop
 
 @section('right-sidebar')

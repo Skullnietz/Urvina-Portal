@@ -56,7 +56,7 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"><div class="mx-auto"><a href="/pedidos/{{$pedido->ID}}" class="btn btn-primary">Ver Pedido</a></div></div><hr>
+                    <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"><div class="mx-auto"><a href="pedidos/{{$pedido->ID}}" class="btn btn-primary">Ver Pedido</a></div></div><hr>
                     </div>
 
 

@@ -57,30 +57,32 @@ class PedidosController extends Controller
     public function show($lang,$id){
         session_start();
         //////////////////// Vista Pedidos /////////////////
+        $data = array();
         if(isset($_SESSION['usuario'])){
-            $descpedido = DB::select(
+            $pedidos = DB::select(
                 "EXEC spPedidosDetalleApp :id, :idP",
                 [
                     "id" => $_SESSION['usuario']->UsuarioCteCorp,
                     "idP" => $id,
                 ]
             );
-            $CFecha = Date::parse($pedido->Fecha);
-            $pedido->CFecha = $CFecha;
-            $pedido->desc = $descpedido;
-            foreach($pedido->desc as $p){
-                $artdesc = DB::table('Art')->select('Articulo'
-                ,'Rama'
-                ,'Descripcion1'
-                ,'Descripcion2'
-                ,'NombreCorto'
-                ,'Grupo'
-                ,'Categoria'
-                ,'Codigo')->where('Articulo', '=' , $p->Articulo)->first();
-                $p->art = $artdesc;
+            foreach($pedidos as $pedido){
+                $art=trim($pedido->Articulo);
+                $artdesc = DB::select(
+                    "EXEC spArticuloApp :idu, :item",
+                    [
+                        "idu" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "item" => $art,
+                    ]
+                );
+
+                $CFecha = Date::parse($pedido->Fecha);
+                $pedido->CFecha = $CFecha;
+                $pedido->articulo = $artdesc;
+                array_push($data, $pedido);
             }
-            array_push($data, $pedido);
-            return view('pedidosShow')->with('data',$data);
+
+            return view('pedidosShow')->with('data',$data)->with('id',$id);
         }else {
             return redirect()->route('login', app()->getLocale());
         }
