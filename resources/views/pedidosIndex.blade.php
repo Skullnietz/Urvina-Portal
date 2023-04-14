@@ -36,6 +36,8 @@
                     <div class="col-6">
                         @foreach ($pedido->desc as $descpedido)
                         <div class="row">
+                            <div class="col-2"><img src="{{$descpedido->Articulo}}" alt="" width="100px"></div>
+                            <div class="col"></div>
                             {{$descpedido->art->Descripcion1}}
                         </div><hr>
                         @endforeach
