@@ -45,7 +45,7 @@
                             }
                             ?></div>
                             <div class="col-md-10 col-sm-10 col-xs-10"><div class="row">{{$descpedido->art->Descripcion1}}</div>
-                            <div class="row">{{$pedido->Cantidad}}{{$pedido->Unidad}}</div></div>
+                            <div class="row">{{$descpedido->Cantidad}}{{$descpedido->Unidad}}</div></div>
 
 
                         </div>
