@@ -3,7 +3,7 @@
 @section('title', 'Pedido')
 
 @section('content_header')
-{{dd($data)}}
+
 <div class="container">
     <div class="row">
         <div class="col-6"><h1>Pedido <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div>
