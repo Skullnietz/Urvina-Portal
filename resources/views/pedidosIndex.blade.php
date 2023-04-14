@@ -36,8 +36,14 @@
                     <div class="col-6">
                         @foreach ($pedido->desc as $descpedido)
                         <div class="row">
-                            <div class="col-2"><img src="{{$descpedido->Articulo}}" alt="" width="100px"></div>
+                            <div class="col-2"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($descpedido->Articulo) . '.jpg')) {
+                                echo '<img width="100px" class="border rounded" id="img-1" src="/images/catalogo/' . trim($descpedido->Articulo) . '.jpg" alt="$ART">';
+                            } else {
+                                echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="width:100px">';
+                            }
+                            ?></div>
                             <div class="col"></div>
+
                             {{$descpedido->art->Descripcion1}}
                         </div><hr>
                         @endforeach
