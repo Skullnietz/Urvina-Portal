@@ -27,12 +27,12 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="card-header">
-                {{$pedido->Fecha}}
+                {{$pedido->Fecha->format('l, j F Y')}}
             </div>
             <div class="card-body">
                     <div class="row">
                     <div class="col-3">{{$pedido->Pedido}} </div>
-                    <div class="col-4">
+                    <div class="col-6">
                         @foreach ($pedido->desc as $descpedido)
                         <div class="row">
                             {{$descpedido->art->Descripcion1}}
