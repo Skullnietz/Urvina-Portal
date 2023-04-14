@@ -54,11 +54,33 @@ class PedidosController extends Controller
         //////////////////////////////////////////////////
 
     }
-    public function show(){
+    public function show($lang,$id){
         session_start();
         //////////////////// Vista Pedidos /////////////////
         if(isset($_SESSION['usuario'])){
-            return view('pedidosShow');
+            $descpedido = DB::select(
+                "EXEC spPedidosDetalleApp :id, :idP",
+                [
+                    "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                    "idP" => $id,
+                ]
+            );
+            $CFecha = Date::parse($pedido->Fecha);
+            $pedido->CFecha = $CFecha;
+            $pedido->desc = $descpedido;
+            foreach($pedido->desc as $p){
+                $artdesc = DB::table('Art')->select('Articulo'
+                ,'Rama'
+                ,'Descripcion1'
+                ,'Descripcion2'
+                ,'NombreCorto'
+                ,'Grupo'
+                ,'Categoria'
+                ,'Codigo')->where('Articulo', '=' , $p->Articulo)->first();
+                $p->art = $artdesc;
+            }
+            array_push($data, $pedido);
+            return view('pedidosShow')->with('data',$data);
         }else {
             return redirect()->route('login', app()->getLocale());
         }

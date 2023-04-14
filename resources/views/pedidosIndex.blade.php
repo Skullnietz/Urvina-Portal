@@ -33,17 +33,17 @@
             <div class="card-body">
                     <div class="row">
                     <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"> <div class="mx-auto"> <b> <h4>{{$pedido->Pedido}}</h4> </b> </div> </div>
-                    <div class="col-md-8 col-sm-8 col-xs-8">
+                    <div class="col-md-8 col-sm-8 col-xs-8 ">
                         @foreach ($pedido->desc as $descpedido)
                         <hr>
 
                         <div class="row">
-                            <div class="col-md-2 col-sm-2 col-xs-2"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($descpedido->Articulo) . '.jpg')) {
+                            <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"><div class="mx-auto"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($descpedido->Articulo) . '.jpg')) {
                                 echo '<img width="100px" class="border rounded" id="img-1" src="/images/catalogo/' . trim($descpedido->Articulo) . '.jpg" alt="$ART">';
                             } else {
                                 echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="width:100px">';
                             }
-                            ?></div>
+                            ?></div></div>
                             <div class="col-md-10 col-sm-10 col-xs-10"><div class="row">{{$descpedido->art->Descripcion1}}</div>
                             @if ($descpedido->Unidad == 'pza' || $descpedido->Unidad == 'par')
                                                 <div class="row"><h5>{{intval($descpedido->Cantidad)}} {{$descpedido->Unidad}}</h5></div>
@@ -56,7 +56,7 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"><div class="mx-auto"><a class="btn btn-primary">Ver Pedido</a></div></div><hr>
+                    <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"><div class="mx-auto"><a href="/pedidos/{{$pedido->ID}}" class="btn btn-primary">Ver Pedido</a></div></div><hr>
                     </div>
 
 
