@@ -41,8 +41,8 @@
 
             for($i = 0; $i <= count($data); $i++){
                 $data[$i]->Cantidad;
-                $sumapesos = $sumapesos+$articulo[0]->Precio;
-                $sumadolares = $sumadolares+$articulo[0]->Precio;
+                $sumapesos = $sumapesos+$data[$i]->articulo[0]->Precio;
+                $sumadolares = $sumadolares+$data[$i]->articulo[0]->Precio;
             }
             dd($sumadolares);
             ?>
