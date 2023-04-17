@@ -26,25 +26,17 @@
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12 border-right" style="height:500px; overflow-x: auto;">
             <?php
-                $sumapesos = 0;
-                $sumadolares = 0;
-                $cantartpeso = 0;
-                $cantartdolar = 0;
-                $sumaPDolar = 0;
-                $sumaPPeso = 0;
-                $Periodo = "";
+            $sumapesos = 0;
+            $sumadolares = 0;
             ?>
             @foreach ($data as $pedido)
 
             <?php
-
-
-            for($i = 1; $i <= count($data); $i++){
-                $data[$i]->Cantidad;
-                $sumapesos = $sumapesos+$data[$i]->articulo[0]->Precio;
-                $sumadolares = $sumadolares+$data[$i]->articulo[0]->Precio;
+            
+            foreach($pedido->articulo as $articulo){
+                $sumapesos = $sumapesos+$articulo->Precio;
+                $sumadolares = $sumadolares+$articulo->Precio;
             }
-            dd($sumadolares);
             ?>
 
 
@@ -97,7 +89,26 @@
                 <div>Equip\Ref</div>
 
                 <div></div>
+                <?php
+                $cantartpeso = 0;
+                $cantartdolar = 0;
+                $sumaPDolar = 0;
+                $sumaPPeso = 0;
+                $Periodo = "";
 
+                foreach($pedido->articulo as $articulo){
+                    if($articulo->Moneda == "Dolares"){
+                    $cantartdolar = $cantartdolar+$pedido->Cantidad;
+                    $sumaPDolar = $sumaPDolar+$articulo->Precio;
+                    $Periodo = $articulo->Periodo;
+                    }
+                    if($articulo->Moneda == "Pesos"){
+                     $cantartpeso = $cantartpeso+$pedido->Cantidad;
+                     $sumaPPeso = $sumaPPeso+$articulo->Precio;
+                     $Periodo = $articulo->Periodo;
+                    }
+                }
+                    ?>
             </div><br>
             @if($cantartdolar != 0)
             <div class="row justify-content-between">
