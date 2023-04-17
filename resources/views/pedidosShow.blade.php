@@ -30,16 +30,14 @@
             $sumadolares = 0;
             ?>
             @foreach ($data as $pedido)
-
+            @foreach ($pedido->articulo as $articulo)
             <?php
-            
-            foreach($pedido->articulo as $articulo){
-                $sumapesos = $sumapesos+$articulo->Precio;
-                $sumadolares = $sumadolares+$articulo->Precio;
-            }
+
+            $sumapesos = $sumapesos+$articulo->Precio;
+            $sumadolares = $sumadolares+$articulo->Precio;
             ?>
 
-
+            @endforeach
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12" >
             <div class="card">
@@ -97,12 +95,12 @@
                 $Periodo = "";
 
                 foreach($pedido->articulo as $articulo){
-                    if($articulo->Moneda == "Dolares"){
+                    if(str_contains($articulo->Moneda, "Dolares")){
                     $cantartdolar = $cantartdolar+$pedido->Cantidad;
                     $sumaPDolar = $sumaPDolar+$articulo->Precio;
                     $Periodo = $articulo->Periodo;
                     }
-                    if($articulo->Moneda == "Pesos"){
+                    if(str_contains($articulo->Moneda, "Pesos")){
                      $cantartpeso = $cantartpeso+$pedido->Cantidad;
                      $sumaPPeso = $sumaPPeso+$articulo->Precio;
                      $Periodo = $articulo->Periodo;
