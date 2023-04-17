@@ -38,7 +38,7 @@
 
             <?php
 
-            dd($data[0]->articulo->Precio);
+            dd($data[0]);
             for($i = 0; $i <= count($data); $i++){
                 $data[$i]->Cantidad;
                 $sumapesos = $sumapesos+$articulo->Precio;
