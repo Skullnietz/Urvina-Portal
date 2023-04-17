@@ -26,18 +26,27 @@
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12 border-right" style="height:500px; overflow-x: auto;">
             <?php
-            $sumapesos = 0;
-            $sumadolares = 0;
+                $sumapesos = 0;
+                $sumadolares = 0;
+                $cantartpeso = 0;
+                $cantartdolar = 0;
+                $sumaPDolar = 0;
+                $sumaPPeso = 0;
+                $Periodo = "";
             ?>
             @foreach ($data as $pedido)
-            @foreach ($pedido->articulo as $articulo)
+
             <?php
 
-            $sumapesos = $sumapesos+$articulo->Precio;
-            $sumadolares = $sumadolares+$articulo->Precio;
+            dd($data[0]->articulo->Precio);
+            for($i = 0; $i <= count($data); $i++){
+                $data[$i]->Cantidad;
+                $sumapesos = $sumapesos+$articulo->Precio;
+                $sumadolares = $sumadolares+$articulo->Precio;
+            }
             ?>
 
-            @endforeach
+
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12" >
             <div class="card">
@@ -87,26 +96,7 @@
                 <div>Equip\Ref</div>
 
                 <div></div>
-                <?php
-                $cantartpeso = 0;
-                $cantartdolar = 0;
-                $sumaPDolar = 0;
-                $sumaPPeso = 0;
-                $Periodo = "";
 
-                foreach($pedido->articulo as $articulo){
-                    if(str_contains($articulo->Moneda, "Dolares")){
-                    $cantartdolar = $cantartdolar+$pedido->Cantidad;
-                    $sumaPDolar = $sumaPDolar+$articulo->Precio;
-                    $Periodo = $articulo->Periodo;
-                    }
-                    if(str_contains($articulo->Moneda, "Pesos")){
-                     $cantartpeso = $cantartpeso+$pedido->Cantidad;
-                     $sumaPPeso = $sumaPPeso+$articulo->Precio;
-                     $Periodo = $articulo->Periodo;
-                    }
-                }
-                    ?>
             </div><br>
             @if($cantartdolar != 0)
             <div class="row justify-content-between">
