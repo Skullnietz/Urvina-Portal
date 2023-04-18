@@ -25,19 +25,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12 border-right" style="height:500px; overflow-x: auto;">
-            <?php
-            $sumapesos = 0;
-            $sumadolares = 0;
-            ?>
+
             @foreach ($data as $pedido)
-            @foreach ($pedido->articulo as $articulo)
-            <?php
 
-            $sumapesos = $sumapesos+$articulo->Precio;
-            $sumadolares = $sumadolares+$articulo->Precio;
-            ?>
-
-            @endforeach
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12" >
             <div class="card">
@@ -93,6 +83,18 @@
                 $sumaPDolar = 0;
                 $sumaPPeso = 0;
                 $Periodo = "";
+
+                // Recorre cada objeto y suma su precio
+                if(str_contains($articulo->Moneda, "Dolares")){
+                for ($i = 0; $i < count($data); $i++) {
+                $sumaPDolar += $data[$i]->articulo[0]->Precio;
+                }
+                }
+                if(str_contains($articulo->Moneda, "Pesos")){
+                for ($i = 0; $i < count($data); $i++) {
+                $sumaPPeso += $data[$i]->articulo[0]->Precio;
+                }
+                }
 
                 foreach($pedido->articulo as $articulo){
                     if(str_contains($articulo->Moneda, "Dolares")){
