@@ -75,9 +75,9 @@
             <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} &nbsp;| &nbsp;<b style="color:gray">#{{$id}}</b></div>
             <hr>
             <div class="row justify-content-between">
-                <div>Equip\Ref</div>
+                <div>Departamento</div>
 
-                <div></div>
+                <div>{{$data[0]->Departamento}}</div>
                 <?php
                 $cantartpeso = 0;
                 $cantartdolar = 0;
@@ -122,7 +122,7 @@
             <div class="row justify-content-between">
                 <div>Envio</div>
 
-                <div>{{$Periodo}}</div>
+                <div>{{$data[0]->articulo[0]->Periodo}}</div>
             </div>
             <hr>
             @if($cantartdolar != 0)
