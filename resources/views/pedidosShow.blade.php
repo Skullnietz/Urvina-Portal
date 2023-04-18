@@ -108,12 +108,12 @@
             <div class="row justify-content-between">
                 <div>Articulos dlls({{$cantartdolar}})</div>
 
-                <div>$ {{$sumaPDolar}} USD</div>
+                <div>$ {{$sumaPDolar}} USD: </div>
             </div>
             @endif
             @if($cantartpeso != 0)
             <div class="row justify-content-between">
-                <div>Articulos pesos({{$cantartpeso}})</div>
+                <div>Articulos pesos({{$cantartpeso}}): </div>
 
                 <div>$ {{$sumaPPeso}} MXN</div>
             </div>
@@ -127,14 +127,14 @@
             <hr>
             @if($cantartdolar != 0)
             <div class="row justify-content-between">
-                <div>Total USD</div>
+                <div>Total USD: </div>
 
                 <div>$ {{$sumaPDolar}}</div>
             </div>
             @endif
             @if($cantartpeso != 0)
             <div class="row justify-content-between">
-                <div>Total MXN</div>
+                <div>Total MXN: </div>
 
                 <div>$ {{$sumaPPeso}}</div>
             </div>
@@ -142,7 +142,7 @@
             <hr>
             <br><br>
             <div class="row">
-                Observaciones
+                Observaciones:
             </div>
             <div class="row">
                 {{$data[0]->Observaciones}}
