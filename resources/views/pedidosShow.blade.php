@@ -88,14 +88,13 @@
 
                 for ($i = 0; $i < count($data); $i++) {
                 if(str_contains($data[$i]->articulo[0]->Moneda, "Dolares")){
-                    dd($data[$i]);
-                $sumaPDolar += ($data[$i]->articulo[0]->Precio*$data[$i]->articulo[0]->Precio);
+                $sumaPDolar += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
                 }
                 }
 
                 for ($i = 0; $i < count($data); $i++) {
                 if(str_contains($data[$i]->articulo[0]->Moneda, "Pesos")){
-                $sumaPPeso += $data[$i]->articulo[0]->Precio;
+                $sumaPPeso += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
                 }
                 }
 
