@@ -124,16 +124,20 @@
                 <div>{{$Periodo}}</div>
             </div>
             <hr>
+            @if($cantartdolar != 0)
             <div class="row justify-content-between">
                 <div>Total USD</div>
 
-                <div>$ Total</div>
+                <div>$ {{$sumaPDolar}}</div>
             </div>
+            @endif
+            @if($cantartpeso != 0)
             <div class="row justify-content-between">
                 <div>Total MXN</div>
 
-                <div>$ Total</div>
+                <div>$ {{$sumaPPeso}}</div>
             </div>
+            @endif
             <hr>
             <br><br>
             <div class="row">
