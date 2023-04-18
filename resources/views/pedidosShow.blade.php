@@ -95,24 +95,24 @@
 
                 for ($i = 0; $i < count($data); $i++) {
                 if(str_contains($data[$i]->articulo[0]->Moneda, "Pesos")){
-                $cantartdolar = $cantartdolar+$data[$i]->Cantidad;
+                $cantartpeso = $cantartdolar+$data[$i]->Cantidad;
                 $sumaPPeso += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
                 }
                 }
 
-                
+
                     ?>
             </div><br>
             @if($cantartdolar != 0)
             <div class="row justify-content-between">
-                <div>Articulos en Dolares({{$cantartdolar}})</div>
+                <div>Articulos dlls({{$cantartdolar}})</div>
 
                 <div>$ {{$sumaPDolar}} USD</div>
             </div>
             @endif
             @if($cantartpeso != 0)
             <div class="row justify-content-between">
-                <div>Articulos en Pesos({{$cantartpeso}})</div>
+                <div>Articulos pesos({{$cantartpeso}})</div>
 
                 <div>$ {{$sumaPPeso}} MXN</div>
             </div>

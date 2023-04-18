@@ -192,7 +192,7 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect01"><i
-                                            class="fas fa-users-cog"></i>&nbsp;| {{__('Equipo/Trabajo')}}</label>
+                                        class="fas fa-eye"></i>&nbsp;| {{__('Observaciones')}}</label>
                                 </div>
 
                                 <input class="form-control" name="observaciones" value="" pattern="[A-Za-z0-9]+" required>
