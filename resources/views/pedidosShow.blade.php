@@ -88,28 +88,19 @@
 
                 for ($i = 0; $i < count($data); $i++) {
                 if(str_contains($data[$i]->articulo[0]->Moneda, "Dolares")){
+                $cantartdolar = $cantartdolar+$data[$i]->Cantidad;
                 $sumaPDolar += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
                 }
                 }
 
                 for ($i = 0; $i < count($data); $i++) {
                 if(str_contains($data[$i]->articulo[0]->Moneda, "Pesos")){
+                $cantartdolar = $cantartdolar+$data[$i]->Cantidad;
                 $sumaPPeso += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
                 }
                 }
 
-                foreach($pedido->articulo as $articulo){
-                    if(str_contains($articulo->Moneda, "Dolares")){
-                    $cantartdolar = $cantartdolar+$pedido->Cantidad;
-
-                    $Periodo = $articulo->Periodo;
-                    }
-                    if(str_contains($articulo->Moneda, "Pesos")){
-                     $cantartpeso = $cantartpeso+$pedido->Cantidad;
-
-                     $Periodo = $articulo->Periodo;
-                    }
-                }
+                
                     ?>
             </div><br>
             @if($cantartdolar != 0)
