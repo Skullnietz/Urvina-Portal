@@ -4,6 +4,7 @@
 
 @section('content_header')
 
+
 <div class="container">
     <div class="row">
         <div class="col-6"><h1>Pedido <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div>
@@ -33,7 +34,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-4"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($pedido->Articulo) . '.jpg')) {
+                    <div class="col-md-4 col-sm-4 col-xs-4"><?php dd($data); if (file_exists(public_path() . '/images/catalogo/' . trim($pedido->Articulo) . '.jpg')) {
                         echo '<img width="190px" class="border rounded" id="img-1" src="/images/catalogo/' . trim($pedido->Articulo) . '.jpg" alt="$ART">';
                     } else {
                         echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="width:190px">';
