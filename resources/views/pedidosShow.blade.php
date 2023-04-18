@@ -85,13 +85,15 @@
                 $Periodo = "";
 
                 // Recorre cada objeto y suma su precio
-                if(str_contains($articulo->Moneda, "Dolares")){
+
                 for ($i = 0; $i < count($data); $i++) {
+                if(str_contains($data[$i]->articulo[0]->Moneda, "Dolares")){
                 $sumaPDolar += $data[$i]->articulo[0]->Precio;
                 }
                 }
-                if(str_contains($articulo->Moneda, "Pesos")){
+
                 for ($i = 0; $i < count($data); $i++) {
+                if(str_contains($data[$i]->articulo[0]->Moneda, "Pesos")){
                 $sumaPPeso += $data[$i]->articulo[0]->Precio;
                 }
                 }
@@ -99,12 +101,12 @@
                 foreach($pedido->articulo as $articulo){
                     if(str_contains($articulo->Moneda, "Dolares")){
                     $cantartdolar = $cantartdolar+$pedido->Cantidad;
-                    $sumaPDolar = $sumaPDolar+$articulo->Precio;
+
                     $Periodo = $articulo->Periodo;
                     }
                     if(str_contains($articulo->Moneda, "Pesos")){
                      $cantartpeso = $cantartpeso+$pedido->Cantidad;
-                     $sumaPPeso = $sumaPPeso+$articulo->Precio;
+
                      $Periodo = $articulo->Periodo;
                     }
                 }
