@@ -3,7 +3,35 @@
 @section('title', 'Pedido')
 
 @section('content_header')
+<style>
+    @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
 
+        }
+        @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+
+        }
+        @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+
+        }
+        @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
+            .movebar{
+                height:500px;
+                overflow-x: auto;
+            }
+        }
+        @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
+            .movebar{
+                height:500px;
+                overflow-x: auto;
+            }
+        }
+        @media (min-width:1281px) { /* hi-res laptops and desktops */
+            .movebar{
+                height:500px;
+                overflow-x: auto;
+            }
+        }
+</style>
 
 <div class="container">
     <div class="row">
@@ -25,7 +53,7 @@
 @if(isset($data[0]->articulo[0]))
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-sm-12 col-xs-12 border-right" style="height:500px; overflow-x: auto;">
+        <div class="col-md-8 col-sm-12 col-xs-12 border-right movebar" >
 
             @foreach ($data as $pedido)
 
