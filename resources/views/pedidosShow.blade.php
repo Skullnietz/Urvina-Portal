@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="row">
-        @if(isset($data[0])) <div class="col-6"><h1>Pedido <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div> @else <div class="col-6"><h1>Pedido no encontrado</h1></div>  @endif
+        @if(isset($data[0]->articulo[0])) <div class="col-6"><h1>Pedido <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div> @else <div class="col-6"><h1>Pedido no encontrado</h1></div>  @endif
         <div class="col-6"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
@@ -22,7 +22,7 @@
 @stop
 
 @section('content')
-
+@if(isset($data[0]->articulo[0]))
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-sm-12 col-xs-12 border-right" style="height:500px; overflow-x: auto;">
@@ -122,7 +122,7 @@
             <div class="row justify-content-between">
                 <div>Envio</div>
 
-                <div>{{$data[0]->articulo[0]->Periodo}}</div>
+                <div>@isset($data[0]->articulo[0]->Periodo) {{$data[0]->articulo[0]->Periodo}} @endisset </div>
             </div>
             <hr>
             @if($cantartdolar != 0)
@@ -155,7 +155,7 @@
     </div>
 </div>
 
-
+@endif
 @stop
 
 @section('right-sidebar')
