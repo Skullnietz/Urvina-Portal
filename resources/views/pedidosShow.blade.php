@@ -119,11 +119,13 @@
             </div>
             @endif
             <br>
+            @isset($data[0]->articulo[0]->Periodo)
             <div class="row justify-content-between">
                 <div>Envio</div>
 
-                <div>@isset($data[0]->articulo[0]->Periodo) {{$data[0]->articulo[0]->Periodo}} @endisset </div>
+                <div> {{$data[0]->articulo[0]->Periodo}} </div>
             </div>
+            @endisset
             <hr>
             @if($cantartdolar != 0)
             <div class="row justify-content-between">
@@ -141,12 +143,14 @@
             @endif
             <hr>
             <br><br>
+            @isset($data[0]->Observaciones)
             <div class="row">
                 Observaciones:
             </div>
             <div class="row">
                 {{$data[0]->Observaciones}}
             </div>
+            @endisset
 
         </div>
         </div>
@@ -154,6 +158,18 @@
         </div>
     </div>
 </div>
+@else
+
+                <br><div class=" rounded"
+        style="color:#640d14;padding:20px;border: 1px solid #ee6b6e;background-color:#ffcbd1"
+        role="alert">
+        <div class="row">
+            <div class="col-1"><i class="fas fa-times-circle fa-lg"></i></div>
+            <div class="col-11">
+                <center><b>{{__('No se encuentra el pedido, solicite ayuda a soporte')}}</b></center>
+            </div>
+        </div>
+    </div>
 
 @endif
 @stop
