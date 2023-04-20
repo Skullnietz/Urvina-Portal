@@ -88,7 +88,7 @@ class PedidosController extends Controller
                 array_push($data, $pedido);
             }
 
-            return view('pedidosShow')->with('data',$data)->with('id',$id);
+            return route('pedidosShow', app()->getLocale())->with('data',$data)->with('id',$id);
         }else {
             return redirect()->route('login', app()->getLocale());
         }
