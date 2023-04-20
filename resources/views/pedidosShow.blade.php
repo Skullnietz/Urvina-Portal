@@ -17,18 +17,21 @@
             .movebar{
                 height:500px;
                 overflow-x: auto;
+                margin-bottom: 20px;
             }
         }
         @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
             .movebar{
                 height:500px;
                 overflow-x: auto;
+                margin-bottom: 20px;
             }
         }
         @media (min-width:1281px) { /* hi-res laptops and desktops */
             .movebar{
                 height:500px;
                 overflow-x: auto;
+                margin-bottom: 20px;
             }
         }
 </style>
