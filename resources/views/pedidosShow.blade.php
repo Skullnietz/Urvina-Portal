@@ -65,12 +65,12 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-4"><div class="d-flex align-items-center"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($pedido->Articulo) . '.jpg')) {
+                    <div class="col-md-4 col-sm-4 col-xs-4"><div class="d-flex align-items-center"><div class="mx-auto"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($pedido->Articulo) . '.jpg')) {
                         echo '<img width="190px" class="border rounded" id="img-1" src="/images/catalogo/' . trim($pedido->Articulo) . '.jpg" alt="$ART">';
                     } else {
                         echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="width:190px">';
                     }
-                    ?></div></div>
+                    ?></div></div></div>
                     <div class="col-md-8 col-sm-8 col-xs-8">
                         <div class="row">
                             <h5>{{__($pedido->Descripcion)}}</h5>
