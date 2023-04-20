@@ -42,16 +42,16 @@
                     ?></div>
                     <div class="col-md-8 col-sm-8 col-xs-8">
                         <div class="row">
-                            <h5>{{$pedido->Descripcion}}</h5>
+                            <h5>{{__($pedido->Descripcion)}}</h5>
                         </div>
                         <div class="row">
                             <h6>{{$pedido->Codigo}}</h6>
                         </div>
                         <div class="row"></div>
                         <div class="row">@if ($pedido->Unidad == 'pza' || $pedido->Unidad == 'par')
-                            <div class="row"><span class="badge badge-secondary"><h5>{{intval($pedido->Cantidad)}} {{$pedido->Unidad}}</h5></span></div>
+                            <div class="row"><span class="badge badge-secondary"><h5>{{intval($pedido->Cantidad)}} {{__($pedido->Unidad)}}</h5></span></div>
                             @else
-                            <div class="row"><span class="badge badge-secondary"><h5>{{$pedido->Cantidad}} {{$pedido->Unidad}}</h5></span></div>
+                            <div class="row"><span class="badge badge-secondary"><h5>{{$pedido->Cantidad}} {{__($pedido->Unidad)}}</h5></span></div>
                             @endif</div>
 
 
@@ -123,7 +123,7 @@
             <div class="row justify-content-between">
                 <div>{{__('Envio')}}</div>
 
-                <div> {{$data[0]->articulo[0]->Periodo}} </div>
+                <div> {{__($data[0]->articulo[0]->Periodo)}} </div>
             </div>
             @endisset
             <hr>
