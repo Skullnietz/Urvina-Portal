@@ -106,9 +106,9 @@
             </div><br>
             @if($cantartdolar != 0)
             <div class="row justify-content-between">
-                <div>{{__('Articulos')}} dlls({{$cantartdolar}})</div>
+                <div>{{__('Articulos')}} dlls({{$cantartdolar}}):</div>
 
-                <div>$ {{$sumaPDolar}} USD: </div>
+                <div>$ {{$sumaPDolar}} USD </div>
             </div>
             @endif
             @if($cantartpeso != 0)
@@ -121,7 +121,7 @@
             <br>
             @isset($data[0]->articulo[0]->Periodo)
             <div class="row justify-content-between">
-                <div>{{__('Envio')}}</div>
+                <div>{{__('Envio')}}:</div>
 
                 <div> {{__($data[0]->articulo[0]->Periodo)}} </div>
             </div>
