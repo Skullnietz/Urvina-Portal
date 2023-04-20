@@ -5,7 +5,7 @@
 @section('content_header')
 <div class="container">
     <div class="row">
-        <div class="col-6"><h1>Mis Pedidos</h1></div>
+        <div class="col-6"><h1>{{__('Mis Pedidos')}}</h1></div>
         <div class="col-6"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
@@ -44,11 +44,11 @@
                                 echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="width:100px">';
                             }
                             ?></div></div>
-                            <div class="col-md-10 col-sm-10 col-xs-10"><div class="row">{{$descpedido->art->Descripcion1}}</div>
+                            <div class="col-md-10 col-sm-10 col-xs-10"><div class="row">{{__($descpedido->art->Descripcion1)}}</div>
                             @if ($descpedido->Unidad == 'pza' || $descpedido->Unidad == 'par')
-                                                <div class="row"><h5>{{intval($descpedido->Cantidad)}} {{$descpedido->Unidad}}</h5></div>
+                                                <div class="row"><h5>{{intval($descpedido->Cantidad)}} {{__($descpedido->Unidad)}}</h5></div>
                                                 @else
-                                                <div class="row"><h5>{{$descpedido->Cantidad}} {{$descpedido->Unidad}}</h5></div>
+                                                <div class="row"><h5>{{$descpedido->Cantidad}} {{__($descpedido->Unidad)}}</h5></div>
                                                 @endif
                             </div>
 
@@ -56,7 +56,7 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"><div class="mx-auto"><a href="pedidos/{{$pedido->ID}}" class="btn btn-primary">Ver Pedido</a></div></div><hr>
+                    <div class="col-md-2 col-sm-2 col-xs-2 d-flex align-items-center"><div class="mx-auto"><a href="pedidos/{{$pedido->ID}}" class="btn btn-primary">{{__('Ver Pedido')}}</a></div></div><hr>
                     </div>
 
 
