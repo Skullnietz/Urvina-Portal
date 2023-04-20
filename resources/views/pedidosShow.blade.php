@@ -43,17 +43,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>
-            <form action="{{route('search', app()->getLocale())}}" method="get">
-                <input type="text" id="search" name="item" class="form-control" placeholder="{{__('Buscar')}}" pattern="[A-Za-z0-9]{2,10}" aria-describedby="basic-addon1">
-            </form>
-          </div></div>
-          <div class="col-md-2 col-xs-2">
-            <a href="{{route(Route::currentRouteName(),'en')}}">
-                <img src="/icons/en.svg" style="width:50px" alt="EN">
-              </a>
-              <a href="{{route(Route::currentRouteName(), 'es' )}}">
-                <img src="/icons/es.svg" style="width:50px" alt="ES">
-              </a>
+            
 
           </div>
     </div>
