@@ -38,13 +38,24 @@
 
 <div class="container">
     <div class="row">
-        @if(isset($data[0]->articulo[0])) <div class="col-6"><h1>{{__('Pedido')}} <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div> @else <div class="col-6"><h1>{{__('Pedido no encontrado')}}</h1></div>  @endif
-        <div class="col-6"> <div class="input-group mb-3">
+        @if(isset($data[0]->articulo[0])) <div class=" col-md-5 col-xs-6"><h1>{{__('Pedido')}} <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div> @else <div class="col-6"><h1>{{__('Pedido no encontrado')}}</h1></div>  @endif
+        <div class=" col-md-5 col-xs-5"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+            <form action="{{route('search', app()->getLocale())}}" method="get">
+                <input type="text" id="search" name="item" class="form-control" placeholder="{{__('Buscar')}}" pattern="[A-Za-z0-9]{2,10}" aria-describedby="basic-addon1">
+            </form>
           </div></div>
+          <div class="col-md-2 col-xs-2">
+            <a href="{{route(Route::currentRouteName(),'en')}}">
+                <img src="/icons/en.svg" style="width:50px" alt="EN">
+              </a>
+              <a href="{{route(Route::currentRouteName(), 'es' )}}">
+                <img src="/icons/es.svg" style="width:50px" alt="ES">
+              </a>
+
+          </div>
     </div>
 </div>
 
@@ -241,5 +252,58 @@
 @stop
 
 @section('js')
+
+
+<script>
+    var timeoutID;
+    var cierraSesionIrLogeo = "{{route('salir', app()->getLocale())}}";
+
+    function setup() {
+      this.addEventListener("mousemove", resetTimer, false);
+      this.addEventListener("mousedown", resetTimer, false);
+      this.addEventListener("keypress", resetTimer, false);
+      this.addEventListener("DOMMouseScroll", resetTimer, false);
+      this.addEventListener("mousewheel", resetTimer, false);
+      this.addEventListener("touchmove", resetTimer, false);
+      this.addEventListener("MSPointerMove", resetTimer, false);
+
+      startTimer();
+    }
+    setup();
+
+    function startTimer() {
+      // wait 2 seconds before calling goInactive
+      timeoutID = window.setTimeout(goInactive, 600000);
+    }
+
+    function resetTimer(e) {
+      window.clearTimeout(timeoutID);
+
+      goActive();
+    }
+
+    function goInactive() {
+      // do something
+      // alert("inactivo");
+      window.location=window.location=cierraSesionIrLogeo;
+    }
+
+    function goActive() {
+      // do something
+
+      startTimer();
+    }
+    </script>
+    <script>
+        // Barra de busqueda
+        document.getElementById('search')
+    .addEventListener('keyup', function(event) {
+        if (event.code === 'Enter')
+        {
+            event.preventDefault();
+            document.querySelector('form').submit();
+        }
+    });
+    </script>
 
 @stop
