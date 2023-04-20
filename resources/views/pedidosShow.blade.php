@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6"><h1>Pedido <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div>
+        @if(isset($data[0])) <div class="col-6"><h1>Pedido <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div> @else <div class="col-6"><h1>Pedido no encontrado</h1></div>  @endif
         <div class="col-6"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
