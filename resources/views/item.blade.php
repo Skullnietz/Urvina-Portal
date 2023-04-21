@@ -108,6 +108,9 @@ $limite = $articulo[0]->Mensaje2;
     .table-art{
     margin-top:-45px
 }
+.main-card{
+    margin-top:-35px
+}
 }
 @media (max-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     #img-1{
@@ -124,7 +127,7 @@ $limite = $articulo[0]->Mensaje2;
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="card">
+                <div class="card main-card">
                     <div class="card-header bg-success mb-3">
                         <center>
                             <b> {{ __($desc->Descripcion1) }} </b>
