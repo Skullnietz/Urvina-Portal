@@ -54,7 +54,7 @@ class PedidosController extends Controller
         //////////////////////////////////////////////////
 
     }
-    public function show($other,$lang,$id){
+    public function show($id){
         session_start();
         //////////////////// Vista Pedidos /////////////////
         $data = array();
