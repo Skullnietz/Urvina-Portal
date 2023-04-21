@@ -164,7 +164,7 @@ $limite = $articulo[0]->Mensaje2;
 
                             </div>
                             <div class="col-md-6 col-xs-12">
-                                <table class="table table-sm table-striped rounded">
+                                <table class="table table-sm table-striped rounded" style="margin-top:-30px">
 
                                     <tr>
                                         <td class="border"><b>{{__('Articulo:')}}</b></td>
