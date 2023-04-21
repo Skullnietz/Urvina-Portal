@@ -103,13 +103,17 @@ $limite = $articulo[0]->Mensaje2;
 #img-2{
     display:none;
 } }
+
+@media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    .table-art{
+    margin-top:-45px
+}
+}
 @media (max-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     #img-1{
     width:200px;
 }
-.table-art{
-    margin-top:-45px
-}
+
 #img-2{
     display:none;
 }}
