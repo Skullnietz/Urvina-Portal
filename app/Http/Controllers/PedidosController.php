@@ -54,7 +54,7 @@ class PedidosController extends Controller
         //////////////////////////////////////////////////
 
     }
-    public function show($id){
+    public function show($lang,$id){
         session_start();
         //////////////////// Vista Pedidos /////////////////
         $data = array();
@@ -88,7 +88,7 @@ class PedidosController extends Controller
                 array_push($data, $pedido);
             }
 
-            return redirect()->route('showpedido', app()->getLocale())->with('data',$data)->with('id',$id);
+            return redirect()->route('showpedido', [app()->getLocale(), $id])->with('data',$data)->with('id',$id);
         }else {
             return redirect()->route('login', app()->getLocale());
         }
