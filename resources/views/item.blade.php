@@ -109,7 +109,7 @@ $limite = $articulo[0]->Mensaje2;
     margin-top:-45px
 }
 .main-card{
-    margin-top:-35px
+    margin-top:-25px
 }
 }
 @media (max-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
