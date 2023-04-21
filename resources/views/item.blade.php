@@ -197,10 +197,10 @@ $limite = $articulo[0]->Mensaje2;
                                         </tr><br>
                                     @endif
 
-                                    <br>
+                                    
 
                                 </table>
-                                <hr>
+
                                 @if (
                                     $articulo[0]->Mensaje2 == 'Este artículo No esta en su presupuesto' ||
                                         $articulo[0]->Presupuesto == 0 ||
@@ -219,7 +219,7 @@ $limite = $articulo[0]->Mensaje2;
                                     <div class="rounded" style="background-color:red">
 
                                         <center>
-                                            <h3 style="color:white">{{__('Presupuesto')}}</h3>
+                                            <h5 style="color:white">{{__('Presupuesto')}}</h5>
                                         </center>
                                     </div>
 
