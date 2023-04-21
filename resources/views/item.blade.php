@@ -482,8 +482,8 @@ $limite = $articulo[0]->Mensaje2;
                                     <b>{{__('Cantidad:')}}</b>
                                     <div  class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <input style="font-size:15px;" id="itemnumber" class="input-group-text" id="inputGroup-sizing-default" type="number"
-                                               name="cantidad" min="1" max="{{ intval($articulo[0]->Limite-$articulo[0]->Consumo) }}" value="1"  pattern="[1-9].{1,{{strlen(intval($articulo[0]->Limite))-1}}}" style="background-color:white">
+                                            <input  id="itemnumber" class="input-group-text" id="inputGroup-sizing-default" type="number"
+                                               name="cantidad" min="1" max="{{ intval($articulo[0]->Limite-$articulo[0]->Consumo) }}" value="1"  pattern="[1-9].{1,{{strlen(intval($articulo[0]->Limite))-1}}}" style="background-color:white; font-size:15px;">
                                         </div>
                                         <span style="background-color:#e9ecef" class="form-control"
                                             aria-describedby="inputGroup-sizing-default">{{ __($articulo[0]->Unidad) }}</span>
