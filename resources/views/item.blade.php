@@ -107,6 +107,9 @@ $limite = $articulo[0]->Mensaje2;
     #img-1{
     width:200px;
 }
+.table-art{
+    margin-top:-45px
+}
 #img-2{
     display:none;
 }}
@@ -164,7 +167,7 @@ $limite = $articulo[0]->Mensaje2;
 
                             </div>
                             <div class="col-md-6 col-xs-12">
-                                <table class="table table-sm table-striped rounded" style="margin-top:-30px">
+                                <table class="table table-sm table-striped rounded table-art" >
 
                                     <tr>
                                         <td class="border"><b>{{__('Articulo:')}}</b></td>
@@ -197,7 +200,7 @@ $limite = $articulo[0]->Mensaje2;
                                         </tr><br>
                                     @endif
 
-                                    
+
 
                                 </table>
 
@@ -217,13 +220,10 @@ $limite = $articulo[0]->Mensaje2;
                                     </div>
                                 @else
                                     <div class="rounded" style="background-color:red">
-
                                         <center>
                                             <h5 style="color:white">{{__('Presupuesto')}}</h5>
                                         </center>
                                     </div>
-
-
                                     <table class="table table-sm table-striped rounded">
                                         <tr>
                                             <td class="border"> <b>{{__('Lapso de entrega:')}}</b> </td>
@@ -441,8 +441,8 @@ $limite = $articulo[0]->Mensaje2;
                                     @endif
 
 
-                                    <hr>
-                                    <br><?php $fecha = new DateTime() ?>
+
+                                    <?php $fecha = new DateTime() ?>
                                     <form action="{{route('additem', app()->getLocale())}}" method="get">
                                         <input type="hidden" name="excedente" value="{{ $articulo[0]->Excedente }}">
                                         <input type="hidden" name="codigo" value="{{ $codigo->Codigo }}">
