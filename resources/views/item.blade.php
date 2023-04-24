@@ -196,11 +196,11 @@ $limite = $articulo[0]->Mensaje2;
                                             <td class="border" style="text-align:right">
                                                 @if ($articulo[0]->Unidad == 'pza' || $articulo[0]->Unidad == 'par')
                                                 @foreach ($articulo as $keyT)
-                                                <b>{{$keyT->Descripcion}}</b> ({{number_format($keyT->Existencia)}} Disponibles)
+                                                <b>{{$keyT->Descripcion}}</b> ({{number_format($keyT->Existencia)}})
                                                @endforeach{{ __($articulo[0]->Unidad) }}
                                                 @else
                                                 @foreach ($articulo as $keyT)
-                                                 <b>{{$keyT->Descripcion}}</b> ({{number_format($keyT->Existencia)}} Disponibles)
+                                                 <b>{{$keyT->Descripcion}}</b> ({{number_format($keyT->Existencia)}})
                                                 @endforeach
                                                 @endif
 
