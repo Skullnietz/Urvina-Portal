@@ -5,7 +5,7 @@
 @section('content_header')
 <div class="container">
     <div class="row">
-        <div class=" col-md-5 col-xs-6"><h1>{{__('Busqueda')}}</h1></div>
+        <div class=" col-md-5 col-xs-6"><h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Busqueda')}}</h1></div>
         <div class=" col-md-5 col-xs-5"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
@@ -61,6 +61,13 @@
 @section('content')
 @include('sweetalert::alert')
     <style>
+        a {
+            color: inherit;
+            /* blue colors for links too */
+            text-decoration: inherit;
+            /* no underline */
+        }
+        
         .grow {
             transition: 1s ease;
         }
@@ -248,5 +255,10 @@
             document.querySelector('form').submit();
         }
     });
+    </script>
+    <script>
+        function goBack() {
+          window.history.back();
+        }
     </script>
 @stop

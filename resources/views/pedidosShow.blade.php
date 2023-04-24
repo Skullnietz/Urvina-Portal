@@ -4,6 +4,14 @@
 
 @section('content_header')
 <style>
+    
+        a {
+            color: inherit;
+            /* blue colors for links too */
+            text-decoration: inherit;
+            /* no underline */
+        }
+
     @media (min-width:320px)  { /* smartphones, iPhone, portrait 480x320 phones */
 
         }
@@ -38,7 +46,7 @@
 
 <div class="container">
     <div class="row">
-        @if(isset($data[0]->articulo[0])) <div class=" col-md-5 col-xs-6"><h1>{{__('Pedido')}} <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div> @else <div class="col-6"><h1>{{__('Pedido no encontrado')}}</h1></div>  @endif
+        @if(isset($data[0]->articulo[0])) <div class=" col-md-5 col-xs-6"><h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Pedido')}} <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div> @else <div class="col-6"><h1>{{__('Pedido no encontrado')}}</h1></div>  @endif
         <div class=" col-md-4 col-xs-4"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
@@ -304,6 +312,11 @@
             document.querySelector('form').submit();
         }
     });
+    </script>
+    <script>
+        function goBack() {
+          window.history.back();
+        }
     </script>
 
 @stop

@@ -24,4 +24,6 @@ class InicioController extends Controller
     }
 
     }
+
+    
 }

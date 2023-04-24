@@ -43,6 +43,12 @@ $change = $articulo[0]->Moneda;
 $limite = $articulo[0]->Mensaje2;
  ?>
     <style>
+        a {
+            color: inherit;
+            /* blue colors for links too */
+            text-decoration: inherit;
+            /* no underline */
+        }
         .fcontainer {
             position: relative;
             width: 100%;
@@ -130,7 +136,7 @@ $limite = $articulo[0]->Mensaje2;
                 <div class="card main-card">
                     <div class="card-header bg-success mb-3">
                         <center>
-                            <b> {{ __($desc->Descripcion1) }} </b>
+                            <b><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp; {{ __($desc->Descripcion1) }} </b>
                         </center>
                     </div>
                     <div class="card-body">
@@ -477,7 +483,7 @@ $limite = $articulo[0]->Mensaje2;
                                         <select name="talla" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
                                             <option value=""> {{__('Seleccione una talla')}} </option>
                                             @foreach ($articulo as $key)
-                                            <option value="{{$key->Descripcion}}">{{$key->Descripcion}} </option>
+                                            <option value="{{$key->Descripcion}}">{{$key->Descripcion}} | ({{$key->Existencia}})  </option>
                                             @endforeach
                                         </select>
                                       </div>
@@ -603,5 +609,10 @@ $limite = $articulo[0]->Mensaje2;
 
       startTimer();
     }
+    </script>
+    <script>
+        function goBack() {
+          window.history.back();
+        }
     </script>
 @stop

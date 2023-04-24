@@ -24,11 +24,17 @@
      }
 
 }
+a {
+            color: inherit;
+            /* blue colors for links too */
+            text-decoration: inherit;
+            /* no underline */
+        }
 </style>
 
 <div class="container">
     <div class="row">
-        <div class="col-6"><h1>{{__('Carrito')}}</h1></div>
+        <div class="col-6"><h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Carrito')}}</h1></div>
         <div class="col-6"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
@@ -652,6 +658,11 @@
       startTimer();
     }
     </script>
+    <script>
+        function goBack() {
+          window.history.back();
+        }
+        </script>
 
 
 

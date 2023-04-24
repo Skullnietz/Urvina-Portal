@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h1>{{__('Consultas Cliente')}}</h1>
+                <h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Consultas Cliente')}}</h1>
             </div>
             <div class="col-4">
                 <div class="input-group mb-3">
@@ -62,6 +62,14 @@
 @stop
 
 @section('content')
+<style>
+    a {
+            color: inherit;
+            /* blue colors for links too */
+            text-decoration: inherit;
+            /* no underline */
+        }
+</style>
     <div class="container">
         <!-- Formulario de Reportes-->
         <div class="row">
@@ -299,6 +307,7 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+
 @stop
 
 @section('js')
@@ -459,5 +468,10 @@ mySelect.addEventListener("change", function() {
   }
 });
 
+    </script>
+    <script>
+        function goBack() {
+          window.history.back();
+        }
     </script>
 @stop

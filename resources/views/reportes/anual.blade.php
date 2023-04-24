@@ -4,6 +4,12 @@
 
 @section('content_header')
 <style>
+    a {
+            color: inherit;
+            /* blue colors for links too */
+            text-decoration: inherit;
+            /* no underline */
+        }
     .highcharts-figure,
 .highcharts-data-table table {
   min-width: 310px;
@@ -80,7 +86,7 @@ display: none !important;
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h1>{{__('Consultas del Cliente')}}</h1>
+                <h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Consultas del Cliente')}}</h1>
             </div>
             <div class="col-6">
                 <div class="input-group mb-3">
@@ -403,7 +409,7 @@ display: none !important;
                         <option value="container3">{{__('Gráfica de pastel | Consumo por Importe')}}</option>
                       </select>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-8">
                             <figure class="highcharts-figure">
                                 <div id="container"></div>
                                 <div id="container1"></div>
@@ -412,12 +418,12 @@ display: none !important;
 
                               </figure>
                         </div>
-                        <div class="col">
+                        <div class="col-4">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="tabla-seccion">
                                         <div class="tabla-contenedor">
-                                    <table class="table table-striped">
+                                    <table class="table table-sm table-striped">
                                         <tr>
                                             <th>{{__('Periodo')}}</th>
                                             <th>{{__('Cantidad')}}</th>
@@ -899,6 +905,11 @@ Highcharts.chart('container', {
                       }
                     });
 
+                        </script>
+                        <script>
+                            function goBack() {
+                              window.history.back();
+                            }
                         </script>
 
 @stop
