@@ -197,8 +197,8 @@ $limite = $articulo[0]->Mensaje2;
                                                 @if ($articulo[0]->Unidad == 'pza' || $articulo[0]->Unidad == 'par')
                                                     {{ intval($articulo[0]->Existencia) }} {{ __($articulo[0]->Unidad) }}
                                                 @else
-                                                @foreach ($articulo as $key)
-                                                 <b>{{$key->Descripcion}}</b> ({{number_format($key->Existencia)}} Disponibles)  
+                                                @foreach ($articulo as $keyT)
+                                                 <b>{{$keyT->Descripcion}}</b> ({{number_format($keyT->Existencia)}} Disponibles)
                                                 @endforeach
                                                 @endif
 
