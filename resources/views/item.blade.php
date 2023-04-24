@@ -484,7 +484,7 @@ $limite = $articulo[0]->Mensaje2;
                                         <div class="input-group-prepend">
                                           <span class="input-group-text" id="inputGroup-sizing-sm">{{__('Talla')}}</span>
                                         </div>
-                                        <select name="talla" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
+                                        <select style="margin-top:10px" name="talla" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" required>
                                             <option value=""> {{__('Seleccione una talla')}} </option>
                                             @foreach ($articulo as $key)
                                             <option value="{{$key->Descripcion}}"> <b>{{$key->Descripcion}}</b> ({{number_format($key->Existencia)}} Disponibles)  </option>
