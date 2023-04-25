@@ -161,7 +161,8 @@
 
 <div class="row">
         @foreach ($category as $articulo)
-            <div class="col-md-3 col-xs-4"  >
+            <div class="col-md-3 col-sm-6 col-xs-6 d-flex align-items-center"  >
+                <div class="mx-auto">
                 <?php $ART = trim($articulo->Articulo); ?>
                 <a href="{{route('item', [app()->getLocale(), $ART])}}">
                     <div class="card grow text-center" style="width: 15rem; height:21rem;" >
@@ -187,6 +188,7 @@
                     </div>
                 </a>
             </div>
+        </div>
         @endforeach
     </div>
     </div>

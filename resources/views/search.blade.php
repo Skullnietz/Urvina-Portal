@@ -67,7 +67,7 @@
             text-decoration: inherit;
             /* no underline */
         }
-        
+
         .grow {
             transition: 1s ease;
         }
@@ -167,7 +167,8 @@
 
 <div class="row">
         @foreach ($articulos as $articulo)
-        <div class="col-md-3 col-sm-6 col-xs-6"  >
+        <div class="col-md-3 col-sm-6 col-xs-6 d-flex align-items-center"  >
+            <div class="mx-auto">
             <?php $ART = trim($articulo->Articulo); ?>
             <a href="{{route('item', [app()->getLocale(), $ART])}}">
                 <div class="card grow text-center" style="" >
@@ -193,6 +194,7 @@
                 </div>
             </a>
         </div>
+    </div>
         @endforeach
     </div>
     </div>
