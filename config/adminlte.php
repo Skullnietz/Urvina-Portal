@@ -89,7 +89,6 @@ return [
             'path' => 'logo/grupo_urvina_logo.png',
             'alt' => 'Auth Logo',
             'class' => '',
-
         ],
     ],
 
@@ -128,10 +127,10 @@ return [
     |
     */
 
-    'usermenu_enabled' => false,
+    'usermenu_enabled' => true,
     'usermenu_header' => true,
     'usermenu_header_class' => 'bg-secondary',
-    'usermenu_image' => false,
+    'usermenu_image' => true,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
 
