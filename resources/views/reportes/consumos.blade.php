@@ -408,7 +408,7 @@ display: none !important;
                     <option value="container3">{{__('Gráfica de pastel | Consumo por Importe')}}</option>
                   </select>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-sm-8 col-12">
                             <figure class="highcharts-figure">
                                 <div id="container"></div>
                                 <div id="container1"></div>
@@ -417,7 +417,7 @@ display: none !important;
 
                               </figure>
                         </div>
-                        <div class="col-4">
+                        <div class="col-sm-4 col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="tabla-seccion">
