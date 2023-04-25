@@ -5,7 +5,7 @@
 @section('content_header')
 <div class="container">
     <div class="row">
-        <div class=" col-md-5 col-6"><h4><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Pedidos')}}</h4></div>
+        <div class=" col-md-5 col-8"><h4><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Pedidos')}}</h4></div>
         <div class="col-md-3 col-3">
             <a href="{{route(Route::currentRouteName(),'en')}}">
                 <img src="/icons/en.svg" class="bandera" alt="EN">

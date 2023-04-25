@@ -64,7 +64,7 @@
 
 <div class="container">
     <div class="row">
-        @if(isset($data[0]->articulo[0])) <div class=" col-md-5 col-6"><h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Pedido')}} <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div> @else <div class="col-6"><h1>{{__('Pedido no encontrado')}}</h1></div>  @endif
+        @if(isset($data[0]->articulo[0])) <div class=" col-md-5 col-8"><h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Pedido')}} <b> {{$data[0]->Pedido}}</b> | <b style="color:gray">#{{$id}}</b></h1></div> @else <div class="col-6"><h1>{{__('Pedido no encontrado')}}</h1></div>  @endif
         <div class="col-md-3 col-3">
             <a href="{{route(Route::currentRouteName(),['en', $id])}}">
                 <img src="/icons/en.svg" style="width:50px" alt="EN">
