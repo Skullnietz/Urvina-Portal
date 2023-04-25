@@ -18,7 +18,7 @@ return[
         [
             'type' => 'sidebar-menu-search',
             'text' => 'Search in menu',           // Placeholder for the underlying input.
-            'id'   => 'sidebarMenuSearch' // ID attribute for the underlying input (optional).
+            'id'   => 'sidebarMenuSearch', // ID attribute for the underlying input (optional).
         ],
         [
             'text'        => 'home',
