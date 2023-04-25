@@ -108,7 +108,11 @@ $limite = $articulo[0]->Mensaje2;
 }
 #img-2{
     display:none;
-} }
+}
+.bandera{
+                width:30px;
+            }
+        }
 
 @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     .table-art{
@@ -117,7 +121,11 @@ $limite = $articulo[0]->Mensaje2;
 .main-card{
     margin-top:-25px
 }
-}
+
+.bandera{
+                width:45px;
+            }
+        }
 @media (max-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
     #img-1{
     width:200px;
@@ -125,7 +133,11 @@ $limite = $articulo[0]->Mensaje2;
 
 #img-2{
     display:none;
-}}
+}
+.bandera{
+                width:30px;
+            }
+        }
     </style>
 @stop
 

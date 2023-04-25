@@ -5,24 +5,25 @@
 @section('content_header')
 <div class="container">
     <div class="row">
-        <div class=" col-md-5 col-xs-6"><h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Busqueda')}}</h1></div>
-        <div class=" col-md-5 col-xs-5"> <div class="input-group mb-3">
+        <div class=" col-md-5 col-6"><h4><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Busqueda')}}</h4></div>
+        <div class="col-md-3 col-3">
+            <a href="{{route(Route::currentRouteName(),'en')}}">
+                <img src="/icons/en.svg" class="bandera" alt="EN">
+              </a>
+              <a href="{{route(Route::currentRouteName(), 'es' )}}">
+                <img src="/icons/es.svg" class="bandera"  alt="ES">
+              </a>
+
+          </div>
+          <div class=" col-md-4 col-12"> <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             </div>
             <form action="{{route('search', app()->getLocale())}}" method="get">
-                <input type="text" id="search" name="item" class="form-control" placeholder="{{__('Buscar')}}" pattern="[A-Za-z0-9]{2,10}" aria-describedby="basic-addon1">
+                <input type="text" id="search" name="item" class="form-control searchbar" placeholder="{{__('Buscar')}}" pattern="[A-Za-z0-9]{2,10}" aria-describedby="basic-addon1">
             </form>
           </div></div>
-          <div class="col-md-2 col-xs-2">
-            <a href="{{route(Route::currentRouteName(),'en')}}">
-                <img src="/icons/en.svg" style="width:50px" alt="EN">
-              </a>
-              <a href="{{route(Route::currentRouteName(), 'es' )}}">
-                <img src="/icons/es.svg" style="width:50px" alt="ES">
-              </a>
 
-          </div>
     </div>
 </div>
 @stop
@@ -99,6 +100,9 @@
                 height:21rem;
 
             }
+            .bandera{
+                width:30px;
+            }
         }
         @media (min-width:481px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
             .img-card-top{
@@ -110,6 +114,9 @@
             .card{
                 width: 10rem;
                 height:23rem;
+            }
+            .bandera{
+                width:30px;
             }
         }
         @media (min-width:641px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
@@ -124,6 +131,9 @@
                 height:23rem;
 
             }
+            .bandera{
+                width:30px;
+            }
         }
         @media (min-width:961px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */
             .img-card-top{
@@ -137,6 +147,9 @@
                 height:21rem;
 
             }
+            .bandera{
+                width:45px;
+            }
         }
         @media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */
             .img-card-top{
@@ -149,6 +162,9 @@
                 height:21rem;
 
             }
+            .bandera{
+                width:45px;
+            }
         }
         @media (min-width:1281px) { /* hi-res laptops and desktops */
             .img-card-top{
@@ -160,6 +176,9 @@
                 width: 15rem;
                 height:21rem;
 
+            }
+            .bandera{
+                width:45px;
             }
         }
     </style>
