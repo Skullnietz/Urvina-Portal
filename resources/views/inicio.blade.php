@@ -147,7 +147,6 @@
 @section('content')
 
 
-
 <div id="hi" class="jumbotron jumpin">
     <h1 class="display-4">{{__("¡Bienvenido de vuelta")}} <small><b>{{$_SESSION['usuario']->Nombre}}</b></small>!</h1>
     <p class="lead">{{__("Te damos la bienvenida a la actualización del Portal Urvina. Sientase libre de utilizar el portal y realizar sus compras...")}}</p>

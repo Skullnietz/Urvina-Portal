@@ -13,15 +13,6 @@ return[
             'topnav_right' => true,
 
         ],
-        [
-            'text'        => 'logout',
-            'url'       => 'en/salir',
-            'icon'        => 'fas fa-fw fa-sign-out-alt',
-            'icon_color' => 'danger',
-            'label_color' => 'danger',
-            'topnav_right' => true,
-
-        ],
 
         // Sidebar items:
 
