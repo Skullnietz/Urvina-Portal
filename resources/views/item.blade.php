@@ -184,7 +184,7 @@ $limite = $articulo[0]->Mensaje2;
 
                                     <tr>
                                         <td class="border"><b>{{__('Articulo:')}}</b></td>
-                                        <td class="border" style="text-align:right;color: #00a650">{{ $desc->Articulo }}</td>
+                                        <td class="border" style="text-align:right;color: #00a650"><b>{{ $desc->Articulo }}</b></td>
                                     </tr>
                                     <tr>
                                         <td class="border"><b>{{__('Codigo:')}}</b></td>
