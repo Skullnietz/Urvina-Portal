@@ -5,8 +5,8 @@
 @section('content_header')
 <div class="container">
     <div class="row">
-        <div class=" col-md-5 col-8"><h4><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Detalles de compra')}}</h4></div>
-        <div class="col-md-3 col-3">
+        <div class=" col-md-9 col-9"><h4><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Detalles de compra')}}</h4></div>
+        <div class="col-md-3 col-3 ml-auto">
             <a href="{{route(Route::currentRouteName(),'en')}}">
                 <img src="/icons/en.svg" class="bandera" alt="EN">
               </a>
@@ -15,14 +15,7 @@
               </a>
 
           </div>
-          <div class=" col-md-4 col-12"> <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-            </div>
-            <form action="{{route('search', app()->getLocale())}}" method="get">
-                <input type="text" id="search" name="item" class="form-control searchbar" placeholder="{{__('Buscar')}}" pattern="[A-Za-z0-9]{2,10}" aria-describedby="basic-addon1">
-            </form>
-          </div></div>
+
 
     </div>
 </div>

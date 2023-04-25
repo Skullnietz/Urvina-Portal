@@ -113,12 +113,13 @@ class CatalogoController extends Controller
     ////////// Vista Busqueda Articulo /////////////////
     public function SearchItem(Request $request){
         session_start();
+        
         if(isset($_SESSION['usuario'])){
             $articulos = DB::select(
                 "EXEC spSearchArticulosApp :id,:articulo",
                 [
                     "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                    "articulo" => '%'.$request->item.'%',
+                    "articulo" => '%'.$request->searchVal.'%',
                 ]
             );
             $Icounter= count($articulos);

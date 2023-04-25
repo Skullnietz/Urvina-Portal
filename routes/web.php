@@ -33,9 +33,7 @@ Route::prefix('{language}')->group(function () {
     Route::post('/validar-registro', 'LoginController@login')->name('validar-registro');
     // Logout
     Route::get('/salir', 'LoginController@logout')->name('salir');
-
     // Inicio
-
     Route::get('/inicio', 'InicioController@Home')->name('home');
 
 
@@ -46,7 +44,7 @@ Route::prefix('{language}')->group(function () {
     Route::get('categoria/{category?}', 'CatalogoController@indexCategoria')->name('categoria');
     Route::get('/item/{articulo}', 'CatalogoController@showItem')->name('item');
     Route::get('/favoritos', 'CatalogoController@showfav')->name('favoritos');
-    Route::get('/buscar', 'CatalogoController@searchItem')->name('search');
+    Route::match(['get', 'post'],'/buscar','CatalogoController@searchItem')->name('search');
 
 
 
@@ -90,7 +88,7 @@ Route::prefix('{language}')->group(function () {
     Route::get('/consultas', 'ConsultasCController@index')->name('consultasc');
     Route::get('/consultRep', 'ConsultasCController@ReporteConsulta')->name('reporteC');
 
-    
+
 
 });
 
