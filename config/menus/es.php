@@ -14,12 +14,9 @@ return[
 
         ],
 
+
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Buscar en menu',           // Placeholder for the underlying input.
-            'id'   => 'sidebarMenuSearch' // ID attribute for the underlying input (optional).
-        ],
+
         [
             'text'        => 'home',
             'url'         => 'es/inicio',
