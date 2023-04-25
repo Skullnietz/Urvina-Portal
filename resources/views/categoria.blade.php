@@ -175,7 +175,7 @@
 
                             <div class="row ">
                                 <button class="btn btn-xs btn-primary"><a
-                                    href=""><b>{{ trim($articulo->Codigo) }}</b></a></button>
+                                    href="{{route('item', [app()->getLocale(), $ART])}}"><b>{{ trim($articulo->Codigo) }}</b></a></button>
                                 <div ><small><b>{{ __(trim($articulo->Descripcion)) }}
                                         </b></small><br>
                                        <small style="color: #00a650"><b>{{ $ART }}</b></small>

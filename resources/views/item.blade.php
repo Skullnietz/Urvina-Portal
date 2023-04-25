@@ -184,11 +184,11 @@ $limite = $articulo[0]->Mensaje2;
 
                                     <tr>
                                         <td class="border"><b>{{__('Articulo:')}}</b></td>
-                                        <td class="border" style="text-align:right">{{ $desc->Articulo }}</td>
+                                        <td class="border" style="text-align:right;color: #00a650">{{ $desc->Articulo }}</td>
                                     </tr>
                                     <tr>
                                         <td class="border"><b>{{__('Codigo:')}}</b></td>
-                                        <td class="border" style="text-align:right">{{ $codigo->Codigo }}</td>
+                                        <td class="border" style="text-align:right"><button class="btn btn-xs btn-primary"><b>{{ $codigo->Codigo }}</b></button></td>
                                     </tr>
                                     @if (isset($articulo[0]->Existencia))
                                         <tr>
