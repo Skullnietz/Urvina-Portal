@@ -15,7 +15,14 @@ return[
         ],
 
         // Sidebar items:
-
+        [
+            'type'       => 'sidebar-custom-search',
+            'text'       => 'search',         // Placeholder for the underlying input.
+            'url'        => 'sidebar/search', // The url used to submit the data ('#' by default).
+            'method'     => 'post',           // 'get' or 'post' ('get' by default).
+            'input_name' => 'searchVal',      // Name for the underlying input ('adminlteSearch' by default).
+            'id'         => 'sidebarSearch'   // ID attribute for the underlying input (optional).
+        ],
         [
             'text'        => 'home',
             'url'         => 'es/inicio',
