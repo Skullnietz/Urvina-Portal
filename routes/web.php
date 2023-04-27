@@ -88,6 +88,11 @@ Route::prefix('{language}')->group(function () {
     Route::get('/consultas', 'ConsultasCController@index')->name('consultasc');
     Route::get('/consultRep', 'ConsultasCController@ReporteConsulta')->name('reporteC');
 
+    //Pruebas
+
+    Route::get('/sesion', 'PruebasController@sesion')->name('testsesion');
+
+
 
 
 });
