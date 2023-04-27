@@ -101,6 +101,7 @@ class CarritoController extends Controller
 
 
                     }else{
+                        dd($existente);
                         if(intval($_SESSION["carritodll"][$articulo]["cantidad"]) > $existente ){
                             Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
                         }
