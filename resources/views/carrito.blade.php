@@ -32,7 +32,7 @@ a {
         }
 </style>
 
-{{dd($_SESSION)}}
+
 
 <div class="container">
     <div class="row">

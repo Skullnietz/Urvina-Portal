@@ -249,7 +249,6 @@ class CarritoController extends Controller
     }
 
 
-
     /////////////////////////////////////
     /// Confirmar Venta Dolares /////////
     public function confCartDll(Request $request){
