@@ -233,6 +233,9 @@ class CarritoController extends Controller
                 $_SESSION["carritopes"][$articulo]["desc"] = $desc;
                 $_SESSION["carritopes"][$articulo]["codigo"] = $codigo;
                 $_SESSION["carritopes"][$articulo]["item"] = $idItem;
+                $_SESSION["carritopes"][$articulo]["excedente"] = $excedente;
+                $_SESSION["carritopes"][$articulo]["subcuenta"] = "";
+                $_SESSION["carritopes"][$articulo]["existente"] = $existente;
 
 
                 if(isset($request->talla)){
