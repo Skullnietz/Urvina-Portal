@@ -190,10 +190,10 @@ class CarritoController extends Controller
                         if($restante<0){
                             if(0 == $restante){
                                 Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
-                                return redirect()->route('carrito', app()->getLocale())->with('departamentos',$departamentos)->with('equipos',$equipos);
+                                return redirect()->back();
                             }
                             Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
-                            return redirect()->route('carrito', app()->getLocale())->with('departamentos',$departamentos)->with('equipos',$equipos);
+                            return redirect()->back();
                         }
                     }
                 }
