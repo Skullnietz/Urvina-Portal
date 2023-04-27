@@ -132,6 +132,7 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["existente"] = $existente;
             }else{
                 Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
+                return redirect()->route('carrito', app()->getLocale())->with('departamentos',$departamentos)->with('equipos',$equipos);
             }
 
                 // Insercion de subcuenta mediante array_search (Talla/Descripcion)
