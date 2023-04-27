@@ -73,9 +73,10 @@ class CarritoController extends Controller
             if($moneda == "Dolares"){
             if(isset($_SESSION["carritodll"])){
                 foreach($_SESSION["carritodll"] as $indice=>$arreglo){
+
                     if($arreglo["item"] == $idItem){
                         $restante = $restante-$arreglo["cantidad"];
-                        $existente = $existente-$arreglo["cantidad"];
+                        $existente = $existente-$arreglo["cantidad"]-1;
 
                         if($restante<0){
                             if(0 == $restante){
