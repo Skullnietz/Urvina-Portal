@@ -76,9 +76,9 @@ class CarritoController extends Controller
 
                     if($arreglo["item"] == $idItem){
                         $restante = $restante-$arreglo["cantidad"];
-                        $existente = $existente-$arreglo["cantidad"]-1;
+                        $existente = $existente-$arreglo["cantidad"];
 
-                        if($restante<0){
+                        if($restante<=0){
                             if(0 == $restante){
                                 Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
                                 return redirect()->back();
