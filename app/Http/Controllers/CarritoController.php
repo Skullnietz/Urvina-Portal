@@ -293,6 +293,8 @@ class CarritoController extends Controller
 
         return redirect()->route('carrito', app()->getLocale())->with('departamentos',$departamentos)->with('equipos',$equipos);
     }
+}
+
 
 
     /////////////////////////////////////
