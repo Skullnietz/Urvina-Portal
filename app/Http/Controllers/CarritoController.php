@@ -64,9 +64,6 @@ class CarritoController extends Controller
         $talla = $request->talla;
         $articulo = $request->articulo.' | '.$request->talla;  ;
         }
-
-
-
             if($moneda == "Dolares"){
             if(isset($_SESSION["carritodll"])){
                 foreach($_SESSION["carritodll"] as $indice=>$arreglo){
@@ -126,7 +123,7 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["item"] = $idItem;
                 $_SESSION["carritodll"][$articulo]["excedente"] = $excedente;
                 $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
-                $_SESSION["carritodll"][$articulo]["existente"] = "";
+                $_SESSION["carritodll"][$articulo]["existente"] = $existente;
 
                 // Insercion de subcuenta mediante array_search (Talla/Descripcion)
                 if(isset($request->talla)){
@@ -212,7 +209,7 @@ class CarritoController extends Controller
                 $_SESSION["carritopes"][$articulo]["desc"] = $desc;
                 $_SESSION["carritopes"][$articulo]["codigo"] = $codigo;
                 $_SESSION["carritopes"][$articulo]["item"] = $idItem;
-                $_SESSION["carritopes"][$articulo]["excedente"] = $excedente;
+                
 
                 if(isset($request->talla)){
                     $_SESSION["carritopes"][$articulo]["talla"] = $talla;
