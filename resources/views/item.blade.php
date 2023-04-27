@@ -363,7 +363,7 @@ $limite = $articulo[0]->Mensaje2;
                                                         }
                                                         if (str_contains($change,'Pesos')){
                                                             if(isset($cantidadpes)){
-                                                                echo $articulo[0]->Limite - ($cantidad + $articulo[0]->Consumo);
+                                                                echo $articulo[0]->Limite - ($cantidadpes + $articulo[0]->Consumo);
                                                             }else{
                                                                 echo number_format($articulo[0]->Limite - $articulo[0]->Consumo);
                                                             }
