@@ -58,7 +58,7 @@ class CarritoController extends Controller
         $excedente = intval($request->excedente);
         $idItem = $request->articulo;
         $subcuenta = $request->subcuenta;
-        $existente = number_format($request->existente);
+        $existente = intval($request->existente);
 
         if(isset($request->talla)){
         $talla = $request->talla;
@@ -141,8 +141,8 @@ class CarritoController extends Controller
 
                 $Item = array_search($talla, array_column($articulos, 'Descripcion'));
 
-                $_SESSION["carritodll"][$articulo]["subcuenta"] = $articulos[$Item]->Subcuenta;
-                $_SESSION["carritodll"][$articulo]["existente"] = $articulos[$Item]->Existencia;
+                $_SESSION["carritodll"][$articulo]["subcuenta"] = number_format($articulos[$Item]->Subcuenta);
+                $_SESSION["carritodll"][$articulo]["existente"] = number_format($articulos[$Item]->Existencia);
 
                 }else{
                     $articulos = DB::select(
@@ -153,7 +153,7 @@ class CarritoController extends Controller
                         ]
                         );
                     $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
-                    $_SESSION["carritodll"][$articulo]["existente"] = $articulos[0]->Existencia;
+                    $_SESSION["carritodll"][$articulo]["existente"] = number_format($articulos[0]->Existencia);
                 }
 
             }
@@ -226,8 +226,8 @@ class CarritoController extends Controller
 
                     $Item = array_search($talla, array_column($articulos, 'Descripcion'));
 
-                    $_SESSION["carritopes"][$articulo]["subcuenta"] = $articulos[$Item]->Subcuenta;
-                    $_SESSION["carritopes"][$articulo]["existente"] = $articulos[$Item]->Existencia;
+                    $_SESSION["carritopes"][$articulo]["subcuenta"] = number_format($articulos[$Item]->Subcuenta);
+                    $_SESSION["carritopes"][$articulo]["existente"] = number_format($articulos[$Item]->Existencia);
 
                 }else{
                     $articulos = DB::select(
@@ -238,7 +238,7 @@ class CarritoController extends Controller
                         ]
                         );
                     $_SESSION["carritopes"][$articulo]["subcuenta"] = "";
-                    $_SESSION["carritopes"][$articulo]["existente"] = $articulos[0]->Existencia;
+                    $_SESSION["carritopes"][$articulo]["existente"] = number_format($articulos[0]->Existencia);
                 }
             }
         }
