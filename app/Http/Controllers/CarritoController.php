@@ -87,7 +87,7 @@ class CarritoController extends Controller
 
 
 
-                if(intval($_SESSION["carritodll"][$articulo]["cantidad"]) < $autorizado ){
+                if(intval($_SESSION["carritodll"][$articulo]["cantidad"]) < $autorizado || intval($_SESSION["carritodll"][$articulo]["cantidad"]) > $existente ){
 
 
 
