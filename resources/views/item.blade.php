@@ -37,6 +37,8 @@
 @stop
 
 @section('content_header')
+@include('sweetalert::alert')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <?php $ART = trim($desc->Articulo);
 $change = $articulo[0]->Moneda;
