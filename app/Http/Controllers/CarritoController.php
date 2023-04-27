@@ -114,10 +114,7 @@ class CarritoController extends Controller
                 }
 
             }else{
-
-                if(intval($_SESSION["carritodll"][$articulo]["cantidad"]) > $existente ){
-                    Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
-                }else{
+                if($cantidad<$existente){
                 $_SESSION["carritodll"][$articulo]["articulo"] = $articulo;
                 $_SESSION["carritodll"][$articulo]["cantidad"] = $cantidad;
                 $_SESSION["carritodll"][$articulo]["moneda"] = $moneda;
@@ -133,6 +130,8 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["excedente"] = $excedente;
                 $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
                 $_SESSION["carritodll"][$articulo]["existente"] = $existente;
+            }else{
+                Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
             }
 
                 // Insercion de subcuenta mediante array_search (Talla/Descripcion)
@@ -173,6 +172,7 @@ class CarritoController extends Controller
                 foreach($_SESSION["carritopes"] as $indice=>$arreglo){
                     if($arreglo["item"] == $idItem){
                         $restante = $restante-$arreglo["cantidad"];
+
                         if($restante<0){
                             if(0 == $restante){
                                 Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
