@@ -188,6 +188,7 @@ class CarritoController extends Controller
             }
         }
         if($moneda == "Pesos"){
+            $cantidadr=0;
             if(isset($_SESSION["carritopes"])){
                 foreach($_SESSION["carritopes"] as $indice=>$arreglo){
                     if($arreglo["item"] == $idItem){
