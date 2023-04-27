@@ -69,6 +69,7 @@ class CarritoController extends Controller
                 foreach($_SESSION["carritodll"] as $indice=>$arreglo){
                     if($arreglo["item"] == $idItem){
                         $restante = $restante-$arreglo["cantidad"];
+                        $existente = $existente-$arreglo["cantidad"];
                         if($restante<0){
                             if(0 == $restante){
                                 Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
@@ -77,7 +78,11 @@ class CarritoController extends Controller
                             Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
                             return redirect()->route('carrito', app()->getLocale())->with('departamentos',$departamentos)->with('equipos',$equipos);
                         }
-                        if($arreglo["cantidad"]+$cantidad>$existente){
+                        if($existente<0){
+                            if(0 == $existente){
+                                Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
+                                return redirect()->route('carrito', app()->getLocale())->with('departamentos',$departamentos)->with('equipos',$equipos);
+                            }
                             Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
                             return redirect()->route('carrito', app()->getLocale())->with('departamentos',$departamentos)->with('equipos',$equipos);
                         }
