@@ -486,6 +486,7 @@ $limite = $articulo[0]->Mensaje2;
                                         <input type="hidden" name="fecha" value="{{$fecha->format('d-m-Y h:i:s a')}}">
                                         @foreach ($articulo as $item)
                                         <input type="hidden" name="subcuenta" value="{{$item->Subcuenta}}">
+                                        <input type="hidden" name="existente" value="{{$item->Existencia}}">
                                         @endforeach
 
 

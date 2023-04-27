@@ -32,10 +32,12 @@ a {
         }
 </style>
 
+{{dd($_SESSION)}}
+
 <div class="container">
     <div class="row">
         <div class="col-6"><h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Carrito')}}</h1></div>
-        
+
     </div>
 </div>
 @stop

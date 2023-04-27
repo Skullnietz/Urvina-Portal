@@ -58,6 +58,7 @@ class CarritoController extends Controller
         $excedente = intval($request->excedente);
         $idItem = $request->articulo;
         $subcuenta = $request->subcuenta;
+        $existente = $request->existente;
 
         if(isset($request->talla)){
         $talla = $request->talla;
@@ -125,6 +126,7 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["item"] = $idItem;
                 $_SESSION["carritodll"][$articulo]["excedente"] = $excedente;
                 $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
+                $_SESSION["carritodll"][$articulo]["existente"] = "";
                 // Insercion de subcuenta mediante array_search (Talla/Descripcion)
                 if(isset($request->talla)){
                 $_SESSION["carritodll"][$articulo]["talla"] = $talla;
@@ -142,9 +144,11 @@ class CarritoController extends Controller
                 $Item = array_search($talla, array_column($articulos, 'Descripcion'));
 
                 $_SESSION["carritodll"][$articulo]["subcuenta"] = $articulos[$Item]->Subcuenta;
+                $_SESSION["carritodll"][$articulo]["existente"] = $articulos[$Item]->Existencia;
 
                 }else{
                     $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
+                    $_SESSION["carritodll"][$articulo]["existente"] = $articulos[0]->Existencia;
                 }
 
             }
@@ -217,9 +221,11 @@ class CarritoController extends Controller
                     $Item = array_search($talla, array_column($articulos, 'Descripcion'));
 
                     $_SESSION["carritopes"][$articulo]["subcuenta"] = $articulos[$Item]->Subcuenta;
+                    $_SESSION["carritodll"][$articulo]["existente"] = $articulos[$Item]->Existencia;
 
                 }else{
                     $_SESSION["carritopes"][$articulo]["subcuenta"] = "";
+                    $_SESSION["carritodll"][$articulo]["existente"] = $articulos[0]->Existencia;
                 }
             }
         }
