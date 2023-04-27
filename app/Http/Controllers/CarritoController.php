@@ -82,12 +82,15 @@ class CarritoController extends Controller
 
 
                         if($restante<0){
-
+                            if(0 == $restante){
+                                Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
+                                return redirect()->back();
+                            }
                             Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
                             return redirect()->back();
                         }
                         if($restante < $cantidadr){
-                            Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
+                            Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
                             return redirect()->back();
                         }
 
@@ -185,10 +188,14 @@ class CarritoController extends Controller
             }
         }
         if($moneda == "Pesos"){
+            $cantidadr=0;
             if(isset($_SESSION["carritopes"])){
                 foreach($_SESSION["carritopes"] as $indice=>$arreglo){
                     if($arreglo["item"] == $idItem){
                         $restante = $restante-$arreglo["cantidad"];
+                        $existente = $existente-$arreglo["cantidad"];
+                        $cantidadr = $cantidadr+$arreglo["cantidad"];
+
 
                         if($restante<0){
                             if(0 == $restante){
@@ -198,7 +205,16 @@ class CarritoController extends Controller
                             Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
                             return redirect()->back();
                         }
-                    }
+                        if($restante < $cantidadr){
+                            Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
+                            return redirect()->back();
+                        }
+
+                        if($existente<0){
+
+                            Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
+                            return redirect()->back();
+                        }
                 }
             }
             if(isset($_SESSION["carritopes"][$articulo])){
