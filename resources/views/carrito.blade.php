@@ -74,8 +74,8 @@ a {
                         @foreach ($_SESSION["carritopes"] as $indice=>$arreglop)
                         <?php $numitem++;?>
                         <div class="row border-dark">
-                            <div class="col-md-2 border" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglop["articulo"] . '.jpg')) {
-                                echo '<img class="border rounded" id="img-'.$numitem.'" src="/images/catalogo/' . $arreglop["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
+                            <div class="col-md-2 border" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglop["item"] . '.jpg')) {
+                                echo '<img class="border rounded" id="img-'.$numitem.'" src="/images/catalogo/' . $arreglop["item"] . '.jpg" alt="$ART"style="max-height:80px">';
                             } else {
                                 echo '<img class="border rounded" src="/img/productos/default_product.png" alt="no img" style="max-height:80px">';
                             }
@@ -260,8 +260,8 @@ a {
                         @foreach ($_SESSION["carritodll"] as $indice=>$arreglo)
                         <?php $numart++;?>
                         <div class="row border-dark">
-                            <div class="col-md-2 border" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglo["articulo"] . '.jpg')) {
-                                echo '<img class="border" id="img-'.$numart.'" src="/images/catalogo/' . $arreglo["articulo"] . '.jpg" alt="$ART"style="max-height:80px">';
+                            <div class="col-md-2 border" style="text-align:center; padding:10px"><?php if (file_exists(public_path() . '/images/catalogo/' . $arreglo["item"] . '.jpg')) {
+                                echo '<img class="border" id="img-'.$numart.'" src="/images/catalogo/' . $arreglo["item"] . '.jpg" alt="$ART"style="max-height:80px">';
                             } else {
                                 echo '<img class="border" src="/img/productos/default_product.png" alt="no img" style="max-height:80px">';
                             }
