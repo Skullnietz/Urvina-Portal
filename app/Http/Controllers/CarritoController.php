@@ -58,7 +58,7 @@ class CarritoController extends Controller
         $excedente = intval($request->excedente);
         $idItem = $request->articulo;
         $subcuenta = $request->subcuenta;
-        $existente = $request->existente;
+        $existente = number_format($request->existente);
 
         if(isset($request->talla)){
         $talla = $request->talla;
@@ -209,7 +209,7 @@ class CarritoController extends Controller
                 $_SESSION["carritopes"][$articulo]["desc"] = $desc;
                 $_SESSION["carritopes"][$articulo]["codigo"] = $codigo;
                 $_SESSION["carritopes"][$articulo]["item"] = $idItem;
-                
+
 
                 if(isset($request->talla)){
                     $_SESSION["carritopes"][$articulo]["talla"] = $talla;
