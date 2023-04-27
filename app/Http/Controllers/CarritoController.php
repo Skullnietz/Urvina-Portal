@@ -87,7 +87,7 @@ class CarritoController extends Controller
                         }
 
                         if($existente<0){
-                            dd($existente);
+                            
                             if(0 == $existente){
                                 Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
                                 return redirect()->back();
