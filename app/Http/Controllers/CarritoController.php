@@ -85,6 +85,7 @@ class CarritoController extends Controller
                             Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
                             return redirect()->back();
                         }
+                        dd($existente);
                         if($existente<0){
                             if(0 == $existente){
                                 Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
