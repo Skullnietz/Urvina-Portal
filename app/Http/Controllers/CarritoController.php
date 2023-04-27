@@ -148,6 +148,13 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["existente"] = $articulos[$Item]->Existencia;
 
                 }else{
+                    $articulos = DB::select(
+                        "EXEC spArticuloApp :id,:articulo",
+                        [
+                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                            "articulo" => $idItem,
+                        ]
+                        );
                     $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
                     $_SESSION["carritodll"][$articulo]["existente"] = $articulos[0]->Existencia;
                 }
@@ -206,7 +213,7 @@ class CarritoController extends Controller
                 $_SESSION["carritopes"][$articulo]["codigo"] = $codigo;
                 $_SESSION["carritopes"][$articulo]["item"] = $idItem;
                 $_SESSION["carritopes"][$articulo]["excedente"] = $excedente;
-                
+
                 if(isset($request->talla)){
                     $_SESSION["carritopes"][$articulo]["talla"] = $talla;
                     $articulos = DB::select(
@@ -226,6 +233,13 @@ class CarritoController extends Controller
                     $_SESSION["carritopes"][$articulo]["existente"] = $articulos[$Item]->Existencia;
 
                 }else{
+                    $articulos = DB::select(
+                        "EXEC spArticuloApp :id,:articulo",
+                        [
+                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                            "articulo" => $idItem,
+                        ]
+                        );
                     $_SESSION["carritopes"][$articulo]["subcuenta"] = "";
                     $_SESSION["carritopes"][$articulo]["existente"] = $articulos[0]->Existencia;
                 }
