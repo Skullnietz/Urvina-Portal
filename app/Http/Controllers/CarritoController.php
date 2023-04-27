@@ -77,6 +77,8 @@ class CarritoController extends Controller
                     if($arreglo["item"] == $idItem){
                         $restante = $restante-$arreglo["cantidad"];
                         $existente = $existente-$arreglo["cantidad"];
+                        $cantidadr = $cantidadr+$arreglo["cantidad"];
+                        dd($cantidadr);
 
                         if($restante<0){
 
