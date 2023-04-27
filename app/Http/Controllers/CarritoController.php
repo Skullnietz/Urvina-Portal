@@ -127,6 +127,7 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["excedente"] = $excedente;
                 $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
                 $_SESSION["carritodll"][$articulo]["existente"] = "";
+
                 // Insercion de subcuenta mediante array_search (Talla/Descripcion)
                 if(isset($request->talla)){
                 $_SESSION["carritodll"][$articulo]["talla"] = $talla;
@@ -205,6 +206,7 @@ class CarritoController extends Controller
                 $_SESSION["carritopes"][$articulo]["codigo"] = $codigo;
                 $_SESSION["carritopes"][$articulo]["item"] = $idItem;
                 $_SESSION["carritopes"][$articulo]["excedente"] = $excedente;
+                
                 if(isset($request->talla)){
                     $_SESSION["carritopes"][$articulo]["talla"] = $talla;
                     $articulos = DB::select(
@@ -221,11 +223,11 @@ class CarritoController extends Controller
                     $Item = array_search($talla, array_column($articulos, 'Descripcion'));
 
                     $_SESSION["carritopes"][$articulo]["subcuenta"] = $articulos[$Item]->Subcuenta;
-                    $_SESSION["carritodll"][$articulo]["existente"] = $articulos[$Item]->Existencia;
+                    $_SESSION["carritopes"][$articulo]["existente"] = $articulos[$Item]->Existencia;
 
                 }else{
                     $_SESSION["carritopes"][$articulo]["subcuenta"] = "";
-                    $_SESSION["carritodll"][$articulo]["existente"] = $articulos[0]->Existencia;
+                    $_SESSION["carritopes"][$articulo]["existente"] = $articulos[0]->Existencia;
                 }
             }
         }
