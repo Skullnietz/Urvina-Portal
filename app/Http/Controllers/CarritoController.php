@@ -77,6 +77,10 @@ class CarritoController extends Controller
                             Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
                             return redirect()->route('carrito', app()->getLocale())->with('departamentos',$departamentos)->with('equipos',$equipos);
                         }
+                        if($cantidad>$existente){
+                            Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
+                            return redirect()->route('carrito', app()->getLocale())->with('departamentos',$departamentos)->with('equipos',$equipos);
+                        }
                     }
                 }
             }
@@ -114,7 +118,7 @@ class CarritoController extends Controller
                 }
 
             }else{
-                if($cantidad<$existente){
+
                 $_SESSION["carritodll"][$articulo]["articulo"] = $articulo;
                 $_SESSION["carritodll"][$articulo]["cantidad"] = $cantidad;
                 $_SESSION["carritodll"][$articulo]["moneda"] = $moneda;
@@ -130,10 +134,6 @@ class CarritoController extends Controller
                 $_SESSION["carritodll"][$articulo]["excedente"] = $excedente;
                 $_SESSION["carritodll"][$articulo]["subcuenta"] = "";
                 $_SESSION["carritodll"][$articulo]["existente"] = $existente;
-            }else{
-                Alert::error(__('No hay existencias'), __('Agrego mas articulos de los existentes, vuelva a intentarlo'));
-                return redirect()->back();
-            }
 
                 // Insercion de subcuenta mediante array_search (Talla/Descripcion)
                 if(isset($request->talla)){
