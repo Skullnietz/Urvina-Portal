@@ -87,7 +87,7 @@ class CarritoController extends Controller
 
 
 
-                if(intval($_SESSION["carritodll"][$articulo]["cantidad"]) < $autorizado || intval($_SESSION["carritodll"][$articulo]["cantidad"]) > $existente ){
+                if(intval($_SESSION["carritodll"][$articulo]["cantidad"]) < $autorizado ){
 
 
 
@@ -95,10 +95,15 @@ class CarritoController extends Controller
 
                     if(intval($_SESSION["carritodll"][$articulo]["cantidad"]) == $autorizado){
 
+
+
                         Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
 
 
                     }else{
+                        if(intval($_SESSION["carritodll"][$articulo]["cantidad"]) > $existente ){
+                            Alert::error(__('No se puede agregar'), __('Ha llegado al limite de este articulo'));
+                        }
                             $res = $_SESSION["carritodll"][$articulo]["cantidad"]+$cantidad;
                             $_SESSION["carritodll"][$articulo]["cantidad"]=$res;
                          }
