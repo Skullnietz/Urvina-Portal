@@ -71,6 +71,7 @@ class CarritoController extends Controller
         }
 
             if($moneda == "Dolares"){
+            $cantidadr=0;
             if(isset($_SESSION["carritodll"])){
                 foreach($_SESSION["carritodll"] as $indice=>$arreglo){
 
