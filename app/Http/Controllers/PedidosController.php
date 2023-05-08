@@ -12,7 +12,7 @@ class PedidosController extends Controller
         session_start();
         $month=date("m");
         $year=date("Y");
-        $mesinicio=$year.$month."01";
+        $mesinicio=$year."03"."01";
         $datedesde = Carbon::now()->format('Y-m-d');
         $datehasta = Carbon::now()->format('Y-m-d');
 
