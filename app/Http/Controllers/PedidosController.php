@@ -12,7 +12,58 @@ class PedidosController extends Controller
         session_start();
         $month=date("m");
         $year=date("Y");
-        $mesinicio=$year."03"."01";
+        $mesinicio=$year.$month."01";
+        $datedesde = Carbon::now()->format('Y-m-d');
+        $datehasta = Carbon::now()->format('Y-m-d');
+
+        //////////////////// Vista Pedidos /////////////////
+        $data = array();
+        if(isset($_SESSION['usuario'])){
+            $pedidos = DB::select(
+                "EXEC spPedidosApp :id, :from, :to",
+                [
+                    "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                    "from" => $mesinicio,
+                    "to" => $datehasta,
+                ]
+            );
+            foreach($pedidos as $pedido){
+                $descpedido = DB::select(
+                    "EXEC spPedidosDetalleApp :id, :idP",
+                    [
+                        "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "idP" => $pedido->ID,
+                    ]
+                );
+                $CFecha = Date::parse($pedido->Fecha);
+                $pedido->CFecha = $CFecha;
+                $pedido->desc = $descpedido;
+                foreach($pedido->desc as $p){
+                    $artdesc = DB::table('Art')->select('Articulo'
+                    ,'Rama'
+                    ,'Descripcion1'
+                    ,'Descripcion2'
+                    ,'NombreCorto'
+                    ,'Grupo'
+                    ,'Categoria'
+                    ,'Codigo')->where('Articulo', '=' , $p->Articulo)->first();
+                    $p->art = $artdesc;
+                }
+                array_push($data, $pedido);
+            }
+
+            return view('pedidosIndex')->with('data',$data);
+        }else {
+            return redirect()->route('login', app()->getLocale());
+        }
+        //////////////////////////////////////////////////
+
+    }
+    public function datefilter(){
+        session_start();
+        $month=date("m");
+        $year=date("Y");
+        $mesinicio=$year.$month."01";
         $datedesde = Carbon::now()->format('Y-m-d');
         $datehasta = Carbon::now()->format('Y-m-d');
 

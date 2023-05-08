@@ -3,6 +3,10 @@
 @section('title', 'Pedidos')
 
 @section('content_header')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <div class="container">
     <div class="row">
         <div class=" col-md-9 col-9"><h4><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Pedidos')}}</h4></div>
@@ -68,6 +72,7 @@
 
         }
     </style>
+    <input name="dates" type="text" class="form-control">
     @foreach ($data as $pedido)
     @if(count($pedido->desc) > 0 )
     <div class="row">
@@ -158,6 +163,7 @@
 
 @section('js')
 
+
 <script>
     var timeoutID;
     var cierraSesionIrLogeo = "{{route('salir', app()->getLocale())}}";
@@ -213,6 +219,9 @@
         function goBack() {
           window.history.back();
         }
+    </script>
+    <script>
+        $('input[name="dates"]').daterangepicker();
     </script>
 
 @stop
