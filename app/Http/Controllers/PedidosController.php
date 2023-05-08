@@ -10,7 +10,12 @@ class PedidosController extends Controller
 {
     public function index(){
         session_start();
+        $month=date("m");
+        $year=date("Y");
+        $mesinicio=$year.$month."01";
+        $datedesde = Carbon::now()->format('Y-m-d');
         $datehasta = Carbon::now()->format('Y-m-d');
+
         //////////////////// Vista Pedidos /////////////////
         $data = array();
         if(isset($_SESSION['usuario'])){
@@ -18,7 +23,7 @@ class PedidosController extends Controller
                 "EXEC spPedidosApp :id, :from, :to",
                 [
                     "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                    "from" => '2000-01-01',
+                    "from" => $mesinicio,
                     "to" => $datehasta,
                 ]
             );
