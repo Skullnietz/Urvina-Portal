@@ -3,10 +3,15 @@
 @section('title', 'Pedidos')
 
 @section('content_header')
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<style>
+    .centered-form {
+      display: flex;
+      justify-content: center;
+      margin-top: -3%;
+      height: 100vh;
+    }
+  </style>
+
 <div class="container">
     <div class="row">
         <div class=" col-md-9 col-9"><h4><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Pedidos')}}</h4></div>
@@ -72,7 +77,22 @@
 
         }
     </style>
-    <input name="dates" type="text" class="form-control">
+
+    <form action="{{route('filterpedido', app()->getLocale())}}" method="get">
+        <div class="row centered-form">
+            <div class="col-lg-8">
+                <div class="input-group mb-3">
+                    <input  name="datetimes" type="text" class="form-control" required>
+                    <input type="hidden" name="startDate" id="startDate">
+                    <input type="hidden" name="endDate" id="endDate">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </form>
+
     @foreach ($data as $pedido)
     @if(count($pedido->desc) > 0 )
     <div class="row">
@@ -159,9 +179,13 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 @stop
 
 @section('js')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 
 <script>
@@ -221,7 +245,19 @@
         }
     </script>
     <script>
-        $('input[name="dates"]').daterangepicker();
+        $(document).ready(function () {
+  $("input[name='datetimes']").daterangepicker(
+    {},
+    function (start, end, label) {
+      let startDate = start.format("YYYY-MM-DD").toString();
+      let endDate = end.format("YYYY-MM-DD").toString();
+      document.getElementById("startDate").value  = startDate;
+      document.getElementById("endDate").value  = endDate;
+
+    }
+  );
+});
+
     </script>
 
 @stop

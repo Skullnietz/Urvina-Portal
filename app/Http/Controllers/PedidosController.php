@@ -59,25 +59,21 @@ class PedidosController extends Controller
         //////////////////////////////////////////////////
 
     }
-    public function datefilter(){
+    public function datefilter(Request $request){
         session_start();
-        $month=date("m");
-        $year=date("Y");
-        $mesinicio=$year.$month."01";
-        $datedesde = Carbon::now()->format('Y-m-d');
-        $datehasta = Carbon::now()->format('Y-m-d');
-
         //////////////////// Vista Pedidos /////////////////
         $data = array();
         if(isset($_SESSION['usuario'])){
+
             $pedidos = DB::select(
                 "EXEC spPedidosApp :id, :from, :to",
                 [
                     "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                    "from" => $mesinicio,
-                    "to" => $datehasta,
+                    "from" => $request->startDate,
+                    "to" => $request->endDate,
                 ]
             );
+
             foreach($pedidos as $pedido){
                 $descpedido = DB::select(
                     "EXEC spPedidosDetalleApp :id, :idP",
