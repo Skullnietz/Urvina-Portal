@@ -63,16 +63,19 @@ class PedidosController extends Controller
         session_start();
         //////////////////// Vista Pedidos /////////////////
         $data = array();
+        $datedesde = date("Y-m-d", strtotime( $request->startDate));
+        $datehasta = date("Y-m-d", strtotime( $request->endDate));
         if(isset($_SESSION['usuario'])){
 
             $pedidos = DB::select(
                 "EXEC spPedidosApp :id, :from, :to",
                 [
                     "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                    "from" => $request->startDate,
-                    "to" => $request->endDate,
+                    "from" => $datedesde,
+                    "to" => $datehasta,
                 ]
             );
+
 
             foreach($pedidos as $pedido){
                 $descpedido = DB::select(
