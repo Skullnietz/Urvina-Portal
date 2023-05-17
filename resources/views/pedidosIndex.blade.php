@@ -8,7 +8,6 @@
       display: flex;
       justify-content: center;
       margin-top: -3%;
-      height: 100vh;
     }
   </style>
 
