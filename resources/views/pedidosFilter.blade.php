@@ -79,7 +79,7 @@
 
     <form action="{{route('filterpedido', app()->getLocale())}}" method="get">
         <div class="row centered-form">
-            <div class="col">
+            
                 <div class="input-group mb-3">
                     <input  id="datetimes" type="text" class="form-control">
                     <input type="hidden" name="startDate" id="startDate">
@@ -88,7 +88,7 @@
                     <button class="btn btn-primary" type="submit">Enviar</button>
                   </div>
                 </div>
-            </div>
+
           </div>
       </form>
 
