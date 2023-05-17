@@ -78,8 +78,8 @@
     </style>
 
     <form action="{{route('filterpedido', app()->getLocale())}}" method="get">
-        <div class="row ">
-            <div class="col-lg-8">
+        <div class="row centered-form">
+            <div class="col">
                 <div class="input-group mb-3">
                     <input  id="datetimes" type="text" class="form-control">
                     <input type="hidden" name="startDate" id="startDate">
