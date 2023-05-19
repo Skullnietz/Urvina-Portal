@@ -85,7 +85,7 @@
                     <input type="hidden" name="startDate" id="startDate">
                     <input type="hidden" name="endDate" id="endDate">
                   <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">Aplicar</button>
+                    <button class="btn btn-primary" type="submit">{{__('Aplicar')}}</button>
                   </div>
                 </div>
             </div>
