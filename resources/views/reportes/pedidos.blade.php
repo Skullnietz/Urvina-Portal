@@ -369,35 +369,16 @@ display: none !important;
     </div>
     </div>
         <!-- FIN Formulario de Reportes-->
-        <!-- Resultado TIPO CONSUMOS Formulario -->
+        <!-- Resultado PEDIDOS Formulario -->
         <div class="row">
             <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">{{__('Graficas de Consumos en Departamento')}}</h5>
+                    <h5 class="card-title">{{__('Graficas de Pedidos')}}</h5>
                     <div class="card-tools">
-                        <?php if ($pItem=="" && $pReference==""){
-                            echo '<a  href="EreportD/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pFrom.'/'.$pTo.'" type="button" class="btn btn-tool">
-                            '.__('Descargar reporte').'
-                            <i class="fas fa-file-excel"></i>
-                        </a>';
-
-                         }elseif($pItem==""){
-                            echo '<a  href="EreportI/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pReference.'/'.$pFrom.'/'.$pTo.'" type="button" class="btn btn-tool">
-                            '.__('Descargar reporte').'
-                            <i class="fas fa-file-excel"></i>
-                        </a>';} elseif ($pReference=="") {
-                            echo '<a  href="EreportR/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pItem.'/'.$pFrom.'/'.$pTo.'" type="button" class="btn btn-tool">
-                            '.__('Descargar reporte').'
-                            <i class="fas fa-file-excel"></i>
-                        </a>';
-                        }else{
-                            echo '<a  href="Ereport/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pItem.'/'.$pReference.'/'.$pFrom.'/'.$pTo.'" type="button" class="btn btn-tool">
-                            '.__('Descargar reporte').'
-                            <i class="fas fa-file-excel"></i>
-                        </a>';
-
-                        }  ?>
+                        <a  href="EreportD/'.$pID.'/'.$pTipo.'/'.$pDepartamento.'/'.$pFrom.'/'.$pTo.'" type="button" class="btn btn-tool">
+                           {{ __('Descargar reporte')}}
+                            <i class="fas fa-file-excel"></i></a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i  class="fas fa-minus"></i>
                         </button>
@@ -408,40 +389,38 @@ display: none !important;
                         </div>
                 </div>
                 <div class="card-body">
-                    <select id="select-graficas" class="form-control">
-                        <option value="container">{{__('Gráfica de barra | Consumo por Cantidades')}}</option>
-                        <option value="container1">{{__('Gráfica de pastel | Consumo por Cantidades')}}</option>
-                        <option value="container2">{{__('Gráfica de barra | Consumo por Importe')}}</option>
-                        <option value="container3">{{__('Gráfica de pastel | Consumo por Importe')}}</option>
-                      </select>
+                  <select id="select-graficas" class="form-control">
+                    <option value="container">{{__('Gráfica de linea | Pedido por Importe')}}</option>
+
+                  </select>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-sm-8 col-12">
                             <figure class="highcharts-figure">
                                 <div id="container"></div>
-                                <div id="container1"></div>
-                                <div id="container2"></div>
-                                <div id="container3"></div>
+
 
                               </figure>
                         </div>
-                        <div class="col-4">
+                        <div class="col-sm-4 col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="tabla-seccion">
                                         <div class="tabla-contenedor">
-                                    <table class="table table-sm  table-striped">
+                                    <table class="table table-sm table-striped">
                                         <tr>
-                                            <th>{{__('Departamento')}}</th>
+                                            <th>{{__('Articulo')}}</th>
+                                            <th>{{__('Nombre')}}</th>
                                             <th>{{__('Cantidad')}}</th>
                                         </tr><?php $count=0; ?>
-                                        @foreach ($dataConsulta as $data)
-                                        <?php if($count == 3){break;}   ?>
+
+
                                         <tr>
-                                            <td>{{$data->Departamento}}</td>
-                                            <td>{{number_format($data->Cantidad)}}</td>
+                                            <td>{{'Articulo'}}</td>
+                                            <td>{{__('Descripcion')}}</td>
+                                            <td>{{'Cantidad'}}</td>
                                         </tr>
                                         <?php $count++; ?>
-                                        @endforeach
+
 
 
                                     </table>
@@ -457,18 +436,28 @@ display: none !important;
                         <div class="tabla-contenedor">
                         <table class="table table-striped">
                             <tr class="bg-secondary">
-                                <th style="width:300px">{{__('Departamento')}}</th>
-                                <th style="width:300px">{{__('Cantidad')}}</th>
-                                <th style="width:300px">{{__('Importe')}}</th>
+                                <th>{{__('Pedido')}}</th>
+                                <th>{{__('Descripcion')}}</th>
+                                <th>{{__('Referencia')}}</th>
+                                <th>{{__('Estatus')}}</th>
+                                <th>{{__('Importe')}}</th>
                             </tr>
-
-                                @foreach ($dataConsulta as $dataD)
+                                @foreach ($data as $pedido)
                                 <tr>
-                                <td>{{$dataD->Departamento}}</td>
-                                <td>{{number_format($dataD->Cantidad)}}</td>
-                                <td>{{number_format($dataD->Importe, 2, '.', '')}}</td>
+                                    <td>{{$pedido->Pedido}}</td>
+                                    <td><ul>@foreach ($pedido->desc as $item)
+
+                                            <li>{{$item->Descripcion}}</li>
+
+
+                                        @endforeach</ul>
+                                    </td>
+                                    <td>{{$pedido->Referencia}}</td>
+                                    <td>{{$pedido->Estatus}}</td>
+                                    <td>{{$pedido->Importe}}</td>
                                 </tr>
                                 @endforeach
+
 
                         </table>
                     </div>
@@ -537,230 +526,70 @@ display: none !important;
     }
     </script>
     <script>
-        // Grafica de Cantidad Pastel
-        Highcharts.chart('container1', {
-  chart: {
-    type: 'pie',
-    options3d: {
-      enabled: true,
-      alpha: 45,
-      beta: 0
-    }
-  },
-  title: {
-    align: 'left',
-    text: '{{__('Consumos por articulo en Cantidades')}}'
-  },
-  accessibility: {
-    point: {
-      valueSuffix: '%'
-    }
-  },
-  tooltip: {
-    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-  },
-  plotOptions: {
-    pie: {
-      allowPointSelect: true,
-      cursor: 'pointer',
-      depth: 35,
-      dataLabels: {
-        enabled: true,
-        format: '{point.name}'
-      }
-    }
-  },
-  series: [{
-    type: 'pie',
-    name: 'Cantidad',
-    data: [
-        @foreach ($dataConsulta as $dataS2)
-      ['{{__($dataS2->Departamento)}}', {{__($dataS2->Cantidad)}}],
-      @endforeach
-    ]
-  }]
-});
-</script>
-<script>
-  // Grafica de Cantidad Pastel
-  Highcharts.chart('container3', {
-chart: {
-type: 'pie',
-options3d: {
-enabled: true,
-alpha: 45,
-beta: 0
-}
-},
-title: {
-align: 'left',
-text: '{{__('Consumos por articulo en Importe')}}'
-},
-accessibility: {
-point: {
-valueSuffix: '%'
-}
-},
-tooltip: {
-pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-},
-plotOptions: {
-pie: {
-allowPointSelect: true,
-cursor: 'pointer',
-depth: 35,
-dataLabels: {
-  enabled: true,
-  format: '{point.name}'
-}
-}
-},
-series: [{
-type: 'pie',
-name: 'Importe',
-data: [
-  @foreach ($dataConsulta as $dataS4)
-['{{__($dataS4->Departamento)}}', {{__(number_format($dataS4->Importe, 2, '.', ''))}}],
-@endforeach
-]
-}]
-});
-</script>
 
-<script>
 Highcharts.chart('container', {
-  //Grafica de Cantidad Barra
-  chart: {
-    type: 'column'
-  },
+
+title: {
+  text: 'Grafica linear de Pedidos por Importe',
+  align: 'left'
+},
+
+yAxis: {
   title: {
-    align: 'left',
-    text: '{{__('Consumos por articulo en Cantidades')}}'
-  },
-  xAxis: {
-    categories: ['{{__('Articulo')}}'],
-  },
-  yAxis: {
-    allowDecimals: false,
-    title: {
-        text: '{{__('Cantidad')}}'
-    }
-  },
-  legend: {
-    align: 'right',
-    verticalAlign: 'middle',
-    layout: 'vertical'
-  },
-
-  credits: { enabled: false },
-
-  series: [
-@foreach ($dataConsulta as $dataS)
-    {
-    name: '{{$dataS->Departamento}}',
-    data: [{{$dataS->Cantidad}}]
-  },
-@endforeach
-],
-  responsive: {
-    rules: [{
-      condition: {
-        maxWidth: 500
-      },
-      chartOptions: {
-        legend: {
-          align: 'center',
-          verticalAlign: 'bottom',
-          layout: 'horizontal'
-        },
-        yAxis: {
-          labels: {
-            align: 'left',
-            x: 0,
-            y: -5
-          },
-          title: {
-            text: null
-          }
-        },
-        subtitle: {
-          text: null
-        },
-        credits: {
-          enabled: false
-        }
-      }
-    }]
+    text: 'Importe'
   }
+},
+
+xAxis: {
+    categories: [
+                @foreach ($data as $nombre)
+                '{{$nombre->Pedido}}',
+                @endforeach
+                ]
+},
+
+legend: {
+  layout: 'vertical',
+  align: 'right',
+  verticalAlign: 'middle'
+},
+
+plotOptions: {
+  series: {
+    label: {
+      connectorAllowed: false
+    },
+
+  }
+},
+
+series: [ {
+
+
+  name: '{{$_SESSION['usuario']->Nombre}}',
+  data: [
+@foreach ($data as $importe)
+{{$importe->Importe}},
+@endforeach]
+}],
+
+responsive: {
+  rules: [{
+    condition: {
+      maxWidth: 500
+    },
+    chartOptions: {
+      legend: {
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'bottom'
+      }
+    }
+  }]
+}
+
 });
         </script>
-        <script>
-          Highcharts.chart('container2', {
-            //Grafica de Cantidad Barra
-            chart: {
-              type: 'column'
-            },
-            title: {
-              align: 'left',
-              text: '{{__('Consumos por articulo en Importe')}}'
-            },
-            xAxis: {
-              categories: ['{{__('Articulo')}}'],
-            },
-            yAxis: {
-              allowDecimals: false,
-              title: {
-                  text: '{{__('Importe')}}'
-              }
-            },
-            legend: {
-              align: 'right',
-              verticalAlign: 'middle',
-              layout: 'vertical'
-            },
-
-            credits: { enabled: false },
-
-            series: [
-          @foreach ($dataConsulta as $dataS3)
-              {
-              name: '{{$dataS3->Departamento}}',
-              data: [{{(number_format($dataS3->Importe, 2, '.', ''))}}]
-            },
-          @endforeach
-          ],
-            responsive: {
-              rules: [{
-                condition: {
-                  maxWidth: 500
-                },
-                chartOptions: {
-                  legend: {
-                    align: 'center',
-                    verticalAlign: 'bottom',
-                    layout: 'horizontal'
-                  },
-                  yAxis: {
-                    labels: {
-                      align: 'left',
-                      x: 0,
-                      y: -5
-                    },
-                    title: {
-                      text: null
-                    }
-                  },
-                  subtitle: {
-                    text: null
-                  },
-                  credits: {
-                    enabled: false
-                  }
-                }
-              }]
-            }
-          });
-                  </script>
                   <script>
                     $(document).ready(function() {
         $('#container').show();

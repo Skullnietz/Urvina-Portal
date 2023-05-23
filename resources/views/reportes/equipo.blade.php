@@ -89,13 +89,7 @@ display: none !important;
                 <h1><a href="#" onclick="goBack()" class="border rounded" >&nbsp;<i class="fas fa-arrow-left"></i>&nbsp;</a>&nbsp;&nbsp;&nbsp;{{__('Consultas del Cliente')}}</h1>
             </div>
             <div class="col-6">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search"
-                        aria-describedby="basic-addon1">
-                </div>
+
             </div>
         </div>
     </div>
@@ -210,6 +204,19 @@ display: none !important;
                                                         </div>
                                                     </div>
                                                     <b class="form-control">{{__('Anual')}}</b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <input type="radio" name="tipo" value="Pedidos"
+                                                                aria-label="Radio button for following text input">
+                                                        </div>
+                                                    </div>
+                                                    <b class="form-control">{{__('Pedidos')}}</b>
                                                 </div>
                                             </div>
                                         </div>

@@ -8,6 +8,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Exports\ConsultasExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
+use Jenssegers\Date\Date;
 use DateTime;
 
 
@@ -113,20 +114,61 @@ class ConsultasCController extends Controller
 
 
 
+            if($request->tipo != "Pedidos" ){
+            $dataConsulta = DB::select(
+                "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
+                [
+                    "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                    "type" => $request->tipo,
+                    "department" => $request->departamento,
+                    "item" => $request->articulo,
+                    "reference" => $request->equipo,
+                    "from" => date_format($datefrom, 'Ymd'),
+                    "to" => date_format($dateto,'Ymd'),
+                ]
 
-        $dataConsulta = DB::select(
-            "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
-            [
-                "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                "type" => $request->tipo,
-                "department" => $request->departamento,
-                "item" => $request->articulo,
-                "reference" => $request->equipo,
-                "from" => date_format($datefrom, 'Ymd'),
-                "to" => date_format($dateto,'Ymd'),
-            ]
+            );
+            }else{
+                $data = array();
+                $pedidos = DB::select(
+                    "EXEC spPedidosApp :id, :from, :to",
+                    [
+                        "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "from" => date_format($datefrom, 'Ymd'),
+                        "to" => date_format($dateto,'Ymd'),
+                    ]
+                );
 
-        );
+
+                foreach($pedidos as $pedido){
+                    $descpedido = DB::select(
+                        "EXEC spPedidosDetalleApp :id, :idP",
+                        [
+                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                            "idP" => $pedido->ID,
+                        ]
+                    );
+                    $CFecha = Date::parse($pedido->Fecha);
+                    $pedido->CFecha = $CFecha;
+                    $pedido->desc = $descpedido;
+                    foreach($pedido->desc as $p){
+                        $artdesc = DB::table('Art')->select('Articulo'
+                        ,'Rama'
+                        ,'Descripcion1'
+                        ,'Descripcion2'
+                        ,'NombreCorto'
+                        ,'Grupo'
+                        ,'Categoria'
+                        ,'Codigo')->where('Articulo', '=' , $p->Articulo)->first();
+                        $p->art = $artdesc;
+                    }
+                    array_push($data, $pedido);
+                }
+               
+
+                return view('reportes.pedidos')->with('departamentos',$departamentos)->with('data',$data);
+            }
+
         $pID = $_SESSION['usuario']->UsuarioCteCorp;
         $pTipo = $request->tipo;
         $pDepartamento = $request->departamento;
@@ -190,6 +232,7 @@ class ConsultasCController extends Controller
 
     public function ExcelReporteConsulta($lang,$pID,$pTipo,$pDepartamento,$pItem,$pReference,$pFrom,$pTo){
         session_start();
+
         $dataConsulta = DB::select(
             "EXEC spReportesApp :id,:type,:department,:item,:reference,:from,:to",
             [

@@ -175,7 +175,19 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <input type="radio" name="tipo" value="Pedidos"
+                                                        aria-label="Radio button for following text input">
+                                                </div>
+                                            </div>
+                                            <b class="form-control">{{__('Pedidos')}}</b>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
