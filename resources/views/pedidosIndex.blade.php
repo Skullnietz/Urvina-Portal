@@ -115,8 +115,8 @@
                                 echo '<img class="border rounded" id="img-1" src="/img/productos/default_product.png" alt="no img" style="width:100px">';
                             }
                             ?></div></div>
-                            <div class="col-md-10 col-sm-10 col-xs-10"><div class="row">{{__($descpedido->art->Descripcion1)}}@isset($pedido->Opcion)
-                                <h6><b>{{$pedido->Opcion}}</b> </h6></span>
+                            <div class="col-md-10 col-sm-10 col-xs-10"><div class="row">{{__($descpedido->art->Descripcion1)}}@isset($descpedido->Opcion)
+                                <h6><b>{{$descpedido->Opcion}}</b> </h6></span>
                             @endisset</div>
                             @if ($descpedido->Unidad == 'pza' || $descpedido->Unidad == 'par')
                                                 <div class="row"><h5>{{intval($descpedido->Cantidad)}} {{__($descpedido->Unidad)}}</h5></div>
