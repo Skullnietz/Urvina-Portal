@@ -32,6 +32,10 @@
      #btnimprimir {
         display:none;
      }
+     @page {
+    size: 139.7mm 215.9mm;
+    margin: 0;
+    }
 </style>
 
 
