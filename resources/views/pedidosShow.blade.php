@@ -135,7 +135,7 @@
             <div class="container d-flex align-items-center" >
                 <div class="mx-auto">
                     <div style="position:relative;">
-                        <a href="#" style="position:absolute; top:0; right:0; margin-top:-15px" class="btn btn-outline-dark"><i class="fas fa-print" ></i></a>
+                        <a href="{{route('printpedido', [app()->getLocale(), $pedido->ID])}}" style="position:absolute; top:0; right:0; margin-top:-15px" class="btn btn-outline-dark"><i class="fas fa-print" ></i></a>
                       </div>
 
             <div class="row"><h5><b>{{__('Detalle de pedido:')}}</b></h5></div>
