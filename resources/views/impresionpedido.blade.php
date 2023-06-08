@@ -38,7 +38,7 @@
    }
 </style>
 
-{{dd($data)}}
+
 <body>
     <div class="container">
         <div  class="row">
@@ -72,7 +72,7 @@
             <div class="col-3" style="width:280px; height:200px; margin-top:-24px"><br>
                 <div class="border-top border-right border-bottom rounded" style="padding:10px; text-align:center">
                     <label style="width:230px;height:22px;margin-left:-15px"for=""><b>{{__('Pedido No.')}}</b> </label><br>
-                    <label style="height:22px; font-size:22px; color:blue"for=""><b>RAA7152</b> </label><br><br>
+                    <label style="height:22px; font-size:22px; color:blue"for=""><b>{{$data[0]->Pedido}}</b> </label><br><br>
                     <small style="height:22px;">28-may-2023</small><br>
                 </div>
             </div>
