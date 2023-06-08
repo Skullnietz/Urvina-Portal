@@ -134,7 +134,7 @@
             <div class="container d-flex align-items-center" >
                 <div class="mx-auto">
                     <div style="position:relative;">
-                        <i class="fas fa-print" style="position:absolute; top:0; right:0;"></i>
+                        <a href="#" class="btn btn-outline-dark"><i class="fas fa-print" style="position:absolute; top:0; right:0;"></i></a>
                       </div>
 
             <div class="row"><h5><b>{{__('Detalle de pedido:')}}</b></h5></div>
