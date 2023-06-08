@@ -408,17 +408,28 @@ display: none !important;
                                         <div class="tabla-contenedor">
                                     <table class="table table-sm table-striped">
                                         <tr>
-                                            <th>{{__('Articulo')}}</th>
-                                            <th>{{__('Nombre')}}</th>
-                                            <th>{{__('Cantidad')}}</th>
+                                            <th>{{__('Pedido')}}</th>
+                                            <th>{{__('Descripcion')}}</th>
+                                            <th>{{__('Importe')}}</th>
                                         </tr><?php $count=0; ?>
+                                        @foreach ($data as $pedido)
+                                        <?php $count++; ?>
+                                        @if ($count == 4)
+                                            @break
+                                        @endif
+                                <tr>
+                                    <td>{{$pedido->Pedido}}</td>
+                                    <td><ul>@foreach ($pedido->desc as $item)
+
+                                            <li>{{__($item->Descripcion)}}</li>
 
 
-                                        <tr>
-                                            <td>{{'Articulo'}}</td>
-                                            <td>{{__('Descripcion')}}</td>
-                                            <td>{{'Cantidad'}}</td>
-                                        </tr>
+                                        @endforeach</ul>
+                                    </td>
+                                    <td>{{number_format($pedido->Importe, 2, '.', '')}}</td>
+                                </tr>
+                                @endforeach
+
                                         <?php $count++; ?>
 
 
@@ -447,14 +458,14 @@ display: none !important;
                                     <td>{{$pedido->Pedido}}</td>
                                     <td><ul>@foreach ($pedido->desc as $item)
 
-                                            <li>{{$item->Descripcion}}</li>
+                                            <li>{{__($item->Descripcion)}}</li>
 
 
                                         @endforeach</ul>
                                     </td>
                                     <td>{{$pedido->Referencia}}</td>
                                     <td>{{$pedido->Estatus}}</td>
-                                    <td>{{$pedido->Importe}}</td>
+                                    <td>{{number_format($pedido->Importe, 2, '.', '')}}</td>
                                 </tr>
                                 @endforeach
 
@@ -530,13 +541,13 @@ display: none !important;
 Highcharts.chart('container', {
 
 title: {
-  text: 'Grafica linear de Pedidos por Importe',
+  text: '{{__('Grafica lineal de Pedidos por Importe')}}',
   align: 'left'
 },
 
 yAxis: {
   title: {
-    text: 'Importe'
+    text: '{{__('Importe')}}'
   }
 },
 
