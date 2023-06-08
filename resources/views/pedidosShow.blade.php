@@ -133,6 +133,9 @@
         <div class="col-md-4 col-sm-4 col-xs-4 d-flex"  style="background-color:#f9f9f9">
             <div class="container d-flex align-items-center" >
                 <div class="mx-auto">
+                    <div style="position:relative;">
+                        <i class="fas fa-print" style="position:absolute; top:0; right:0;"></i>
+                      </div>
 
             <div class="row"><h5><b>{{__('Detalle de pedido:')}}</b></h5></div>
             <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} &nbsp;| &nbsp;<b style="color:gray">#{{$id}}</b></div>

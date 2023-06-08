@@ -149,11 +149,41 @@ class PedidosController extends Controller
         }
         //////////////////////////////////////////////////
     }
-    public function impresion(){
+    public function impresion($lang,$id){
         session_start();
         //////////////////// Vista Pedidos /////////////////
+        $data = array();
         if(isset($_SESSION['usuario'])){
-            return view('impresionpedido');
+            $pedidos = DB::select(
+                "EXEC spPedidosDetalleApp :id, :idP",
+                [
+                    "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                    "idP" => $id,
+                ]
+            );
+
+            foreach($pedidos as $pedido){
+                $art=trim($pedido->Articulo);
+
+
+
+                $artdesc = DB::select(
+                    "EXEC spArticuloApp :idu, :item",
+                    [
+                        "idu" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "item" => $art,
+                    ]
+                );
+
+
+
+                $CFecha = Date::parse($pedido->Fecha);
+                $pedido->CFecha = $CFecha;
+                $pedido->articulo = $artdesc;
+                array_push($data, $pedido);
+            }
+
+            return view('impresionpedido')->with('data',$data)->with('id',$id);
         }else {
             return redirect()->route('login', app()->getLocale());
         }
