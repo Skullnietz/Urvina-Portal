@@ -215,7 +215,7 @@
             </div>
             <div class="row">
                 {{$data[0]->Observaciones}}
-            </div>
+            </div><br><br>
             @endisset
 
         </div>
