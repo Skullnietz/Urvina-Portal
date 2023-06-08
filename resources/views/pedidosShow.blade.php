@@ -129,6 +129,7 @@
         </div>
         </div>
             @endforeach
+            <br><br>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4 d-flex"  style="background-color:#f9f9f9">
             <div class="container d-flex align-items-center" >
@@ -215,7 +216,7 @@
             </div>
             <div class="row">
                 {{$data[0]->Observaciones}}
-            </div><br><br>
+            </div><br>
             @endisset
 
         </div>
