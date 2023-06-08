@@ -32,10 +32,10 @@
      #btnimprimir {
         display:none;
      }
-     @page {
-        size: 210mm 297mm;
-        margin: 0;
-        }
+     div.saltopagina{
+      display:block;
+      page-break-before:always;
+   }
 </style>
 
 
@@ -110,6 +110,7 @@
         <br>
         <br>
     </div>
+    <div class="saltopagina"></div>
     <br><br>
     <center>
         <button id="btnimprimir" onclick="printHTML()" class="btn btn-success"> {{__('Imprimir')}} </button>
