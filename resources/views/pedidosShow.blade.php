@@ -104,7 +104,7 @@
                     <div class="col-md-8 col-sm-8 col-xs-8">
                         <div class="row">
                             <h5>{{__($pedido->Descripcion)}} <span class="badge badge-warning">@isset($pedido->Opcion)
-                                <h6>{{$pedido->Opcion}} </h6></span>
+                                <h6><b>{{$pedido->Opcion}}</b> </h6></span>
                             @endisset</h5>
                         </div>
                         <div class="row">
