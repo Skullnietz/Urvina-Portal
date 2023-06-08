@@ -38,7 +38,7 @@
    }
 </style>
 
-
+{{dd($_SESSION)}}
 <body>
     <div class="container">
         <div  class="row">
