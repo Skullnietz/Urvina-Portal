@@ -31,7 +31,7 @@
 <style media="print">
     .zona_impresion{
 
-    
+
     padding:10px 75px 10px 5px;
 
     float:left;
@@ -55,7 +55,7 @@
     <div class="container zona_impresion">
         <div  class="row">
             <div class="col-3">
-                <div class="border rounded" style="width:280px; height:130px; margin-left:-30px" >
+                <div class="" style="width:280px; height:130px; margin-left:-30px" >
                     <img src="/logo/grupo_urvina_logo.png" style="width:280px; padding:10px; margin-right:30px " alt="">
                 </div>
 
