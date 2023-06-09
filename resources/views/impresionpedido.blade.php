@@ -103,7 +103,7 @@
             <div class="col-2 border rounded" style="text-align:center">{{$pedido->Articulo}}</div>
             <div class="col-2 border rounded" style="text-align:center">{{$pedido->Codigo}}</div>
             <div class="col-7 border rounded" style="text-align:center">{{$pedido->Descripcion}}[{{$pedido->Opcion}}]</div>
-            <div class="col-1 border rounded" style="text-align:center">10</div>
+            <div class="col-1 border rounded" style="text-align:center">{{number_format($pedido->Cantidad,2, ',', ' ')}}</div>
         </div>
         @endforeach
 
@@ -111,16 +111,16 @@
         <br>
         <div class="row" style="margin-left:10px">
             <div class="col-2 border rounded" style="text-align:right"><b></b></div>
-            <div class="col-3 border rounded" style="text-align:left"><b>{{__('Importe:')}} $34.16</b></div>
-            <div class="col-3 border rounded" style="text-align:left"><b>{{__('Impuesto:')}} $5.47</b></div>
-            <div class="col-3 border rounded" style="text-align:left"><b>{{__('Total:')}} $39.63</b></div>
+            <div class="col-3 border rounded" style="text-align:right"><b>{{__('Importe:')}} $34.16</b></div>
+            <div class="col-3 border rounded" style="text-align:right"><b>{{__('Impuesto:')}} $5.47</b></div>
+            <div class="col-3 border rounded" style="text-align:right"><b>{{__('Total:')}} $39.63</b></div>
             <div class="col-1 border rounded" style="text-align:center"><b>USD</b></div>
         </div>
         <!-- Observaciones -->
         <br>
         <div class="row">
             <div class="col-2" style="text-align:right"> {{__('Observaciones:')}} </div>
-            <div class="col-10 border rounded"></div>
+            <div class="col-10 border rounded">{{$pedido->Observaciones}}</div>
         </div>
         <br>
         <br>
