@@ -421,7 +421,7 @@ display: none !important;
                                     <td>{{$pedido->Pedido}}</td>
                                     <td><ul>@foreach ($pedido->desc as $item)
 
-                                            <li>{{__($item->Descripcion)}}({{number_format($item->Cantidad)}}{{$item->Unidad}})</li>
+                                            <li>{{__($item->Descripcion)}}({{number_format($item->Cantidad)}}  {{$item->Unidad}})</li>
 
 
                                         @endforeach</ul>
@@ -458,7 +458,7 @@ display: none !important;
                                     <td>{{$pedido->Pedido}}</td>
                                     <td><ul>@foreach ($pedido->desc as $item)
 
-                                            <li>{{__($item->Descripcion)}}({{number_format($item->Cantidad)}}{{$item->Unidad}})</li>
+                                            <li>{{__($item->Descripcion)}}({{number_format($item->Cantidad)}}  {{$item->Unidad}})</li>
 
 
                                         @endforeach</ul>
