@@ -71,7 +71,7 @@
                         <tr style="height:20px;">
                             <td class=" border-top border-bottom">&nbsp;&nbsp;&nbsp;<b>{{__('Contacto')}}</b> </td>
                             <td class="border-right"  class="border-top border-bottom">&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
-                            <td class="border-top border-bottom">&nbsp;G001 - DEMO PORTAL URVINA&nbsp;&nbsp;</td>
+                            <td class="border-top border-bottom">&nbsp;{{$_SESSION['usuario']['AyudaNombre']}}&nbsp;&nbsp;</td>
                         </tr>
                         <tr style="height:20px;">
                             <td class=" border-top border-bottom">&nbsp;&nbsp;&nbsp;<b>{{__('Referencia')}}</b> </td>
