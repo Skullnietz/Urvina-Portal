@@ -31,8 +31,7 @@
 <style media="print">
     .zona_impresion{
 
-    width: 21.59cm;
-    padding:10px 75px 10px 5px;
+    
 
     float:left;
     margin-left:00px;
