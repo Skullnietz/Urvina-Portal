@@ -103,7 +103,7 @@
             <div class="col-2 border rounded" style="text-align:center">{{$pedido->Articulo}}</div>
             <div class="col-2 border rounded" style="text-align:center">{{$pedido->Codigo}}</div>
             <div class="col-7 border rounded" style="text-align:center">{{$pedido->Descripcion}}[{{$pedido->Opcion}}]</div>
-            <div class="col-1 border rounded" style="text-align:center">{{number_format($pedido->Cantidad,2, ',', ' ')}}</div>
+            <div class="col-1 border rounded" style="text-align:center">{{number_format($pedido->Cantidad)}}</div>
         </div>
         @endforeach
 
