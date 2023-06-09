@@ -94,7 +94,7 @@
             <div class="col-2 border rounded" style="text-align:center"><b> {{__('Artículo')}} </b></div>
             <div class="col-2 border rounded" style="text-align:center"><b> {{__('Código')}} </b></div>
             <div class="col-7 border rounded" style="text-align:center"><b> {{__('Descripción')}} </b></div>
-            <div class="col-1 border rounded" style="text-align:left;"><b style="margin-left:-5px"> {{__('Cantidad')}} </b></div>
+            <div class="col-1 border rounded" style="text-align:left;"><b> {{__('Cantidad')}} </b></div>
         </div>
         <!-- Articulo -->
         <br>
