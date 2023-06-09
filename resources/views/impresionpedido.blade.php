@@ -66,7 +66,7 @@
                         <tr style="height:20px;" >
                             <td class=" border-top border-bottom">&nbsp;&nbsp;&nbsp;<b>{{__('Planta')}}</b> </td>
                             <td class="border-right border-top border-bottom">&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
-                            <td class="border-top border-bottom">&nbsp;PORTAL URIVINA DE MEXICO S DE RL DE CV&nbsp;&nbsp;</td>
+                            <td class="border-top border-bottom">&nbsp;{{$_SESSION['usuario']->Planta}}&nbsp;&nbsp;</td>
                         </tr>
                         <tr style="height:20px;">
                             <td class=" border-top border-bottom">&nbsp;&nbsp;&nbsp;<b>{{__('Contacto')}}</b> </td>
@@ -90,7 +90,7 @@
             </div>
         </div>
         <br>
-        <div class="row">
+        <div class="row" style="margin-left:10px">
             <div class="col-2 border rounded" style="text-align:center"><b> {{__('Artículo')}} </b></div>
             <div class="col-2 border rounded" style="text-align:center"><b> {{__('Código')}} </b></div>
             <div class="col-7 border rounded" style="text-align:center"><b> {{__('Descripción')}} </b></div>
@@ -98,7 +98,7 @@
         </div>
         <!-- Articulo -->
         <br>
-        <div class="row">
+        <div class="row" style="margin-left:10px">
             <div class="col-2 border rounded" style="text-align:center">SGG2-032</div>
             <div class="col-2 border rounded" style="text-align:center">0382-1D04</div>
             <div class="col-7 border rounded" style="text-align:center">GUANTE DE NYLON REC. DE NITRILO EN PALMA Y DORSO MOD. 1400 SAFE FIT [6]</div>
@@ -106,7 +106,7 @@
         </div>
         <!-- Importe, Impuesto, Total, Moneda -->
         <br>
-        <div class="row">
+        <div class="row" style="margin-left:10px">
             <div class="col-5 border rounded" style="text-align:right"><b></b></div>
             <div class="col-2 border rounded" style="text-align:right"><b>{{__('Importe:')}} $34.16</b></div>
             <div class="col-2 border rounded" style="text-align:right"><b>{{__('Impuesto:')}} $5.47</b></div>
