@@ -110,10 +110,10 @@
         <!-- Importe, Impuesto, Total, Moneda -->
         <br>
         <div class="row" style="margin-left:10px">
-            <div class="col-5 border rounded" style="text-align:right"><b></b></div>
-            <div class="col-2 border rounded" style="text-align:left"><b>{{__('Importe:')}} $34.16</b></div>
-            <div class="col-2 border rounded" style="text-align:left"><b>{{__('Impuesto:')}} $5.47</b></div>
-            <div class="col-2 border rounded" style="text-align:left"><b>{{__('Total:')}} $39.63</b></div>
+            <div class="col-2 border rounded" style="text-align:right"><b></b></div>
+            <div class="col-3 border rounded" style="text-align:left"><b>{{__('Importe:')}} $34.16</b></div>
+            <div class="col-3 border rounded" style="text-align:left"><b>{{__('Impuesto:')}} $5.47</b></div>
+            <div class="col-3 border rounded" style="text-align:left"><b>{{__('Total:')}} $39.63</b></div>
             <div class="col-1 border rounded" style="text-align:center"><b>USD</b></div>
         </div>
         <!-- Observaciones -->
