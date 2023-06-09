@@ -471,7 +471,7 @@ class CarritoController extends Controller
              unset($_SESSION["carritopes"]);
 
             Alert::success(__('Confirmacion de compra'), __('Pedido realizado, ¡gracias!'));
-            return view('pedidosRecientes')->with('folio',$folio);
+            return view('pedidosRecientes')->with('folio',$folio)->with('IDV',$IDV);
 
 
         }else {
