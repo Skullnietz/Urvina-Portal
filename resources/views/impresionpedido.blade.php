@@ -98,12 +98,15 @@
         </div>
         <!-- Articulo -->
         <br>
+        @foreach ($data as $pedido)
         <div class="row" style="margin-left:10px">
-            <div class="col-2 border rounded" style="text-align:center">SGG2-032</div>
-            <div class="col-2 border rounded" style="text-align:center">0382-1D04</div>
-            <div class="col-7 border rounded" style="text-align:center">GUANTE DE NYLON REC. DE NITRILO EN PALMA Y DORSO MOD. 1400 SAFE FIT [6]</div>
+            <div class="col-2 border rounded" style="text-align:center">{{$pedido->Articulo}}</div>
+            <div class="col-2 border rounded" style="text-align:center">{{$pedido->Codigo}}</div>
+            <div class="col-7 border rounded" style="text-align:center">{{$pedido->Descripcion}}[{{$pedido->Opcion}}]</div>
             <div class="col-1 border rounded" style="text-align:center">10</div>
         </div>
+        @endforeach
+
         <!-- Importe, Impuesto, Total, Moneda -->
         <br>
         <div class="row" style="margin-left:10px">
