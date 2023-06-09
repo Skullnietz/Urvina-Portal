@@ -29,6 +29,18 @@
 </head>
 
 <style media="print">
+    .zona_impresion{
+
+    width: 21.59cm;
+    padding:10px 75px 10px 5px;
+
+    float:left;
+    margin-left:00px;
+    border-style: solid;
+    border:1px solid  #999;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+
+    }
      #btnimprimir {
         display:none;
      }
@@ -40,7 +52,7 @@
 
 
 <body>
-    <div class="container">
+    <div class="container zona_impresion">
         <div  class="row">
             <div class="col-3">
                 <div class="border rounded" style="width:280px; height:130px; margin-left:-30px" >
