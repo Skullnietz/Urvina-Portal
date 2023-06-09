@@ -79,7 +79,7 @@
                     <br>
                     <div class="row">
                         <div class="col-4"></div>
-                        <div class="col-4"><a href="" class="btn btn-danger"> {{__('Cancelar')}}</a>&nbsp;&nbsp;<a href="{{route('printpedido', [app()->getLocale()])}}" target="_blank" class="btn btn-warning"> {{__('Imprimir')}}</a>&nbsp;&nbsp;<a href="" class="btn btn-primary"> {{__('Continuar')}}</a></div>
+                        <div class="col-4"><a href="" class="btn btn-danger"> {{__('Cancelar')}}</a>&nbsp;&nbsp;<a href="{{route('printpedido', [app()->getLocale(), $IDV])}}" target="_blank" class="btn btn-warning"> {{__('Imprimir')}}</a>&nbsp;&nbsp;<a href="" class="btn btn-primary"> {{__('Continuar')}}</a></div>
                         <div class="col-4"></div>
                     </div>
                     <br>
