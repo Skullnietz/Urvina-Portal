@@ -76,7 +76,7 @@
                         <tr style="height:20px;">
                             <td class=" border-top border-bottom">&nbsp;&nbsp;&nbsp;<b>{{__('Referencia')}}</b> </td>
                             <td class="border-right border-top border-bottom">&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;</td>
-                            <td class="border-top border-bottom">&nbsp;UNO&nbsp;&nbsp;</td>
+                            <td class="border-top border-bottom">&nbsp;{{$data[0]->Departamento}}&nbsp;&nbsp;</td>
                         </tr>
                     </table>
                 </div>
@@ -85,7 +85,7 @@
                 <div class="border-top border-right border-bottom rounded" style="padding:10px; text-align:center">
                     <label style="width:230px;height:22px;margin-left:-15px"for=""><b>{{__('Pedido No.')}}</b> </label><br>
                     <label style="height:22px; font-size:22px; color:blue"for=""><b>{{$data[0]->Pedido}}</b> </label><br><br>
-                    <small style="height:22px;">28-may-2023</small><br>
+                    <small style="height:22px;">{{$data[0]->CFecha->format('j F Y')}}</small><br>
                 </div>
             </div>
         </div>
