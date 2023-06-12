@@ -446,6 +446,9 @@ display: none !important;
                         <div class="tabla-seccion">
                         <div class="tabla-contenedor">
                         <table class="table table-striped">
+                            <tr class="bg-success">
+                                {{__('Articulos en dolares')}}
+                            </tr>
                             <tr class="bg-secondary">
                                 <th>{{__('Pedido')}}</th>
                                 <th>{{__('Descripcion')}}</th>
@@ -453,8 +456,9 @@ display: none !important;
                                 <th>{{__('Estatus')}}</th>
                                 <th>{{__('Importe')}}</th>
                             </tr>
-                            
+
                                 @foreach ($data as $pedido)
+                                @if (str_contains($pedido->venta->TipoCambio, 'Dolares'))
                                 <tr>
                                     <td>{{$pedido->Pedido}}</td>
                                     <td><ul>@foreach ($pedido->desc as $item)
@@ -468,6 +472,7 @@ display: none !important;
                                     <td>{{$pedido->Estatus}}</td>
                                     <td>{{number_format($pedido->Importe, 2, '.', '')}}</td>
                                 </tr>
+                                @endif
                                 @endforeach
 
 
