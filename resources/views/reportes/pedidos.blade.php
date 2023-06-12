@@ -390,16 +390,16 @@ display: none !important;
                 </div>
                 <div class="card-body">
                   <select id="select-graficas" class="form-control">
-                    <option value="container">{{__('Gráfica de linea | Pedido por Importe MXN')}}</option>
-                    <option value="container1">{{__('Gráfica de linea | Pedido por Importe USD')}}</option>
+                    <option value="container1">{{__('Gráfica de linea | Pedido por Importe MXN')}}</option>
+                    <option value="container2">{{__('Gráfica de linea | Pedido por Importe USD')}}</option>
                   </select>
                   <div id="container">
                     <div class="row">
                         <div class="col-sm-8 col-12">
                             <figure class="highcharts-figure">
-                            <div id="container"></div>
                             <div id="container1"></div>
-                        </figure>
+                            <div id="container2"></div>
+                            </figure>
                         </div>
                         <div class="col-sm-4 col-12">
                             <div class="card">
