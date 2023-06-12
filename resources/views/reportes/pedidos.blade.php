@@ -426,7 +426,8 @@ display: none !important;
 
                                         @endforeach</ul>
                                     </td>
-                                    <td>{{number_format($pedido->Importe, 2, '.', '')}}</td>
+                                    <?php $PImporte = ($pedido->venta->Importe + $pedido->venta->TipoCambio) ?>
+                                    <td>{{number_format($PImporte, 2, '.', '')}}</td>
                                 </tr>
                                 @endforeach
 
@@ -462,15 +463,19 @@ display: none !important;
                                 <tr>
                                     <td>{{$pedido->Pedido}}</td>
                                     <td><ul>@foreach ($pedido->desc as $item)
+
                                             <li>{{__($item->Descripcion)}}({{number_format($item->Cantidad)}}  {{$item->Unidad}})</li>
+
+
                                         @endforeach</ul>
                                     </td>
                                     <td>{{$pedido->Referencia}}</td>
                                     <td>{{$pedido->Estatus}}</td>
-                                    <td>
-                                        <?php $Mimporte = ($pedido->venta->Importe * $pedido->venta->TipoCambio)?>
-                                        {{number_format($Mimporte, 2, '.', '')}}
-
+                                    <td> @if(str_contains($pedido->venta->Moneda,"Dolares"))
+                                        {{number_format($pedido->Importe, 2, '.', '')}}
+                                        @else
+                                        {{number_format($pedido->Importe, 2, '.', '')}}
+                                        @endif
                                     </td>
                                 </tr>
                                 @endif
