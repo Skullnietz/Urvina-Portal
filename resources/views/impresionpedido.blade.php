@@ -111,9 +111,9 @@
         <br>
         <div class="row" style="margin-left:10px">
             <div class="col-2 border rounded" style="text-align:right"><b></b></div>
-            <div class="col-3 border rounded" style="text-align:right"><b>{{__('Importe:')}} ${{$venta->Importe}}</b></div>
-            <div class="col-3 border rounded" style="text-align:right"><b>{{__('Impuesto:')}} ${{$venta->Impuestos}}</b></div>
-            <div class="col-3 border rounded" style="text-align:right"><b>{{__('Total:')}} ${{$venta->Saldo}}</b></div>
+            <div class="col-3 border rounded" style="text-align:right"><b>{{__('Importe:')}} ${{number_format($venta->Importe, 2, '.', '');}}</b></div>
+            <div class="col-3 border rounded" style="text-align:right"><b>{{__('Impuesto:')}} ${{number_format($venta->Impuestos, 2, '.', '');}}</b></div>
+            <div class="col-3 border rounded" style="text-align:right"><b>{{__('Total:')}} ${{number_format($venta->Saldo, 2, '.', '');}}</b></div>
             <div class="col-1 border rounded" style="text-align:center"><b>{{__($data[0]->articulo[0]->Moneda)}}</b></div>
         </div>
         <!-- Observaciones -->
