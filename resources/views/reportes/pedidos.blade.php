@@ -629,7 +629,7 @@ series: [ {
   name: '{{$_SESSION['usuario']->Nombre}}',
   data: [
 @foreach ($data as $importe)
-$PImporte = ($importe->venta->Importe + $pedido->venta->TipoCambio)
+<?php $PImporte = ($importe->venta->Importe + $pedido->venta->TipoCambio)?>
 {{$PImporte}},
 @endforeach]
 }],
