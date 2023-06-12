@@ -148,6 +148,8 @@ class ConsultasCController extends Controller
                             "idP" => $pedido->ID,
                         ]
                     );
+                    $venta = DB::table('Venta')->select('ID','MovID','Moneda','TipoCambio','Usuario','Descuento','DescuentoGlobal','Importe','Impuestos','Saldo')->where('ID','=',$pedido->ID)->first();
+                    $pedido->venta = $venta;
                     $CFecha = Date::parse($pedido->Fecha);
                     $pedido->CFecha = $CFecha;
                     $pedido->desc = $descpedido;
