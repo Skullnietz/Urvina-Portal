@@ -453,7 +453,7 @@ display: none !important;
                                 <th>{{__('Estatus')}}</th>
                                 <th>{{__('Importe')}}</th>
                             </tr>
-                            {{dd($data);}}
+                            {{dd($data)}}
                                 @foreach ($data as $pedido)
                                 <tr>
                                     <td>{{$pedido->Pedido}}</td>
