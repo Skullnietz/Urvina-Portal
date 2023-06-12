@@ -698,7 +698,7 @@ series: [ {
   data: [
 @foreach ($data as $importeU)
 <?php $USImporte = ($importeU->venta->Importe / $importeU->venta->TipoCambio); ?>
-{{$PeImporte}},
+{{$USImporte}},
 @endforeach]
 }],
 
