@@ -426,7 +426,7 @@ display: none !important;
 
                                         @endforeach</ul>
                                     </td>
-                                    <?php $PImporte = ($pedido->venta->Importe + $pedido->venta->TipoCambio) ?>
+                                    <?php $PImporte = ($pedido->venta->Importe * $pedido->venta->TipoCambio) ?>
                                     <td>{{number_format($PImporte, 2, '.', '')}}</td>
                                 </tr>
                                 @endforeach
@@ -629,7 +629,7 @@ series: [ {
   name: '{{$_SESSION['usuario']->Nombre}}',
   data: [
 @foreach ($data as $importe)
-<?php $PImporte = ($importe->venta->Importe + $pedido->venta->TipoCambio); ?>
+<?php $PImporte = ($importe->venta->Importe * $pedido->venta->TipoCambio); ?>
 {{$PImporte}},
 @endforeach]
 }],
