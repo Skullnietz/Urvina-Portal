@@ -485,7 +485,7 @@ display: none !important;
                     <div class="tabla-seccion">
                     <div class="tabla-contenedor">
                     <table class="table table-striped">
-                        <tr class="bg-success">
+                        <tr class="bg-primary">
                             <th>{{__('Articulos en pesos')}}</th>
                         </tr>
                         <tr class="bg-secondary">
