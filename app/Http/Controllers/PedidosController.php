@@ -183,7 +183,9 @@ class PedidosController extends Controller
                 array_push($data, $pedido);
             }
 
-            return view('impresionpedido')->with('data',$data)->with('id',$id);
+            $venta = DB::table('Venta')->select('ID','MovID','Moneda','TipoCambio','Usuario','Descuento','DescuentoGlobal','Importe','Impuestos','Saldo')->where('ID','=',$id)->first();
+            return view('impresionpedido')->with('data',$data)->with('id',$id)->with('venta',$venta);
+            
         }else {
             return redirect()->route('login', app()->getLocale());
         }

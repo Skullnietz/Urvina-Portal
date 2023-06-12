@@ -84,6 +84,8 @@ class CatalogoController extends Controller
             ,'Categoria'
             ,'Codigo')->where('Articulo', '=' , $item)->first();
 
+            
+
             $codigo = DB::table('ArtIdioma')->select('Articulo','Codigo')->where('Articulo', '=' , $item)->first();
                                         $year = date('Y');
                                         $month = date('m');
@@ -113,7 +115,7 @@ class CatalogoController extends Controller
     ////////// Vista Busqueda Articulo /////////////////
     public function SearchItem(Request $request){
         session_start();
-        
+
         if(isset($_SESSION['usuario'])){
             $articulos = DB::select(
                 "EXEC spSearchArticulosApp :id,:articulo",
