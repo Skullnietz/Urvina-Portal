@@ -196,7 +196,7 @@
             <div class="row justify-content-between">
                 <div>{{__('Impuestos')}}:</div>
 
-                <div> {{__($venta->Impuestos)}} </div>
+                <div> {{__(number_format($venta->Impuestos), 2, ',', ' ')}} </div>
             </div>
 
             <hr>
@@ -204,14 +204,14 @@
             <div class="row justify-content-between">
                 <div>{{__('Total USD:')}} </div>
 
-                <div>$ {{$venta->Saldo}}</div>
+                <div>$ {{number_format($venta->Saldo, 2, ',', ' ')}}</div>
             </div>
             @endif
             @if($cantartpeso != 0)
             <div class="row justify-content-between">
                 <div>{{__('Total MXN:')}} </div>
 
-                <div>$ {{$venta->Saldo}}</div>
+                <div>$ {{number_format($venta->Saldo, 2, ',', ' ')}}</div>
             </div>
             @endif
             <hr>
