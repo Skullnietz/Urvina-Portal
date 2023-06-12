@@ -702,7 +702,8 @@ series: [ {
 if($importeU->venta->Moneda == 'Pesos'){
 $USImporte = $importeU->venta->Importe / $importeU->venta->TipoCambio;
 echo $USImporte.',';
-}if(str_contains($importeU->venta->Moneda, 'Dolares')){
+}
+if($importeU->venta->Moneda == 'Dolares'){
     echo $importeU->venta->Importe.',';
 }
 ?>
