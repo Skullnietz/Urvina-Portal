@@ -470,7 +470,13 @@ display: none !important;
                                     </td>
                                     <td>{{$pedido->Referencia}}</td>
                                     <td>{{$pedido->Estatus}}</td>
-                                    <td>{{number_format($pedido->Importe, 2, '.', '')}}</td>
+                                    <td> @if(str_contains($pedido->venta->Moneda,"Dolares"))
+                                        <?php $Pimporte = $pedido->venta->Importe * $pedido->venta->TipoCambio?>
+                                        {{number_format($Pimporte, 2, '.', '')}}
+                                        @else
+                                        {{number_format($pedido->Importe, 2, '.', '')}}
+                                        @endif
+                                    </td>
                                 </tr>
                                 @endif
                                 @endforeach
