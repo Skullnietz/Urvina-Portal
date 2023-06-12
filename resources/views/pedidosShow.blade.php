@@ -182,7 +182,7 @@
             <div class="row justify-content-between">
                 <div>{{__('Articulos pesos')}}({{$cantartpeso}}): </div>
 
-                <div>$ {{$venta->Importe}} MXN</div>
+                <div>$ {{number_format($venta->Importe, 2, ',', ' ')}} MXN</div>
             </div>
             @endif
             <br>
