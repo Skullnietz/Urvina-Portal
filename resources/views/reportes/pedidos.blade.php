@@ -703,7 +703,7 @@ if($importeU->venta->Moneda == 'Pesos'){
 $USImporte = $importeU->venta->Importe / $importeU->venta->TipoCambio;
 echo $USImporte.',';
 }
-if($importeU->venta->Moneda == 'Dolares'){
+else{
     echo $importeU->venta->Importe.',';
 }
 ?>
