@@ -458,8 +458,7 @@ display: none !important;
                             </tr>
 
                                 @foreach ($data as $pedido)
-                                {{$pedido->venta->TipoCambio}}
-                                @if (str_contains($pedido->venta->TipoCambio, 'Dolares'))
+                                @if (str_contains($pedido->venta->Moneda, 'Dolares'))
                                 <tr>
                                     <td>{{$pedido->Pedido}}</td>
                                     <td><ul>@foreach ($pedido->desc as $item)
