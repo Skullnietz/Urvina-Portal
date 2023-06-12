@@ -175,14 +175,14 @@
             <div class="row justify-content-between">
                 <div>{{__('Articulos')}} dlls({{$cantartdolar}}):</div>
 
-                <div>$ {{$sumaPDolar}} USD </div>
+                <div>$ {{$venta->Importe}} USD </div>
             </div>
             @endif
             @if($cantartpeso != 0)
             <div class="row justify-content-between">
                 <div>{{__('Articulos pesos')}}({{$cantartpeso}}): </div>
 
-                <div>$ {{$sumaPPeso}} MXN</div>
+                <div>$ {{$venta->Importe}} MXN</div>
             </div>
             @endif
             <br>
@@ -193,19 +193,25 @@
                 <div> {{__($data[0]->articulo[0]->Periodo)}} </div>
             </div>
             @endisset
+            <div class="row justify-content-between">
+                <div>{{__('Impuestos')}}:</div>
+
+                <div> {{__($venta->Impuestos)}} </div>
+            </div>
+
             <hr>
             @if($cantartdolar != 0)
             <div class="row justify-content-between">
                 <div>{{__('Total USD:')}} </div>
 
-                <div>$ {{$sumaPDolar}}</div>
+                <div>$ {{$venta->Saldo}}</div>
             </div>
             @endif
             @if($cantartpeso != 0)
             <div class="row justify-content-between">
                 <div>{{__('Total MXN:')}} </div>
 
-                <div>$ {{$sumaPPeso}}</div>
+                <div>$ {{$venta->Saldo}}</div>
             </div>
             @endif
             <hr>

@@ -134,6 +134,8 @@ class PedidosController extends Controller
                         "item" => $art,
                     ]
                 );
+                $venta = DB::table('Venta')->select('ID','MovID','Moneda','TipoCambio','Usuario','Descuento','DescuentoGlobal','Importe','Impuestos','Saldo')->where('ID','=',$id)->first();
+
 
 
 
@@ -143,7 +145,8 @@ class PedidosController extends Controller
                 array_push($data, $pedido);
             }
 
-            return view('pedidosShow')->with('data',$data)->with('id',$id);
+            return view('pedidosShow')->with('data',$data)->with('id',$id)->with('venta',$venta);
+
         }else {
             return redirect()->route('login', app()->getLocale());
         }
@@ -185,7 +188,7 @@ class PedidosController extends Controller
 
             $venta = DB::table('Venta')->select('ID','MovID','Moneda','TipoCambio','Usuario','Descuento','DescuentoGlobal','Importe','Impuestos','Saldo')->where('ID','=',$id)->first();
             return view('impresionpedido')->with('data',$data)->with('id',$id)->with('venta',$venta);
-            
+
         }else {
             return redirect()->route('login', app()->getLocale());
         }
