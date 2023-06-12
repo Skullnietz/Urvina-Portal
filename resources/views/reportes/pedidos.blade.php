@@ -447,7 +447,7 @@ display: none !important;
                         <div class="tabla-contenedor">
                         <table class="table table-striped">
                             <tr class="bg-success">
-                                {{__('Articulos en dolares')}}
+                                <th>{{__('Articulos en dolares')}}</th>
                             </tr>
                             <tr class="bg-secondary">
                                 <th>{{__('Pedido')}}</th>
