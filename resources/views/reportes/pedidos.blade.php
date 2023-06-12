@@ -701,13 +701,11 @@ series: [ {
 <?php
 $USImporte = $importeU->venta->Importe / $importeU->venta->TipoCambio;
 ?>
-{{$USImporte,}}
+{{$USImporte}},
 @endif
 @if (str_contains($importeU->venta->Moneda, 'Dolares'))
-{{$importeU->venta->Importe,}}
+{{$importeU->venta->Importe}},
 @endif
-
-
 @endforeach]
 }],
 
