@@ -196,7 +196,7 @@
             <div class="row justify-content-between">
                 <div>{{__('Impuestos')}}:</div>
 
-                <div> {{__(number_format($venta->Impuestos), 2, ',', ' ')}} </div>
+                <div> {{(number_format($venta->Impuestos), 2, ',', ' ')}} </div>
             </div>
 
             <hr>
