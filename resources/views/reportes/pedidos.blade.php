@@ -390,8 +390,8 @@ display: none !important;
                 </div>
                 <div class="card-body">
                   <select id="select-graficas" class="form-control">
-                    <option value="container">{{__('Gráfica de linea | Pedido por Importe ')}}MXN</option>
-                    <option value="container1">{{__('Gráfica de linea | Pedido por Importe ')}}USD</option>
+                    <option value="container">{{__('Gráfica de linea | Pedido por Importe')}} MXN</option>
+                    <option value="container1">{{__('Gráfica de linea | Pedido por Importe')}} USD</option>
                   </select>
 
                     <div class="row">
@@ -592,7 +592,7 @@ display: none !important;
 Highcharts.chart('container', {
 
 title: {
-  text: '{{__('Grafica lineal de Pedidos por Importe ')}}MXN',
+  text: '{{__('Grafica lineal de Pedidos por Importe')}} MXN',
   align: 'left'
 },
 
