@@ -114,7 +114,7 @@
             <div class="col-3 border rounded" style="text-align:right"><b>{{__('Importe:')}} ${{number_format($venta->Importe, 2, '.', '')}}</b></div>
             <div class="col-3 border rounded" style="text-align:right"><b>{{__('Impuesto:')}} ${{number_format($venta->Impuestos, 2, '.', '')}}</b></div>
             <div class="col-3 border rounded" style="text-align:right"><b>{{__('Total:')}} ${{number_format($venta->Saldo, 2, '.', '')}}</b></div>
-            <div class="col-1 border rounded" style="text-align:center"><b>@if ($venta->Moneda == "Pesos") USD @endif @if ($venta->Moneda == "Dolares") MXN @endif
+            <div class="col-1 border rounded" style="text-align:center"><b>@if ( str_contains($venta->Moneda, 'Pesos')) USD @endif @if (str_contains($venta->Moneda, 'Dolares')) MXN @endif
 
 
         </b></div>
