@@ -655,7 +655,7 @@ responsive: {
 </script>
 <script>
 
-Highcharts.chart('container', {
+Highcharts.chart('container1', {
 
 title: {
   text: '{{__('Grafica lineal de Pedidos por Importe')}} USD',
