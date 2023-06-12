@@ -699,7 +699,7 @@ series: [ {
 @foreach ($data as $importeU)
 @if (str_contains($importeU->venta->Moneda, 'Dolares'))
 <?php
-$USImporte = $importeU->venta->Importe / $importeU->venta->TipoCambio;
+$USImporte = $importeU->venta->Importe  $importeU->venta->TipoCambio / $importeU->venta->Importe ;
 ?>
 {{$USImporte}},
 @endif
