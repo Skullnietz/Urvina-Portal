@@ -670,8 +670,8 @@ yAxis: {
 
 xAxis: {
     categories: [
-                @foreach ($data as $nombre)
-                '{{$nombre->Pedido}}',
+                @foreach ($data as $nombre1)
+                '{{$nombre1->Pedido}}',
                 @endforeach
                 ]
 },
@@ -697,7 +697,7 @@ series: [ {
   name: '{{$_SESSION['usuario']->Nombre}}',
   data: [
 @foreach ($data as $importeU)
-<?php $USImporte = (  $importeU->venta->TipoCambio / $importeU->venta->Importe); ?>
+<?php $USImporte = $importeU->venta->Importe / $importeU->venta->TipoCambio ; ?>
 {{$USImporte}},
 @endforeach]
 }],
