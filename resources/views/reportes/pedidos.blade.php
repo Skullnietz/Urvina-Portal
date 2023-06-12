@@ -696,9 +696,12 @@ series: [ {
 
   name: '{{$_SESSION['usuario']->Nombre}}',
   data: [
-@foreach ($data as $importeP)<?php
-$ImporteU = ($importeP->venta->Importe * $importeP->venta->TipoCambio);
- $USImporte = $ImporteU / $importeP->venta->TipoCambio ; ?>
+@foreach ($data as $importeU)
+<?php
+if(str_contains($importeU->venta->Moneda, 'Pesos')){
+$USImporte = $importeU->venta->Importe / $importeU->venta->TipoCambio ;
+}
+?>
 {{$USImporte}},
 @endforeach]
 }],
