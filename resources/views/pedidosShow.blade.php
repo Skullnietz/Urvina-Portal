@@ -175,7 +175,7 @@
             <div class="row justify-content-between">
                 <div>{{__('Articulos')}} dlls({{$cantartdolar}}):</div>
 
-                <div>$ {{$venta->Importe}} USD </div>
+                <div>$ {{number_format($venta->Importe, 2, ',', ' ')}} USD </div>
             </div>
             @endif
             @if($cantartpeso != 0)
