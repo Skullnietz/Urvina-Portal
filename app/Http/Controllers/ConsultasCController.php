@@ -149,7 +149,6 @@ class ConsultasCController extends Controller
                         ]
                     );
                     $CFecha = Date::parse($pedido->Fecha);
-                    $pedido->venta = $venta;
                     $pedido->CFecha = $CFecha;
                     $pedido->desc = $descpedido;
                     foreach($pedido->desc as $p){
