@@ -652,7 +652,74 @@ responsive: {
 }
 
 });
+</script>
+<script>
+
+Highcharts.chart('container', {
+
+title: {
+  text: '{{__('Grafica lineal de Pedidos por Importe')}} USD',
+  align: 'left'
+},
+
+yAxis: {
+  title: {
+    text: '{{__('Importe')}}'
+  }
+},
+
+xAxis: {
+    categories: [
+                @foreach ($data as $nombre)
+                '{{$nombre->Pedido}}',
+                @endforeach
+                ]
+},
+
+legend: {
+  layout: 'vertical',
+  align: 'right',
+  verticalAlign: 'middle'
+},
+
+plotOptions: {
+  series: {
+    label: {
+      connectorAllowed: false
+    },
+
+  }
+},
+
+series: [ {
+
+
+  name: '{{$_SESSION['usuario']->Nombre}}',
+  data: [
+@foreach ($data as $importeU)
+<?php $USImporte = ($importeU->venta->Importe / $importeU->venta->TipoCambio); ?>
+{{$PeImporte}},
+@endforeach]
+}],
+
+responsive: {
+  rules: [{
+    condition: {
+      maxWidth: 500
+    },
+    chartOptions: {
+      legend: {
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'bottom'
+      }
+    }
+  }]
+}
+
+});
         </script>
+
                   <script>
                     $(document).ready(function() {
         $('#container').show();
