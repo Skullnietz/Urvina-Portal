@@ -694,17 +694,22 @@ plotOptions: {
 series: [ {
 
 
-  name: '{{$_SESSION['usuario']->Nombre}}',
+  name: '{{__('Dolares')}}',
   data: [
-@foreach ($data as $importeU)
-@if (str_contains($importeU->venta->Moneda, 'Dolares'))
-<?php
-$USImporte =   $importeU->venta->TipoCambio / $importeU->venta->Importe ;
-?>
-{{$USImporte}},
-@endif
-
-@endforeach]
+    @foreach ($data as $importe)
+    @if($importe->venta->Moneda == "Dolares")
+                {{$importe->venta->Importe}},
+    @endif
+    @endforeach
+]
+name: '{{__('Pesos')}}',
+  data: [
+    @foreach ($data as $importe)
+    @if($importe->venta->Moneda == "Pesos")
+                {{$importe->venta->Importe}},
+    @endif
+    @endforeach
+]
 }],
 
 responsive: {
