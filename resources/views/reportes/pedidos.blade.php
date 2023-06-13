@@ -701,7 +701,7 @@ series: [ {
                 {{$importe->venta->Importe}},
     @endif
     @endforeach
-]
+]},{
 name: '{{__('Pesos')}}',
   data: [
     @foreach ($data as $importe)
