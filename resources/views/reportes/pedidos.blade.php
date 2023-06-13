@@ -401,6 +401,8 @@ display: none !important;
                             <figure class="highcharts-figure">
                             <div id="container"></div>
                             <div id="container1"></div>
+                            <div id="container2"></div>
+                            <div id="container3"></div>
                             </figure>
                         </div>
                         <div class="col-sm-4 col-12">
@@ -833,7 +835,7 @@ series: [ {
   name: '{{__('Dolares')}}',
   data: [
     @foreach ($MonthPerUSD as $month)
-                {{$month->TotalConsumido}},
+    {{$month->TotalConsumido}},
     @endforeach
 ]}],
 
