@@ -674,9 +674,6 @@ xAxis: {
                 @if(str_contains($importe->venta->Moneda, 'Dolares'))
                 '{{$nombre1->Pedido}}',
                 @endif
-                @if(str_contains($importe->venta->Moneda, 'Pesos'))
-                '{{$nombre1->Pedido}}',
-                @endif
                 @endforeach
                 ]
 },
@@ -706,16 +703,7 @@ series: [ {
                 {{$importe->venta->Importe}},
     @endif
     @endforeach
-]},{
-name: '{{__('Pesos')}}',
-  data: [
-    @foreach ($data as $importe)
-    @if(str_contains($importe->venta->Moneda, 'Pesos'))
-                {{$importe->venta->Importe}},
-    @endif
-    @endforeach
-]
-}],
+]}],
 
 responsive: {
   rules: [{
