@@ -742,7 +742,7 @@ yAxis: {
 xAxis: {
     categories: [
                 @foreach ($MonthPerMXN as $month)
-                $month->Mes
+                '{{$month->Mes}}',
                 @endforeach
                 ]
 },
@@ -768,7 +768,7 @@ series: [ {
   name: '{{__('Dolares')}}',
   data: [
     @foreach ($MonthPerMXN as $month)
-                $month->TotalConsumido
+                {{$month->TotalConsumido}},
     @endforeach
 ]}],
 
@@ -807,7 +807,7 @@ yAxis: {
 xAxis: {
     categories: [
         @foreach ($MonthPerUSD as $month)
-                $month->Mes
+        '{{$month->Mes}}',
         @endforeach
                 ]
 },
@@ -833,7 +833,7 @@ series: [ {
   name: '{{__('Dolares')}}',
   data: [
     @foreach ($MonthPerUSD as $month)
-                $month->TotalConsumido
+                {{$month->TotalConsumido}},
     @endforeach
 ]}],
 
