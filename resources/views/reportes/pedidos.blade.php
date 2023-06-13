@@ -670,12 +670,14 @@ yAxis: {
 
 xAxis: {
     categories: [
-        @if(str_contains($importe->venta->Moneda, 'Dolares'))
-                {{$importe->venta->Importe}},
-        @endif
-        @if(str_contains($importe->venta->Moneda, 'Pesos'))
-                {{$importe->venta->Importe}},
-        @endif
+                @foreach ($data as $nombre1)
+                @if(str_contains($importe->venta->Moneda, 'Dolares'))
+                '{{$nombre1->Pedido}}',
+                @endif
+                @if(str_contains($importe->venta->Moneda, 'Pesos'))
+                '{{$nombre1->Pedido}}',
+                @endif
+                @endforeach
                 ]
 },
 
