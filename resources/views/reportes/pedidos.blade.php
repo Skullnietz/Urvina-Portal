@@ -744,7 +744,7 @@ yAxis: {
 xAxis: {
     categories: [
                 @foreach ($MonthPerMXN as $month)
-                '{{$month->Mes}}',
+                '{{$month->Mes}}/{{$month->Anio}}',
                 @endforeach
                 ]
 },
@@ -809,7 +809,7 @@ yAxis: {
 xAxis: {
     categories: [
         @foreach ($MonthPerUSD as $month)
-        '{{$month->Mes}}',
+        '{{$month->Mes}}/{{$month->Anio}}',
         @endforeach
                 ]
 },
