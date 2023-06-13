@@ -697,7 +697,7 @@ series: [ {
   name: '{{__('Dolares')}}',
   data: [
     @foreach ($data as $importe)
-    @if($importe->venta->Moneda == "Dolares")
+    @if(str_contains($importe->venta->Moneda, 'Dolares'))
                 {{$importe->venta->Importe}},
     @endif
     @endforeach
@@ -705,7 +705,7 @@ series: [ {
 name: '{{__('Pesos')}}',
   data: [
     @foreach ($data as $importe)
-    @if($importe->venta->Moneda == "Pesos")
+    @if(str_contains($importe->venta->Moneda, 'Pesos'))
                 {{$importe->venta->Importe}},
     @endif
     @endforeach
