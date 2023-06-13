@@ -392,6 +392,8 @@ display: none !important;
                   <select id="select-graficas" class="form-control">
                     <option value="container">{{__('Gráfica de linea | Pedido por Importe')}} MXN</option>
                     <option value="container1">{{__('Gráfica de linea | Pedido por Importe')}} USD</option>
+                    <option value="container2">{{__('Gráfica de linea | Periodo Mensual por Importe')}} MXN</option>
+                    <option value="container3">{{__('Gráfica de linea | Periodo Mensual por Importe')}} USD</option>
                   </select>
 
                     <div class="row">
@@ -702,6 +704,136 @@ series: [ {
     @if(str_contains($importe->venta->Moneda, 'Dolares'))
                 {{$importe->venta->Importe}},
     @endif
+    @endforeach
+]}],
+
+responsive: {
+  rules: [{
+    condition: {
+      maxWidth: 500
+    },
+    chartOptions: {
+      legend: {
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'bottom'
+      }
+    }
+  }]
+}
+
+});
+        </script>
+        <script>
+
+Highcharts.chart('container2', {
+
+title: {
+  text: '{{__('Grafica lineal de Periodos Mensuales Importe')}} MXN',
+  align: 'left'
+},
+
+yAxis: {
+  title: {
+    text: '{{__('Importe')}}'
+  }
+},
+
+xAxis: {
+    categories: [
+                @foreach ($MonthPerMXN as $month)
+                $month->Mes
+                @endforeach
+                ]
+},
+
+legend: {
+  layout: 'vertical',
+  align: 'right',
+  verticalAlign: 'middle'
+},
+
+plotOptions: {
+  series: {
+    label: {
+      connectorAllowed: false
+    },
+
+  }
+},
+
+series: [ {
+
+
+  name: '{{__('Dolares')}}',
+  data: [
+    @foreach ($MonthPerMXN as $month)
+                $month->TotalConsumido
+    @endforeach
+]}],
+
+responsive: {
+  rules: [{
+    condition: {
+      maxWidth: 500
+    },
+    chartOptions: {
+      legend: {
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'bottom'
+      }
+    }
+  }]
+}
+
+});
+        </script>
+        <script>
+
+Highcharts.chart('container3', {
+
+title: {
+  text: '{{__('Grafica lineal de Periodos Mensuales Importe')}} MXN',
+  align: 'left'
+},
+
+yAxis: {
+  title: {
+    text: '{{__('Importe')}}'
+  }
+},
+
+xAxis: {
+    categories: [
+        @foreach ($MonthPerUSD as $month)
+                $month->Mes
+        @endforeach
+                ]
+},
+
+legend: {
+  layout: 'vertical',
+  align: 'right',
+  verticalAlign: 'middle'
+},
+
+plotOptions: {
+  series: {
+    label: {
+      connectorAllowed: false
+    },
+
+  }
+},
+
+series: [ {
+
+
+  name: '{{__('Dolares')}}',
+  data: [
+    @foreach ($MonthPerUSD as $month)
+                $month->TotalConsumido
     @endforeach
 ]}],
 

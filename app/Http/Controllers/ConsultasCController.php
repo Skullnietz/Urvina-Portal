@@ -148,6 +148,34 @@ class ConsultasCController extends Controller
                             "idP" => $pedido->ID,
                         ]
                     );
+                    $MonthPerUSD = DB::select(
+                        "EXEC spReportePedidosPortalM :id, :idP",
+                        [
+                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                            "idP" => 'Dolares',
+                        ]
+                    );
+                    $MonthPerMXN = DB::select(
+                        "EXEC spReportePedidosPortalM :id, :idP",
+                        [
+                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                            "idP" => 'Pesos',
+                        ]
+                    );
+                    $WeekPerUSD = DB::select(
+                        "EXEC spReportePedidosPortalS :id, :idP",
+                        [
+                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                            "idP" => 'Dolares',
+                        ]
+                    );
+                    $WeekPerMXN = DB::select(
+                        "EXEC spReportePedidosPortalS :id, :idP",
+                        [
+                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                            "idP" => 'Pesos',
+                        ]
+                    );
                     $venta = DB::table('Venta')->select('ID','MovID','Moneda','TipoCambio','Usuario','Descuento','DescuentoGlobal','Importe','Impuestos','Saldo')->where('ID','=',$pedido->ID)->first();
                     $pedido->venta = $venta;
                     $CFecha = Date::parse($pedido->Fecha);
@@ -168,7 +196,7 @@ class ConsultasCController extends Controller
                 }
 
 
-                return view('reportes.pedidos')->with('departamentos',$departamentos)->with('data',$data);
+                return view('reportes.pedidos')->with('departamentos',$departamentos)->with('data',$data)->with('MonthPerUSD',$MonthPerUSD)->with('MonthPerMXN',$MonthPerMXN)->with('WeekPerUSD',$WeekPerUSD)->with('WeekPerMXN',$WeekPerMXN);
             }
 
         $pID = $_SESSION['usuario']->UsuarioCteCorp;
