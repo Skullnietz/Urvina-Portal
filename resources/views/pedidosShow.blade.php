@@ -155,14 +155,14 @@
                 // Recorre cada objeto y suma su precio
 
                 for ($i = 0; $i < count($data); $i++) {
-                if(str_contains($data[$i]->articulo[0]->Moneda, "Dolares")){
+                if((str_contains($venta->Moneda, 'Dolares'))){
                 $cantartdolar = $cantartdolar+$data[$i]->Cantidad;
                 $sumaPDolar += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
                 }
                 }
 
                 for ($i = 0; $i < count($data); $i++) {
-                if(str_contains($data[$i]->articulo[0]->Moneda, "Pesos")){
+                if((str_contains($venta->Moneda, 'Pesos'))){
                 $cantartpeso = $cantartdolar+$data[$i]->Cantidad;
                 $sumaPPeso += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
                 }
@@ -171,7 +171,7 @@
 
                     ?>
             </div><br>
-            @if(str_contains($venta->Moneda, 'Dolar'))
+            @if(str_contains($venta->Moneda, 'Dolares'))
             <div class="row justify-content-between">
                 <div>{{__('Articulos')}} dlls({{$cantartdolar}}):</div>
 
@@ -200,7 +200,7 @@
             </div>
 
             <hr>
-            @if(str_contains($venta->Moneda, 'Dolar'))
+            @if(str_contains($venta->Moneda, 'Dolares'))
             <div class="row justify-content-between">
                 <div>{{__('Total USD:')}} </div>
 
