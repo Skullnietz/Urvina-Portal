@@ -882,11 +882,11 @@ xAxis: {
         @foreach ($WeekPerMXN as $week)
         <?php
         $i++;
-$fecha.$i = "{{$week->InicioSemana}}";
-$timestamp.$i = strtotime($fecha);
-$fecha_formateada.$i = date("d-m", $timestamp);
+$fecha = "$week->InicioSemana";
+$timestamp = strtotime($fecha);
+$fecha_formateada = date("d-m", $timestamp);
 ?>
-        '{{$fecha_formateada.$i}}',
+        '{{$fecha_formateada}}',
         @endforeach
                 ]
 },
