@@ -138,6 +138,42 @@ class ConsultasCController extends Controller
                         "to" => date_format($dateto,'Ymd'),
                     ]
                 );
+                $MonthPerUSD = DB::select(
+                    "EXEC spReportePedidosPortalM :id, :idP,:from,:to",
+                    [
+                        "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "idP" => 'Dolares',
+                        "from" => date_format($datefrom, 'Ymd'),
+                        "to" => date_format($dateto,'Ymd'),
+                    ]
+                );
+                $MonthPerMXN = DB::select(
+                    "EXEC spReportePedidosPortalM :id, :idP,:from,:to",
+                    [
+                        "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "idP" => 'Pesos',
+                        "from" => date_format($datefrom, 'Ymd'),
+                        "to" => date_format($dateto,'Ymd'),
+                    ]
+                );
+                $WeekPerUSD = DB::select(
+                    "EXEC spReportePedidosPortalS :id, :idP,:from,:to",
+                    [
+                        "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "idP" => 'Dolares',
+                        "from" => date_format($datefrom, 'Ymd'),
+                        "to" => date_format($dateto,'Ymd'),
+                    ]
+                );
+                $WeekPerMXN = DB::select(
+                    "EXEC spReportePedidosPortalS :id, :idP,:from,:to",
+                    [
+                        "id" => $_SESSION['usuario']->UsuarioCteCorp,
+                        "idP" => 'Pesos',
+                        "from" => date_format($datefrom, 'Ymd'),
+                        "to" => date_format($dateto,'Ymd'),
+                    ]
+                );
 
 
                 foreach($pedidos as $pedido){
@@ -148,42 +184,7 @@ class ConsultasCController extends Controller
                             "idP" => $pedido->ID,
                         ]
                     );
-                    $MonthPerUSD = DB::select(
-                        "EXEC spReportePedidosPortalM :id, :idP,:from,:to",
-                        [
-                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                            "idP" => 'Dolares',
-                            "from" => date_format($datefrom, 'Ymd'),
-                            "to" => date_format($dateto,'Ymd'),
-                        ]
-                    );
-                    $MonthPerMXN = DB::select(
-                        "EXEC spReportePedidosPortalM :id, :idP,:from,:to",
-                        [
-                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                            "idP" => 'Pesos',
-                            "from" => date_format($datefrom, 'Ymd'),
-                            "to" => date_format($dateto,'Ymd'),
-                        ]
-                    );
-                    $WeekPerUSD = DB::select(
-                        "EXEC spReportePedidosPortalS :id, :idP,:from,:to",
-                        [
-                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                            "idP" => 'Dolares',
-                            "from" => date_format($datefrom, 'Ymd'),
-                            "to" => date_format($dateto,'Ymd'),
-                        ]
-                    );
-                    $WeekPerMXN = DB::select(
-                        "EXEC spReportePedidosPortalS :id, :idP,:from,:to",
-                        [
-                            "id" => $_SESSION['usuario']->UsuarioCteCorp,
-                            "idP" => 'Pesos',
-                            "from" => date_format($datefrom, 'Ymd'),
-                            "to" => date_format($dateto,'Ymd'),
-                        ]
-                    );
+
                     $venta = DB::table('Venta')->select('ID','MovID','Moneda','TipoCambio','Usuario','Descuento','DescuentoGlobal','Importe','Impuestos','Saldo')->where('ID','=',$pedido->ID)->first();
                     $pedido->venta = $venta;
                     $CFecha = Date::parse($pedido->Fecha);
