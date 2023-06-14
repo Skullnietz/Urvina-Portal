@@ -93,7 +93,6 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12" >
             <div class="card">
-
                 <div class="card-body">
                     <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-4"><div class="d-flex align-items-center"><div class="mx-auto"><?php if (file_exists(public_path() . '/images/catalogo/' . trim($pedido->Articulo) . '.jpg')) {
@@ -138,19 +137,14 @@
                     <div style="position:relative;">
                         <a href="{{route('printpedido', [app()->getLocale(), $id])}}" style="position:absolute; top:0; right:0; margin-top:-15px" class="btn btn-outline-dark" target="_blank"><i class="fas fa-print" ></i></a>
                       </div>
-                      @isset($data->articulo[0])
-            <div class="row"><h5><b>{{__('Detalle de pedido:')}}</b></h5></div>
-            @if(null !== $data[0]->CFecha->format('l, j F Y'))
-            <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} &nbsp;| &nbsp;<b style="color:gray">#{{$id}}</b></div>
-            @endif
 
+            <div class="row"><h5><b>{{__('Detalle de pedido:')}}</b></h5></div>
+            <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} &nbsp;| &nbsp;<b style="color:gray">#{{$id}}</b></div>
             <hr>
             <div class="row justify-content-between">
                 <div>{{__('Departamento:')}} </div>
-                @isset($data[0]->Departamento)
-                <div>{{$data[0]->Departamento}}</div>
-                @endisset
 
+                <div>{{$data[0]->Departamento}}</div>
                 <?php
                 $cantartpeso = 0;
                 $cantartdolar = 0;
@@ -195,10 +189,8 @@
             @isset($data[0]->articulo[0]->Periodo)
             <div class="row justify-content-between">
                 <div>{{__('Envio')}}:</div>
-                @isset($data[0]->articulo[0]->Periodo)
-                <div> {{__($data[0]->articulo[0]->Periodo)}} </div>
-                @endisset
 
+                <div> {{__($data[0]->articulo[0]->Periodo)}} </div>
             </div>
             @endisset
             <div class="row justify-content-between">
@@ -235,7 +227,6 @@
 
         </div>
         </div>
-        @endisset
 
         </div>
     </div>
