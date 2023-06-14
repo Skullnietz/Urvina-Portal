@@ -767,7 +767,7 @@ plotOptions: {
 series: [ {
 
 
-  name: '{{__('Dolares')}}',
+  name: '{{__('Pesos')}}',
   data: [
     @foreach ($MonthPerMXN as $month)
                 {{$month->TotalConsumido}},
@@ -796,7 +796,7 @@ responsive: {
 Highcharts.chart('container3', {
 
 title: {
-  text: '{{__('Grafica lineal de Periodos Mensuales Importe')}} MXN',
+  text: '{{__('Grafica lineal de Periodos Mensuales Importe')}} USD',
   align: 'left'
 },
 
