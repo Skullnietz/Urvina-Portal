@@ -145,31 +145,7 @@
                 <div>{{__('Departamento:')}} </div>
 
                 <div>{{$data[0]->Departamento}}</div>
-                <?php
-                $cantartpeso = 0;
-                $cantartdolar = 0;
-                $sumaPDolar = 0;
-                $sumaPPeso = 0;
-                $Periodo = "";
-
-                // Recorre cada objeto y suma su precio
-
-                for ($i = 0; $i < count($data); $i++) {
-                if(str_contains($data[$i]->articulo[0]->Moneda, "Dolares")){
-                $cantartdolar = $cantartdolar+$data[$i]->Cantidad;
-                $sumaPDolar += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
-                }
-                }
-
-                for ($i = 0; $i < count($data); $i++) {
-                if(str_contains($data[$i]->articulo[0]->Moneda, "Pesos")){
-                $cantartpeso = $cantartdolar+$data[$i]->Cantidad;
-                $sumaPPeso += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
-                }
-                }
-
-
-                    ?>
+                
             </div><br>
             @if($cantartdolar != 0)
             <div class="row justify-content-between">
