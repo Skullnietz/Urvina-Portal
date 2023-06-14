@@ -149,31 +149,39 @@ class ConsultasCController extends Controller
                         ]
                     );
                     $MonthPerUSD = DB::select(
-                        "EXEC spReportePedidosPortalM :id, :idP",
+                        "EXEC spReportePedidosPortalM :id, :idP,:from,:to",
                         [
                             "id" => $_SESSION['usuario']->UsuarioCteCorp,
                             "idP" => 'Dolares',
+                            "from" => date_format($datefrom, 'Ymd'),
+                            "to" => date_format($dateto,'Ymd'),
                         ]
                     );
                     $MonthPerMXN = DB::select(
-                        "EXEC spReportePedidosPortalM :id, :idP",
+                        "EXEC spReportePedidosPortalM :id, :idP,:from,:to",
                         [
                             "id" => $_SESSION['usuario']->UsuarioCteCorp,
                             "idP" => 'Pesos',
+                            "from" => date_format($datefrom, 'Ymd'),
+                            "to" => date_format($dateto,'Ymd'),
                         ]
                     );
                     $WeekPerUSD = DB::select(
-                        "EXEC spReportePedidosPortalS :id, :idP",
+                        "EXEC spReportePedidosPortalS :id, :idP,:from,:to",
                         [
                             "id" => $_SESSION['usuario']->UsuarioCteCorp,
                             "idP" => 'Dolares',
+                            "from" => date_format($datefrom, 'Ymd'),
+                            "to" => date_format($dateto,'Ymd'),
                         ]
                     );
                     $WeekPerMXN = DB::select(
-                        "EXEC spReportePedidosPortalS :id, :idP",
+                        "EXEC spReportePedidosPortalS :id, :idP,:from,:to",
                         [
                             "id" => $_SESSION['usuario']->UsuarioCteCorp,
                             "idP" => 'Pesos',
+                            "from" => date_format($datefrom, 'Ymd'),
+                            "to" => date_format($dateto,'Ymd'),
                         ]
                     );
                     $venta = DB::table('Venta')->select('ID','MovID','Moneda','TipoCambio','Usuario','Descuento','DescuentoGlobal','Importe','Impuestos','Saldo')->where('ID','=',$pedido->ID)->first();
