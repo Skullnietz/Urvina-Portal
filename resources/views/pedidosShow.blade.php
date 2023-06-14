@@ -139,12 +139,17 @@
                       </div>
 
             <div class="row"><h5><b>{{__('Detalle de pedido:')}}</b></h5></div>
+            @isset($data[0]->CFecha->format('l, j F Y'))
             <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} &nbsp;| &nbsp;<b style="color:gray">#{{$id}}</b></div>
+            @endisset
+
             <hr>
             <div class="row justify-content-between">
                 <div>{{__('Departamento:')}} </div>
-
+                @isset($data[0]->Departamento)
                 <div>{{$data[0]->Departamento}}</div>
+                @endisset
+
                 <?php
                 $cantartpeso = 0;
                 $cantartdolar = 0;
@@ -189,8 +194,10 @@
             @isset($data[0]->articulo[0]->Periodo)
             <div class="row justify-content-between">
                 <div>{{__('Envio')}}:</div>
-
+                @isset($data[0]->articulo[0]->Periodo)
                 <div> {{__($data[0]->articulo[0]->Periodo)}} </div>
+                @endisset
+
             </div>
             @endisset
             <div class="row justify-content-between">
