@@ -138,7 +138,7 @@
                     <div style="position:relative;">
                         <a href="{{route('printpedido', [app()->getLocale(), $id])}}" style="position:absolute; top:0; right:0; margin-top:-15px" class="btn btn-outline-dark" target="_blank"><i class="fas fa-print" ></i></a>
                       </div>
-                      @if( null !== $data->articulo[0])
+                      @isset($data->articulo[0])
             <div class="row"><h5><b>{{__('Detalle de pedido:')}}</b></h5></div>
             @if(null !== $data[0]->CFecha->format('l, j F Y'))
             <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} &nbsp;| &nbsp;<b style="color:gray">#{{$id}}</b></div>
@@ -235,7 +235,7 @@
 
         </div>
         </div>
-        @endif
+        @endisset
 
         </div>
     </div>
