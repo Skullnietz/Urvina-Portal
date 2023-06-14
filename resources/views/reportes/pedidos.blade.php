@@ -884,7 +884,7 @@ xAxis: {
         $i++;
 $fecha = "$week->InicioSemana";
 $timestamp = strtotime($fecha);
-$fecha_formateada = date("d-m", $timestamp);
+$fecha_formateada = date("d-m-Y", $timestamp);
 ?>
         '{{$fecha_formateada}}',
         @endforeach
@@ -952,9 +952,9 @@ xAxis: {
     categories: [
         @foreach ($WeekPerUSD as $week)
         <?php
-$fecha = "{{$week->InicioSemana}}";
+$fecha = "$week->InicioSemana";
 $timestamp = strtotime($fecha);
-$fecha_formateada = date("d-m", $timestamp);
+$fecha_formateada = date("d-m-Y", $timestamp);
 ?>
         '{{$fecha_formateada}}',
         @endforeach
