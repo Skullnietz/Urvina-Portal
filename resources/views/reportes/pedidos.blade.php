@@ -877,13 +877,16 @@ yAxis: {
 
 xAxis: {
     categories: [
+        <?php
+        $i=0;?>
         @foreach ($WeekPerMXN as $week)
         <?php
-$fecha = "{{$week->InicioSemana}}";
-$timestamp = strtotime($fecha);
-$fecha_formateada = date("d-m", $timestamp);
+        $i++;
+$fecha.$i = "{{$week->InicioSemana}}";
+$timestamp.$i = strtotime($fecha);
+$fecha_formateada.$i = date("d-m", $timestamp);
 ?>
-        '{{$fecha_formateada}}',
+        '{{$fecha_formateada.$i}}',
         @endforeach
                 ]
 },
