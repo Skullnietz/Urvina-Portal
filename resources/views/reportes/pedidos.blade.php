@@ -394,6 +394,8 @@ display: none !important;
                     <option value="container1">{{__('Gráfica de linea | Pedido por Importe')}} USD</option>
                     <option value="container2">{{__('Gráfica de linea | Periodo Mensual por Importe')}} MXN</option>
                     <option value="container3">{{__('Gráfica de linea | Periodo Mensual por Importe')}} USD</option>
+                    <option value="container4">{{__('Gráfica de linea | Periodo Semanal por Importe')}} MXN</option>
+                    <option value="container5">{{__('Gráfica de linea | Periodo Semanal por Importe')}} USD</option>
                   </select>
 
                     <div class="row">
@@ -403,6 +405,8 @@ display: none !important;
                             <div id="container1"></div>
                             <div id="container2"></div>
                             <div id="container3"></div>
+                            <div id="container4"></div>
+                            <div id="container5"></div>
                             </figure>
                         </div>
                         <div class="col-sm-4 col-12">
