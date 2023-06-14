@@ -856,6 +856,146 @@ responsive: {
 
 });
         </script>
+        <script>
+
+Highcharts.chart('container4', {
+
+title: {
+  text: '{{__('Grafica lineal de Periodos Semanales Importe')}} MXN',
+  align: 'left'
+},
+
+yAxis: {
+  title: {
+    text: '{{__('Importe')}}'
+  }
+},
+
+xAxis: {
+    categories: [
+        @foreach ($WeekPerMXN as $week)
+        <?php
+$fecha = "{{$week->InicioSemana}}";
+$timestamp = strtotime($fecha);
+$fecha_formateada = date("d-m", $timestamp);
+?>
+        '{{$fecha_formateada}}',
+        @endforeach
+                ]
+},
+
+legend: {
+  layout: 'vertical',
+  align: 'right',
+  verticalAlign: 'middle'
+},
+
+plotOptions: {
+  series: {
+    label: {
+      connectorAllowed: false
+    },
+
+  }
+},
+
+series: [ {
+
+
+  name: '{{__('Dolares')}}',
+  data: [
+    @foreach ($MonthPerMXN as $week)
+    {{$week->TotalConsumido}},
+    @endforeach
+]}],
+
+responsive: {
+  rules: [{
+    condition: {
+      maxWidth: 500
+    },
+    chartOptions: {
+      legend: {
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'bottom'
+      }
+    }
+  }]
+}
+
+});
+        </script>
+        <script>
+
+Highcharts.chart('container5', {
+
+title: {
+  text: '{{__('Grafica lineal de Periodos Mensuales Importe')}} USD',
+  align: 'left'
+},
+
+yAxis: {
+  title: {
+    text: '{{__('Importe')}}'
+  }
+},
+
+xAxis: {
+    categories: [
+        @foreach ($WeekPerUSD as $week)
+        <?php
+$fecha = "{{$week->InicioSemana}}";
+$timestamp = strtotime($fecha);
+$fecha_formateada = date("d-m", $timestamp);
+?>
+        '{{$fecha_formateada}}',
+        @endforeach
+                ]
+},
+
+legend: {
+  layout: 'vertical',
+  align: 'right',
+  verticalAlign: 'middle'
+},
+
+plotOptions: {
+  series: {
+    label: {
+      connectorAllowed: false
+    },
+
+  }
+},
+
+series: [ {
+
+
+  name: '{{__('Dolares')}}',
+  data: [
+    @foreach ($WeekPerUSD as $week)
+    {{$week->TotalConsumido}},
+    @endforeach
+]}],
+
+responsive: {
+  rules: [{
+    condition: {
+      maxWidth: 500
+    },
+    chartOptions: {
+      legend: {
+        layout: 'horizontal',
+        align: 'center',
+        verticalAlign: 'bottom'
+      }
+    }
+  }]
+}
+
+});
+        </script>
 
                   <script>
                     $(document).ready(function() {
@@ -863,6 +1003,8 @@ responsive: {
         $('#container1').hide();
         $('#container2').hide();
         $('#container3').hide();
+        $('#container4').hide();
+        $('#container5').hide();
       });
                     $('#select-graficas').on('change', function() {
     var container = $(this).val();
@@ -871,21 +1013,45 @@ responsive: {
         $('#container1').hide();
         $('#container2').hide();
         $('#container3').hide();
+        $('#container4').hide();
+        $('#container5').hide();
     } else if (container === 'container1') {
         $('#container').hide();
         $('#container1').show();
         $('#container2').hide();
         $('#container3').hide();
+        $('#container4').hide();
+        $('#container5').hide();
     } else if (container === 'container2') {
         $('#container').hide();
         $('#container1').hide();
         $('#container2').show();
         $('#container3').hide();
+        $('#container4').hide();
+        $('#container5').hide();
     } else if (container === 'container3') {
         $('#container').hide();
         $('#container1').hide();
         $('#container2').hide();
         $('#container3').show();
+        $('#container4').hide();
+        $('#container5').hide();
+    }
+    else if (container === 'container4') {
+        $('#container').hide();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').hide();
+        $('#container4').show();
+        $('#container5').hide();
+    }
+    else if (container === 'container5') {
+        $('#container').hide();
+        $('#container1').hide();
+        $('#container2').hide();
+        $('#container3').hide();
+        $('#container4').hide();
+        $('#container5').show();
     }
 });
 
