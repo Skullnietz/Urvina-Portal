@@ -139,9 +139,9 @@
                       </div>
 
             <div class="row"><h5><b>{{__('Detalle de pedido:')}}</b></h5></div>
-            @isset($data[0]->CFecha->format('l, j F Y'))
+            @if(null !== $data[0]->CFecha->format('l, j F Y'))
             <div class="row">{{$data[0]->CFecha->format('l, j F Y')}} &nbsp;| &nbsp;<b style="color:gray">#{{$id}}</b></div>
-            @endisset
+            @endif
 
             <hr>
             <div class="row justify-content-between">
