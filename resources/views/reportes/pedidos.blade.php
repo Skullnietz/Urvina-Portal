@@ -909,7 +909,7 @@ plotOptions: {
 series: [ {
 
 
-  name: '{{__('Dolares')}}',
+  name: '{{__('Pesos')}}',
   data: [
     @foreach ($MonthPerMXN as $week)
     {{$week->TotalConsumido}},
@@ -938,7 +938,7 @@ responsive: {
 Highcharts.chart('container5', {
 
 title: {
-  text: '{{__('Grafica lineal de Periodos Mensuales Importe')}} USD',
+  text: '{{__('Grafica lineal de Periodos Semanales Importe')}} USD',
   align: 'left'
 },
 
