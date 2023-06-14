@@ -145,16 +145,16 @@
                 <div>{{__('Departamento:')}} </div>
 
                 <div>{{$data[0]->Departamento}}</div>
-                
+
             </div><br>
-            @if($cantartdolar != 0)
+            @if(str_contains($venta->Importe->Moneda, 'Dolar'))
             <div class="row justify-content-between">
                 <div>{{__('Articulos')}} dlls({{$cantartdolar}}):</div>
 
                 <div>$ {{number_format($venta->Importe, 2, ',', ' ')}} USD </div>
             </div>
             @endif
-            @if($cantartpeso != 0)
+            @if(str_contains($venta->Importe->Moneda, 'Pesos'))
             <div class="row justify-content-between">
                 <div>{{__('Articulos pesos')}}({{$cantartpeso}}): </div>
 
