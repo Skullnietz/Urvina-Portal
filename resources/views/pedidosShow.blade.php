@@ -155,14 +155,14 @@
                 // Recorre cada objeto y suma su precio
 
                 for ($i = 0; $i < count($data); $i++) {
-                if((str_contains($venta->Moneda, 'Dolares'))){
+                if(str_contains($data[$i]->articulo[0]->Moneda, "Dolares")){
                 $cantartdolar = $cantartdolar+$data[$i]->Cantidad;
                 $sumaPDolar += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
                 }
                 }
 
                 for ($i = 0; $i < count($data); $i++) {
-                if((str_contains($venta->Moneda, 'Pesos'))){
+                if(str_contains($data[$i]->articulo[0]->Moneda, "Pesos")){
                 $cantartpeso = $cantartdolar+$data[$i]->Cantidad;
                 $sumaPPeso += ($data[$i]->articulo[0]->Precio*$data[$i]->Cantidad);
                 }
@@ -171,14 +171,14 @@
 
                     ?>
             </div><br>
-            @if(str_contains($venta->Moneda, 'Dolares'))
+            @if($cantartdolar != 0)
             <div class="row justify-content-between">
                 <div>{{__('Articulos')}} dlls({{$cantartdolar}}):</div>
 
                 <div>$ {{number_format($venta->Importe, 2, ',', ' ')}} USD </div>
             </div>
             @endif
-            @if(str_contains($venta->Moneda, 'Pesos'))
+            @if($cantartpeso != 0)
             <div class="row justify-content-between">
                 <div>{{__('Articulos pesos')}}({{$cantartpeso}}): </div>
 
@@ -200,14 +200,14 @@
             </div>
 
             <hr>
-            @if(str_contains($venta->Moneda, 'Dolares'))
+            @if($cantartdolar != 0)
             <div class="row justify-content-between">
                 <div>{{__('Total USD:')}} </div>
 
                 <div>$ {{number_format($venta->Saldo, 2, ',', ' ')}}</div>
             </div>
             @endif
-            @if(str_contains($venta->Moneda, 'Pesos'))
+            @if($cantartpeso != 0)
             <div class="row justify-content-between">
                 <div>{{__('Total MXN:')}} </div>
 
