@@ -147,14 +147,14 @@
                 <div>{{$data[0]->Departamento}}</div>
 
             </div><br>
-            @if(str_contains($venta->Importe->Moneda, 'Dolar'))
+            @if(str_contains($venta->Moneda, 'Dolar'))
             <div class="row justify-content-between">
                 <div>{{__('Articulos')}} dlls({{$cantartdolar}}):</div>
 
                 <div>$ {{number_format($venta->Importe, 2, ',', ' ')}} USD </div>
             </div>
             @endif
-            @if(str_contains($venta->Importe->Moneda, 'Pesos'))
+            @if(str_contains($venta->Moneda, 'Pesos'))
             <div class="row justify-content-between">
                 <div>{{__('Articulos pesos')}}({{$cantartpeso}}): </div>
 
@@ -176,14 +176,14 @@
             </div>
 
             <hr>
-            @if($cantartdolar != 0)
+            @if(str_contains($venta->Moneda, 'Dolar'))
             <div class="row justify-content-between">
                 <div>{{__('Total USD:')}} </div>
 
                 <div>$ {{number_format($venta->Saldo, 2, ',', ' ')}}</div>
             </div>
             @endif
-            @if($cantartpeso != 0)
+            @if(str_contains($venta->Moneda, 'Pesos'))
             <div class="row justify-content-between">
                 <div>{{__('Total MXN:')}} </div>
 
