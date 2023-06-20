@@ -191,7 +191,7 @@
                 <div>{{__('Envio')}}:</div>
 
                 <div> {{__($data[0]->articulo[0]->Periodo)}} </div>
-            </div>
+            </div> 
             @endisset
             <div class="row justify-content-between">
                 <div>{{__('Impuestos')}}:</div>

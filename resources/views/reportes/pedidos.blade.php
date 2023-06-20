@@ -427,19 +427,12 @@ display: none !important;
                                         @endif
                                 <tr>
                                     <td>{{$pedido->Pedido}}</td>
-                                    <td><ul>@foreach ($pedido->desc as $item)
-
-                                            <li>{{__($item->Descripcion)}}({{number_format($item->Cantidad)}}  {{$item->Unidad}})</li>
-
-
-                                        @endforeach</ul>
+                                    <td>Descripcion
                                     </td>
                                     <?php $PImporte = ($pedido->venta->Importe * $pedido->venta->TipoCambio) ?>
                                     <td>{{number_format($PImporte, 2, '.', '')}}</td>
                                 </tr>
                                 @endforeach
-
-                                        <?php $count++; ?>
 
 
 
