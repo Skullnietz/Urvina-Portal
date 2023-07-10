@@ -417,7 +417,7 @@ display: none !important;
                                     <table class="table table-sm table-striped">
                                         <tr>
                                             <th>{{__('Pedido')}}</th>
-                                            <th>{{__('Descripcion')}}</th>
+
                                             <th>{{__('Importe')}}</th>
                                         </tr><?php $count=0; ?>
                                         @foreach ($data as $pedido)
@@ -427,12 +427,7 @@ display: none !important;
                                         @endif
                                 <tr>
                                     <td>{{$pedido->Pedido}}</td>
-                                    <td><ul>@foreach ($pedido->desc as $item)
 
-                                            <li>{{__($item->Descripcion)}}({{number_format($item->Cantidad)}}  {{$item->Unidad}})</li>
-
-
-                                        @endforeach</ul>
                                     </td>
                                     <?php $PImporte = ($pedido->venta->Importe * $pedido->venta->TipoCambio) ?>
                                     <td>{{number_format($PImporte, 2, '.', '')}}</td>
@@ -455,12 +450,11 @@ display: none !important;
                         <div class="tabla-seccion">
                         <div class="tabla-contenedor">
                         <table class="table table-striped">
-                            <tr class="bg-success">
+                            <tr class="bg-primary">
                                 <th>{{__('Articulos en dolares')}}</th>
                             </tr>
                             <tr class="bg-secondary">
                                 <th>{{__('Pedido')}}</th>
-                                <th>{{__('Descripcion')}}</th>
                                 <th>{{__('Referencia')}}</th>
                                 <th>{{__('Estatus')}}</th>
                                 <th>{{__('Importe')}}</th>
@@ -470,8 +464,6 @@ display: none !important;
                                 @if (str_contains($pedido->venta->Moneda, 'Dolares'))
                                 <tr>
                                     <td>{{$pedido->Pedido}}</td>
-                                    <td>Descripcion
-                                    </td>
                                     <td>{{$pedido->Referencia}}</td>
                                     <td>{{$pedido->Estatus}}</td>
                                     <td> @if(str_contains($pedido->venta->Moneda,"Dolares"))
@@ -494,12 +486,11 @@ display: none !important;
                     <div class="tabla-seccion">
                     <div class="tabla-contenedor">
                     <table class="table table-striped">
-                        <tr class="bg-primary">
+                        <tr class="bg-success">
                             <th>{{__('Articulos en pesos')}}</th>
                         </tr>
                         <tr class="bg-secondary">
                             <th>{{__('Pedido')}}</th>
-                            <th>{{__('Descripcion')}}</th>
                             <th>{{__('Referencia')}}</th>
                             <th>{{__('Estatus')}}</th>
                             <th>{{__('Importe')}}</th>
@@ -509,13 +500,6 @@ display: none !important;
                             @if (str_contains($pedido->venta->Moneda, 'Pesos'))
                             <tr>
                                 <td>{{$pedido->Pedido}}</td>
-                                <td><ul>@foreach ($pedido->desc as $item)
-
-                                        <li>{{__($item->Descripcion)}}({{number_format($item->Cantidad)}}  {{$item->Unidad}})</li>
-
-
-                                    @endforeach</ul>
-                                </td>
                                 <td>{{$pedido->Referencia}}</td>
                                 <td>{{$pedido->Estatus}}</td>
                                 <td>{{number_format($pedido->Importe, 2, '.', '')}}</td>

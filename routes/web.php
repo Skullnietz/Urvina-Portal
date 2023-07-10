@@ -93,6 +93,13 @@ Route::prefix('{language}')->group(function () {
 
     Route::get('/sesion', 'PruebasController@sesion')->name('testsesion');
 
+    //Facturacion
+    Route::get('/factura', function () {
+        return view('facturacion.validar-factura');
+    });
+
+
+
 
 
 
